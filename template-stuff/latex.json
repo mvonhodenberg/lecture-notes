@@ -1,0 +1,230 @@
+{
+	"display": {
+		"prefix": "dm",
+	 	"body": [
+	 		"\n\\[$1.\\]\n$0"
+		],
+	 	"description": "Display math"
+			},
+	"inline": {
+		"prefix": "mk",
+			"body": [
+				"$$1$$0"
+		],
+			"description": "Inline math"
+			},
+	"itemize": {
+		"prefix": "li",
+			"body": [
+				"\\begin{itemize}",
+				"\t\\item $0",
+				"\\end{itemize}"
+
+		],
+			"description": "Inline math"
+			},
+	"infty": {
+		"prefix": "ooo",
+			"body": [
+				"\\infty"
+		],
+			"description": "Infinity"
+			},
+	"sum": {
+		"prefix": "sum",
+			"body": [
+				"\\sum_{$1}^{$2}$0"
+		],
+			"description": "Sum"
+			},
+	"curly brackets": {
+		"prefix": "cbr",
+			"body": [
+				"\\{$1\\\\}$0"
+		],
+			"description": "Curly brackets"
+			},
+	"mathbb": {
+		"prefix": "bb",
+			"body": [
+				"\\mathbb{$1}$0"
+		],
+			"description": "Math bb text"
+			},
+	"Right arrow": {
+		"prefix": "to",
+			"body": [
+				"\\rightarrow $0"
+		],
+			"description": "Right arrow"
+			},
+	"New page": {
+		"prefix": "npge",
+			"body": [
+				"\\newpage \n$0"
+		],
+			"description": "Insert a new page"
+			},
+	"Operator": {
+		"prefix": "opert",
+			"body": [
+				"\\operatorname{$1}$0"
+		],
+			"description": "Write an operator name"
+			},
+	"forall": {
+		"prefix": "fra",
+			"body": [
+				"\\forall $0"
+		],
+			"description": "for all symbol"
+			},
+	"exists": {
+		"prefix": "ex",
+			"body": [
+				"\\exists $0"
+		],
+			"description": "exists symbol"
+			},
+	"text": {
+		"prefix": "txt",
+			"body": [
+				"\\text{$1} $0"
+		],
+			"description": "Write text in math mode"
+			},
+	"in": {
+		"prefix": "in",
+			"body": [
+				"\\in $0"
+		],
+			"description": "in symbol"
+			},
+	"rto": {
+		"prefix": "rto",
+			"body": [
+				"\\mathbb{R}^{$1} $0"
+		],
+			"description": "the set R to the _"
+			},
+	"definition": {
+		"prefix": "def",
+			"body": [
+				"\\begin{definition}[$1]",
+				"\t $0",
+				"\\end{definition}"
+		],
+			"description": "insert brackets with escape"
+			},
+	"proof": {
+		"prefix": "proof",
+			"body": [
+				"\\begin{proof}",
+				"\t $0",
+				"\\end{proof}"
+		],
+			"description": "Proof"
+			},
+	"theorem": {
+		"prefix": "thm",
+			"body": [
+				"\\begin{theorem}[$1]",
+				"\t $0",
+				"\\end{theorem}"
+		],
+			"description": "Theorem"
+			},
+	"section": {
+		"prefix": "sec",
+			"body": [
+				"\\section{$1}",
+				"$0"
+		],
+			"description": "section"
+			},
+	"subsection": {
+		"prefix": "ssec",
+			"body": [
+				"\\subsection{$1}",
+				"$0"
+		],
+			"description": "subsection"
+			},
+	"subsubsection": {
+		"prefix": "sssec",
+			"body": [
+				"\\subsubsection{$1}",
+				"$0"
+		],
+			"description": "subsubsection"
+			},
+	"partial":{
+		"prefix": "pdev",
+			"body": "\\frac{\\partial $1}{\\partial $2} $0"
+	},
+	"newline":{
+		"prefix": "nl",
+			"body": "\\newline \n$0"
+	},
+	"fraction":{
+		"prefix": "frk",
+			"body": "\\frac{$1}{$2}$0"
+	},
+	"vocab":{
+		"prefix": "voc",
+			"body": "\\vocab{$1} $0"
+	},
+	"absolute":{
+		"prefix": "abs",
+			"body": "|$1|$0"
+	},
+	"absolute2":{
+		"prefix": "abss",
+			"body": "||$1||$0"
+	},
+	"equation":{
+		"prefix": "eqt",
+			"body": ["\\begin{equation}",
+			"\t $1",
+			"\\end{equation}\n$0"
+			]
+	},
+	"equation*":{
+		"prefix": "eqs",
+			"body": ["\\begin{equation*}",
+			"\t $1",
+			"\\end{equation*}\n$0"
+			]
+	},
+	"brackets":{
+		"prefix": "br",
+			"body": "($1)$0"
+	},
+	"real function":{
+		"prefix": "fun",
+			"body": "f: \\mathbb{R} \\to \\mathbb{R} $0"
+	},
+	"real function in n dimensions":{
+		"prefix": "funn",
+			"body": "f: \\mathbb{R}^{$1} \\to \\mathbb{R} $0"
+	},
+	"leq":{
+		"prefix": "leq",
+			"body": "\\leq $0"
+	},
+	"geq":{
+		"prefix": "geq",
+			"body": "\\geq $0"
+	},
+	"implies":{
+		"prefix": "imp",
+			"body": "\\implies $0"
+	},
+	"nabla":{
+		"prefix": "grad",
+			"body": "\\nabla $0"
+	}
+
+	
+	
+}

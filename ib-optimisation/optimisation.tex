@@ -1,0 +1,287 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[
+    fancytheorems, 
+    fancyproofs, 
+    noindent, 
+]{adam}
+\usepackage{floatrow}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2]{%
+    \def\svgwidth{#1mm}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\title{IB Optimisation}
+\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
+\date{\today}
+\setcounter{section}{-1}
+
+\allowdisplaybreaks
+
+\begin{document}
+
+\maketitle
+
+Optimisation concerns problems of maximising or minimising certain functions. This extends to several different types of functions and is applicable in many areas of mathematics, particularly computational mathematics.
+
+This article constitutes my notes for the `IB Optimisation' course, held in Easter 2021 at Cambridge. This course wass lectured by Prof. Varun Jog.
+
+\tableofcontents
+\newpage 
+
+\section{Introduction}
+
+The course is roughly divided into four parts:
+\begin{enumerate}
+	\item Convex optimisation (Lectures 1-3)
+	\item Lagrange method (Lectures 4-5)
+	\item Linear programming (Lectures 6-8)
+	\item Applications of linear programming (Lectures 9-12)
+\end{enumerate}
+
+\begin{definition}[Optimisation problem]
+	The basic structure of an optimisation problem is as follows:\\
+	minimise $f(x)$ for $x \in X$, where in this course we take $X \subset \mathbb{R}^n$. The problem can have 'constraints' $h(x)=b$, where $h:\mathbb{R}^n \to \mathbb{R}^n$. We will look at minimising functions WLOG.
+	
+	\begin{enumerate}
+		\item $f$ is called the objective function.
+		\item The components of $x$ are called decision variables.
+		\item $h(x)=b$ is called a functional constraint.
+		\item $x \in X$ is called a regional constraint.
+		\item $\{x: x \in X\}$ is called the feasible set $X (b) $.
+		\item Problem is feasible if $X(b)\neq \emptyset$, and bounded if the minimum on $X(b)$ is bounded.
+		\item A point $x^* \in X(b)$ is optimal if it minimises f over $X(b)$. The value $f(x^*)$ is called the optimal set. 
+	\end{enumerate}
+	
+\end{definition}
+\section{Convex optimisation} 
+\subsection{Convexity}
+\begin{definition}
+	 A set $S \in \mathbb{R}^{n} $ is \vocab{convex} if for all $x,y \in S$, and all $\lambda \in [0,1]$, $(1-\lambda)x+\lambda y \in S$. (The line segment joining $x$ and $y$ lies in $S$.)  
+	 \begin{figure}[H]
+		\centering
+		\incfig{70}{convex-drawing}
+		\caption{Two subsets of $\mathbb{R}^{2} $: the left one is convex but the right one is not.}
+	\end{figure}
+\end{definition}
+\newpage 
+
+\begin{definition}
+	 A function $f:S \rightarrow \mathbb{R}$ is \vocab{convex} if $S$ is convex, and for all $x,y \in S$, and $\lambda \in [0,1]$ , we have 
+	 \[f((1-\lambda)x+\lambda y)\leq (1-\lambda)f(x)+ \lambda f(y).\] 
+	 Intuitively, all the tangent lines to the function are below the function.We define $f$ to be concave if $-f$ is convex.
+	 \begin{figure}[H]
+		\centering
+		\incfig{70}{convex-function-drawing}
+		\caption{A convex function in $\mathbb{R}^2$.}
+	\end{figure}
+\end{definition}
+\begin{remark}
+	Linear functions are always both convex and concave, since we get equality in the above equation.
+\end{remark}
+
+\subsection{Unconstrained optimisation}
+We want to find $\min f(x)$ where $f: \mathbb{R}^{n} \rightarrow \mathbb{R}$ is a convex function. This is a particularly simple case of optimisation, since convex functions have the important property that \emph{local information extends globally}. We will now look at a couple of ways to prove convexity, called the first- and second-order conditions.
+
+\subsubsection{First order conditions for convexity}
+Intuitively, for a convex function $f:\mathbb{R} \rightarrow \mathbb{R}$, we know that all the tangent lines to the function are below the function (see Figure 2). We can express this as 
+\[f(y) \geq f(x)+(y-x)f'(x).\]
+We can generalise this to higher dimensions:
+
+\begin{theorem}[First-order conditions]
+	 A differentiable $f:\mathbb{R}^n\rightarrow \mathbb{R}$ is convex iff for $x,y \in \mathbb{R}^{n} $ , we have 
+	 \[f(y) \geq f(x)+\nabla f(x)^T (y-x).\]  
+\end{theorem}
+
+\begin{remark}
+	If $\nabla f(x)=0$, then $f(y)\geq f(x) \implies$ $x$ minimises $f$.
+\end{remark}
+
+\begin{proof}
+	\textbf{Convexity of $f \implies$ F-O conditions hold:}\newline 
+	 Let $n=1$. For $x,y\in \mathbb{R}^{n}$, $t \in [0,1]$ we have 
+	 \[f((1-t)x+ty)=f(x+t(y-x))\leq (1-t)f(x)+tf(y).\]
+	 Therefore 
+	 \[f(y) \geq f(x)+\frac{f(x+t(y-x))-f(x)}{t}.\] 
+	 Taking $t \rightarrow 0$ , we conclude 
+	 \[f(y) \geq f(x)+f'(x)(y-x).\]
+	 For the general case, define a function $g(t)=f((1-t)x+ty)$, i.e $g: [0,1] \rightarrow \mathbb{R}$. Since $f$ is convex, $g$ is also convex. We can calculate 
+	 \[g'(t)=\nabla f((1-t)x+ty)^T(y-x).\] 
+	 Since $g$ is convex, by the above argument for $n=1$, we have $g(1)\geq g(0)+g'(0)(1-0)$. 
+	 \[\implies f(y) \geq f(x)+\nabla f(x)^T(y-x).\] 
+	 \textbf{F-O conditions hold $\implies$ convexity:}\\
+	 Define $x_t=(1-t)x+ty$. We have the two equations
+	 \begin{align}
+		 f(x) &\geq f(x_t)+\nabla f(x_t)^T (x-x_t)\\
+		 f(y) &\geq f(x_t)+\nabla f(x_t)^T (y-x_t)
+	 \end{align}
+	 Now we add $(1-t)\times$ equation (1) to $t \times$ equation 2. Noting that $x-x_t=tx-ty$ and $y-x_t=(1-t)y-(1-t)x$, we get 
+	 \[(1-t)f(x)+tf(y)\geq f(x_t)+\nabla f(x_t)^T (0).\] 
+	 This concludes the proof.
+\end{proof}
+
+\subsubsection{Second-order conditions for convexity}
+
+Next we look at second-order conditions. In one dimension, we would expect that if $f'$ is increasing, i.e $f''(x) \geq 0$ would give us convexity. We generalise this to $n$ dimensions using the Hessian matrix, which we saw in IA Differential Equations. It has entries $H_{ij}=\frac{\partial^2 f(x)}{\partial x_i x_j} $.
+
+\begin{definition}[Semidefinite matrix]
+	 A matrix $A$ is called \vocab{positive semidefinite} if for all $ x \in \mathbb{R}^{n} $ we have $x^T Ax=0$. Equivalently, all eigenvalues of $A$ are non-negative. 
+\end{definition}
+
+\begin{remark}
+	The Taylor expansion in $n$ dimensions is 
+	\[f(y)=f(x)+\nabla f(x)^T(y-x)+\frac{1}{2} (y-x)^T \nabla^2 f(x)(y-x)+\ldots.\] 
+\end{remark}
+
+\begin{theorem}[Second-order condition]
+	 A twice differentiable $f: \mathbb{R}^{n}\rightarrow \mathbb{R}$ is convex if $\nabla^2 f(x) \geq 0$ for all $ x \in \mathbb{R}^{n}$.  
+\end{theorem}
+
+\begin{proof}
+	 Using the Taylor expansion of $f$ we have 
+	 \[f(y)=f(x)+\nabla f(x)^T(y-x) + \frac{1}{2} (y-x)^T \nabla^2 f(z)(y-x).\]
+	 where $z=(1-\lambda)x+ \lambda y$ for some $\lambda\in [0,1]$. (IA Analysis).\\
+	 We have $f(y) \geq f(x)+\nabla f(x)^T(y-x)$. Then by the first-order condition theorem, $f$ is convex. 
+\end{proof}
+
+\subsection{The gradient descent algorithm}
+Recall we have an unconstrained optimisation problem: 
+\[\text{minimise }  f(x), f:\mathbb{R}^{n} \rightarrow \mathbb{R} \text{ is a convex function} .\] 
+In order to solve this, we could apply agree a 'greedy method' where we pick an initial point $x_0$ and iteratively pick points $x_1,x_2,\ldots$ near this point so that the gradient of $f$ at $x_n$ is decreasing. In which direction should we decrease $x_n$? Note that by Taylor's expansion, with small $\epsilon>0$, 
+\[f(x-\epsilon \nabla f(x))\approx f(x)-\epsilon \nabla f(x)^T \dot \nabla f(x)=f(x)-\epsilon ||f(x)||^2 \leq f(x).\]
+
+We call the direction $-\nabla f(x)$ the descending direction. (Note we could also choose any other direction $v$ so that $f(x)^T \dot v <0$.) We now formalise this process in an algorithm.
+
+\begin{definition}[Gradient descent method]
+	Define an algorithm:
+	 \begin{enumerate}
+		 \item Start at some point $x_0$. Set $t=0$.
+		 \item Repeat the following: 
+		 \begin{itemize}
+			 \item Find a descending direction $v_t$ (e.g $-\nabla f(x)$)
+			 \item Choose a step size $\eta_t$ (can depend on $t$)
+			 \item Update $x_{t+1}=x_t+\eta_t v_t$
+		 \end{itemize}
+		 \item Stop when some criterion is met (e.g $\nabla f(x_t)=0$, $t$ is large enough)
+	 \end{enumerate}
+\end{definition}
+
+For the scope of this course, we need to make assumptions about our convex function.
+\subsubsection{Smoothness assumption}
+
+\begin{definition}[Smoothness assumption]
+	 We say that a continuously differentiable function $f: \mathbb{R} \rightarrow \mathbb{R}$ is $\beta$-smooth or $\beta$-Lipschitz if 
+	 \[||\nabla f(x)-\nabla f(y)|| \leq \beta ||x-y||.\] 
+	 Those who have taken IB Analysis and Topology will be familiar with this concept.
+\end{definition}
+\begin{remark}
+	If $f$ is twice-differentiable, then $\beta$-smoothness implies that $\nabla^2 f(x)\leq \beta I$. Equivalently, all eigenvalues of $\nabla^2 f(x)$ are $\leq \beta$. $\beta$-smoothness can be summed up by the fact that \emph{the linear approximation is close to $f$ in a small neighbourhood around $x$}.
+\end{remark}
+
+\begin{proposition}
+	If $f$ is $\beta$-smooth and convex, then 
+	\[f(x)+\nabla f(x)^T(y-x) \leq f(y) \leq f(x)+\nabla f(x)^T(y-x)+ \frac{\beta}{2}||x-y||^2.\]
+\end{proposition}
+
+\begin{proof}
+	 The left-hand inequality follows by convexity.\newline 
+	 For the right hand inequality, by Taylor's theorem,
+	 \begin{equation*}
+		  \begin{split}
+			  f(y)=&\nabla f(x)^T(y-x)+\frac{1}{2}(y-x)^T \nabla^2 f(z)(y-x)\\
+			  &\leq f (x) +\nabla f (x)^T (y-x) + \frac{1}{2} (y-x)^T (\beta I)(y-x)\\
+			  &=f(x)+\nabla f (x)^T (y-x) + \frac{\beta}{2} ||x-y||^2
+		  \end{split}
+	 \end{equation*}
+\end{proof}
+
+\begin{corollary}
+	At any point $x$,
+	\[f(x-\frac{1}{\beta}\nabla f (x))\leq f(x)-\frac{1}{2\beta}||f(x)||^2.\]
+\end{corollary}
+\begin{proof}
+	 Let's look at 
+	 \[f(x)+\nabla f(x)^T (y-x)+\frac{\beta}{2}||x-y||^2,\]
+	 and try to minimise it over $y$ for a fixed $x$.
+	 \[\nabla y (f (x)^T (y-x) + \frac{\beta}{2}||x-y||^2)=\nabla f(x)-\beta (x-y)=0.\]
+	 \[\implies \nabla \frac{\nabla f (x)}{\beta}=x-y \implies y=x- \frac{1}{\beta}\nabla f	(x).\]
+	 Plug this value of $y$ into the above claim: 
+	 \begin{equation*}
+		  \begin{split}
+			f(x-\frac{1}{\beta}\nabla f(x))&\leq f(x)+\nabla f(x)^T (\frac{-1}{\beta}\nabla f(x))+\frac{\beta}{2}||\frac{1}{\beta}\nabla f(x)||^2\\
+			&=f(x)-\frac{1}{\beta}||\nabla f(x)||^2+\frac{1}{2\beta}||\nabla f(x)||^2\\
+			&=f(x)-\frac{1}{2\beta}||\nabla f(x)||^2
+		  \end{split}
+	 \end{equation*}	
+\end{proof}
+
+\begin{corollary}[Improved first-order condition]
+	
+	\[f(y)\geq f(x)+\nabla f (x)^T(y-x)+\frac{1}{2\beta}||\nabla f(x)-\nabla f (y)||^2.\]
+	
+\end{corollary}
+\begin{proof}
+	 For any $z$, we have 
+	 \[f (x)+\nabla f (x)^T (z-x)\leq f (z)\leq f(y)+\nabla f (y)^T (z-y)+\frac{\beta}{2}||z-y||^2.\]
+	 This implies 
+	 \[f (x)-f (y)\leq \nabla f (x)^T (x-z)+\nabla f (y)^T (z-y)+\frac{\beta}{2}||z-y||^2.\]
+	 To minimise the RHS, set $\nabla_z=0$. We get $-\nabla f (x)+\nabla f (y)+\beta (z-y)=0$, which implies 
+	 \[z=\frac{f (x)-f (y)}{\beta}+y.\]
+	 Subbing into the RHS, we get 
+	 \[f (x)- f (y)\leq \nabla f (x)^T (x-y)-\frac{1}{2\beta}||\nabla f (x)-\nabla f (y)||^2.\]
+\end{proof}
+\subsubsection{Strong convexity assumption}
+We now introduce a new type of convexity we assume. In essence, it tells us that \emph{if the gradient is small, we are close to the optimum}.
+\begin{definition}[Strong convexity assumption]
+	 A function $f: \mathbb{R}^{n} \to \mathbb{R} $ is $\alpha$-strongly convex if 
+	 \[f(y)\geq f (x)+ \nabla f (x)^T (y-x)+\frac{\alpha}{2}||x-y||^2.\]
+	 If $f$ is twice differentiable, then 
+	 \[\nabla^2 f (x)\geq \alpha I \ \forall x.\]
+\end{definition}
+
+\begin{proposition}
+	Let $f$ be $\alpha$-strongly convex. Let $p^*$ be the optimal cost. Then for any $x$ we have \[p^* \geq f(x)-\frac{1}{2\alpha}||\nabla f(x)||^2.\]
+\end{proposition}
+\begin{remark}
+	If $||\nabla f (x)||\leq \sqrt{2\alpha \epsilon}$ then $p^* \geq f(x)-\epsilon$, i.e 
+	\[p^* \leq f (x) \leq p^*+ \epsilon.\]
+	
+\end{remark}
+\begin{proof}
+	 The $\alpha$-strong convexity assumption gives us 
+	 \[\min_y f(y)\geq \min_y f (x)+ \nabla f (x)^T (y-x)+\frac{\alpha}{2}||x-y||^2.\]
+	 Setting $\nabla_y$ of the RHS=0, we get $y=x-\frac{\nabla f (x)}{\alpha}.$\newline 
+	 Plugging this value of $y$ in the RHS, we get 
+	 \[f(x)+\nabla f(x)^T (\frac{-\nabla f (x)}{\alpha})+\frac{\alpha}{2}||\frac{\nabla f(x)}{\alpha}||^2=f (x)- \frac{1}{2\alpha}||\nabla f (x)||^2.\]
+	 
+\end{proof}
+
+We might also want to ask: how close is the true optimiser $x^*$ to our current point $x$? It turns out $\alpha$-strong convexity gives us an answer to this too.
+
+\begin{proposition}
+	Let $x \in S$, and $x^*$ be the true optimiser. Then
+	\[||x-x^*||\leq \frac{2}{\alpha}||\nabla f (x)||.\]
+	
+\end{proposition}
+\begin{proof}
+	 \begin{equation*}
+		  \begin{split}
+			  f(x^*)&\geq f(x)+\nabla f(x)(x^*-x)+ \frac{\alpha}{2}||x-x^*||^2\\
+			  &\geq f(x)-||\nabla f(x)||||x^*-x||+\frac{\alpha}{2}||x-x^*||^2 \text{ by Cauchy-Schwartz} 
+		  \end{split}
+	 \end{equation*}
+	We already know that $f (x^*)\leq f (x)$. Therefore 
+	\[0 \geq f (x^*)-f (x)\geq -||\nabla f (x)|| \ ||x^*-x||+ \frac{\alpha}{2}||x-x^*||^2.\]
+	So $||\nabla f (x)||\ ||x-x^*||\leq \frac{2}{\alpha}||\nabla f (x)||^2$, and thus 
+	\[||x-x^*||\leq \frac{2}{\alpha}||\nabla f (x)||.\]
+	
+\end{proof}
+
+
+
+\end{document}
