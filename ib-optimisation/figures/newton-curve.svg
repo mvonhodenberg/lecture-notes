@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="96.639809mm"
+   height="76.988953mm"
+   viewBox="0 0 96.639809 76.988953"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="newton-curve.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.64052329"
+     inkscape:cx="-547.98944"
+     inkscape:cy="434.02013"
+     inkscape:window-width="2256"
+     inkscape:window-height="1410"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect325"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect317"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-103.58795,-33.365429)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 1.2392211,33.872045 C 34.423072,67.055898 67.606657,100.23948 100.75602,100.27344 c 33.14937,0.034 66.26345,-33.08012 99.37819,-66.194858"
+       id="path315"
+       inkscape:path-effect="#path-effect317"
+       inkscape:original-d="M 1.2392211,33.872045 C 34.423074,67.055896 67.606661,100.23948 100.78998,133.42281 133.90566,100.30767 167.01974,67.193588 200.13421,34.078582" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 103.68149,33.458973 c 16.17899,16.178986 32.35771,32.357704 48.43319,32.460683 16.07548,0.102978 32.04735,-15.868889 48.01953,-31.841074"
+       id="path323"
+       inkscape:path-effect="#path-effect325"
+       inkscape:original-d="m 103.68149,33.458973 c 16.17899,16.178985 32.35771,32.357705 48.53617,48.536161 15.97276,-15.97224 31.94463,-31.944103 47.91655,-47.916552" />
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+       id="path469"
+       cx="186.70932"
+       cy="47.503483"
+       r="1.6522949" />
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+       id="path469-6"
+       cx="154.07649"
+       cy="66.091797"
+       r="1.6522949" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="174.31711"
+       y="47.090401"
+       id="text2067"><tspan
+         sodipodi:role="line"
+         id="tspan2065"
+         style="font-size:7.05556px;stroke-width:0.264583"
+         x="174.31711"
+         y="47.090401">$x_t$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="138.37968"
+       y="70.635605"
+       id="text10253"><tspan
+         sodipodi:role="line"
+         id="tspan10251"
+         style="font-size:7.05556px;stroke-width:0.264583"
+         x="138.37968"
+         y="70.635605">$x_{t+1}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="116.07371"
+       y="108.22532"
+       id="text16399"><tspan
+         sodipodi:role="line"
+         id="tspan16397"
+         style="stroke-width:0.264583"
+         x="116.07371"
+         y="108.22532">$f(x)$</tspan></text>
+  </g>
+</svg>

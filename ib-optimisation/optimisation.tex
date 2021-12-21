@@ -29,7 +29,7 @@
 
 Optimisation concerns problems of maximising or minimising certain functions. This extends to several different types of functions and is applicable in many areas of mathematics, particularly computational mathematics.
 
-This article constitutes my notes for the `IB Optimisation' course, held in Easter 2021 at Cambridge. This course wass lectured by Prof. Varun Jog.
+This article constitutes my notes for the `IB Optimisation' course, held in Easter 2021 at Cambridge. This course was lectured by Prof. Varun Jog.
 
 \tableofcontents
 \newpage 
@@ -281,7 +281,326 @@ We might also want to ask: how close is the true optimiser $x^*$ to our current 
 	\[||x-x^*||\leq \frac{2}{\alpha}||\nabla f (x)||.\]
 	
 \end{proof}
+\subsubsection{Efficiency of gradient descent}
 
+\begin{theorem}
+	Gradient descent with step size $\frac{1}{\beta}$ satisfies: 
+	\[f(x_t)-f(x^*)\leq (1-\frac{\alpha}{\beta})^t (f(x_0)-f(x^*))\leq e^{\frac{-\alpha t}{\beta}} (f (x_0)- f (x^*))\leq e^{\frac{-\alpha t}{\beta}} \frac{\beta}{2}||x^*-x_0||^2.\]
+	Note this is very efficient; the error decreases exponentially!
 
+\end{theorem}
+\begin{proof}
+	 \begin{equation*}
+		  \begin{split}
+			  f(x_{t+1})-f (x*)&\leq f (x_t)- f (x^*)-\frac{1}{2\beta}||\nabla f(x_t||^2\\
+			  &\leq f(x_t)- f (x^*) - \frac{\alpha}{\beta}(f (x_t)-f (x^*)) \text{ by strong convexity} \\
+			  &\leq (1-\frac{\alpha}{\beta}	)(f (x_t)-f (x^*))
+		  \end{split}
+	 \end{equation*}
+	 Using induction, conclude that 
+	 \[f (x_t)-f (x^*)\leq (1-\frac{\alpha}{\beta})^t (f (x_0)-f (x^*)).\]
+	 Because $f$ is $\beta$-smooth, we have 
+	 \[f(x_0)\leq f (x^*)+\underbrace{\nabla f (x)^t (x_0-x^*)}_{=0}+\frac{\beta}{2}||x_0-x^*||^2.\]
+\end{proof}
+\begin{remark}
+	With this algorithm, the number of steps needed to ensure error $\leq \epsilon$ is 
+	\[\frac{\beta}{\alpha}\log (\frac{f (x_0)-f (x^*)}{\epsilon} ).\]
+	The $\log (\frac{1}{\epsilon })$ dependence is called 'linear convergence'.
+	
+\end{remark}
+\subsection{Alternatives to gradient descent}
+\subsubsection{Newton's method}
+When we use gradient descent, the factor $(1-\frac{\alpha}{\beta})$ controls the speed of convergence. We call $\frac{\beta}{\alpha}$ the \vocab{condition number} of $f$ (note we always have $\beta>\alpha$). If the condition number is large, then convergence will be slow and we may want to consider other algorithms. Let's look at an example:
 
+\begin{example}
+	Let $f: \mathbb{R}^{2} \to \mathbb{R} $ be given by 
+	\[f(x,y)=\frac{1}{2}(x^2+100y^2).\]
+	Now we have 
+	\[\nabla^2 f (x,y)=\begin{pmatrix}
+	1&0\\0&100
+	\end{pmatrix}
+	.\]
+	Note that $I\leq \nabla^2 f (x,y)\leq 100I$. Our condition number is 100, which is very large! The contours of $f$ are very stretched ellipses in $\mathbb{R}^2$. If we use gradient descent on a point, it will comparatively overshoot a very large amount in the $y$ direction. Therefore convergence will be slow.
+	\begin{figure}[H]
+		\centering
+		\incfig{70}{ellipse-contours}
+		\caption{The path oscillates as it overshoots each time in the $y$ direction.}
+	\end{figure}
+\end{example}
+We need another method in these cases. This is given by Newton's method:
+\begin{definition}[Newton's method]
+	 Here we use a modified version of gradient descent, with 
+	 \[x_{t+1}=x_t-(\nabla^2 f (x))^{-1}\nabla f (x_t).\]
+	 The derivation of this comes from the second order Taylor approximation of $f$ at $x_t$: 
+	 \[f(x)\approx f (x_t)^T (x-x_t)+\frac{1}{2}(x-x_t)^T \nabla^2 f (x_t)(x-x_t).\]
+	 If we minimise the RHS wrt. $x$, then we get $x=x_t-(\nabla^2 f(x))^{-1}\nabla f (x)$. This method of minimising the second-order approximation is shown in the figure below:
+	 \begin{figure}[H]
+		\centering
+		\incfig{70}{newton-curve}
+		\caption{The second-order approximation, shown in red, is repeatedly minimised as we increment $t$.}
+	\end{figure}
+	 
+\end{definition}
+\begin{remark}
+	Intuitively, Newton's method is excellent for functions with accurate second-order approximations.
+\end{remark}
+\subsubsection{Convergence of Newton's method}
+We will not do the analysis in this course, but Newton's method satisfies 
+\[||x_{t+1}-x^*||\leq C ||x_t-x^*||^2 \text{, as long as } x_t \text{ is close enough to } x^*.\]
+In one dimension, Newton's method is a root-finding algorithm:\newline 
+Take $f: \mathbb{R} \to \mathbb{R}$, and let $f'=g$. Write 
+\[x_{t+1}=x_t-\frac{f'(x_t)}{f'' (x_t)}=x_t-\frac{g (x_t)}{g' (x_t)}.\]
+If we set $f'(x_{t+1})=g (x_{t+1})=0$, i.e looking for a stationary point of $f$ (which is the same as a root of $g$ if $g$ is convex) then we can write $g (x_{t+1})\approx g (x_{t})+g' (x_t)(x_{t+1}-x_t)=0$, and this gives the previous equation as expected. The root-finding algorithm is illustrated below:
+\begin{figure}[H]
+	\centering
+	\incfig{70}{newton-root}
+	\caption{Newton's method applied in one dimension as a root-finding algorithm. Note the speed of convergence displayed.}
+\end{figure}
+\subsubsection{Barrier methods}
+What if the function we had to minimise involved constraints? We can write the optimisation problem as 
+\[\text{minimise } f (x) \text{subject to} f_i (x)\leq 0 \ \forall 1 \leq i \leq n .\]
+The way we approach this is to transform the constrained problem into an unconstrained one. The way we do this is by defining some new functions for the new optimisation problem:
+\begin{equation*}
+	 \text{minimise } f (x)+\sum_{i=1}^{n}\phi (f_i (x)), \phi= \begin{cases}
+		 \infty & f_i (x)>0 \text{ for any } 1 \leq i \leq m\\
+		 0 & f_i (x)\leq 0\text{ for all } 1 \leq i \leq m  
+	 \end{cases}
+\end{equation*}
+
+This may still be difficult to deal with, so we can define a \vocab{logarithmic barrier function}: 
+\[\text{minimise } tf (x) - \sum \log (-f_i (x)).\]
+Here we are taking $\phi (x)=-\log (-x)$, so we are using an approximation: however we can make this negligible in practice by choosing suitable $t$.
+
+\begin{definition}[Barrier method]
+	We define an algorithm:
+	 \begin{enumerate}
+		\item Find a point $x$ in the feasible set. Set $t>0$.
+		\item Repeat: 
+		\begin{itemize}
+			\item Solve $\min t f (x)+\sum_{i=1}^{n}\phi (f_i (x))$ with $x$ as the starting point, use Newton's method.
+			\item Set $x=x^* (t)$.
+			\item Stop if $t$ is large enough
+			\item Increase $t=\alpha t$ for $\alpha>1$.
+		\end{itemize}
+	 \end{enumerate}
+\end{definition}
+
+\section{The Lagrange multiplier method}
+Suppose we want to minimise $f(x)$ for $x \in X$ subject to constraints $h(x)=b$ where $h: \mathbb{R}^{n} \to \mathbb{R}^m $.\newline 
+The \vocab{Lagrangian} associated with this problem is 
+\[L (x, \lambda)=f (x)-\lambda^T (h (x)-b).\]
+Note that $\lambda \in \mathbb{R}^{m} $.
+We want to minimise $L (x, \lambda)$ over $x \in X$ for some value of $\lambda$.
+\subsection{Lagrange sufficiency}
+
+\begin{theorem}[Lagrange sufficiency theorem]
+	 Suppose we can find a $\lambda^*$ such that:
+	 \begin{enumerate}
+		\item $\min_{x \in X} L (x,\lambda^*)=L (x^*,\lambda^*)$ for some $x^* \in X$.
+		\item $x^* \in X(b)=\{x: x \in X, h(x)=b\}$, the feasible set for our constrained problem.
+	 \end{enumerate}
+	 Then $x^*$ is optimal for 1, i.e $\min_{x \in X(b)}f (x)=f (x*)$.
+	 
+\end{theorem}
+\begin{proof}
+	 Condition 2 says that $f (x^*)\geq \min_{x \in X(b)}f (x)$ because $x^*$ is feasible. We have 
+	 \begin{equation*}
+		  \begin{split}
+			\min_{x \in X(b)}f (x)&=\min_{x \in X(b)}f (x)-(\lambda^*)^T (h (x)-b)\\
+			&\geq \min_{x \in X}f (x)-(\lambda^*)^T (h (x)-b)\\
+			&=L (x^*,\lambda^*)\\
+			&=f(x^*)-(\lambda^*)^T (h (x^*)-b)\\
+			&=f (x^*).
+		  \end{split}
+	 \end{equation*}
+	 
+\end{proof}
+Let's look at an example.
+\begin{example}
+	Minimise $-x_1-x_2 +x_3 $ subject to $x_1^2+x_2^2=4, x_1 +x_2 +x_3 =1$. Here we have 
+	\[h(x_1,x_2,x_3)=\begin{pmatrix}
+	x_1^2+x_2^2 \\x_1 +x_2 +x_3
+	\end{pmatrix}
+	,b=\begin{pmatrix}
+	4\\1
+	\end{pmatrix}
+	 .\]
+	Our Lagrangian is 
+	\[L(x,\lambda)=(-x_1-x_2+x_3)-\lambda_1(x_1^2+x_2^2-4)-\lambda_2(x_1 +x_2 +x_3 -1).\]
+	We can rewrite this as 
+	\[L(x,\lambda)=(-(1+\lambda_2)x_1-\lambda_1 x_1^2)= (-(1+\lambda_2)x_2-\lambda_1 x_2^2)+(1-\lambda_2)x_3 + 4\lambda_1+\lambda_2.\]
+	Now fix $\lambda$, and try to find $\min_{x \in \mathbb{R}^{n} }L(x,\lambda)$. We'll only be interested in $(\lambda_1,\lambda_2)$ so that the minimum is finite.
+	\begin{itemize}
+		\item If $\lambda_1>0$, the infinimum is $-\infty$.
+		\item If $\lambda_2\neq 1$, the infinimum is $-\infty$.
+	\end{itemize}
+	Let's look at $\lambda_1\leq 0, \lambda_2=1$.
+	\[\frac{d}{dx_1}(-(1+\lambda_2)x_1-\lambda_1 x_1^2)=-(1+\lambda_2)-2\lambda_1 x_1=0 \implies x_1=\frac{-1}{\lambda_1}.\]
+	Similarly, differentiating wrt. $x_2$ gives $x_2=\frac{-1}{\lambda_1}$. Can we pick $\lambda_1$ so that $(x_1,x_2)$ satisfy the constraints? We need 
+	$x_1^2+x_2^2=4, x_1 +x_2 +x_3 =1$. Therefore $x_1^2=x_2^2=2 \implies x_1=x_2=\sqrt{2}$. Since $\lambda_1 \leq 0$, our optimiser is 
+	\[x=(\sqrt{2},\sqrt{2},1-2 \sqrt{2}).\]
+\end{example}
+
+Let's formalize the above method for solving 
+\[\min_{x \in X} f(x), h (x)\leq b.\]
+\begin{enumerate}
+	\item Add a slack variable $s$ to transform the problem into
+	\[\min_{x \in X} f(x), h (x)+s=b, s \geq 0.\]
+	\item Set $L (x,\lambda,s)=f(x)-\lambda^T (h(x)+s-b)$, and let $\Lambda=\{\lambda: \inf_{x \in X, x \geq 0} L(x,\lambda,s)\geq -\infty\}$.
+	\item For each $\lambda \in \Lambda$, find $x^*(\lambda)$,$s^*(\lambda)$ such that 
+	\[\min_{x \in X, s \geq 0}L(x,\lambda,s)=L(x^*(\lambda),\lambda,s^*(\lambda)).\]
+	\item Find a $\lambda^* \in \Lambda$ such that $(x^* (\lambda*), s^* (\lambda^*))$ is feasible; i.e, $h (x^* (\lambda^*))=b$ and $s^* (\lambda^*)\geq 0$.
+\end{enumerate}
+\subsection{Complementary slackness}
+Let's suppose we want to minimise $f(x)-\lambda^T (h(x)+s-b)$ subject to $ x \in X, s \geq 0$. Suppose for $\lambda \in \Lambda$, we solve to arrive at $x^*(\lambda), s^*(\lambda)$. Note we must have all the components $\lambda_i\leq 0$ in order to keep $\lambda \in \Lambda$. We have 
+\[-\lambda^T s=-\sum \lambda_i s_i=\sum_{i=1}^{m}(\lambda_i)\dot s_i.\]
+$\min -\lambda^T s =0$, which means $\lambda_i s_i=0 \ \forall 1 \leq i \leq m$.
+Consider our inequalities $h_i(x)+s_i=b_i$. If any of these inequalities are not equalities, then for that $i$ we must have $\lambda_i=0$. This is called \vocab{complementary slackness}.
+
+\begin{example}
+	Problem: 
+	\[\min x_1-3x_2 \text{ subject to } x_1^2+x_2^2 \leq 4,  x_1+x_2 \leq 2.\]
+	Let's apply our algorithm.
+	\begin{enumerate}
+		\item Add slack variables: our problem is now \[\min x_1-3x_2 \text{ subject to } x_1^2+x_2^2+s_1= 4,  x_1+x_2+s_2= 2, s_1,s_2 \geq 0.\]
+		\item Work out 
+		\[L(x,\lambda,s)=((1-\lambda_2)x_1-\lambda_1 x_1^2)+((-3 -\lambda_2)x_2-\lambda_1x_2^2)-\lambda_1s_1-\lambda_2s_2+(4 \lambda_1+2 \lambda_2).\]
+		\item We must have $\lambda_1,\lambda_2\leq 0$ by complementary slackness. At the optimum, $\lambda_1s_1=\lambda_2 s_2=0$. By differentiating $L$, we get the system of equations 
+		\begin{align*}
+			(1-\lambda_2)-2 \lambda_1 x_1 &=0.\\
+			-3-\lambda_2-2\lambda_1 x_2 &0.
+		\end{align*}
+		These show we can't have $\lambda_1=0$ and thus $\lambda_1 <0$ and $s_1=0$. There are two more cases:
+		\begin{itemize}
+			\item If $\lambda_2<0$, then $s_2=0$. We have the two equations above, and then by complementary slackness we also know that 
+			\[x_1^2+x_2^2=4, x_1+x_2=2.\]
+			Solving these gives $(x_1,x_2)=(0,2)$ or $(2,0)$. But with both of these solutions the first two equations give one of the $\lambda_i >0$. So we don't have any solutions in this case.
+			\item The last case is $\lambda_1<0,\lambda_2=0,s_1=0$. Here we get the two equations above and $x_1^2+x_2^2=4$. Here we get 
+			\[x_1=\frac{1}{2\lambda_1}, x_2=\frac{-3}{2\lambda_1}.\]
+			Therefore $\lambda_1^2=\frac{5}{8}$ and thus 
+			\[(x_1,x_2)=(-\sqrt{\frac{2}{5}},3 \sqrt{\frac{2}{5}}).\]
+			So we are done by Lagrange sufficiency.
+		\end{itemize}
+	\end{enumerate}
+\end{example}
+\subsection{Strong duality and shadow prices}
+For some optimisation problems that we solve using the Lagrange method, for \emph{every} $\lambda$ we can find a feasible $x^*$ such that 
+\[\min_{x \in X} L (x, \lambda)=L(x^*,\lambda).\]
+This property of an optimisation problem is called \vocab{strong duality}.
+Before we do this, however, let's start with a weaker theorem.
+\begin{theorem}[Weak duality]
+	 For a Lagrange problem define 
+	 \[g (\lambda)=\inf_{x \in X}L (x,\lambda).\]
+	 If $x \in X (b)$, and $\lambda \in \Lambda$, then $f (x)\geq g (x)$. In particular,
+	 \[inf_{x \in X(b)}f(x) \geq sup_{\lambda \in \Lambda}g (x).\]
+\end{theorem}
+\begin{proof}
+	For all $\lambda \in \Lambda$,
+	 \begin{equation*}
+		  \begin{split}
+			inf_{x \in X(b)}f(x)&=inf_{x \in X(b)}(f(x)- \lambda^T (h(x)-b))\\
+			&\geq inf_{x \in X}(f(x)- \lambda^T (h(x)-b))\\
+			&=inf_{x \in X}L (x,\lambda)\\
+			&=g (\lambda).
+		  \end{split}
+	 \end{equation*}
+	 
+\end{proof}
+
+The problem of maximising $g (\lambda)$ subject to $\lambda \in \Lambda$ is called the \vocab{dual problem}, and the problem of minimising $f (\lambda)$ subject to $x \in X(b)$ is called the \vocab{primal problem}.\newline 
+The \vocab{duality gap} is 
+\[inf_{x \in X(b)}f(x)- sup_{\lambda \in \Lambda}g (x).\]
+If the gap is 0, we say that \vocab{strong duality} holds.
+\begin{definition}[Hyperplane]
+	 A function $\phi: \mathbb{R}^{m} \to \mathbb{R} $ is said to have a supporting hyperplane at $b$ if there exists a $\lambda \in \mathbb{R}^{m}$ such that for all $c \in \mathbb{R}^{m} $, the following holds: 
+	 \[\phi(c)\geq \phi (b)+ \lambda^T (c-b).\]
+	 This is easy to visualise in one dimension: There exists a tangent to the curve $\phi$ at $(b,\phi(b))$ such that the tangent is below the curve.
+	 \begin{figure}[H]
+		\centering
+		\incfig{70}{hyperplane-sketch}
+		\caption{The hyperplane in one dimension is a tangent below the curve.}
+	\end{figure}
+\end{definition}
+
+\begin{definition}[Value function]
+	 Define the \vocab{value function} $\phi: \mathbb{R}^{m} \to \mathbb{R} $ associated with the primal problem as follows: 
+	 \[\phi (c)=\inf_{x \in X(c)}f(x).\]
+\end{definition}
+
+\begin{theorem}[Strong duality]
+	 Strong duality holds if and only if the vlaue function $\phi$ has a separating hyperplane at $b$.
+\end{theorem}
+\begin{proof}
+	 We prove both directions.
+	 \textbf{Separating hyperplane $\implies $ strong duality:}
+	 There exists $\lambda$ such that $\phi(c)\geq \phi (b)+ \lambda^T (c-b)$.
+	 Then we have
+	 \begin{equation*}
+		  \begin{split}
+			  g (\lambda)&=\inf_{x \in X}(f (x)- \lambda^T (h (x)-b))\\
+			  &=\inf_{c}\inf_{x \in X}(f (x)- \lambda^T (h (x)-c)-\lambda^T (c-b))\\
+			  &=\inf_{c}(\phi(c)-\lambda^T (c-b))\\
+			  \geq \phi(b).
+		  \end{split}
+	 \end{equation*}
+	 Weak duality gives $g (\lambda)\leq \phi (b)$, and so $g (\lambda)=\phi(b)$; i.e, strong duality holds.
+	 \textbf{Strong duality holds $\implies $ spearating hyperplane exists at $b$:}
+	 There exists $\lambda$ such that $g (\lambda)=\phi (b)$.
+	 \begin{equation*}
+		\begin{split}
+			\phi (b)=g (\lambda)&=inf_{x \in X} (f (x)-\lambda^T (h (x)-b))\\
+			&=inf_{x \in X} (f (x)-\lambda^T (h (x)-c)-\lambda^T (c-b))\\
+			&\leq \phi (c)- \lambda^T (c-b) \text{ by weak duality} 
+		\end{split}
+   \end{equation*}
+	This means that $\lambda$ gives the supporting hyperplane at $b$.
+\end{proof}
+
+\subsubsection{When does $\phi (b)$ have a separating hyperplane?}
+\begin{theorem}[Separating hyperplanes and convex functions]
+	A function $\phi: \mathbb{R}^{n} \to \mathbb{R} $ is convex if and only if every point $b \in \mathbb{R}^{n} $ has a separating hyperplane.	\newline 
+\end{theorem}
+\begin{proof}
+	We state this theorem without proof.
+\end{proof}
+
+\begin{theorem}[Convexity conditions]
+	 Consider the problem of minimising $f (x)$ with $x \in X, h (x)\leq b$. Then $\phi$ is convex if: 
+	 \begin{enumerate}
+		 \item $X$ is convex
+		 \item $f$ is convex
+		 \item $h$ is convex
+	 \end{enumerate}
+\end{theorem}
+\begin{proof}
+	 This is left to be proved on Example Sheet 1.
+\end{proof}
+\subsubsection{Economics interpretations}
+Let's say we have a factory owner. He makes $n$ types of products using $m$ types of raw materials (which have a finite supply). Let's say that with $x=(x_1,\ldots ,x_m)$ raw materials he makes a profit of $f (x)$.\newline 
+Further, let $h_j (x)$ is the raw material consumed of type $j$. Our problem is to maximise $f (x)$ such that $h_i (x) \leq b_i$ for $1 \leq i \leq m$, and $x \geq 0.$\newline 
+If $(\epsilon_1,\ldots , \epsilon_m)$ amount of raw material is offered to the factory owner, how much is it worth? For small enough $\epsilon $, we have 
+\[\phi (b+\epsilon )-\phi (b)\approx \sum_{j=1}^{m}\frac{\partial \phi (b)}{\partial b_j} \epsilon_j.\]
+
+The vector of prices $(\frac{\partial \phi (b)}{\partial b_1} ,\ldots , \frac{\partial \phi (b)}{\partial b_m} )=\nabla \phi (b)$. These are called "shadow prices".
+
+\begin{theorem}
+	 If $\phi$ is differentiable at $b$ and has a separating hyperplane given by $\lambda$, then $\lambda=\nabla \phi (b)$.
+\end{theorem}
+\begin{proof}
+	 Let $a= (a_1,\ldots , a_m)$ be an arbitrary vector. Pick $\delta>0$.
+	 \begin{equation*}
+		  \begin{split}
+			  \frac{\phi (b+\delta a)- phi (b)}{\delta}\geq \lambda^T a\\
+			  \implies \nabla \phi (b)^T a \geq \lambda^T a \text{ for eveery vector } a.\\
+			  \implies \nabla \phi (b)=\lambda.
+		  \end{split}
+	 \end{equation*} 
+\end{proof}
+
+The Lagrange multiplier at $b$ is the vector of partial derivatives, i.e the vector of shadow prices. The intutive interpretation of 'not wanting to pay any more' when you have enough of a certain raw material (that shadow price being 0) is an interpretation of complementary slackness.\newline \\
+Now let's look at the dual problem. If the raw material seller charges a price $\lambda$, and the finished product is consumed when he sells it, then 
+\[\lambda^T (h (x)-b)-f (x)\]
+is the Lagrangian he is trying to minimise. But the factory producer is producing $x^*(\lambda)$ to maximise 
+\[f(x)-\lambda^T (h (x)-b).\]
+Let's call $g (\lambda)=\lambda^T (h (x^* (\lambda)-b)- f ( x^* (\lambda)))$. The seller is trying to maximise $g$. This provides a good example of the dual problem.
 \end{document}
