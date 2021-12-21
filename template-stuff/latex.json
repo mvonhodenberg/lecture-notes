@@ -134,6 +134,22 @@
 		],
 			"description": "Theorem"
 			},
+	"example": {
+		"prefix": "example",
+			"body": [
+				"\\begin{example}[$1]",
+				"\t $0",
+				"\\end{example}"
+		]
+	},
+	"remark": {
+		"prefix": "remark",
+			"body": [
+				"\\begin{remark}",
+				"\t $0",
+				"\\end{remark}"
+		]
+	},
 	"section": {
 		"prefix": "sec",
 			"body": [
@@ -172,7 +188,7 @@
 	},
 	"vocab":{
 		"prefix": "voc",
-			"body": "\\vocab{$1} $0"
+			"body": "\\vocab{$1}$0"
 	},
 	"absolute":{
 		"prefix": "abs",
@@ -202,11 +218,11 @@
 	},
 	"real function":{
 		"prefix": "fun",
-			"body": "f: \\mathbb{R} \\to \\mathbb{R} $0"
+			"body": "$1: \\mathbb{R} \\to \\mathbb{R} $0"
 	},
 	"real function in n dimensions":{
 		"prefix": "funn",
-			"body": "f: \\mathbb{R}^{$1} \\to \\mathbb{R} $0"
+			"body": "$1: \\mathbb{R}^{$2} \\to \\mathbb{R} $0"
 	},
 	"leq":{
 		"prefix": "leq",
@@ -222,9 +238,63 @@
 	},
 	"nabla":{
 		"prefix": "grad",
-			"body": "\\nabla $0"
+			"body": "\\nabla$0"
+	},
+	"epsilon":{
+		"prefix": "eps",
+			"body": "\\epsilon$0"
+	},
+	"delta":{
+		"prefix": "dlt",
+			"body": "\\delta$0"
+	},
+	"matrix":{
+		"prefix": "pmat",
+			"body": "\\begin{pmatrix}\n$1\n\\end{pmatrix}\n$0"
+	},
+	"inverse":{
+		"prefix": "inv",
+			"body": "^{-1}$0"
+	},
+	"begin": {
+		"prefix": "begin",
+			"body": [
+				"\\begin{$1}",
+				"\t$2",
+				"\\end{$1}\n$0"
+
+		]
+	},
+	"sqrt": {
+		"prefix": "sqrt",
+			"body": ["\\sqrt{$1}$0"
+		]
+	},
+	"enumerate": {
+		"prefix": "enum",
+			"body": [
+				"\\begin{enumerate}",
+				"\t\\item $0",
+				"\\end{enumerate}"
+
+		]
+	},
+	"emph": {
+		"prefix": "emph",
+			"body": ["\\emph{$1}$0"
+		]
+	},
+	"textbf": {
+		"prefix": "bf",
+			"body": ["\\textbf{$1}$0"
+		]
+	},
+	"dots": {
+		"prefix": "dots",
+			"body": ["\\ldots $0"
+		]
 	}
 
-	
+
 	
 }

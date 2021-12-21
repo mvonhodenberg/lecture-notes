@@ -428,7 +428,7 @@ Let's look at an example.
 	Our Lagrangian is 
 	\[L(x,\lambda)=(-x_1-x_2+x_3)-\lambda_1(x_1^2+x_2^2-4)-\lambda_2(x_1 +x_2 +x_3 -1).\]
 	We can rewrite this as 
-	\[L(x,\lambda)=(-(1+\lambda_2)x_1-\lambda_1 x_1^2)= (-(1+\lambda_2)x_2-\lambda_1 x_2^2)+(1-\lambda_2)x_3 + 4\lambda_1+\lambda_2.\]
+	\[L(x,\lambda)=(-(1+\lambda_2)x_1-\lambda_1 x_1^2)= (-(1+\lambda_2)x_2-\lambda_1 x_2^2)+(1-\lambda_2)x_3 + (4\lambda_1+\lambda_2).\]
 	Now fix $\lambda$, and try to find $\min_{x \in \mathbb{R}^{n} }L(x,\lambda)$. We'll only be interested in $(\lambda_1,\lambda_2)$ so that the minimum is finite.
 	\begin{itemize}
 		\item If $\lambda_1>0$, the infinimum is $-\infty$.
@@ -437,19 +437,22 @@ Let's look at an example.
 	Let's look at $\lambda_1\leq 0, \lambda_2=1$.
 	\[\frac{d}{dx_1}(-(1+\lambda_2)x_1-\lambda_1 x_1^2)=-(1+\lambda_2)-2\lambda_1 x_1=0 \implies x_1=\frac{-1}{\lambda_1}.\]
 	Similarly, differentiating wrt. $x_2$ gives $x_2=\frac{-1}{\lambda_1}$. Can we pick $\lambda_1$ so that $(x_1,x_2)$ satisfy the constraints? We need 
-	$x_1^2+x_2^2=4, x_1 +x_2 +x_3 =1$. Therefore $x_1^2=x_2^2=2 \implies x_1=x_2=\sqrt{2}$. Since $\lambda_1 \leq 0$, our optimiser is 
+	$x_1^2+x_2^2=4, x_1 +x_2 +x_3 =1$.nl Therefore 
+	\[x_1^2=x_2^2=2 \implies x_1=x_2=\sqrt{2}.\] 
+	Since $\lambda_1 \leq 0$, our optimiser is 
 	\[x=(\sqrt{2},\sqrt{2},1-2 \sqrt{2}).\]
 \end{example}
 
 Let's formalize the above method for solving 
-\[\min_{x \in X} f(x), h (x)\leq b.\]
+\[\min_{x \in X} f(x) \text{ with }  h (x)\leq b.\]
 \begin{enumerate}
 	\item Add a slack variable $s$ to transform the problem into
-	\[\min_{x \in X} f(x), h (x)+s=b, s \geq 0.\]
-	\item Set $L (x,\lambda,s)=f(x)-\lambda^T (h(x)+s-b)$, and let $\Lambda=\{\lambda: \inf_{x \in X, x \geq 0} L(x,\lambda,s)\geq -\infty\}$.
+	\[\min_{x \in X} f(x) \text{ with } h (x)+s=b, s \geq 0.\]
+	\item Set $L (x,\lambda,s)=f(x)-\lambda^T (h(x)+s-b)$, and let 
+	\[\Lambda=\{\lambda: \inf_{x \in X, x \geq 0} L(x,\lambda,s)\geq -\infty\}.\]
 	\item For each $\lambda \in \Lambda$, find $x^*(\lambda)$,$s^*(\lambda)$ such that 
 	\[\min_{x \in X, s \geq 0}L(x,\lambda,s)=L(x^*(\lambda),\lambda,s^*(\lambda)).\]
-	\item Find a $\lambda^* \in \Lambda$ such that $(x^* (\lambda*), s^* (\lambda^*))$ is feasible; i.e, $h (x^* (\lambda^*))=b$ and $s^* (\lambda^*)\geq 0$.
+	\item Find a $\lambda^* \in \Lambda$ such that $(x^* (\lambda^*), s^* (\lambda^*))$ is feasible; i.e $h (x^* (\lambda^*))=b$ and $s^* (\lambda^*)\geq 0$.
 \end{enumerate}
 \subsection{Complementary slackness}
 Let's suppose we want to minimise $f(x)-\lambda^T (h(x)+s-b)$ subject to $ x \in X, s \geq 0$. Suppose for $\lambda \in \Lambda$, we solve to arrive at $x^*(\lambda), s^*(\lambda)$. Note we must have all the components $\lambda_i\leq 0$ in order to keep $\lambda \in \Lambda$. We have 
@@ -498,9 +501,9 @@ Before we do this, however, let's start with a weaker theorem.
 	For all $\lambda \in \Lambda$,
 	 \begin{equation*}
 		  \begin{split}
-			inf_{x \in X(b)}f(x)&=inf_{x \in X(b)}(f(x)- \lambda^T (h(x)-b))\\
-			&\geq inf_{x \in X}(f(x)- \lambda^T (h(x)-b))\\
-			&=inf_{x \in X}L (x,\lambda)\\
+			\inf_{x \in X(b)}f(x)&=\inf_{x \in X(b)}(f(x)- \lambda^T (h(x)-b))\\
+			&\geq \inf_{x \in X}(f(x)- \lambda^T (h(x)-b))\\
+			&=\inf_{x \in X}L (x,\lambda)\\
 			&=g (\lambda).
 		  \end{split}
 	 \end{equation*}
@@ -531,8 +534,8 @@ If the gap is 0, we say that \vocab{strong duality} holds.
 	 Strong duality holds if and only if the vlaue function $\phi$ has a separating hyperplane at $b$.
 \end{theorem}
 \begin{proof}
-	 We prove both directions.
-	 \textbf{Separating hyperplane $\implies $ strong duality:}
+	 We prove both directions.\newline 
+	 \textbf{Separating hyperplane $\implies $ strong duality:}\newline 
 	 There exists $\lambda$ such that $\phi(c)\geq \phi (b)+ \lambda^T (c-b)$.
 	 Then we have
 	 \begin{equation*}
@@ -544,7 +547,7 @@ If the gap is 0, we say that \vocab{strong duality} holds.
 		  \end{split}
 	 \end{equation*}
 	 Weak duality gives $g (\lambda)\leq \phi (b)$, and so $g (\lambda)=\phi(b)$; i.e, strong duality holds.
-	 \textbf{Strong duality holds $\implies $ spearating hyperplane exists at $b$:}
+	 \textbf{Strong duality holds $\implies $ separating hyperplane exists at $b$:}\newline 
 	 There exists $\lambda$ such that $g (\lambda)=\phi (b)$.
 	 \begin{equation*}
 		\begin{split}
@@ -590,9 +593,9 @@ The vector of prices $(\frac{\partial \phi (b)}{\partial b_1} ,\ldots , \frac{\p
 	 Let $a= (a_1,\ldots , a_m)$ be an arbitrary vector. Pick $\delta>0$.
 	 \begin{equation*}
 		  \begin{split}
-			  \frac{\phi (b+\delta a)- phi (b)}{\delta}\geq \lambda^T a\\
-			  \implies \nabla \phi (b)^T a \geq \lambda^T a \text{ for eveery vector } a.\\
-			  \implies \nabla \phi (b)=\lambda.
+			  \frac{\phi (b+\delta a)- phi (b)}{\delta}&\geq \lambda^T a\\
+			  \implies \nabla \phi (b)^T a &\geq \lambda^T a \text{ for every vector } a.\\
+			  \implies \nabla \phi (b)&=\lambda.
 		  \end{split}
 	 \end{equation*} 
 \end{proof}
@@ -603,4 +606,136 @@ Now let's look at the dual problem. If the raw material seller charges a price $
 is the Lagrangian he is trying to minimise. But the factory producer is producing $x^*(\lambda)$ to maximise 
 \[f(x)-\lambda^T (h (x)-b).\]
 Let's call $g (\lambda)=\lambda^T (h (x^* (\lambda)-b)- f ( x^* (\lambda)))$. The seller is trying to maximise $g$. This provides a good example of the dual problem.
+
+\section{Solving linear programs}
+\begin{definition}[Linear program]
+	 A general linear program is an optimisation problem of 
+	 \begin{equation*}
+		\text{minimise } c^Tx \text{, subject to }
+		  \begin{cases}
+			  a_i^T x \geq b_i& i \in M_1\\
+			  a_i^T x \leq b_i& i \in M_2\\
+			  a_i^T x = b_i& i \in M_3\\
+			  x_j \geq 0& j \in N_1\\
+			  x_j \geq 0& j \in N_2
+		  \end{cases}
+	 \end{equation*}
+	 Two linear programs are equivalent if given a feasible solution for one formulation, we can construct a feasible solution for the other formulation with the same cost. The \vocab{general form} of a linear program is:
+	 \[\text{minimise } c^T x \text{ subject to } Ax \geq b.\]
+	 where 
+	 \[A=\begin{pmatrix}
+	 \ldots &A_1^T&\ldots \\
+	 \ldots &A_2^T&\ldots \\
+	  &\vdots&\\
+	  \ldots &A_m^T&\ldots 
+	 \end{pmatrix}, \ b = \begin{pmatrix}
+	 b_1\\b_2\\\vdots\\b_m
+	 \end{pmatrix}
+	 .\]
+	A linear problem is said to be in \vocab{standard form} if it has the form
+	\[\text{minimise } c^T x \text{ subject to } Ax \geq b, x \geq 0.\]
+	We can do this WLOG	since we can split $x$ into two vectors $x^{+}-x^{-}$ such that each of their entries are positive and then minimise $c^T(x^{+}-x^{-})$ with the respective modified version of $A$.
+\end{definition}
+
+\subsection{Maximising convex functions}
+Recall that $\min c^Tx= \max -c^Tx $. So solving linear programs is a special case of maximising convex functions. Let's consider the general problem for a convex set $C$:
+\[\text{maximise } f (x) \text{ subject to } x \in C.\]
+Take $z=(1-\lambda)x +\lambda y $ where $x,y \in C.$ We have 
+\[f (z)\leq (1-\lambda)f (x)+\lambda f (y) \leq \max \{f (x), f (y)\}.\]
+This is true for all $x,y \in C$, so the global maximum must be maximised somewhere on the 'boundary' of $C$.
+\begin{definition}[Extreme point]
+	 A point $x$ in a convex set $C$ is an \vocab{extreme point} if it cannot be written as $(1-\delta)y+\delta z$ for $\delta \in (0,1)$ and $y,z$ distinct.
+\end{definition}
+\begin{remark}
+	"Convex functions on convex sets are maximised at extreme points".
+\end{remark}
+\subsection{Basic solutions and basic feasible solutions}
+Recall our linear problem: minimise $c^Tx$ such that $Ax=b, x \geq 0$ with $A \in \mathbb{R}^{mn}, x \in \mathbb{R}^{n} , b \in \mathbb{R}^{m}$.
+We make two assumptions:
+\begin{itemize}
+	\item[($\ast$)] All $m$ rows of $A$, $(a_1^T,\ldots ,a_m^T)$ are linearly independent.
+	\item[($\ast\ast$)] Every set of $m$ columns of $A$ is linearly independent WLOG. We can see these first two assumptions as getting rid of redundant variables.
+	\item[($\ast\ast\ast$)] Every basic solution has exactly $m$ non-zero entries. (Non-degeneracy assumption)
+\end{itemize}
+We can't make assumption $(\ast \ast \ast)$ WLOG, but in this course we will only consider linear problems that satisfy this assumption. What's a basic solution, you may ask? We'll define it now:
+\begin{definition}[Basic solution]
+	 A point $x$ is a basic solution if it satisfies $Ax=b$, and $x$ has at most $m$ non-zero entries. (Recall $x \in \mathbb{R}^{n} $).
+\end{definition}
+\begin{definition}[Basic feasible solution]
+	 $x$ is a \vocab{basic feasible solution} (BFS) if $x$ is a basic solution and $x \geq 0$.
+\end{definition}
+\subsubsection{How to find basic solutions}
+Pick $B_{(1)}, \ldots , B_{(m)}$ to be the indices where $x$ is non-zero. So 
+\[\begin{pmatrix}
+\vdots&\vdots&&\vdots\\
+A_1&A_2&\ldots&A_n\\
+\vdots&\vdots&&\vdots\\
+\end{pmatrix}
+\begin{pmatrix}
+0\\\vdots \\x_{B_{(1)}}\\\vdots
+\end{pmatrix}
+=\begin{pmatrix}
+\vdots&\vdots&&\vdots\\
+A_{B_{(1)}}&A_{B_{(2)}}&\ldots&A_{B_{(m)}}\\
+\vdots&\vdots&&\vdots\\
+\end{pmatrix}
+\begin{pmatrix}
+	x_{B_{(1)}}\\\vdots\\x_{B_{(m)}}
+\end{pmatrix}
+=B
+\begin{pmatrix}
+	x_{B_{(1)}}\\\vdots\\x_{B_{(m)}}
+\end{pmatrix}
+=b
+.\]
+Therefore for this matrix $B$,
+\[\begin{pmatrix}
+	x_{B_{(1)}}\\\vdots\\x_{B_{(m)}}
+\end{pmatrix}=B^{-1}b.\]
+
+\begin{definition}[Basis matrix]
+	 The matrix $B$ we saw is called the \vocab{basis matrix}. Its columns are the \vocab{basis columns}, and $(x_{B_{(1)}},\ldots , x_{B_{(m)}})$ are the \vocab{basis variables}.
+\end{definition}
+\subsection{Extreme points of the feasible set}
+\begin{theorem}[Extreme points are basic feasible solutions]
+	 A vector $x$ is an extreme point of the set $\{x: \ Ax=b, x \geq 0\}$ if and only if $x$ is a basic feasible solution.
+\end{theorem}
+\begin{remark}
+	 Linear programs are optimised at extreme points, and the above theorem says extreme points are basic feasible solutions. So it's enough to look at basic feasible solutions (which we know how to do!). Therefore, we could develop an algorithm:
+	 \begin{enumerate}
+		 \item Pick all possible $m$ columns of $A$. There are $n \choose m $ such choices.
+		 \item Find the basic solution, and check if it is a BFS.
+		 \item If it is a BFS, calculate $c^Tx$, store the $x$ which has the least cost.
+	 \end{enumerate}
+\end{remark}
+
+\begin{proof}
+	 We prove both directions.\newline 
+	 \textbf{BFS $\implies $ extreme point:}\newline 
+	 Suppose $x$ is a BFS, and suppose $\exists \ y,z$ such that $x=(1-\delta)y+\delta z$, where $\delta \in (0,1)$. Remember $x \in \mathbb{R}^{n} $ and $x \geq 0$, and has $m$ non-zero entries. However, $y,z$ are also feasible, and therefore $y,z \geq 0$. So 
+	 \[y_j,z_j=0 \text{ for } j \notin \{B_{(1)},\ldots ,B_{(m)}\}.\]
+	 Define 
+	 \[y_B=\begin{pmatrix}
+	 y_{B_{(1)}}\\ \vdots \\ y_{B_{(m)}}
+	 \end{pmatrix},
+	 z_B=\begin{pmatrix}
+		z_{B_{(1)}}\\ \vdots \\z_{B_{(m)}} 
+		\end{pmatrix},
+	 .\]
+	 We know $B y_B=b$ and $B z_B=b$ because $Ay=Az=b$. Therefore $y_B=z_B=B^{-1}$, and so $x=y=z$. Thus $x$ is an extreme point.\newline 
+	 \textbf{Not BFS $\implies $ not extreme point:}\newline 
+	 Pick $x$ which is not a BFS. Let the indices where $x$ is non-zero be $i_1,i_2,\ldots , i_r$ where $r>m$. The columns $A_{i_1},\ldots ,A_{i_r}$ are linearly dependent since $r>m$. So we can pick some $w_{i_1},\ldots ,w_{i_r}$ so that 
+	 \[\sum_{k=1}^{r}w_{i_k}A_{i_k}=0.\]
+	 Define the components of the column vector $w$ by 
+	 \[w_i=\begin{cases}
+		 0 & i \notin \{i_1,\ldots , i_r\}\\
+		 w_{i_k} & i=i_k
+	 \end{cases}
+	 .\]
+	 It's easy to check that $Aw=0$. Now consider the two points $x+\epsilon w$ and $x- \epsilon w$. Note both $A (x+\epsilon w)=0$, $A (x-\epsilon w)=0$. We can find an $\epsilon>0$ so that $x+\epsilon w \geq 0 , x+\epsilon w \geq 0$. This means 
+	 \[x= \frac{1}{2}(x+\epsilon w)+\frac{1}{2}(x-\epsilon w)=0.\]
+	 and thus is not an extreme point.
+	 
+\end{proof}
+
 \end{document}
