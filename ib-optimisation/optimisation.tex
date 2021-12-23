@@ -46,7 +46,7 @@ The course is roughly divided into four parts:
 
 \begin{definition}[Optimisation problem]
 	The basic structure of an optimisation problem is as follows:\\
-	minimise $f(x)$ for $x \in X$, where in this course we take $X \subset \mathbb{R}^n$. The problem can have 'constraints' $h(x)=b$, where $h:\mathbb{R}^n \to \mathbb{R}^n$. We will look at minimising functions WLOG.
+	minimise $f(x)$ for $x \in X$, where in this course we take $X \subset \mathbb{R}^n$. The problem can have 'constraints' $h(x)=b$, where $h:\mathbb{R}^n \to \mathbb{R}^m$. We will look at minimising functions WLOG.
 	
 	\begin{enumerate}
 		\item $f$ is called the objective function.
@@ -127,10 +127,10 @@ We can generalise this to higher dimensions:
 
 \subsubsection{Second-order conditions for convexity}
 
-Next we look at second-order conditions. In one dimension, we would expect that if $f'$ is increasing, i.e $f''(x) \geq 0$ would give us convexity. We generalise this to $n$ dimensions using the Hessian matrix, which we saw in IA Differential Equations. It has entries $H_{ij}=\frac{\partial^2 f(x)}{\partial x_i x_j} $.
+Next we look at second-order conditions. In one dimension, we would expect that $f'$ being increasing, i.e $f''(x) \geq 0$, would give us convexity. We generalise this to $n$ dimensions using the Hessian matrix, which we saw in IA Differential Equations. It has entries $[\nabla^2f(x)]_{ij}=\frac{\partial^2 f(x)}{\partial x_i x_j} $.
 
 \begin{definition}[Semidefinite matrix]
-	 A matrix $A$ is called \vocab{positive semidefinite} if for all $ x \in \mathbb{R}^{n} $ we have $x^T Ax=0$. Equivalently, all eigenvalues of $A$ are non-negative. 
+	 A matrix $A$ is called \vocab{positive semidefinite} if for all $ x \in \mathbb{R}^{n} $ we have $x^T Ax \geq  0$. Equivalently, all eigenvalues of $A$ are non-negative. 
 \end{definition}
 
 \begin{remark}
@@ -139,7 +139,7 @@ Next we look at second-order conditions. In one dimension, we would expect that 
 \end{remark}
 
 \begin{theorem}[Second-order condition]
-	 A twice differentiable $f: \mathbb{R}^{n}\rightarrow \mathbb{R}$ is convex if $\nabla^2 f(x) \geq 0$ for all $ x \in \mathbb{R}^{n}$.  
+	 A twice differentiable $f: \mathbb{R}^{n}\rightarrow \mathbb{R}$ is convex if $\nabla^2 f(x)$ is positive semidefinite, i.e $x^T\nabla^2 f(z) x\geq 0$ for all $ x,z \in \mathbb{R}^{n}$.  
 \end{theorem}
 
 \begin{proof}
@@ -495,7 +495,7 @@ Before we do this, however, let's start with a weaker theorem.
 	 For a Lagrange problem define 
 	 \[g (\lambda)=\inf_{x \in X}L (x,\lambda).\]
 	 If $x \in X (b)$, and $\lambda \in \Lambda$, then $f (x)\geq g (x)$. In particular,
-	 \[inf_{x \in X(b)}f(x) \geq sup_{\lambda \in \Lambda}g (x).\]
+	 \[\inf_{x \in X(b)}f(x) \geq \sup_{\lambda \in \Lambda}g (x).\]
 \end{theorem}
 \begin{proof}
 	For all $\lambda \in \Lambda$,
@@ -512,7 +512,7 @@ Before we do this, however, let's start with a weaker theorem.
 
 The problem of maximising $g (\lambda)$ subject to $\lambda \in \Lambda$ is called the \vocab{dual problem}, and the problem of minimising $f (\lambda)$ subject to $x \in X(b)$ is called the \vocab{primal problem}.\newline 
 The \vocab{duality gap} is 
-\[inf_{x \in X(b)}f(x)- sup_{\lambda \in \Lambda}g (x).\]
+\[\inf_{x \in X(b)}f(x)- \sup_{\lambda \in \Lambda}g (x).\]
 If the gap is 0, we say that \vocab{strong duality} holds.
 \begin{definition}[Hyperplane]
 	 A function $\phi: \mathbb{R}^{m} \to \mathbb{R} $ is said to have a supporting hyperplane at $b$ if there exists a $\lambda \in \mathbb{R}^{m}$ such that for all $c \in \mathbb{R}^{m} $, the following holds: 
@@ -593,7 +593,7 @@ The vector of prices $(\frac{\partial \phi (b)}{\partial b_1} ,\ldots , \frac{\p
 	 Let $a= (a_1,\ldots , a_m)$ be an arbitrary vector. Pick $\delta>0$.
 	 \begin{equation*}
 		  \begin{split}
-			  \frac{\phi (b+\delta a)- phi (b)}{\delta}&\geq \lambda^T a\\
+			  \frac{\phi (b+\delta a)- \phi (b)}{\delta}&\geq \lambda^T a\\
 			  \implies \nabla \phi (b)^T a &\geq \lambda^T a \text{ for every vector } a.\\
 			  \implies \nabla \phi (b)&=\lambda.
 		  \end{split}
@@ -737,5 +737,125 @@ Therefore for this matrix $B$,
 	 and thus is not an extreme point.
 	 
 \end{proof}
+
+\subsection{Duality in linear programming}
+\begin{theorem}[Strong duality for linear programs]
+	 If a linear program is bounded and feasible, then it satisfies strong duality.
+\end{theorem}
+\begin{proof}
+	 We have that $X$ is a convex set, $f$ is convex, and that the boundary functions $h_i$ are convex for all $1 \leq i \leq m$. Therefore the value function $\phi$ is convex. So there is a separating hyperplane at $b$, and so strong duality holds.
+\end{proof}
+\begin{remark}
+	 This is useful since we can equivalently solve the dual problem of a linear program to arrive at the same result.
+\end{remark}
+\subsubsection{The dual of a linear program}
+Consider the primal problem $P$ in \emph{standard form}: 
+\[\text{minimise } c^Tx \text{ subject to} Ax=b, x \geq 0.\]
+The dual problem $D$ is: 
+\[\text{maximise } g (\lambda)=\inf_{x \in X} L (x, \lambda) \text{subject to } \lambda \in \Lambda.\]
+Now we have that 
+\begin{equation*}
+	\begin{split}
+		g (\lambda)&=\inf_{x \geq 0} c^Tx - \lambda^T (Ax-b)\\
+		&=\inf_{x \geq 0} (c^T - \lambda^TA)x+\lambda^T b
+	\end{split}
+\end{equation*}
+Since we need the problem to be bounded, we must have each component of $(c^T-\lambda^TA)$ to be $\geq 0$ (else could just increase the $x_i$). So $\Lambda=\{\lambda: \ \lambda^TA \leq c^T\}$. So the best choice of $x$ to pick here is the zero vector. Thus $g (\lambda)=\lambda^T b \ \forall \lambda \in \Lambda$.
+The dual is thus also a linear program: 
+\[\text{maximise } \lambda^Tb \text{ subject to } \lambda^TA \leq c^T.\]
+So let's try a linear program in \emph{general form}.
+We can write it as minimising $c^Tx$ subject to $Ax-s=b$, $s \geq 0$ (slack variable). Then
+\begin{equation*}
+	\begin{split}
+		g (\lambda)&=\inf_{x \in X,s \geq 0} c^Tx - \lambda^T (Ax-s-b)\\
+		&=\inf_{x \in X, s \geq 0} (c^T - \lambda^TA)x+\lambda^T s+\lambda^T b
+	\end{split}
+\end{equation*}
+To ensure our problem is bounded, we require $\lambda^T \geq 0$ (if any component were $\leq 0$, we could simply increase that component of $b$ and $s$). Similarly to before, we must now have $(c^T-\lambda^T A)=0$ since we can now possibly vary $x$ over all of $\mathbb{R}^{n} $. Therefore the dual problem is 
+\[\text{maximise } \lambda^Tb \text{ subject to } \lambda^TA= c^T, \lambda \geq 0.\]
+This is a linear program in standard form! And so the \emph{dual of the dual is the primal}!
+\begin{proposition}
+	 The primal problem 
+	 \begin{equation*}
+		  \text{minimise } c^Tx \text{ subject to } 
+		  \begin{cases}
+			  a_i^T x \geq b_i & i \in M_1 \\ 
+			  a_i^T x \leq b_i & i \in M_2 \\ 
+			  a_i^T x = b_i & i \in M_3 \\ 
+			  x_j \geq 0 & j \in N_1\\
+			  x_j \leq 0 & j \in N_2\\
+			  x_j \text{ free } & j \in N_3
+		  \end{cases}  
+	 \end{equation*}
+	 has a dual problem of 
+	 \begin{equation*}
+		\text{minimise } p^T b \text{ subject to } 
+		\begin{cases}
+			p_i \geq 0 & i \in M_1 \\ 
+			p_i \leq 0 & i \in M_2 \\ 
+			p_i \text{ free } & i \in M_3 \\ 
+			p^T A_j \leq c_j & j \in N_1\\
+			p^T A_j \geq c_j & j \in N_2\\
+			p^T A_j = c_j & j \in N_3
+		\end{cases}  
+   \end{equation*}
+\end{proposition}
+\begin{proof}
+	 The proof of this is a problem on Example Sheet 2.
+\end{proof}
+\subsubsection{Optimality conditions}
+If $x$ is feasible for the primal, if $\phi$ is feasible for the dual, and if complementary slackness holds, then $x$ is optimal for the primal and $p$ is the dual-optimal.
+
+\begin{theorem}[Fundamental theorem of linear programming]
+	 Let $x$ and $p$ be feasible solutions to the primal and dual problem respectively. Then $x$ and $p$ are optimal if and only if:
+	 \begin{itemize}
+		 \item $p_i (a_i^T x - b_i) =0 $ for all $i$,
+		 \item $x_j(c_j-p^T A_j)=0$ for all $j$.
+	 \end{itemize}
+	 (i.e complementary slackness).
+\end{theorem}
+
+\begin{proof}
+	 Define $u_i=p_i (a_i^T x - b_i)$ and $v_j=x_j(c_j-p^T A_j)$.\newline 
+	 Observe that if $x$ and $p$ are primal (dual) feasible, then $u_i \geq 0$ for all $i$ and $v_j \geq 0$ for all $j$. Now 
+	 \[\sum_{i}u_i=\sum_{i} p_i (a_i^T x - b_i) =p^T A x-p^T b.\]
+	 Similarly,
+	 \[\sum_{j}v_j=\sum_{i} (c_j-p^T A_j)x_j =c^Tx-p^T A x.\]
+	 Therefore $\sum u_i+ \sum v_j=c^T x -p^T b$. Hence 
+	 \[0 \leq \sum u_i+ \sum v_j \leq c^T x -p^T b.\]
+	 \textbf{Complementary slackness $\implies $ optimality:}\newline 
+	 If complementary slackness holds, then $u_i,v_j=0$ for all $i,j$. Therefore $c^T x=p^T b$. By weak duality, $x$ and $p$ must be primal and dual optimal, respectively.\newline 
+	 \textbf{Optimality $\implies $ complementary slackness}:\newline 
+	 If $x$ and $p$ are optimal, then strong duality gives us $c^T x =p^T b$. Thus $\sum u_i+ \sum v_j=0$, and since each $u_i,v_j$ is $\geq 0$, we have $u_i, v_j=0$ for all $i,j$. So complementary slackness holds.
+\end{proof}
+
+\subsubsection{Solving linear programs revisited}
+Recall the solutions to our linear programs are basic feasible solutions, with 
+\[x=(0,\ldots,x_{B_{(1)}},\ldots) \text{ and } x_B =B^{-1}b.\]
+The optimality conditions tell us that we could find some kind of algorithm to find a solution, since we could check all of those conditions.
+
+\subsubsection{Towards the simplex method for solving linear programs}
+Recall that 
+\[\text{minimise }c^Tx \text{ subject to } Ax=b, x \geq 0 \underset{\text{dual} }{\to}  \text{maximise }\lambda^T b \text{ subject to } \lambda^TA \leq c^T.\]
+The optimality conditions are 
+\begin{enumerate}
+	\item Primal feasible: $Ax=b, x \geq 0$
+	\item Dual feasible: $A^T \leq c$
+	\item Complementary slackness: $x^T (c-A^T \lambda)=0$
+\end{enumerate}
+Suppose $x$ is a basic feasible solution given by $x_B=(x_{B_{(1)}},\ldots ,x_{B_{(m)}})$. Substituting into 3, we get $x_B^T (c_B-B^T \lambda)=0$. Recall that for a BFS $x$, $x_B>0$. This means 
+\[c_B-B^T\lambda=0 \implies \lambda={(B^T)}^{-1}c_B.\]
+If this $\lambda$ satisfies $A^T \lambda \leq c^T$, i.e 
+\[A^T {(B^T)}^{-1} c_B \leq c^T,\]
+then all three optimality conditions are met. The vector $c-A^T {(B^T)}^{-1}c_B$ is denoted by $\bar{c}$ and is called the vector of \vocab{reduced costs}. $\bar{c} \geq 0$ means $x$ is optimal.
+
+
+
+
+
+
+
+
+
 
 \end{document}

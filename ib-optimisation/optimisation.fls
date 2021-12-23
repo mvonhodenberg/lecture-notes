@@ -1339,8 +1339,10 @@ INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-OUTPUT optimisation.toc
 INPUT c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+OUTPUT optimisation.toc
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
 INPUT c:/texlive/2021/texmf-dist/tex/latex/base/ts1cmss.fd
 INPUT c:/texlive/2021/texmf-dist/tex/latex/base/ts1cmss.fd
 INPUT c:/texlive/2021/texmf-dist/tex/latex/base/ts1cmss.fd
@@ -1363,8 +1365,6 @@ INPUT ./figures//convex-drawing.pdf
 INPUT ./figures//convex-drawing.pdf
 INPUT ./figures//convex-drawing.pdf
 INPUT ./figures//convex-drawing.pdf
-INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
-INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
 INPUT ./figures/convex-function-drawing.pdf_tex
 INPUT ./figures/convex-function-drawing.pdf_tex
 INPUT ./figures/convex-function-drawing.pdf_tex
