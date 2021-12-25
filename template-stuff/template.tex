@@ -5,16 +5,22 @@
     fancyproofs, 
     noindent, 
 ]{adam}
-
-
-\title{Lecture Notes Template}
-\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
-\date{\today}
+\usepackage{floatrow}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
 
 \newcommand{\incfig}[2]{%
     \def\svgwidth{#1mm}
     \import{./figures/}{#2.pdf_tex}
 }
+
+\title{Lecture Notes Template}
+\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
+\date{\today}
+
+
 \allowdisplaybreaks
 
 \begin{document}

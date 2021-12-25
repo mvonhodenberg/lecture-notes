@@ -1,0 +1,151 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[
+    fancytheorems, 
+    fancyproofs, 
+    noindent, 
+]{adam}
+\usepackage{floatrow}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2]{%
+    \def\svgwidth{#1mm}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\title{IB Linear Algebra (from lecture 18)}
+\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
+\date{\today}
+
+
+\allowdisplaybreaks
+
+\begin{document}
+
+\maketitle
+
+Linear algebra description etc
+
+This article constitutes my notes for the `IB Linear Algebra' course, held in Michaelmas 2021 at Cambridge. The course was lectured by Prof. Pierre Raphael.
+
+
+\tableofcontents
+
+\section{Bilinear forms}
+\begin{lemma}
+    We have a bilinear form $\phi: V \times V \rightarrow \mathbb{F}$, where $V$ is a finite vector space and $B, B'$ are bases of $V$. Let 
+    \[\phi=[Id]_{B,B'}.\]
+     Then 
+    \[[\phi]_{B'}=P^T [\phi]_B P.\]
+\end{lemma}
+\begin{proof}
+     This is just a special case of the general change of basis formula; see that proof.
+\end{proof}
+
+\begin{definition}[Congruent matrices]
+     Two square matrices $A,B$ are said to be \vocab{congruent} if there exists an invertible square matrix $P$ such that 
+     \[A=P^T B P.\]
+\end{definition}
+\begin{remark}
+     This defines an equivalence relation.
+\end{remark}
+\begin{definition}[Symmetric bilinear form]
+     A bilinear form on $V$ is said to be \vocab{symmetric} if 
+     \[\phi(u,v)=\phi(v,u) \ \forall u,v \in V.\]
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item If $A$ is a square matrix, we say that $A$ is symmetric if $A^T=A$. Equivalently, $A_{ij}=A_{ji}$.
+        \item $\phi$ is symmetric iff $[\phi]_B$ is symmetric in \emph{any} basis $B$.
+        \item To be able to represent $\phi$ by a diagonal matrix in some basis $B$, it is necesssary that $\phi$ is symmetric: 
+        \[P^T AP=D=D^T=P A^T P^T \implies A=A^T \implies \phi \text{is symmetric} .\]
+        
+    \end{enumerate}
+     
+\end{remark}
+\begin{definition}[Quadratic form]
+     A map $Q: V \rightarrow F$ is said to be a \vocab{quadratic form} if there exists a bilinear form $\phi: V \times V \rightarrow F$ such that 
+     \[\forall u \in V, \ Q(u)\phi (u,u).\]
+\end{definition}
+\begin{remark}[Computation in a basis]
+     Let $B=(e_i)_{1 \leq i \leq n}$ be a basis of $V$, and let $A=[\phi]_B$. Let $u=\sum_{i=1}^{n}u_i e_i$, then 
+     \[Q (u)-\phi (u,u)=\phi (\sum_{i=1}^{n}u_i e_i, \sum_{j=1}^{n})u_j e_j=\sum_{i,j=1}^{n}u_i u_j e_i e_j=\sum_{i,j=1}^{a_ij u_i u_j}.\]
+     (by bilinearity of $\phi$)
+     Therefore we essentially have 
+     \[Q (u)=U^T A U \text{, where } U=\begin{pmatrix}
+     u_1\\\vdots \\ u_n
+     \end{pmatrix}
+     .\]
+\end{remark}
+\begin{remark}
+     We can note that 
+     \[Q (u)=U^T A U =\sum_{i,j=1}^{n}a_{ij}u_i u_j=\sum_{i,j=1}^{n}(\frac{a_{ij}+a_{ji}}{2})u_i u_j=U^T (\frac{A+A^T}{2}) U.\]
+     So the representation of $A$ is not necessarily unique.
+\end{remark}
+
+\begin{proposition}
+     If $Q: V \rightarrow F$ is a quadratic form, then there exists a unique symmetric bilinear form $\phi: V \times V \rightarrow F $ such that 
+     \[Q(u)=\phi (u,u) \forall u \in V.\]
+\end{proposition}
+\begin{proof}[Polarisation identity]
+     Let $\psi$ be a bilinear form on $V$ such that 
+     \[\forall u \in V, Q(u)=\psi (u,u).\]
+     Let $\phi (u,v)=\frac{1}{2} (\psi (u,v)+ \psi (v,u))$. Thus we have that:
+     \begin{itemize}
+         \item $\phi$ is a bilinear form
+         \item $\phi$ is symmetric
+         \item $\phi (u,u)=\psi (u,u)=Q (u)$.
+     \end{itemize}
+     This concludes the proof of \emph{existence}.\newline 
+     \textbf{Proof of uniqueness}\newline 
+     Let $\phi$ be a symmetric bilinear form such that 
+     \[\forall u \in V, \phi (u,u)=Q(u).\]
+     Then 
+     \begin{equation*}
+          \begin{split}
+            Q (u+v)&=\phi (u+v,u+v)\\
+            &=\phi (u,u)+ \phi (u,v)+\phi (v,u)+ \phi (v,v) \text{ by bilinearity} \\
+            &=Q(u)+ 2\phi (u,v)+Q(v) \text{ by symmetry}\\
+          \end{split}
+     \end{equation*}
+     From this we get that 
+     \[\phi(u,v)=\frac{1}{2} (Q (u+v)-Q (u)- Q (v)).\]
+\end{proof}
+
+\begin{theorem}[Diagonalisation of symmetric bilinear forms]
+     Let $\phi: V \times V \rightarrow F$ be a symmetric bilinear form. (dim $V$=n). Then there exists a basis $B$ of $V$ such that $[\phi]_B$ is diagonal.
+\end{theorem}
+\begin{proof}
+     We proceed by induction on the dimension of $V$. For $n=1$ it is trivially true. Suppose the theorem holds for all dimensions $<n$: then
+     \begin{itemize}
+         \item If $\phi (u,u)=0 \forall u \in V$, then $\phi=0$ by the polarisation identity ($\phi $ is symmetric).
+         \item If $\phi \neq 0$, then there exists a $u \in V \backslash \{0\}$ such that $\phi (u,u) \neq 0$. Let us call $u=e_1$.
+         \item Let $U$ be the 'orthogonal' of $e_1$: 
+         \[U=(<e_1>)=\{v \in V: \ \phi (e_1,v)=0\}=\operatorname{ker} \theta: v \rightarrow \phi (e_1,v).\]
+         Since it is a kernel of a linear map $V \rightarrow F$, therefore $U$ is a vector subspace of $V$. By the Rank-Nullity theorem, we have 
+         \[\operatorname{dim} V=n= R(\theta)+ \operatorname{null}  \theta=\operatorname{dim}U+1.\]
+         We now claim that $U+<e_1>=U \oplus <e_1>$. Indeed, 
+         \[v= <e_1> \cap U \implies v= \lambda e_1, \phi(e_1,v)=0 .\]
+         \[\implies 0=\phi (e_1,v)=\phi (e_1, \lambda e_1)=\lambda \phi (e_1,e_1) \implies \lambda=0 \implies v=0.\]
+         
+         \[\implies U+<e_1>=U \oplus <e_1>.\]
+         Therefore $V=U \oplus <e_1>$, and pick a basis $B'=(e_2, \ldots ,e_n)$ such that $(e_1, e_2, \ldots , e_n)$ is a basis of $V$ (since the sum is direct). So 
+         \[[\phi]_B=(\phi(e_i,e_j))_{1 \leq i,j \leq n}=\begin{pmatrix}
+         \phi (e_1,e_1) &0\\0&A'
+         \end{pmatrix}
+         .\]
+         Therefore $(A')^T=A'$, and 
+         $A'=[\phi|_U]_{B'}$ where $\phi|_U$ is the restriction of $\phi$ onto $U$. Now we apply the induction hypothesis to find a basis $(e_1', \ldots ,e_n;)$ of $V$ such that $[\phi|U]_{B}$ is diagonal. So 
+         \[\hat{B}=(e_1,e_2',\ldots ,e_n')\] is a basis of $V$, and finally we have that $[\phi]_{\hat{B}}$ is diagonal.      
+     \end{itemize}
+\end{proof}
+
+\begin{example}
+     Let $V=\mathbb{R}^{3}$, and 
+     \[Q(x_1,x_2,x_3)=x_1^2+x_2^2+2x_3^2+2x_1x_2+2x_1x_3+2x_2x_3.\]
+     
+\end{example}
+\end{document}

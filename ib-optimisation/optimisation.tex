@@ -471,7 +471,7 @@ Consider our inequalities $h_i(x)+s_i=b_i$. If any of these inequalities are not
 		\item We must have $\lambda_1,\lambda_2\leq 0$ by complementary slackness. At the optimum, $\lambda_1s_1=\lambda_2 s_2=0$. By differentiating $L$, we get the system of equations 
 		\begin{align*}
 			(1-\lambda_2)-2 \lambda_1 x_1 &=0.\\
-			-3-\lambda_2-2\lambda_1 x_2 &0.
+			-3-\lambda_2-2\lambda_1 x_2 &=0.
 		\end{align*}
 		These show we can't have $\lambda_1=0$ and thus $\lambda_1 <0$ and $s_1=0$. There are two more cases:
 		\begin{itemize}
@@ -495,7 +495,7 @@ Before we do this, however, let's start with a weaker theorem.
 	 For a Lagrange problem define 
 	 \[g (\lambda)=\inf_{x \in X}L (x,\lambda).\]
 	 If $x \in X (b)$, and $\lambda \in \Lambda$, then $f (x)\geq g (x)$. In particular,
-	 \[\inf_{x \in X(b)}f(x) \geq \sup_{\lambda \in \Lambda}g (x).\]
+	 \[\inf_{x \in X(b)}f(x) \geq \sup_{\lambda \in \Lambda}g (\lambda).\]
 \end{theorem}
 \begin{proof}
 	For all $\lambda \in \Lambda$,
@@ -521,7 +521,7 @@ If the gap is 0, we say that \vocab{strong duality} holds.
 	 \begin{figure}[H]
 		\centering
 		\incfig{70}{hyperplane-sketch}
-		\caption{The hyperplane in one dimension is a tangent below the curve.}
+		\caption{The hyperplane in one dimension is a tangent below the curve with slope $\lambda$.}
 	\end{figure}
 \end{definition}
 
@@ -650,7 +650,8 @@ This is true for all $x,y \in C$, so the global maximum must be maximised somewh
 	"Convex functions on convex sets are maximised at extreme points".
 \end{remark}
 \subsection{Basic solutions and basic feasible solutions}
-Recall our linear problem: minimise $c^Tx$ such that $Ax=b, x \geq 0$ with $A \in \mathbb{R}^{mn}, x \in \mathbb{R}^{n} , b \in \mathbb{R}^{m}$.
+Recall our linear problem: \newline 
+minimise $c^Tx$ such that $Ax=b, x \geq 0$ with $A \in L(\mathbb{R}^{n},\mathbb{R}^{m} ), x \in \mathbb{R}^{n} , b \in \mathbb{R}^{m}$.\newline 
 We make two assumptions:
 \begin{itemize}
 	\item[($\ast$)] All $m$ rows of $A$, $(a_1^T,\ldots ,a_m^T)$ are linearly independent.
@@ -773,7 +774,7 @@ We can write it as minimising $c^Tx$ subject to $Ax-s=b$, $s \geq 0$ (slack vari
 \end{equation*}
 To ensure our problem is bounded, we require $\lambda^T \geq 0$ (if any component were $\leq 0$, we could simply increase that component of $b$ and $s$). Similarly to before, we must now have $(c^T-\lambda^T A)=0$ since we can now possibly vary $x$ over all of $\mathbb{R}^{n} $. Therefore the dual problem is 
 \[\text{maximise } \lambda^Tb \text{ subject to } \lambda^TA= c^T, \lambda \geq 0.\]
-This is a linear program in standard form! And so the \emph{dual of the dual is the primal}!
+This is a linear program in standard form, and so the \emph{dual of the dual is the primal}.
 \begin{proposition}
 	 The primal problem 
 	 \begin{equation*}
@@ -829,7 +830,7 @@ If $x$ is feasible for the primal, if $\phi$ is feasible for the dual, and if co
 	 If $x$ and $p$ are optimal, then strong duality gives us $c^T x =p^T b$. Thus $\sum u_i+ \sum v_j=0$, and since each $u_i,v_j$ is $\geq 0$, we have $u_i, v_j=0$ for all $i,j$. So complementary slackness holds.
 \end{proof}
 
-\subsubsection{Solving linear programs revisited}
+\subsection{The simplex method}
 Recall the solutions to our linear programs are basic feasible solutions, with 
 \[x=(0,\ldots,x_{B_{(1)}},\ldots) \text{ and } x_B =B^{-1}b.\]
 The optimality conditions tell us that we could find some kind of algorithm to find a solution, since we could check all of those conditions.
@@ -849,11 +850,21 @@ If this $\lambda$ satisfies $A^T \lambda \leq c^T$, i.e
 \[A^T {(B^T)}^{-1} c_B \leq c^T,\]
 then all three optimality conditions are met. The vector $c-A^T {(B^T)}^{-1}c_B$ is denoted by $\bar{c}$ and is called the vector of \vocab{reduced costs}. $\bar{c} \geq 0$ means $x$ is optimal.
 
+\begin{definition}[Feasible direction]
+	Let $x \in P$, where $P$ is the feasible set. A vector $d \in \mathbb{R}^{n} $ is called a \vocab{feasible direction} if there exists $\theta>0$ such that $x+\theta d \in P$.
+\end{definition}
 
-
-
-
-
+Let $x$ be a BFS, let $B_{(1)},\ldots ,B_{(m)}$ be the indices of the basic variables. Let $B=[A_{B_{(1)}},\ldots , A_{B_{(m)}}]$. $x_B$ is as before.
+Suppose we move in a direction $d$ such that $d_j=1$ where $j \notin \{B_{(1),\ldots ,B_{(m)}}\}$ and $d_i$ for all other nonbasic $i$ where $i \neq j$. It doesn't matter what $\{d_{B_{(1)},\ldots ,d_{B_{(m)}}}\}$ are. The vector $d$ is the $j$th basic direction: 
+\[A (x+\theta d)=b \implies Ad=0 \implies B d_B +A_j=0 \implies d_B= -{B}^{-1}A_j.\]
+The $j$th basic direction is thus a feasible direction. How does the cost change when $x \to x+\theta d$? The new cost is 
+\[c^T(x+\theta d)=c^Tx+\theta c^T d =c^Tx+\theta (c_j-c_B^T {B}^{-1}A_j=c^T x +\theta \bar{c_j}.\]
+\begin{theorem}
+	 Let $x$ be a BFS associated with a basis matrix B, and let $\bar{c}$ be the vector of reduced costs. Then $x$ is optimal if and only if $\bar{c} \geq 0$.
+\end{theorem}
+\begin{proof}
+	 Follows from optimality conditions from previous lectures.
+\end{proof}
 
 
 

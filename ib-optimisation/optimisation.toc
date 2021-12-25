@@ -22,10 +22,10 @@
 \contentsline {subsection}{\numberline {3.1}Maximising convex functions}{19}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Basic solutions and basic feasible solutions}{20}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}How to find basic solutions}{20}{subsubsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.3}Extreme points of the feasible set}{20}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Duality in linear programming}{21}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.3}Extreme points of the feasible set}{21}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Duality in linear programming}{22}{subsection.3.4}%
 \contentsline {subsubsection}{\numberline {3.4.1}The dual of a linear program}{22}{subsubsection.3.4.1}%
 \contentsline {subsubsection}{\numberline {3.4.2}Optimality conditions}{23}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Solving linear programs revisited}{24}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Towards the simplex method for solving linear programs}{24}{subsubsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.5}The simplex method}{24}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Towards the simplex method for solving linear programs}{24}{subsubsection.3.5.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
