@@ -1,2 +1,5 @@
 \contentsline {section}{\numberline {1}Bilinear forms}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Sylvester's law and sesquilinear forms}{4}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Sesquilinear forms}{8}{subsubsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.2}Hermitian forms and skew symmetric forms}{8}{subsection.1.2}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
