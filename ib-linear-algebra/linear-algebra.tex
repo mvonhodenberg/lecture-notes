@@ -36,10 +36,10 @@ This article constitutes my notes for the `IB Linear Algebra' course, held in Mi
 
 \section{Bilinear forms}
 \begin{lemma}
-    We have a bilinear form $\phi: V \times V \rightarrow \mathbb{F}$, where $V$ is a finite vector space and $B, B'$ are bases of $V$. Let 
-    \[\phi=[\operatorname{Id}]_{B,B'}.\]
+    We have a bilinear form $\varphi: V \times V \rightarrow \mathbb{F}$, where $V$ is a finite vector space and $B, B'$ are bases of $V$. Let 
+    \[\varphi=[\operatorname{Id}]_{B,B'}.\]
      Then 
-    \[[\phi]_{B'}=P^T [\phi]_B P.\]
+    \[[\varphi]_{B'}=P^T [\varphi]_B P.\]
 \end{lemma}
 \begin{proof}
      This is just a special case of the general change of basis formula; see that proof.
@@ -54,27 +54,27 @@ This article constitutes my notes for the `IB Linear Algebra' course, held in Mi
 \end{remark}
 \begin{definition}[Symmetric bilinear form]
      A bilinear form on $V$ is said to be \vocab{symmetric} if 
-     \[\phi(u,v)=\phi(v,u) \ \forall u,v \in V.\]
+     \[\varphi(u,v)=\varphi(v,u) \ \forall u,v \in V.\]
 \end{definition}
 \begin{remark}
      We have encountered this definition before in IA Vectors and Matrices.
     \begin{enumerate}
         \item If $A$ is a square matrix, we say that $A$ is symmetric if $A^T=A$. Equivalently, $A_{ij}=A_{ji}$.
-        \item $\phi$ is symmetric iff $[\phi]_B$ is symmetric in \emph{any} basis $B$.
-        \item To be able to represent $\phi$ by a diagonal matrix in some basis $B$, it is necesssary that $\phi$ is symmetric: 
-        \[P^T AP=D=D^T=P A^T P^T \implies A=A^T \implies \phi \text{ is symmetric} .\]
+        \item $\varphi$ is symmetric iff $[\varphi]_B$ is symmetric in \emph{any} basis $B$.
+        \item To be able to represent $\varphi$ by a diagonal matrix in some basis $B$, it is necesssary that $\varphi$ is symmetric: 
+        \[P^T AP=D=D^T=P A^T P^T \implies A=A^T \implies \varphi \text{ is symmetric} .\]
         
     \end{enumerate}
      
 \end{remark}
 \begin{definition}[Quadratic form]
-     A map $Q: V \rightarrow F$ is said to be a \vocab{quadratic form} if there exists a bilinear form $\phi: V \times V \rightarrow F$ such that 
-     \[\forall u \in V, \ Q(u)=\phi (u,u).\]
+     A map $Q: V \rightarrow F$ is said to be a \vocab{quadratic form} if there exists a bilinear form $\varphi: V \times V \rightarrow F$ such that 
+     \[\forall u \in V, \ Q(u)=\varphi (u,u).\]
 \end{definition}
 \begin{remark}[Computation in a basis]
-     Let $B=(e_i)_{1 \leq i \leq n}$ be a basis of $V$, and let $A=[\phi]_B$. Let $u=\sum_{i=1}^{n}u_i e_i$, then 
-     \[Q (u)=\phi (u,u)=\phi \left(\sum_{i=1}^{n}u_i e_i, \sum_{j=1}^{n}u_j e_j\right)=\sum_{i,j=1}^{n}u_i u_j \phi(e_i,e_j)=\sum_{i,j=1}^{n}a_{ij} u_i u_j.\]
-     (by bilinearity of $\phi$)
+     Let $B=(e_i)_{1 \leq i \leq n}$ be a basis of $V$, and let $A=[\varphi]_B$. Let $u=\sum_{i=1}^{n}u_i e_i$, then 
+     \[Q (u)=\varphi (u,u)=\varphi \left(\sum_{i=1}^{n}u_i e_i, \sum_{j=1}^{n}u_j e_j\right)=\sum_{i,j=1}^{n}u_i u_j \varphi(e_i,e_j)=\sum_{i,j=1}^{n}a_{ij} u_i u_j.\]
+     (by bilinearity of $\varphi$)
      Therefore we essentially have 
      \[Q (u)=U^T A U \text{, where } U=\begin{pmatrix}
      u_1\\\vdots \\ u_n
@@ -88,68 +88,68 @@ This article constitutes my notes for the `IB Linear Algebra' course, held in Mi
 \end{remark}
 
 \begin{proposition}
-     If $Q: V \rightarrow F$ is a quadratic form, then there exists a unique symmetric bilinear form $\phi: V \times V \rightarrow F $ such that 
-     \[Q(u)=\phi (u,u) \ \forall u \in V.\]
+     If $Q: V \rightarrow F$ is a quadratic form, then there exists a unique symmetric bilinear form $\varphi: V \times V \rightarrow F $ such that 
+     \[Q(u)=\varphi (u,u) \ \forall u \in V.\]
 \end{proposition}
 \begin{proof}(Polarisation identity)\newline 
      \textbf{Proof of existence}\newline 
      Let $\psi$ be a bilinear form on $V$ such that 
      \[\forall u \in V, \ Q(u)=\psi (u,u).\]
-     Let $\phi (u,v)=\frac{1}{2} (\psi (u,v)+ \psi (v,u))$. Thus we have that:
+     Let $\varphi (u,v)=\frac{1}{2} (\psi (u,v)+ \psi (v,u))$. Thus we have that:
      \begin{itemize}
-         \item $\phi$ is a bilinear form
-         \item $\phi$ is symmetric
-         \item $\phi (u,u)=\psi (u,u)=Q (u)$.
+         \item $\varphi$ is a bilinear form
+         \item $\varphi$ is symmetric
+         \item $\varphi (u,u)=\psi (u,u)=Q (u)$.
      \end{itemize}
      This concludes the proof of existence.\newline 
      \textbf{Proof of uniqueness}\newline 
-     Let $\phi$ be a symmetric bilinear form such that 
-     \[\forall u \in V, \ \phi (u,u)=Q(u).\]
+     Let $\varphi$ be a symmetric bilinear form such that 
+     \[\forall u \in V, \ \varphi (u,u)=Q(u).\]
      Then 
      \begin{equation*}
           \begin{split}
-            Q (u+v)&=\phi (u+v,u+v)\\
-            &=\phi (u,u)+ \phi (u,v)+\phi (v,u)+ \phi (v,v) \text{ by bilinearity} \\
-            &=Q(u)+ 2\phi (u,v)+Q(v) \text{ by symmetry}\\
+            Q (u+v)&=\varphi (u+v,u+v)\\
+            &=\varphi (u,u)+ \varphi (u,v)+\varphi (v,u)+ \varphi (v,v) \text{ by bilinearity} \\
+            &=Q(u)+ 2\varphi (u,v)+Q(v) \text{ by symmetry}\\
           \end{split}
      \end{equation*}
      From this we get that 
-     \[\phi(u,v)=\frac{1}{2} (Q (u+v)-Q (u)- Q (v)).\]
+     \[\varphi(u,v)=\frac{1}{2} (Q (u+v)-Q (u)- Q (v)).\]
 \end{proof}
 
 \begin{theorem}[Diagonalisation of symmetric bilinear forms]
-     Let $\phi: V \times V \rightarrow F$ be a symmetric bilinear form. (dim $V$=n). Then there exists a basis $B$ of $V$ such that $[\phi]_B$ is diagonal.
+     Let $\varphi: V \times V \rightarrow F$ be a symmetric bilinear form. (dim $V$=n). Then there exists a basis $B$ of $V$ such that $[\varphi]_B$ is diagonal.
 \end{theorem}
 \begin{proof}
      We proceed by induction on the dimension of $V$. For $n=1$ it is trivially true. Suppose the theorem holds for all dimensions $<n$: then
      \begin{itemize}
-         \item If $\phi (u,u)=0 \forall u \in V$, then $\phi=0$ by the polarisation identity ($\phi $ is symmetric).
-         \item If $\phi \neq 0$, then there exists a $u \in V \backslash \{0\}$ such that $\phi (u,u) \neq 0$. Let us call $u=e_1$.
+         \item If $\varphi (u,u)=0 \forall u \in V$, then $\varphi=0$ by the polarisation identity ($\varphi $ is symmetric).
+         \item If $\varphi \neq 0$, then there exists a $u \in V \backslash \{0\}$ such that $\varphi (u,u) \neq 0$. Let us call $u=e_1$.
          \item Let $U$ be the 'orthogonal' of $e_1$: 
          \begin{equation*}
                \begin{split}
-                    U&=\{v \in V: \ \phi (e_1,v)=0\}\\
-                    &=\operatorname{ker} \theta \text{ where } \theta:V \rightarrow F \text{ is given by } \theta (v)= \phi (e_1,v).
+                    U&=\{v \in V: \ \varphi (e_1,v)=0\}\\
+                    &=\operatorname{ker} \theta \text{ where } \theta:V \rightarrow F \text{ is given by } \theta (v)= \varphi (e_1,v).
                \end{split}
          \end{equation*}
          Since it is a kernel of a linear map $V \rightarrow F$, $U$ is a vector subspace of $V$. By the Rank-Nullity theorem, we have 
          \[\operatorname{dim} V=n= r(\theta)+ \operatorname{null}  \theta=\operatorname{dim}U+1.\]
          We now claim that $U+<e_1>=U \oplus <e_1>$. Indeed, 
-         \[v= <e_1> \cap U \implies v= \lambda e_1 \text{ and }  \phi(e_1,v)=0 .\]
-         \[\implies 0=\phi (e_1,v)=\phi (e_1, \lambda e_1)=\lambda \phi (e_1,e_1) \implies \lambda=0 \implies v=0.\]
+         \[v= <e_1> \cap U \implies v= \lambda e_1 \text{ and }  \varphi(e_1,v)=0 .\]
+         \[\implies 0=\varphi (e_1,v)=\varphi (e_1, \lambda e_1)=\lambda \varphi (e_1,e_1) \implies \lambda=0 \implies v=0.\]
          \[\implies U+<e_1>=U \oplus <e_1>.\]
          Therefore $V=U \oplus <e_1>$, and pick a basis $B'=(e_2, \ldots ,e_n)$ such that $(e_1, e_2, \ldots , e_n)$ is a basis of $V$ (since the sum is direct). So 
-         \[[\phi]_B=(\phi(e_i,e_j))_{1 \leq i,j \leq n}=\left(
+         \[[\varphi]_B=(\varphi(e_i,e_j))_{1 \leq i,j \leq n}=\left(
           \begin{array}{c|c}
-          \phi (e_1,e_1) &0\\
+          \varphi (e_1,e_1) &0\\
             \hline
             0&A'
           \end{array}
           \right)
          .\]
          Therefore $(A')^T=A'$, and 
-         $A'=[\phi|_U]_{B'}$ where $\phi|_U$ is the restriction of $\phi$ onto $U$. Now we apply the induction hypothesis to find a basis $(e_1', \ldots ,e_n;)$ of $V$ such that $[\phi|U]_{B}$ is diagonal. So 
-         \[\hat{B}=(e_1,e_2',\ldots ,e_n')\] is a basis of $V$, and finally we have that $[\phi]_{\hat{B}}$ is diagonal.      
+         $A'=[\varphi|_U]_{B'}$ where $\varphi|_U$ is the restriction of $\varphi$ onto $U$. Now we apply the induction hypothesis to find a basis $(e_1', \ldots ,e_n;)$ of $V$ such that $[\varphi|U]_{B}$ is diagonal. So 
+         \[\hat{B}=(e_1,e_2',\ldots ,e_n')\] is a basis of $V$, and finally we have that $[\varphi]_{\hat{B}}$ is diagonal.      
      \end{itemize}
 \end{proof}
 
@@ -203,8 +203,8 @@ This article constitutes my notes for the `IB Linear Algebra' course, held in Mi
 Recall our theorem that a symmetric bilinear form has a diagonal basis.
 
 \begin{corollary}
-    Let $F=\mathbb{C}$, and $\phi$ be a symmetric bilinear form of rank $r$ on $V \times V$ where $\operatorname{dim}V=n$. Then there exists a basis $B$ of $V$ such that the matrix 
-    \[[\phi]_B=\left(
+    Let $F=\mathbb{C}$, and $\varphi$ be a symmetric bilinear form of rank $r$ on $V \times V$ where $\operatorname{dim}V=n$. Then there exists a basis $B$ of $V$ such that the matrix 
+    \[[\varphi]_B=\left(
     \begin{array}{c|c}
      I_r &0\\
      \hline
@@ -214,7 +214,7 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
 \end{corollary}
 \begin{proof}
      Pick $E=(e_1, \ldots , e_n)$ such that 
-     \[[\phi]_E=
+     \[[\varphi]_E=
      \begin{pmatrix}
      a_1&&0\\ &\ddots&\\ 0&&a_n
      \end{pmatrix}
@@ -233,8 +233,8 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
             v_i=e_i& i>r
         \end{cases}
    \end{equation*}
-   Then $B= (v_1, \ldots ,v_r, v_{r+1}, \ldots , v_n)$ is a basis of $V$ and we can check that we have diagonalised and normalised $\phi$:
-   \[[\phi]_B=\left(
+   Then $B= (v_1, \ldots ,v_r, v_{r+1}, \ldots , v_n)$ is a basis of $V$ and we can check that we have diagonalised and normalised $\varphi$:
+   \[[\varphi]_B=\left(
      \begin{array}{c|c}
       I_r &0\\
       \hline
@@ -257,8 +257,8 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
      Immediate.
 \end{proof}
 \begin{corollary}
-    Let $F=\mathbb{R}$. Let $\phi$ be a symmetric bilinear form on $V \times V$ where $\operatorname{dim}V=n$. Then there exists a basis $B=(v_1, \ldots ,v_n)$ basis of $V$ such that for some $p-q \geq 0$ with $p+q=r (\phi)$,
-    \[[\phi]_B=\left(
+    Let $F=\mathbb{R}$. Let $\varphi$ be a symmetric bilinear form on $V \times V$ where $\operatorname{dim}V=n$. Then there exists a basis $B=(v_1, \ldots ,v_n)$ basis of $V$ such that for some $p-q \geq 0$ with $p+q=r (\varphi)$,
+    \[[\varphi]_B=\left(
      \begin{array}{c|c|c}
       I_p &0&0\\
       \hline
@@ -270,7 +270,7 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
 \end{corollary}
 \begin{proof}
     Pick $E=(e_1, \ldots , e_n)$ such that 
-    \[[\phi]_E=
+    \[[\varphi]_E=
     \begin{pmatrix}
      a_1&&0\\ &\ddots&\\ 0&&a_n
      \end{pmatrix}.\]
@@ -293,22 +293,22 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
     Then this basis will do the job.
 \end{proof}
 \begin{definition}[Signature of a quadratic form]
-     For $F=\mathbb{R}$, we define the \vocab{signature} of $\phi$
-     \[s(\phi)=p-q.\]
+     For $F=\mathbb{R}$, we define the \vocab{signature} of $\varphi$
+     \[s(\varphi)=p-q.\]
      This is also the signature of the associated quadratic form $Q$. We will soon see that this is well-defined.
 \end{definition}
 
 \begin{definition}[Positive definite quadratic/bilinear form]
-     Let $\phi$ be a symmetric bilinear form on a real vector space $V$. We say that 
+     Let $\varphi$ be a symmetric bilinear form on a real vector space $V$. We say that 
      \begin{itemize}
-         \item[(i)] $\phi$ is positive definite if 
-         \[\phi (u,u) >0 \ \forall u \in V \backslash \{0\}.\]
-         \item[(ii)] $\phi$ is positive semidefinite if 
-         \[\phi (u,u) \geq 0 \ \forall u \in V \backslash \{0\}.\]
-         \item[(iii)] $\phi$ is negative definite if 
-         \[\phi (u,u) <0 \ \forall u \in V \backslash \{0\}.\]
-         \item[(iv)] $\phi$ is negative semidefinite if 
-         \[\phi (u,u) \leq 0 \ \forall u \in V \backslash \{0\}.\]
+         \item[(i)] $\varphi$ is positive definite if 
+         \[\varphi (u,u) >0 \ \forall u \in V \backslash \{0\}.\]
+         \item[(ii)] $\varphi$ is positive semidefinite if 
+         \[\varphi (u,u) \geq 0 \ \forall u \in V \backslash \{0\}.\]
+         \item[(iii)] $\varphi$ is negative definite if 
+         \[\varphi (u,u) <0 \ \forall u \in V \backslash \{0\}.\]
+         \item[(iv)] $\varphi$ is negative semidefinite if 
+         \[\varphi (u,u) \leq 0 \ \forall u \in V \backslash \{0\}.\]
      \end{itemize}
 \end{definition}
 \begin{example}
@@ -334,26 +334,34 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
      \[p=p',q=q'.\]
 \end{theorem}
 \begin{proof}
-     In order to prove uniqueness of $p$, it is enough to show that $p$ is the largest dimension of a subspace of $V$ on which $\phi $ is positive definite. Say $B=(v_1, \ldots , v_n)$ and 
-     \[[\phi]_B=I_p -I_q.\]
-     Let $X=<v_1,\ldots ,v_p$. Then $\phi $ is positive definite on $X$. If we take a $u \in X$ with $u=\sum_{i=1}^{p}\lambda_i v_i$, then 
-     \[Q(u)= \phi (u,u)=\phi(\sum_{i=1}^{p}\lambda_i v_i,\sum_{j=1}^{p}\lambda_j v_j)=\sum_{i,j=1}^{p}\lambda_i \lambda_j \phi (v_i,v_j)= \sum_{i=1}^{n} \lambda_i^2 .\]
-     This is >0 as long as $u \neq 0$. Suppose that $\phi $ is positive definite on another subspace $X$. Let 
+     In order to prove uniqueness of $p$, it is enough to show that $p$ is the largest dimension of a subspace of $V$ on which $\varphi $ is positive definite. Say $B=(v_1, \ldots , v_n)$ and 
+     \[[\varphi]_B=\left(
+          \begin{array}{c|c|c}
+           I_p &0&0\\
+           \hline
+           0 &-I_q&0\\
+           \hline
+           0 &0&0\\
+           \end{array}
+           \right).\]
+     Let $X=<v_1,\ldots ,v_p$. Then $\varphi $ is positive definite on $X$. If we take a $u \in X$ with $u=\sum_{i=1}^{p}\lambda_i v_i$, then 
+     \[Q(u)= \varphi (u,u)=\varphi(\sum_{i=1}^{p}\lambda_i v_i,\sum_{j=1}^{p}\lambda_j v_j)=\sum_{i,j=1}^{p}\lambda_i \lambda_j \varphi (v_i,v_j)= \sum_{i=1}^{n} \lambda_i^2 .\]
+     This is >0 as long as $u \neq 0$. Suppose that $\varphi $ is positive definite on another subspace $X$. Let 
      \[X=<v_1,\ldots ,v_p> , Y=<v_{p+1},\ldots ,v_n>.\]
-     Then arguing as above, looking at $[\phi]_B$ we know that $\phi$ is negative semidefinite on $Y$. This implies that 
+     Then arguing as above, looking at $[\varphi]_B$ we know that $\varphi$ is negative semidefinite on $Y$. This implies that 
      \[Y \cap X'=\{0\}.\] Indeed, if $y \in Y \cap X$, then $Q(y)\leq 0$ since $y \in Y$, but this implies that $y=0$ since $y \in X$. Therefore 
      \[Y+X= Y \oplus X \implies n=\operatorname{dim} V \geq \operatorname{dim} (Y+X) =\operatorname{dim}Y +\operatorname{dim}X \implies n \geq n-p+\operatorname{dim}X \implies \operatorname{dim X} \leq p.\]
-     Similarly, we show that $q$ is the largest dimension of a subspace on which $\phi$ is negative definite. So we have a \emph{geometric characterisation} of $p$ and $q$, which concludes the proof.
+     Similarly, we show that $q$ is the largest dimension of a subspace on which $\varphi$ is negative definite. So we have a \emph{geometric characterisation} of $p$ and $q$, which concludes the proof.
 \end{proof}
 
 \begin{definition}[Kernel of a bilinear form]
      Define the kernel of the bilinear form
-     \[K=\{v \in V : \ \forall u \in V, \phi (u,v)=0 \}.\]
+     \[K=\{v \in V : \ \forall u \in V, \varphi (u,v)=0 \}.\]
 \end{definition}
 \begin{remark}
-     $\operatorname{dim} K + r (\phi)=n$.
+     $\operatorname{dim} K + r (\varphi)=n$.
 \end{remark}
-One can show using the above notation that there is a subspace $T$ of dimension $m-(p+q)+\min p,q$ such that $\phi_T=0$. The subspace we want to take consists of all the basis vectors that are killed by the lower corner of $[\phi]_B$, but it also includes the 'cancellations' between $I_p$ and $-I_q$.\newline 
+One can show using the above notation that there is a subspace $T$ of dimension $m-(p+q)+\min p,q$ such that $\varphi_T=0$. The subspace we want to take consists of all the basis vectors that are killed by the lower corner of $[\varphi]_B$, but it also includes the 'cancellations' between $I_p$ and $-I_q$.\newline 
 Moreover, one can show that the dimension of $T$ is the largest possible dimension of such a subspace.
 \subsubsection{Sesquilinear forms}
 Recall that the standard inner product on $\mathbb{C}^n$ is 
@@ -362,25 +370,25 @@ x_1\\\ldots \\x_n
 \end{pmatrix},\begin{pmatrix}
 y_1\\\ldots \\y_n
 \end{pmatrix}
-=\sum_{i=1}^{n}x_i \bar{y_i}
+=\sum_{i=1}^{n}x_i \overline{y_i}
 .\]
 However note that this map is \textbf{not} a bilinear form, since the conjugation of the second coordinate prevents this. However, it is still bilinear 'in a way'. We now explore this further.
 \begin{definition}[Sesquilinear form]
      Let $V,W$ be vector spaces over $\mathbb{C}$. A sesquilinear form on $V \times W$ is a function 
-     \[\phi: V \times W \to \mathbb{C} .\]
+     \[\varphi: V \times W \to \mathbb{C} .\]
      such that 
      \begin{enumerate}
-         \item $\phi (\lambda_1 v_1+ \lambda_2 v_2, w)=\lambda_1 \phi (v_1,w) + \lambda_2 \phi (v_2,w)$
-         \item $\phi (\lambda_1 v_1+ \lambda_2 v_2, w)=\bar{\lambda_1} \phi (v_1,w) + \bar{\lambda_2} \phi (v_2,w)$
+         \item $\varphi (\lambda_1 v_1+ \lambda_2 v_2, w)=\lambda_1 \varphi (v_1,w) + \lambda_2 \varphi (v_2,w)$
+         \item $\varphi (v,\lambda_1 w_1+ \lambda_2 w_2)=\overline{\lambda_1} \varphi (v,w_1) + \overline{\lambda_2} \varphi (v,w_2)$
      \end{enumerate}
      For $B$ a basis of $V$, C a basis of $W$, we define the matrix 
-     \[[\phi]_{B,C}=(\phi (v_i,w_j))_{1 \leq i \leq m, 1 \leq j \leq n}.\]
+     \[[\varphi]_{B,C}=(\varphi (v_i,w_j))_{1 \leq i \leq m, 1 \leq j \leq n}.\]
 \end{definition}
 \begin{lemma}
      If $B$ basis for $V$, $C$ a basis for $W$,
-     \[\phi (v,w)=[v]_B^T [\phi]_{B,C}\bar{[w]_C}.\]
+     \[\varphi (v,w)=[v]_B^T [\varphi]_{B,C}\overline{[w]_C}.\]
      Further, if $B',C'$ are other bases for $V,W$ respectively, and $P=[Id]_{B',B}, Q=[Id]_{C',C}$ then 
-     \[[\phi]_{B',C'}=P^T [\phi]_{B,C} \bar{Q}.\]
+     \[[\varphi]_{B',C'}=P^T [\varphi]_{B,C} \overline{Q}.\]
      
 \end{lemma}
 \begin{proof}
@@ -390,21 +398,131 @@ However note that this map is \textbf{not} a bilinear form, since the conjugatio
 \subsection{Hermitian forms and skew symmetric forms}
 We will now generalise symmetric bilinear forms to sesquilinear forms.
 \begin{definition}[Hermitian form]
-     Let $V$ be a finite dimensional vector space and $\phi: V \times V \rightarrow C$ be a sesquilinear form. We call $\phi$ \vocab{hermitian} if for all $(u,v) \in V \times V$ we have 
-     \[\phi (u,v)=\bar{\phi (v,u)}.\]
+     Let $V$ be a finite dimensional vector space and $\varphi: V \times V \rightarrow C$ be a sesquilinear form. We call $\varphi$ \vocab{hermitian} if for all $(u,v) \in V \times V$ we have 
+     \[\varphi (u,v)=\overline{\varphi (v,u)}.\]
 \end{definition}
 \begin{remark}
-     If $\phi$ is Hermitian, then $\phi (u,u)=\bar{\phi (u,u)} \implies \phi (u,u) \in \mathbb{R}$. Moreover, 
-     \[\phi (\lambda u , \lambda u)= |\lambda|^2 \phi (u,u).\]
+     If $\varphi$ is Hermitian, then $\varphi (u,u)=\overline{\varphi (u,u)} \implies \varphi (u,u) \in \mathbb{R}$. Moreover, 
+     \[\varphi (\lambda u , \lambda u)= |\lambda|^2 \varphi (u,u).\]
 \end{remark}
 This allows us to talk about negative/ positive definite Hermitian form.
 
 \begin{lemma}
-     A sesquilinear form $\phi: V \times V \rightarrow \mathbb{C}$ is hermitian if and only if for every basis $B$ of $V$, 
-     \[[\phi]_B=\bar{[\phi]_B^T}.\]
+     A sesquilinear form $\varphi: V \times V \rightarrow \mathbb{C}$ is hermitian if and only if for every basis $B$ of $V$, 
+     \[[\varphi]_B=\overline{[\varphi]_B^T}.\]
      
 \end{lemma}
 \begin{proof}
-     Let $A=[\phi]_B$ have entries $a_{ij}=\phi(e_i,e_j)$
+     Let $A=[\varphi]_B$ have entries $a_{ij}=\varphi(e_i,e_j)$. 
+     If $\varphi$ is Hermitian, then 
+     \[a_{ji}=\varphi(e_j,e_i)=\overline{\varphi(e_i,e_j)}=\overline{a_{ij}} .\]
+     Thus $[\varphi]_B=\overline{[\varphi]_B^T}.$\newline 
+     For the converse direction, if we have $[\varphi]_B=\overline{[\varphi]_B^T}$, and we write $u=\sum_{i=1}^{n}u_i e_i, v=\sum_{i=1}^{n}v_i e_i$, then 
+     \[\varphi \left(u,v\right)=\varphi \left(\sum_{i=1}^{n}u_i e_i\right), \sum_{i=1}^{n}v_ie_i=\sum_{i,j=1}^{n}u_i \overline{v_j} \varphi \left(e_i,e_j\right)=\sum_{i,j=1}^{n}u_i \overline{v_j} a_ij.\]
+     We can similarly expand $\varphi(e_j,e_i)$ to get the same result and we are done.
 \end{proof}
+
+\begin{proposition}[Polarisation identity for sesquilinear forms]
+      A Hermitian form $\varphi$ on a complex vector space $V$ is entirely determined by $Q:V \rightarrow R$ where $Q(v)=\varphi \left(v,v\right)$ via the formula 
+      \[\varphi \left(u,v\right)=\frac{1}{4}\left(Q \left(u+v\right)-Q \left(u-v\right)+iQ \left(u+iv\right)-iQ \left(u-iv\right)\right).\]
+\end{proposition}
+\begin{proof}
+      Similar to the case of symmetric bilinear forms.
+\end{proof}
+
+\begin{theorem}[Hermitian formulation of Sylvester's law]
+      Let $V$ be an $n$-dimensional vector space over $\mathbb{C}$. Let $\varphi:V \times V \rightarrow C$ be a Hermitian form on $V$. Then there exists a basis $B=\left(v_1, \ldots , v_n\right)$ of $V$ so that 
+      \[[\varphi]_B=\left(
+          \begin{array}{c|c|c}
+           I_p &0&0\\
+           \hline
+           0 &-I_q&0\\
+           \hline
+           0 &0&0\\
+           \end{array}
+           \right).\]
+\end{theorem}
+\begin{proof}
+      We just provide a sketch proof as the proof is nearly identical to the case of real symmetric bilinear forms.\newline 
+      \textbf{Existence:}\newline 
+       $\varphi=0$, done. Otherwise, using the polarisation identity, there exists $e_1 \neq 0$ such that $\varphi \left(e_1,e_1\right) \neq 0$. We then normalise $e_1$ to $v_1$ and consider the orthogonal of $<v_1>$. Then we check (arguing like for real bilinear symmetric forms): 
+       \[V=<v_1> \oplus W ,\]
+       where $\operatorname{dim}W=n-1$. Finally, we argue by induction to diagonalise $\varphi|_W$.\newline 
+       \textbf{Uniqueness:}\newline 
+       We argue that $p$ is the maximal dimension of a subspace on which $\varphi$ is positive definite, and that $q$ is the maximal dimension of a subspace on which $\varphi$ is negative definite. Then by our geometric characterisation we are done.
+\end{proof}
+
+\subsection{Skew symmetric bilinear forms}
+We now return to $F=\mathbb{R}$.
+\begin{definition}[Skew symmetric bilinear forms]
+      Let $V$ be a vector space over $\mathbb{R}$, and $\operatorname{dim}V=n$. A bilinear form $\varphi: V \times V \rightarrow \mathbb{R}$ is \vocab{skew symmetric} if: 
+      
+      \[\forall \left(u,v\right) \in V \times V, \ \varphi \left(u,v\right)=-\varphi \left(v,u\right).\]
+\end{definition}
+\begin{remark}
+      \begin{enumerate}
+           \item $\varphi \left(u,u\right)=\varphi \left(u,u\right) \implies \varphi \left(u,u\right)=0$.
+           \item For all bases $B$ of $V$, $[\varphi]_B=-[\varphi]_B^T$
+           \item For all $A \in M_n \left(\mathbb{R}\right)$,
+           \[A=\frac{1}{2}\left(A+A^T\right)+ \frac{1}{2}\left(A-A^T\right).\]
+           (we can decompose any matrix into symmetric and skew symmetric parts)
+      \end{enumerate}
+\end{remark}
+\begin{theorem}[Sylvester form of skew symmetric matrices]
+      Let $V$ be a finite $n$-dimensional vector space over $\mathbb{R}$. Let $\varphi$ be a skew symmetric bilinear form over $V$. Then there exists a basis $B$ of $V$ such that 
+      \[B=\left(v_1,w_1,v_2,w_2, \ldots v_m,w_m,v_{2m+1},v_{2m+2},\ldots ,v_n\right).\]
+\end{theorem}
+\begin{corollary}
+     Skew symmetric matrices have an even rank.
+\end{corollary}
+\begin{proof}
+      We give a sketch proof as this proof is again similar to past proofs. We proceed by induction on the dimension of $V$.
+      \begin{enumerate}
+           \item If $\varphi=0$, then we are done.
+           \item Else there exists $\left(v_1,w_1\right)$ such that $\varphi \left(v_1,w_1\right)\neq 0$.
+           \item After scaling $v_1$, we can assume $\varphi \left(v_1,w_1\right)=1$ and thus by skew symmetricity $\varphi \left(w_1,v_1\right)=-1$. Observe $v_1,w_1$ are linearly independent since 
+           \[\varphi \left(v_1, \lambda v_1\right)=\lambda \varphi \left(v_1,v_1\right)=0.\]
+           We now let W be the orthogonal of $U=<v_1,w_1>$, 
+           \[ W=\{v \in V: \ \varphi \left(v_1,v\right)=\varphi \left(v,w_1\right)=0 \}. \]
+           \item Finally we show $V=U \oplus W$ and apply our inductive hypothesis.
+      \end{enumerate}
+\end{proof}
+
+\subsection{Inner product spaces}
+We will find that positive definite bilinear forms will be useful for a form of inner product, which leads us to norms (notions of distance). Looking past this course, this extends to an infinite dimensional counterpart of Hilbert spaces in Part II Linear Analysis.
+\begin{definition}[Inner product]
+      Let $V$ be a vector space over $\mathbb{R}$ (resp. $\mathbb{C}$). An \vocab{inner product} on $V$ is a positive definite symmetric (resp. Hermitian) bilinear form $\varphi$ on $V$. We use the notation 
+      \[<u,v>=\varphi \left(u,v\right).\]
+      We call $V$ a real (resp. complex) inner product space.
+\end{definition}
+\begin{example}[Examples of inner product spaces]
+      \begin{enumerate}
+           \item $V=\mathbb{R}^{n} $, where we define 
+           \[<x,y>=<\begin{pmatrix}
+           x_1\\\vdots\\x_n
+           \end{pmatrix}, \begin{pmatrix}
+           y_1\\\vdots\\y_n
+           \end{pmatrix}
+           =\sum_{i=1}^{n}x_i y_i
+           .\]
+           \item $V=\mathbb{C}^n$, $<x,y>=\sum_{i=1}^{n}x_i \overline{y_i} $.
+           \item $V=C^{0} \left([0,1],\mathbb{C}\right)$. We define 
+           \[<f,g>=\int_{0}^{1}f \left(t\right)\overline{g \left(t\right)} \ dt.\]
+           \item We can fix a weight $\omega: [0,1] \rightarrow \mathbb{R}^*_+$ and define on $V=C^{0} \left([0,1],\mathbb{C}\right)$ 
+           \[<f,g>=\int_{0}^{1}f \left(t\right)\overline{g \left(t\right)} \omega \left(t\right) \ dt.\]
+      \end{enumerate}
+      One can check that all these examples are inner products. The only non-trivial thing that needs to be checked in this case is the positive definite property: 
+      \[<u,u>=0 \implies u=0.\]
+\end{example}
+\begin{remark}
+      The study of $L^2$ spaces is the heart of the definition of a new integral, the Lebesgue integral.
+\end{remark}
+
+\begin{definition}[Norm/length]
+      We define the \vocab{norm} of $v$ by 
+      \[||v||=\sqrt{<v,v>}.\]
+\end{definition}
+\begin{remark}
+      We say that the norm derives from a scalar product.
+\end{remark}
 \end{document}
