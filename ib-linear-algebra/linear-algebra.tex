@@ -459,7 +459,7 @@ We now return to $F=\mathbb{R}$.
       
       \[\forall \left(u,v\right) \in V \times V, \ \varphi \left(u,v\right)=-\varphi \left(v,u\right).\]
 \end{definition}
-\begin{remark}
+\begin{remark} This leads to a few easy consequences:
       \begin{enumerate}
            \item $\varphi \left(u,u\right)=\varphi \left(u,u\right) \implies \varphi \left(u,u\right)=0$.
            \item For all bases $B$ of $V$, $[\varphi]_B=-[\varphi]_B^T$
@@ -495,7 +495,8 @@ We will find that positive definite bilinear forms will be useful for a form of 
       \[<u,v>=\varphi \left(u,v\right).\]
       We call $V$ a real (resp. complex) inner product space.
 \end{definition}
-\begin{example}[Examples of inner product spaces]
+\begin{example}
+     Here are several examples of inner product spaces.
       \begin{enumerate}
            \item $V=\mathbb{R}^{n} $, where we define 
            \[<x,y>=<\begin{pmatrix}
@@ -525,4 +526,158 @@ We will find that positive definite bilinear forms will be useful for a form of 
 \begin{remark}
       We say that the norm derives from a scalar product.
 \end{remark}
+\subsubsection{Gram-Schmidt}
+\begin{theorem}[Cauchy-Schwarz inequality]
+      In an inner product space, 
+      \[|<u,v>|\leq ||u||||v||.\]
+      
+\end{theorem}
+\begin{proof}
+      We have $F=\mathbb{R}$ or $\mathbb{C}$. Let $t \in F$, then 
+      \begin{equation*}
+            \begin{split}
+               0 \leq ||tu-v||^2 &=<tu-v,tu-v>\\
+               &=t \overline{t} <u,u>-t<u,v>-\overline{t} <v,u>+||v||^2\\
+               &=|t|^2 ||u||^2-2 \operatorname{Re}(t<u,v>)+||v||^2.
+            \end{split}
+      \end{equation*}
+      We now choose explicitly 
+      \[t=\frac{\overline{<u,v>} }{||u||^2}.\]
+      This gives 
+      \[0 \leq \frac{|<v,u>|^2}{||u||^4}||u||^2-2 \operatorname{Re}\left(\frac{|<u,v>|^2}{||u||^2}\right)+||v||^2\]
+      \[\implies 0 \leq ||v||^2-\frac{|<v,u>|^2}{||u||^2}\]
+      \[\implies |<v,u>|^2 \leq ||v||^2 ||u||^2.\]
+\end{proof}
+\begin{remark}
+      It is left as an exercise to show that equality holds iff the vectors $u,v$ are collinear.
+\end{remark}
+\begin{corollary}[Triangle inequality]
+     $||u+v||\leq ||u||+||v||$.
+\end{corollary}
+
+\begin{proof}
+     \begin{equation*}
+           \begin{split}
+                ||u+v||&=<u+v,u+v> \\
+                &=||u||^2+ 2 \operatorname{Re}<v,u> +||v||^2\\
+                & \leq ||u||^2+2 |<u,v> |+||v||^2\\
+                & \leq ||u||^2+2 ||u||||v||+||v||^2 \text{ by Cauchy-Scwarz} \\
+                &=\left(||u||+||v||\right)^2.
+           \end{split}
+     \end{equation*}     
+\end{proof}
+\begin{remark}
+      $||.||$ is a norm.
+\end{remark}
+\begin{definition}[Orthogonal/orthonormal family]
+      A set $\left(e_1, \ldots ,e_k\right)$ of vectors of $V$ is 
+      \begin{itemize}
+           \item[(i)] \vocab{orthogonal} if $<e_i,e_j> =0 \ \forall i \neq j$
+           \item[(ii)] \vocab{orthonormal} if $<e_i,e_j> =\delta_{ij} \ \forall i,j$
+      \end{itemize}
+\end{definition}
+
+\begin{lemma}
+      If $\left(e_1, \ldots , e_k\right)$ are orthogonal non-zero vectors, then 
+      \begin{itemize}
+           \item[(i)] they are linearly independent.
+           \item[(ii)] Moreover, writing $v=\sum_{j=1}^{k}\lambda_j e_j$, then 
+           \[\lambda_j=\frac{<v,e_j> }{||e_j||^2}.\]
+      \end{itemize} 
+\end{lemma}
+\begin{proof}
+     From the definitions:
+     \begin{itemize}
+          \item[(i)]\[\sum_{i=1}^{k}\lambda_i e_i=0 \implies 0=<\sum_{i=1}^{k}\lambda_i e_i,e_j> =\sum_{i=1}^{k}\lambda_i <e_i,e_j>= \lambda_j ||e_j||^2 \implies \lambda_j=0 \forall 1 \leq j \leq k. \]
+          \item[(ii)] If $v=\sum_{i=1}^{k}\lambda_i e_i$, then 
+          \[<v,e_j> =<\sum_{i=1}^{k}\lambda_i e_i,e_j>=\sum_{i=1}^{k}\lambda_i <e_i,e_j> =\lambda_j ||e_j||^2 .\]
+          \[\implies \lambda_j=\frac{<v,e_j> }{||e_j||^2}.\]
+     \end{itemize}
+      
+\end{proof}
+
+\begin{lemma}[Parseval's identity]
+      If $V$ is a finite dimensional inner product space, and $\left(e_1, \ldots ,e_n\right)$ is an \emph{orthonormal} basis, then 
+      \[<u,v> =\sum_{i=1}^{n}<u,e_i> \overline{<v,e_i> } .\]
+      In particular, 
+      \[||u||^2 =\sum_{i=1}^{n}|<u,e_i>|^2.\]
+\end{lemma}
+
+\begin{proof}
+     By the previous lemma with $||e_i||=1$, 
+     \[u= \sum_{i=1}^{n}<u,e_i>  e_i, \ v= \sum_{i=1}^{n}<v,e_i> e_i.\]
+     Therefore 
+     \[<u,v> =<\sum_{i=1}^{n}<u,e_i>  e_i,\sum_{i=1}^{n}<v,e_i> e_i>=\sum_{i=1}^{n}<u,e_i> \overline{<v,e_i> }.\]
+     (by orthonormality, and since our form is sesquilinear). Setting $u=v$ recovers our other result.
+\end{proof}
+
+\begin{theorem}[Gram-Schmidt orthogonalisation process]
+      Let $V$ be an inner product space. Let $\left(v_i\right)_{i \in I}$ such that $I$ is countable, and the $v_i$ are non-zero and linearly independent. Then there exists a family $\left(r_i\right)_{i \in I}$ of \emph{orthonormal} vectors such that 
+      \[\forall k \geq 1, \operatorname{span} \{v_1,\ldots ,v_k\}=\operatorname{span} \{e_1,\ldots ,e_k\}.\]
+\end{theorem}
+
+\begin{proof}
+      The proof is an explicit construction of the family $\left(e_i\right)_{i \in I}$. We proceed by induction on $k$.\newline 
+      If $k=1$, then $e_1=\frac{v_1}{||v_1||} \ \left(v_1 \neq 0\right)$. For the general case, say we have found $\left(e_1, \ldots ,e_k\right)$ orthonormal with 
+      \[\operatorname{span} \{v_1,\ldots ,v_k\}=\operatorname{span} \{e_1,\ldots ,e_k\}.\]
+      Let us compute $e_{k+1}$. We define 
+      \[e_{k+1}=v_{k+1}-\sum_{i=1}^{k}<v_{k+1},e_i>e_i .\]
+      Geometrically, we are projecting $v_{k+1}$ onto the plane spanned by $\left(e_1, \ldots , e_k\right)$.[drawing] Note that $e_{k+1} \neq 0$, as otherwise 
+      \[v_{k+1} \in \operatorname{span} \{e_1,\ldots ,e_k\}=\operatorname{span} \{v_1,\ldots ,v_k\},\]
+      a contradiction. Now take $j \in \{1,\ldots ,k\}$, then 
+      \begin{equation*}
+          \begin{split}
+               <e_{k+1},e_j>&=<v_{k+1}-\sum_{i=1}^{k}<v_{k+1},e_i>e_i,e_j>\\
+               &=<v_{k+1},e_j> - \sum_{i=1}^{k}<v_{k+1},e_j> \underbrace{<e_i,e_j>}_{=\delta_{ij}}\\
+               &=<v_{k+1},e_j>-<v_{k+1},e_j>=0.
+          \end{split}
+      \end{equation*}
+      So $e_{k+1}$ is orthogonal to $e_j$ for all $1 \leq j \leq k$. Thus 
+      \[\operatorname{span} \{v_1,\ldots ,v_{k+1}\}=\operatorname{span} \{e_1,\ldots ,e_{k+1}\}.\]
+      Now define (since we know $e_{k+1} \neq 0$), 
+      \[e'_{k+1}=\frac{e_{k+1}}{||e_{k+1}||}.\]
+      Then $\left(e_1, \ldots ,e_k, e'_{k+1}\right)$ is orthonormal
+\end{proof}
+
+\begin{corollary}
+     If $V$ is a finite dimensional inner product space, then any orthonormal set of vectors can be extended to an orthonormal basis of $V$.
+\end{corollary}
+\begin{proof}
+      Pick $\left(e_1, \ldots ,e_k\right)$ orthonormal. Then they are linearly independed, hence can extend to a basis $\left(e_1,\ldots ,e_k,v_{k+1},\ldots ,v_n\right)$ of $V$. We apply the Gram-Schmidt algorithm to this basis to get an orthonormal set $S=\left(e_1,\ldots ,e_k,e_{k+1},\ldots ,e_n\right)$ with 
+      \[\operatorname{span}S=\operatorname{span}\left(e_1,\ldots ,e_k,v_{k+1},\ldots ,v_n\right)=V.\]
+      Hence this is an orthonormal basis of $V$.
+\end{proof}
+
+\begin{remark}
+      If we have a matrix $A \in M_n \left(\mathbb{R}\right)$ (resp. $A \in M_n \left(\mathbb{C}\right)$), then the column vectors of $A$ are orthonormal iff 
+      \[A^T A =\operatorname{Id} (\mathbb{R}), A^T\overline{A}\operatorname{Id} (\mathbb{C}).\]
+\end{remark}
+
+\begin{definition}[Orthogonal/unitary matrix]
+      We say $A \in M_n(\mathbb{R})$ is \vocab{orthogonal} if $A^T A= \operatorname{Id}$. \newline 
+      We say $A \in M_n(\mathbb{C})$ is \vocab{unitary} if $A^T \overline{A} = \operatorname{Id}$. 
+\end{definition}
+
+\begin{proposition}
+      Let $A \in M_n(\mathbb{R})$ (resp. $M_n \left(\mathbb{C}\right)$) be non-singular. Then $A$ can be written as $A=RT$ where $T$ is upper triangular, and $R$ is orthogonal (resp. unitary).
+\end{proposition}
+\begin{proof}
+      Apply Gram-Schmidt to the column vectors of $A$ (the fact $T$ is upper triangular is because the Gram-Schmidt algorithm only uses the previous vectors in the set).
+\end{proof}
+
+\subsection{Orthogonal complement and projection}
+\begin{definition}[Orthogonal direct sum]
+      Let $V$ be an inner product space, and $V_1, V_2 \leq V$. We say that $V$ is the \vocab{orthogonal direct sum} of $V_1$ and $V_2$ if 
+      \begin{enumerate}
+           \item $V=v_1 \oplus V_2$.
+           \item $\forall (v_1,v_2) \in V_1 \times V_2: \ <v_1,v_2>=0 $.
+      \end{enumerate}
+\end{definition}
+\begin{remark}
+      The directness of the sum in 1. is redundant (it follows from 2.)
+\end{remark}
+\begin{definition}[Orthogonal complement]
+      For $V$ an inner product space and $W \leq V$, the \vocab{orthogonal complement} of $W$ in $V$ is 
+      \[W^{\perp}=\{v \in V: \ \forall w \in W, \ <v,w>=0 \}.\]
+\end{definition}
 \end{document}
