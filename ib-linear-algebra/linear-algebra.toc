@@ -1,15 +1,13 @@
-\contentsline {section}{\numberline {1}Bilinear forms}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Sylvester's law and sesquilinear forms}{5}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Sesquilinear forms}{8}{subsubsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.2}Hermitian forms and skew symmetric forms}{9}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Skew symmetric bilinear forms}{10}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Inner product spaces}{11}{subsection.1.4}%
-\contentsline {subsubsection}{\numberline {1.4.1}Gram-Schmidt}{12}{subsubsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.5}Orthogonal complement and projection}{16}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Orthogonal complement / adjoint map}{17}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}Self-adjoint maps and isometries}{19}{subsection.1.7}%
-\contentsline {subsection}{\numberline {1.8}Self-adjoint maps}{20}{subsection.1.8}%
-\contentsline {subsubsection}{\numberline {1.8.1}Spectral theory for self-adjoint operators}{20}{subsubsection.1.8.1}%
-\contentsline {subsection}{\numberline {1.9}Spectral theory for unitary maps}{22}{subsection.1.9}%
-\contentsline {subsection}{\numberline {1.10}Applications to bilinear forms}{23}{subsection.1.10}%
+\contentsline {section}{\numberline {1}Bilinear forms revisited}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Sylvester's law}{7}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Sesquilinear forms}{8}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Hermitian forms}{9}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Skew symmetric forms}{11}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Inner product spaces}{12}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Gram-Schmidt orthogonalisation}{15}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Orthogonal complement and projection}{17}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The adjoint map}{18}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Self-adjoint maps and isometries}{19}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Spectral theory for self-adjoint maps and isometries}{21}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Applications to bilinear forms}{23}{subsection.2.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
