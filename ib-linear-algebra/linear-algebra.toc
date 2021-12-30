@@ -6,4 +6,10 @@
 \contentsline {subsection}{\numberline {1.4}Inner product spaces}{11}{subsection.1.4}%
 \contentsline {subsubsection}{\numberline {1.4.1}Gram-Schmidt}{12}{subsubsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.5}Orthogonal complement and projection}{16}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Orthogonal complement / adjoint map}{17}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Self-adjoint maps and isometries}{19}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}Self-adjoint maps}{20}{subsection.1.8}%
+\contentsline {subsubsection}{\numberline {1.8.1}Spectral theory for self-adjoint operators}{20}{subsubsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.9}Spectral theory for unitary maps}{22}{subsection.1.9}%
+\contentsline {subsection}{\numberline {1.10}Applications to bilinear forms}{23}{subsection.1.10}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

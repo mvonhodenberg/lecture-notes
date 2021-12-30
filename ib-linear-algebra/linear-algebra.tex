@@ -492,28 +492,28 @@ We now return to $F=\mathbb{R}$.
 We will find that positive definite bilinear forms will be useful for a form of inner product, which leads us to norms (notions of distance). Looking past this course, this extends to an infinite dimensional counterpart of Hilbert spaces in Part II Linear Analysis.
 \begin{definition}[Inner product]
       Let $V$ be a vector space over $\mathbb{R}$ (resp. $\mathbb{C}$). An \vocab{inner product} on $V$ is a positive definite symmetric (resp. Hermitian) bilinear form $\varphi$ on $V$. We use the notation 
-      \[<u,v>=\varphi \left(u,v\right).\]
+      \[\langle u ,v \rangle =\varphi \left(u,v\right).\]
       We call $V$ a real (resp. complex) inner product space.
 \end{definition}
 \begin{example}
      Here are several examples of inner product spaces.
       \begin{enumerate}
            \item $V=\mathbb{R}^{n} $, where we define 
-           \[<x,y>=<\begin{pmatrix}
+           \[\langle x ,y \rangle =\langle \begin{pmatrix}
            x_1\\\vdots\\x_n
            \end{pmatrix}, \begin{pmatrix}
            y_1\\\vdots\\y_n
-           \end{pmatrix}
+           \end{pmatrix}\rangle
            =\sum_{i=1}^{n}x_i y_i
            .\]
-           \item $V=\mathbb{C}^n$, $<x,y>=\sum_{i=1}^{n}x_i \overline{y_i} $.
+           \item $V=\mathbb{C}^n$, $\langle x ,y \rangle =\sum_{i=1}^{n}x_i \overline{y_i} $.
            \item $V=C^{0} \left([0,1],\mathbb{C}\right)$. We define 
-           \[<f,g>=\int_{0}^{1}f \left(t\right)\overline{g \left(t\right)} \ dt.\]
+           \[\langle f,g \rangle =\int_{0}^{1}f \left(t\right)\overline{g \left(t\right)} \ dt.\]
            \item We can fix a weight $\omega: [0,1] \rightarrow \mathbb{R}^*_+$ and define on $V=C^{0} \left([0,1],\mathbb{C}\right)$ 
-           \[<f,g>=\int_{0}^{1}f \left(t\right)\overline{g \left(t\right)} \omega \left(t\right) \ dt.\]
+           \[\langle f,g \rangle =\int_{0}^{1}f \left(t\right)\overline{g \left(t\right)} \omega \left(t\right) \ dt.\]
       \end{enumerate}
       One can check that all these examples are inner products. The only non-trivial thing that needs to be checked in this case is the positive definite property: 
-      \[<u,u>=0 \implies u=0.\]
+      \[\langle u,u \rangle =0 \implies u=0.\]
 \end{example}
 \begin{remark}
       The study of $L^2$ spaces is the heart of the definition of a new integral, the Lebesgue integral.
@@ -521,7 +521,7 @@ We will find that positive definite bilinear forms will be useful for a form of 
 
 \begin{definition}[Norm/length]
       We define the \vocab{norm} of $v$ by 
-      \[||v||=\sqrt{<v,v>}.\]
+      \[||v||=\sqrt{\langle v,v \rangle }.\]
 \end{definition}
 \begin{remark}
       We say that the norm derives from a scalar product.
@@ -529,24 +529,24 @@ We will find that positive definite bilinear forms will be useful for a form of 
 \subsubsection{Gram-Schmidt}
 \begin{theorem}[Cauchy-Schwarz inequality]
       In an inner product space, 
-      \[|<u,v>|\leq ||u||||v||.\]
+      \[|\langle u,v \rangle |\leq ||u||||v||.\]
       
 \end{theorem}
 \begin{proof}
       We have $F=\mathbb{R}$ or $\mathbb{C}$. Let $t \in F$, then 
       \begin{equation*}
             \begin{split}
-               0 \leq ||tu-v||^2 &=<tu-v,tu-v>\\
-               &=t \overline{t} <u,u>-t<u,v>-\overline{t} <v,u>+||v||^2\\
-               &=|t|^2 ||u||^2-2 \operatorname{Re}(t<u,v>)+||v||^2.
+               0 \leq ||tu-v||^2 &=\langle tu-v,tu-v \rangle \\
+               &=t \overline{t} \langle u,u \rangle -t\langle u,v \rangle -\overline{t} \langle v,u \rangle +||v||^2\\
+               &=|t|^2 ||u||^2-2 \operatorname{Re}(t\langle u,v \rangle )+||v||^2.
             \end{split}
       \end{equation*}
       We now choose explicitly 
-      \[t=\frac{\overline{<u,v>} }{||u||^2}.\]
+      \[t=\frac{\overline{\langle u,v \rangle } }{||u||^2}.\]
       This gives 
-      \[0 \leq \frac{|<v,u>|^2}{||u||^4}||u||^2-2 \operatorname{Re}\left(\frac{|<u,v>|^2}{||u||^2}\right)+||v||^2\]
-      \[\implies 0 \leq ||v||^2-\frac{|<v,u>|^2}{||u||^2}\]
-      \[\implies |<v,u>|^2 \leq ||v||^2 ||u||^2.\]
+      \[0 \leq \frac{|\langle v,u \rangle |^2}{||u||^4}||u||^2-2 \operatorname{Re}\left(\frac{|\langle u,v \rangle |^2}{||u||^2}\right)+||v||^2\]
+      \[\implies 0 \leq ||v||^2-\frac{|\langle v,u \rangle |^2}{||u||^2}\]
+      \[\implies |\langle v,u \rangle |^2 \leq ||v||^2 ||u||^2.\]
 \end{proof}
 \begin{remark}
       It is left as an exercise to show that equality holds iff the vectors $u,v$ are collinear.
@@ -558,9 +558,9 @@ We will find that positive definite bilinear forms will be useful for a form of 
 \begin{proof}
      \begin{equation*}
            \begin{split}
-                ||u+v||&=<u+v,u+v> \\
-                &=||u||^2+ 2 \operatorname{Re}<v,u> +||v||^2\\
-                & \leq ||u||^2+2 |<u,v> |+||v||^2\\
+                ||u+v||&=\langle u+v,u+v \rangle  \\
+                &=||u||^2+ 2 \operatorname{Re}\langle v,u \rangle  +||v||^2\\
+                & \leq ||u||^2+2 |\langle u,v \rangle  |+||v||^2\\
                 & \leq ||u||^2+2 ||u||||v||+||v||^2 \text{ by Cauchy-Scwarz} \\
                 &=\left(||u||+||v||\right)^2.
            \end{split}
@@ -572,8 +572,8 @@ We will find that positive definite bilinear forms will be useful for a form of 
 \begin{definition}[Orthogonal/orthonormal family]
       A set $\left(e_1, \ldots ,e_k\right)$ of vectors of $V$ is 
       \begin{itemize}
-           \item[(i)] \vocab{orthogonal} if $<e_i,e_j> =0 \ \forall i \neq j$
-           \item[(ii)] \vocab{orthonormal} if $<e_i,e_j> =\delta_{ij} \ \forall i,j$
+           \item[(i)] \vocab{orthogonal} if $\langle e_i,e_j \rangle  =0 \ \forall i \neq j$
+           \item[(ii)] \vocab{orthonormal} if $\langle e_i,e_j \rangle  =\delta_{ij} \ \forall i,j$
       \end{itemize}
 \end{definition}
 
@@ -582,32 +582,35 @@ We will find that positive definite bilinear forms will be useful for a form of 
       \begin{itemize}
            \item[(i)] they are linearly independent.
            \item[(ii)] Moreover, writing $v=\sum_{j=1}^{k}\lambda_j e_j$, then 
-           \[\lambda_j=\frac{<v,e_j> }{||e_j||^2}.\]
+           \[\lambda_j=\frac{\langle v,e_j \rangle  }{||e_j||^2}.\]
       \end{itemize} 
 \end{lemma}
 \begin{proof}
      From the definitions:
      \begin{itemize}
-          \item[(i)]\[\sum_{i=1}^{k}\lambda_i e_i=0 \implies 0=<\sum_{i=1}^{k}\lambda_i e_i,e_j> =\sum_{i=1}^{k}\lambda_i <e_i,e_j>= \lambda_j ||e_j||^2 \implies \lambda_j=0 \forall 1 \leq j \leq k. \]
+          \item[(i)]Let us take $\sum_{i=1}^{k}\lambda_i e_i=0$. Then
+          \begin{align*}
+               0&= \langle \sum_{i=1}^{k}\lambda_i e_i,e_j \rangle \\&=\sum_{i=1}^{k}\lambda_i \langle e_i,e_j \rangle \\&= \lambda_j ||e_j||^2 \\&\implies \lambda_j=0 \ \ \forall 1 \leq j \leq k.
+          \end{align*}
           \item[(ii)] If $v=\sum_{i=1}^{k}\lambda_i e_i$, then 
-          \[<v,e_j> =<\sum_{i=1}^{k}\lambda_i e_i,e_j>=\sum_{i=1}^{k}\lambda_i <e_i,e_j> =\lambda_j ||e_j||^2 .\]
-          \[\implies \lambda_j=\frac{<v,e_j> }{||e_j||^2}.\]
+          \[\langle v,e_j \rangle  =\langle \sum_{i=1}^{k}\lambda_i e_i,e_j \rangle=\sum_{i=1}^{k}\lambda_i \langle e_i,e_j \rangle  =\lambda_j ||e_j||^2 .\]
+          \[\implies \lambda_j=\frac{\langle v,e_j \rangle  }{||e_j||^2}.\]
      \end{itemize}
       
 \end{proof}
 
 \begin{lemma}[Parseval's identity]
       If $V$ is a finite dimensional inner product space, and $\left(e_1, \ldots ,e_n\right)$ is an \emph{orthonormal} basis, then 
-      \[<u,v> =\sum_{i=1}^{n}<u,e_i> \overline{<v,e_i> } .\]
+      \[\langle u,v \rangle  =\sum_{i=1}^{n}\langle u,e_i \rangle  \overline{\langle v,e_i \rangle  } .\]
       In particular, 
-      \[||u||^2 =\sum_{i=1}^{n}|<u,e_i>|^2.\]
+      \[||u||^2 =\sum_{i=1}^{n}|\langle u,e_i \rangle |^2.\]
 \end{lemma}
 
 \begin{proof}
      By the previous lemma with $||e_i||=1$, 
-     \[u= \sum_{i=1}^{n}<u,e_i>  e_i, \ v= \sum_{i=1}^{n}<v,e_i> e_i.\]
+     \[u= \sum_{i=1}^{n}\langle u,e_i \rangle   e_i, \ v= \sum_{i=1}^{n}\langle v,e_i \rangle  e_i.\]
      Therefore 
-     \[<u,v> =<\sum_{i=1}^{n}<u,e_i>  e_i,\sum_{i=1}^{n}<v,e_i> e_i>=\sum_{i=1}^{n}<u,e_i> \overline{<v,e_i> }.\]
+     \[\langle u,v \rangle  =\langle \sum_{i=1}^{n}\langle u,e_i \rangle   e_i,\sum_{i=1}^{n}\langle v,e_i \rangle  e_i \rangle=\sum_{i=1}^{n}\langle u,e_i \rangle  \overline{\langle v,e_i \rangle  }.\]
      (by orthonormality, and since our form is sesquilinear). Setting $u=v$ recovers our other result.
 \end{proof}
 
@@ -621,15 +624,15 @@ We will find that positive definite bilinear forms will be useful for a form of 
       If $k=1$, then $e_1=\frac{v_1}{||v_1||} \ \left(v_1 \neq 0\right)$. For the general case, say we have found $\left(e_1, \ldots ,e_k\right)$ orthonormal with 
       \[\operatorname{span} \{v_1,\ldots ,v_k\}=\operatorname{span} \{e_1,\ldots ,e_k\}.\]
       Let us compute $e_{k+1}$. We define 
-      \[e_{k+1}=v_{k+1}-\sum_{i=1}^{k}<v_{k+1},e_i>e_i .\]
+      \[e_{k+1}=v_{k+1}-\sum_{i=1}^{k}\langle v_{k+1},e_i \rangle e_i .\]
       Geometrically, we are projecting $v_{k+1}$ onto the plane spanned by $\left(e_1, \ldots , e_k\right)$.[drawing] Note that $e_{k+1} \neq 0$, as otherwise 
       \[v_{k+1} \in \operatorname{span} \{e_1,\ldots ,e_k\}=\operatorname{span} \{v_1,\ldots ,v_k\},\]
       a contradiction. Now take $j \in \{1,\ldots ,k\}$, then 
       \begin{equation*}
           \begin{split}
-               <e_{k+1},e_j>&=<v_{k+1}-\sum_{i=1}^{k}<v_{k+1},e_i>e_i,e_j>\\
-               &=<v_{k+1},e_j> - \sum_{i=1}^{k}<v_{k+1},e_j> \underbrace{<e_i,e_j>}_{=\delta_{ij}}\\
-               &=<v_{k+1},e_j>-<v_{k+1},e_j>=0.
+               \langle e_{k+1},e_j \rangle&=\langle \left(v_{k+1}-\sum_{i=1}^{k}\langle v_{k+1},e_i \rangle e_i\right) ,e_j \rangle \\
+               &=\langle v_{k+1},e_j \rangle - \sum_{i=1}^{k}\langle v_{k+1},e_j \rangle \underbrace{\langle e_i,e_j \rangle}_{=\delta_{ij}}\\
+               &=\langle v_{k+1},e_j \rangle-\langle v_{k+1},e_j \rangle=0.
           \end{split}
       \end{equation*}
       So $e_{k+1}$ is orthogonal to $e_j$ for all $1 \leq j \leq k$. Thus 
@@ -670,7 +673,7 @@ We will find that positive definite bilinear forms will be useful for a form of 
       Let $V$ be an inner product space, and $V_1, V_2 \leq V$. We say that $V$ is the \vocab{orthogonal direct sum} of $V_1$ and $V_2$ if 
       \begin{enumerate}
            \item $V=v_1 \oplus V_2$.
-           \item $\forall (v_1,v_2) \in V_1 \times V_2: \ <v_1,v_2>=0 $.
+           \item $\forall (v_1,v_2) \in V_1 \times V_2: \ \langle v_1 ,v_2 \rangle =0 $.
       \end{enumerate}
 \end{definition}
 \begin{remark}
@@ -678,6 +681,275 @@ We will find that positive definite bilinear forms will be useful for a form of 
 \end{remark}
 \begin{definition}[Orthogonal complement]
       For $V$ an inner product space and $W \leq V$, the \vocab{orthogonal complement} of $W$ in $V$ is 
-      \[W^{\perp}=\{v \in V: \ \forall w \in W, \ <v,w>=0 \}.\]
+      \[W^{\perp}=\{v \in V: \ \forall w \in W, \ \langle v,w \rangle =0 \}.\]
 \end{definition}
+
+\begin{lemma}
+      Let $V$ be a finite dimensional inner product space, and $W \leq V$. Then 
+      \[V=W \oplus W^{\perp}.\]
+\end{lemma}
+\begin{proof}
+     If $\omega \in W, \omega \in W^\perp$ then 
+     \[||\omega||^2=\langle \omega,\omega \rangle  =0 \implies \omega=0.\]
+     We need to show $V=W+W^\perp$. Let $\left(e_1, \ldots ,e_k\right)$ be an orthonormal basis of $W$. Extend it to an orthonormal basis of $V$: $(e_1,\ldots ,e_k, e_{k+1},\ldots ,e_n)$. Observe that $(e_{k+1},\ldots ,e_n)\in W^\perp$. Therefore $V=W+W^\perp$.
+\end{proof}
+\begin{remark}
+      To make sense of this in infinite dimensions we would have to introduce a notion of \emph{topology}.
+\end{remark}
+\subsection{Orthogonal complement / adjoint map}
+\begin{definition}[Projection map]
+     Suppose we can decompose a vector space $V$ as $V=U \oplus W$. ($U$ is a \vocab{complement} of $W$ in $V$). Now define 
+     \[\pi: V \rightarrow W, \pi(v)=\pi(u+w)=w.\]
+     We have that $\pi$ is well-defined, linear, and $\pi^2=\pi$. We say that $\pi$ is the \vocab{projection operator} onto $W$.
+\end{definition}
+\begin{remark}
+     $\operatorname{Id}-\pi$ is the projection onto $U$. We can make the project map very explicit when $U=W^\perp$, and $V$ is an inner product space.
+\end{remark}
+
+\begin{lemma}
+      Let $V$ be an inner product space. Let $W \leq V$ be finite dimensional. Let $(e_1, \ldots ,e_k)$ be an orthonormal basis of $W$. Then 
+      \begin{itemize}
+           \item[(i)] $\pi (v)=\sum_{i=1}^{k}\langle v,e_i\rangle  e_i  \ \forall v \in V $
+           \item[(ii)] For all $v \in V$, for all $\omega in W$, we have 
+           \[||v-\pi (v)||\leq ||v-\omega||,\]
+           with equality iff $\omega=\pi (v)$. ($\pi (v)$ is the point in $W$ which is closest to $v$.)
+      \end{itemize}
+\end{lemma}
+\begin{proof}
+     We prove both statements.
+      \begin{itemize}
+           \item[(i)]We define $\pi (v)= \sum_{i=1}^{k}\langle v,e_i \rangle e_i$. Since $W=\operatorname{span}\{e_1,\ldots ,e_k\}$, $\pi (v) \in W$. We write 
+           \[v=\underbrace{v-\pi (v)}_{\in W^\perp}+\underbrace{\pi (v)}_{\in W}.\]
+           Since we have claimed that $v-\pi (v) \in W^\perp$, we need to show for all $\omega \in W$, $\langle v-\pi (v), \omega \rangle =0$. This happens iff for all $1 \leq j \leq k$, 
+           \[\langle v-\pi (v),\omega \rangle=0 .\]
+           But 
+           \begin{align*}
+                \langle v-\pi (v), e_j \rangle &=\langle v,e_j \rangle -\langle \sum_{i=1}^{k}\langle v,e_i \rangle e_i,e_j \rangle\\&=\langle v,e_j \rangle - \sum_{i=1}^{k}\langle v,e_i \rangle \underbrace{\langle e_i,e_j \rangle }_{=\delta_{ij}}\\&=\langle v,e_j \rangle -\langle v,e_j \rangle \\&=0
+           \end{align*}
+           So our claim is true and hence $V=W +W^\perp$. Since $W \cap W^\perp=\{0\},$ we have $V=W \oplus W^\perp$.
+           \item[(ii)] Let $v \in V$, $w \in W$, and let us compute 
+           \begin{align*}
+                ||v-\omega||^2&=||\underbrace{v-\pi (v)}_{\in W^\perp}+\underbrace{\pi (v)-\omega}_{\in W}||^2\\
+                &=||v-\pi (v)||^2+ ||\pi (v)-\omega||^2\\
+                \geq ||v-\pi (\omega)||^2
+           \end{align*}
+          with equality iff $\omega=\pi (v)$.
+      \end{itemize}
+\end{proof}
+
+\begin{definition}[Adjoint map]
+      Let $V,W$ be finite dimensional inner product spaces and let $\alpha \in L (V,W)$. Then there is a unique linear map $\alpha^* : W \rightarrow V$ such that for all $(v,w) \in V \times W$, 
+      \[\langle \alpha (v),w \rangle =\langle v,\alpha^* (w) \rangle .\]
+      Moreover, if $B$ is an orthonormal basis of $V$ and $C$ is an orthonormal basis of $W$, then 
+      \[[\alpha^*]_{C,B}=(\overline{[\alpha]_{B,C}} )^T.\]
+\end{definition}
+\begin{proof}
+      We just do a brute force computation. Let $B =\{v_1, \ldots , v_n \} $ and $C= \{ \omega_1, \ldots , \omega_m\}$. Let $A=[\alpha]_{B,C}=(a_{ij})$. Let $C$ be the matrix be defined by $c_{ij}=\overline{a_{ij}} $. We compute 
+      \begin{align*}
+          \langle \alpha (\sum \lambda_i v_i), \sum \mu_i \omega_i \rangle &=\langle \sum_{i,k} a_{ki} \omega_k, \sum \mu_j \omega_j  \rangle \\
+          &=\sum_{i,j} \lambda_i a_{ji} \overline{\mu_j} \text{ by orthonormality of } \omega_i.
+      \end{align*}
+      Then we also have 
+      \begin{align*}
+           \langle \sum_{i} \lambda_i v_i, \alpha^* \left( \sum_j \mu_J \omega_j \right) \rangle &=\langle \sum_{i} \lambda_i v_i, \sum_{j,k} \mu_j c_{kj}v_k \rangle \\&= \sum_{i,j}\lambda_i \overline{c_{ij}} \overline{\mu_j} 
+      \end{align*}
+      Therefore $\overline{c_{ij}} = a_{ij}$ so we have existence, and uniqueness also follows as our two expressions are equal iff $\omega_j=a_{ji}$.  
+\end{proof}
+\begin{remark}
+      We denote $\overline{A} ^T=A^\dagger$. We are using the same notation $\alpha^*$ for both the adjoint and the dual map. We can check that if $V,W$ are real product inner spaces and $\alpha \in L (V,W)$, then we can define 
+      \[\psi_{R,V}: V \rightarrow V^{*}, v \rightarrow \langle .,v \rangle\]
+      and 
+      \[\psi_{R,W}: W \rightarrow W^{*}, \omega \rightarrow \langle .,\omega \rangle.\]
+      we can then find that the adjoint of $\alpha$ is given by: 
+      \[W \underset{\psi_{R,W}}{\rightarrow }W^* \underset{\text{dual of } \alpha}{\rightarrow }V^* \underset{{\psi_{R,V}}^{-1}}{\rightarrow }V.\]
+\end{remark}
+
+\subsection{Self-adjoint maps and isometries}
+
+\begin{proposition}
+      Let $V$ be an inner product space, and $\alpha \in L (V)$. Let $\alpha^* \in L (V)$ be the adjoint map. Then the following are equivalent:
+      \begin{enumerate}
+           \item For all $(v,w) \in V \times V$, $\langle \alpha v,w \rangle =\langle (v),\alpha (w) \rangle $.
+           \item $\alpha=\alpha^*$
+      \end{enumerate}
+      We call the map $\alpha$ \vocab{self-adjoint}. In $\mathbb{R}$ we call it symmetric, and in $\mathbb{C}$ we call it Hermitian.   
+\end{proposition}
+
+\begin{proposition}
+     Let $V$ be an inner product space, and $\alpha \in L (V)$. Let $\alpha^* \in L (V)$ be the adjoint map. Then the following are equivalent:
+     \begin{enumerate}
+          \item For all $(v,w) \in V \times W$, $\langle \alpha (v), \alpha (w)\rangle =\langle v,w \rangle $.
+          \item $\alpha={\alpha^*}^{-1}$.
+     \end{enumerate}
+     We call the map an \vocab{isometry}. In $\mathbb{R}$ we call it orthogonal, and in $\mathbb{C}$ we call it unitary.
+\end{proposition}
+\begin{proof}
+      Prove both directions.\newline 
+      \textbf{1 $\implies$ 2:}\newline 
+      $\langle \alpha (v), \alpha (w) \rangle =\langle v,w \rangle$ 
+      Now take $v=w$. $\implies ||\alpha (v)||^2=||v||^2$. Therefore $\operatorname{ker} \alpha=\{0\}$, and hence $\alpha$ is bijective (since we are in finite dimension). So ${\alpha}^{-1}$ is well defined. Then for all $(v,w)\in V \times V$, 
+      \[\langle v,\alpha^* (w) \rangle =\langle \alpha (v), w \rangle =\langle \alpha (v), \alpha ({\alpha}^{-1}(w)) \rangle =\langle v,{\alpha}^{-1}(w)w \rangle .\]
+      We have show that for all $v$ and $w$, 
+      \[\langle v, (\alpha^* - {\alpha}^{-1})w \rangle =0.\]
+      Thus if we choose $v=(\alpha^* - {\alpha}^{-1})w$, $||(\alpha^* - {\alpha}^{-1})w||^2=0$. So for all $w$, $(\alpha^* - {\alpha}^{-1})w=0$. So we can conclude that $\alpha^*={\alpha}^{-1}$.\newline 
+      \textbf{2 $\implies$ 1:}\newline 
+     If we have that $\alpha={\alpha^*}^{-1}$, then 
+     \[\langle \alpha (v), \alpha (w) \rangle =\langle v, \alpha (\alpha^* (w)) \rangle=\langle v, \alpha ({\alpha}^{-1} (w)) \rangle= \langle v,w \rangle.\]
+\end{proof}
+\begin{remark}
+      Using the polarisation identity, we can show that if $\alpha$ is an isometry if and only if for all $v \in V$, $||\alpha (v)||=||v||$ (it preserves the norm).
+\end{remark}
+
+\begin{lemma}
+      Let $V$ be a finite dimensional real (complex) inner product space. Then given an $\alpha \in L (V)$, $\alpha$:
+      \begin{itemize}
+           \item[(i)] is self-adjoint iff for \emph{any} orthonormal basis $B$ of $V$, $[\alpha]_B$ is symmetric (Hermitian).
+           \item[(ii)] is an isomety iff for \emph{any} orthonormal basis of $V$, $[\alpha]_B$ is orthogonal (unitary).
+      \end{itemize}
+\end{lemma}
+\begin{proof}
+      If $B$ is an orthonormal basis of $V$, we have that $[\alpha^*]_B=(\overline{[\alpha]_B})^T $.\newline 
+     In (i) we have that $(\overline{[\alpha]_B} )^T=[\alpha]_B$, and in (ii) we have that $(\overline{[\alpha]_B} )^T={[\alpha]_B}^{-1}$.
+\end{proof}
+\begin{definition}[Orthogonal/unitary group]
+      Let $V$ be a finite dimensional inner product space.\newline 
+     In $\mathbb{R}$ we define the \vocab{orthogonal group} of $V$ by 
+      \[O (V)=\{\alpha \in L (V): \ \alpha \text{ is an isometry} \}.\]
+      In $\mathbb{C}$ we define the \vocab{unitary group} of $V$ by 
+      \[U (V)=\{\alpha \in L (V): \ \alpha \text{ is an isometry} \}.\]
+\end{definition}
+\subsection{Self-adjoint maps}
+\subsubsection{Spectral theory for self-adjoint operators}
+\begin{lemma}
+      Let $V$ be a finite dimensional inner product space. Let $\alpha \in L (V)$ be self-adjoint. Then
+      \begin{enumerate}
+           \item $\alpha $ has real eigenvalues.
+           \item The eigenvalues of $\alpha$ wrt. different eigenvalues are orthogonal.
+      \end{enumerate}
+\end{lemma}
+\begin{proof}
+      \begin{enumerate}
+           \item Let $\lambda \in \mathbb{C}$, $v \in V\setminus \{0\}$. Suppose $\alpha (v)= \lambda v$. Then 
+           \begin{align*}
+                \lambda ||v||^2&=\langle \lambda v,v \rangle\\
+                &=\langle \alpha (v), v \rangle \\
+                &=\langle v, \alpha (v) \rangle =\langle v,\lambda v \rangle \\&= \overline{\lambda} ||v^2||\\
+                &\implies (\lambda-\overline{\lambda} )||v||^2=0\\
+                &\implies \lambda=\overline{\lambda}  \implies \lambda \in \mathbb{R}.
+           \end{align*}
+           \item Let us consider two eigenvectors $v,w$ for different eigenvalues $\lambda, \mu $ respectively. Then
+           \begin{align*}
+                \lambda \langle v,w \rangle &=\langle \lambda v,w \rangle
+                =\langle \alpha (v), w \rangle \\
+                &=\langle v, \alpha (w) \rangle = \langle v, \mu w \rangle \\
+                &=\overline{\mu} \langle v,w \rangle =\mu \langle v,w \rangle.
+           \end{align*}
+           Since $\lambda \neq \mu$, we have $\langle v,w \rangle =0$.
+      \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Spectral theorem for self-adjoint operators]
+      Let $V$ be a finite dimensional inner product space. Let $\alpha \in L (V)$ be self-adjoint. Then $V$ has an orthonormal basis of eigenvectors of $\alpha$. This implies that $\alpha$ is diagonalisable.
+\end{theorem}
+\begin{proof}
+      Let $F=\mathbb{R}$ or $\mathbb{C}$. We argue on induction on the dimension of $V$. The $n=1$ case is trivial. Suppose it holds for $n-1$ dimensions. Say $A=[\alpha]_B$ with respect to the fundamental basis $B$. By the Fundamental Theorem of Algebra, we know that the characteristic polynomial $\chi_A (\lambda)$ has a root. This root is an eigenvalue of $\alpha$, and so it is real. Let us call this real eigenvalue $\lambda \in \mathbb{R}$. Pick an eigenvector $v_1 \in V \setminus \{0\}$ such that 
+      \[\alpha (v_1)= \lambda v_1, ||v_1||=1.\]
+      Let $U=\langle v_1 \rangle^\perp \leq V$/
+      The key observation is that $\alpha (U) \leq U$. Indeed, let $u \in U$, then 
+      \[\langle \alpha (u), v_1 \rangle =\langle u,\alpha (v_1) \rangle =\langle u, \lambda v_1 \rangle =\lambda \langle u,v_1 \rangle =0.\]
+      Therefore $\alpha (u)\perp v_1 \implies \alpha (u) \in U$. Hence we may consider $\alpha|_U \in L (U)$ which is also self-adjoint, and 
+      \[n=\operatorname{dim}V=\operatorname{dim}U+1.\]
+      Therefore $\operatorname{dim}U \leq n-1$, so we apply our induction hypothesis: there exist an orthonormal basis $(v_2,\ldots v_n)$ of eigenvectors of $\alpha|_U$. Since $V=\langle v_1 \rangle \oplus U$, we have that $(v_1,v_2, \ldots , v_n)$ is an orthonormal basis of $V$.
+\end{proof}
+\begin{corollary}
+     If $V$ is a finite dimensional inner product space and $\alpha \in L (V)$ is self-adjoint, then $V$ is the orthogonal direct sum of all the eigenspaces of $\alpha$.
+\end{corollary}
+\begin{proof}
+      Immediate.
+\end{proof}
+
+\subsection{Spectral theory for unitary maps}
+\begin{lemma}
+      Let $V$ be a \emph{complex} inner product space. Let $\alpha \in L (V)$ be unitary ($\alpha={\alpha^*}^{-1}$). Then
+      \begin{itemize}
+           \item[(i)]All eigenvalues of $\alpha$ lie on the unit circle.
+           \item[(ii)]Eigenvectors corresponding to different eigenvectors are orthogonal. 
+      \end{itemize}
+\end{lemma}
+
+\begin{proof}
+      \begin{itemize}
+           \item[(i)] Let $\lambda \in \mathbb{C}$ and $v \in V \setminus \{0\}$ such that $\alpha (v)=\lambda v$. Note that $\lambda \neq 0$, since we showed that unitary maps are invertible ($\operatorname{ker}\alpha =0$). We compute 
+           \[\lambda \langle v,v \rangle =\langle \lambda v, v \rangle =\langle \alpha (v), v \rangle =\langle v,\alpha^* (v) \rangle =\langle v,{\alpha}^{-1} (v) \rangle .\]
+           Applying ${\alpha}^{-1}$, we have $v=\lambda{\alpha}^{-1}(v)$. Thus 
+           \[\lambda \langle v,v \rangle =\langle v, {\alpha }^{-1}(v) \rangle=\langle v,\frac{1}{\lambda}v \rangle =\frac{1}{\overline{\lambda} }\langle v,v \rangle .\]
+           So 
+           \begin{equation*}
+                 (\lambda \overline{\lambda}-1 ) ||v||^2=0 \implies |\lambda|=1.
+           \end{equation*}
+          \item[(ii)]Let us take two evecs $v,w$ with distinct eigenvalues $\lambda, \mu $ respectively. Then 
+          \[\lambda \langle v,w \rangle =\langle \lambda v, w \rangle =\langle \alpha (v), w \rangle =\langle v, \alpha^* (w) \rangle =\langle v, {\alpha}^{-1} (w) \rangle =\langle v,\frac{1}{\mu}w \rangle=\frac{1}{\overline{\mu} } \langle v,w \rangle .\]
+          Thus $(\lambda-\mu) \langle v,w \rangle =0$. Since $\lambda \neq \mu$, $\langle v,w \rangle =0$.
+           
+      \end{itemize}
+\end{proof}
+
+\begin{theorem}[Spectral theorem for unitary maps]
+      Let $V$ be a finite $n$-dimensional \emph{complex} inner product space. Let $\alpha \in L (V)$ be unitary. Then $V$ has an orthonormal basis consisting of eigenvectors of $\alpha $.
+\end{theorem}
+\begin{proof}
+      This is very similar to the self-adjoint case. Take $A=[\alpha]_B$, where $B$ is an orthonormal basis. Let $\chi_A (\lambda)$ be our characteristic polynomial. It has a complex root, say $\lambda \in \mathbb{C}$. Fix $v_1 \in V \setminus \{0\}$ with $\alpha (v_1)= \lambda v_1$ and $||v_1||=1$. Letting $U=\langle v_1 \rangle ^\perp $ as in the previous proof, we can show that $\alpha (U) \leq U$. Hence $\alpha|_U \in L (U)$, which is unitary and $\operatorname{dim} U=n-1$. By the inductive hypothesis, we can find an orthonormal basis of $U$ composed of evecs of $\alpha|_U $ and then combine it with $v_1$ to get an orthonormal basis of $V$.
+\end{proof}
+
+\begin{remark}
+      We used the complex structure to assert that there is a complex eigenvalue. In general, a real valued orthonormal matrix $A$ with $A A^T=\operatorname{Id}$ CANNOT be diagonalised over $\mathbb{R}$.
+\end{remark}
+
+\begin{example}[Rotation in $\mathbb{R}^{2} $]
+      Consider the matrix 
+      \[A=\begin{pmatrix}
+      \cos (\theta)&- \sin (\theta)\\
+      \sin (\theta)&\cos (\theta)
+      \end{pmatrix}
+      .\]
+      This is clearly an orthogonal matrix. However 
+      \[\chi_A (\lambda)=(\cos (\theta)-\lambda)^2+\sin^2 (\theta).\]
+      The roots of this are $\lambda=e^{\pm i \theta}$, so the roots are not generally real.
+\end{example}
+
+\subsection{Applications to bilinear forms}
+\begin{corollary}
+     Let $A \in M_n (\mathbb{R})$ (resp. $M_n (\mathbb{C})$) be a symmetric (resp. Hermitian) matrix. Then there is an orthogonal (resp. unitary) matrix $B$ such that $P^TAP$ (resp. $P^\dagger AP$) is diagonal with real-valued entries.
+\end{corollary}
+\begin{proof}
+      Let $F=\mathbb{R}$ WLOG. Let $\langle  \rangle $ be the standard inner product over $\mathbb{R}^n$. Then $A \in L (F^n)$ is self-adjoint, hence we can find an orthonormal (for the standard inner product) basis $\mathcal{B} $ of $F^n$ such that $A$ is diagonal in that basis $\mathcal{B} =(v_1, \ldots ,v_n)$. Let 
+      \[P= (v_1 | \ldots |v_n) \iff P \text{unitary} \iff P^TP=\operatorname{Id}.\]
+      We know that ${P}^{-1}AP=D$, where $D$ is diagonal. Then 
+      \[P^TAP={P}^{-1}AP=D.\]
+      Its entries are real since the elements of $P$ on the diagonal, $(\lambda_i)_{1 \leq i \leq n}$ are real (eigenvalues of a symmetric operator).
+\end{proof}
+
+\begin{corollary}
+     Let $V$ be a finite $n$-dimensional real (resp. complex) inner product space. Let $\varphi: V \times V \rightarrow F$ be a symmetric (resp. Hermitian) form. Then there exists an orthonormal basis of $V$ such tht $\varphi$ in this basis is represented by a diagonal matrix.
+\end{corollary}
+
+\begin{proof}
+      Let $B=(v_1,\ldots ,v_n)$ be an orthonormal basis of $V$. Let $A=[\varphi]_B$. We know $A=A^T$ (resp. $A^\dagger$), and hence there is an orthogonal (unitary) matrix $P$ such that $P^TAP$ ($P^\dagger AP$) is diagonal, say $D$. Let $(v_i)$ be the $i$th row of $P^T$ ($P^\dagger$), then $(v_1,\ldots , v_n)$ is an orthonormal basis $B$ of $V$ and 
+      \[[\varphi]_B=D.\]
+      This is using the change of basis formula for bilinear forms.
+\end{proof}
+
+\begin{remark}
+      In this process, the diagonal entries of $P^TAP$ ($P^\dagger AP$) are the eigenvalues of $A$. Moreover, the signature $s (\varphi)=$ (no. positive evals of $A$)-(no. negative evals of $A$).
+\end{remark}
+
+\begin{corollary}[Simultaneous diagonalisation]
+     Let $V$ be a finite dimensional real (resp. complex) vector space. Let $\varphi, \psi : V \times V \rightarrow F$ be symmetric (resp. Hermitian) bilinear forms. Assume that $\varphi$ is positive definite. Then there exists a basis $(v_1, \ldots ,v_n)$ of $V$ with respect to which \emph{both} forms are represented by a diagonal matrix. 
+\end{corollary}
+\begin{proof}
+     The key point is that $\varphi$ is positive definite, which means that $V$ equipped with $\varphi$ is a finite dimensional inner product space. We define 
+     \[\langle u,v \rangle =\varphi (u,v).\]
+     Hence there exists an orthonormal (for the $\varphi$-induced scalar product) basis of $V$ in which $\psi$ is represented by a diagonal matrix (since it's symmetric). Observe that $\varphi$ in this basis is just the identity matrix (since $\varphi (v_i,v_j)=\langle v_i,v_j \rangle \delta_{ij}$). So we are done.
+\end{proof}
+
 \end{document}

@@ -1348,9 +1348,9 @@ INPUT c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcsx1440.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcsx1200.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcsx1095.tfm
