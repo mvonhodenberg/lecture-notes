@@ -27,7 +27,7 @@
 
 \maketitle
 
-This course focuses on linear algebra, a subject which is fundamental in mathematics and physics. This course will cover material which you have already encountered in IA Vectors and Matrices, but with more rigour; it also introduces many new important concepts.
+This course focuses on linear algebra, a subject which is fundamental in mathematics and physics. This course will formalise material which you have already encountered in IA Vectors and Matrices, and introduces many new objects and systems such as Jordan Normal Form and bilinear maps.
 
 This article constitutes my notes for the `IB Linear Algebra' course, held in Michaelmas 2021 at Cambridge. The course was lectured by Prof. Pierre Raphael.
 
@@ -38,7 +38,7 @@ This article constitutes my notes for the `IB Linear Algebra' course, held in Mi
 \section{Bilinear forms revisited}
 \begin{lemma}
     We have a bilinear form $\varphi: V \times V \rightarrow \mathbb{F}$, where $V$ is a finite vector space and $B, B'$ are bases of $V$. Let 
-    \[\varphi=[\operatorname{Id}]_{B,B'}.\]
+    \[P=[\operatorname{Id}]_{B,B'}.\]
      Then 
     \[[\varphi]_{B'}=P^T [\varphi]_B P.\]
 \end{lemma}
@@ -62,7 +62,7 @@ This article constitutes my notes for the `IB Linear Algebra' course, held in Mi
     \begin{enumerate}
         \item If $A$ is a square matrix, we say that $A$ is symmetric if $A^T=A$. Equivalently, $A_{ij}=A_{ji}$.
         \item $\varphi$ is symmetric iff $[\varphi]_B$ is symmetric in \emph{any} basis $B$.
-        \item To be able to represent $\varphi$ by a diagonal matrix in some basis $B$, it is necesssary that $\varphi$ is symmetric: 
+        \item To be able to represent $\varphi$ by a diagonal matrix in some basis $B$, it is necessary that $\varphi$ is symmetric: 
         \[P^T AP=D=D^T=P A^T P^T \implies A=A^T \implies \varphi \text{ is symmetric} .\]    
     \end{enumerate}
      
@@ -125,20 +125,21 @@ This article constitutes my notes for the `IB Linear Algebra' course, held in Mi
      \begin{itemize}
          \item If $\varphi (u,u)=0 \forall u \in V$, then $\varphi=0$ by the polarisation identity ($\varphi $ is symmetric).
          \item If $\varphi \neq 0$, then there exists a $u \in V \backslash \{0\}$ such that $\varphi (u,u) \neq 0$. Let us call $u=e_1$.
-         \item Let $U$ be the 'orthogonal' of $e_1$: 
+         \item Let $U$ be the 'orthogonal' of $\langle e_1 \rangle $: 
          \begin{equation*}
                \begin{split}
-                    U&=\{v \in V: \ \varphi (e_1,v)=0\}\\
+                    U&=\langle e_1 \rangle^\perp \\
+                    &=\{v \in V: \ \varphi (e_1,v)=0\}\\
                     &=\operatorname{ker} \theta \text{ where } \theta:V \rightarrow F \text{ is given by } \theta (v)= \varphi (e_1,v).
                \end{split}
          \end{equation*}
          Since it is a kernel of a linear map $V \rightarrow F$, $U$ is a vector subspace of $V$. By the Rank-Nullity theorem, we have 
          \[\operatorname{dim} V=n= r(\theta)+ \operatorname{null}  \theta=\operatorname{dim}U+1.\]
-         We now claim that $U+<e_1>=U \oplus <e_1>$. Indeed, 
-         \[v= <e_1> \cap U \implies v= \lambda e_1 \text{ and }  \varphi(e_1,v)=0 .\]
+         We now claim that $U+\langle e_1 \rangle =U \oplus \langle e_1 \rangle $. Indeed, 
+         \[v= \langle e_1 \rangle  \cap U \implies v= \lambda e_1 \text{ and }  \varphi(e_1,v)=0 .\]
          \[\implies 0=\varphi (e_1,v)=\varphi (e_1, \lambda e_1)=\lambda \varphi (e_1,e_1) \implies \lambda=0 \implies v=0.\]
-         \[\implies U+<e_1>=U \oplus <e_1>.\]
-         Therefore $V=U \oplus <e_1>$, and pick a basis $B'=(e_2, \ldots ,e_n)$ such that $(e_1, e_2, \ldots , e_n)$ is a basis of $V$ (since the sum is direct). So 
+         \[\implies U+\langle e_1 \rangle =U \oplus \langle e_1 \rangle .\]
+         Therefore $V=U \oplus \langle e_1 \rangle $, and pick a basis $B'=(e_2, \ldots ,e_n)$ such that $(e_1, e_2, \ldots , e_n)$ is a basis of $V$ (since the sum is direct). So 
          \[[\varphi]_B=(\varphi(e_i,e_j))_{1 \leq i,j \leq n}=\left(
           \begin{array}{c|c}
           \varphi (e_1,e_1) &0\\
@@ -202,8 +203,8 @@ This article constitutes my notes for the `IB Linear Algebra' course, held in Mi
 Recall our theorem that a symmetric bilinear form has a diagonal basis.
 
 \begin{corollary}
-    Let $F=\mathbb{C}$, and $\varphi$ be a symmetric bilinear form of rank $r$ on $V \times V$ where $\operatorname{dim}V=n$. Then there exists a basis $B$ of $V$ such that the matrix 
-    \[[\varphi]_B=\left(
+    Let $F=\mathbb{C}$, and $\varphi$ be a symmetric bilinear form of rank $r$ on $V \times V$ where $\operatorname{dim}V=n$. Then there exists a basis $B$ of $V$ such that the matrix $[\varphi]_B$ can be expressed in the form
+    \[\left(
     \begin{array}{c|c}
      I_r &0\\
      \hline
@@ -346,11 +347,17 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
            \right).\]
      Let $X=<v_1,\ldots ,v_p$. Then $\varphi $ is positive definite on $X$. If we take a $u \in X$ with $u=\sum_{i=1}^{p}\lambda_i v_i$, then 
      \[Q(u)= \varphi (u,u)=\varphi(\sum_{i=1}^{p}\lambda_i v_i,\sum_{j=1}^{p}\lambda_j v_j)=\sum_{i,j=1}^{p}\lambda_i \lambda_j \varphi (v_i,v_j)= \sum_{i=1}^{n} \lambda_i^2 .\]
-     This is >0 as long as $u \neq 0$. Suppose that $\varphi $ is positive definite on another subspace $X$. Let 
-     \[X=<v_1,\ldots ,v_p> , Y=<v_{p+1},\ldots ,v_n>.\]
+     This is $>0$ as long as $u \neq 0$. Suppose that $\varphi $ is positive definite on another subspace $X$. Let 
+     \[X=\langle v_1,\ldots ,v_p \rangle  , Y=\langle v_{p+1},\ldots ,v_n \rangle .\]
      Then arguing as above, looking at $[\varphi]_B$ we know that $\varphi$ is negative semidefinite on $Y$. This implies that 
-     \[Y \cap X'=\{0\}.\] Indeed, if $y \in Y \cap X$, then $Q(y)\leq 0$ since $y \in Y$, but this implies that $y=0$ since $y \in X$. Therefore 
-     \[Y+X= Y \oplus X \implies n=\operatorname{dim} V \geq \operatorname{dim} (Y+X) =\operatorname{dim}Y +\operatorname{dim}X \implies n \geq n-p+\operatorname{dim}X \implies \operatorname{dim X} \leq p.\]
+     $Y \cap X'=\{0\}$. Indeed, if $y \in Y \cap X$, then $Q(y)\leq 0$ since $y \in Y$, but this implies that $y=0$ since $y \in X$. Therefore 
+     \begin{align*}
+          &Y+X= Y \oplus X\\
+          &\implies n=\operatorname{dim} V \geq \operatorname{dim} (Y+X) =\operatorname{dim}Y +\operatorname{dim}X\\
+          &\implies n \geq n-p+\operatorname{dim}X\\
+          &\implies \operatorname{dim}X \leq p.
+     \end{align*}
+     
      Similarly, we show that $q$ is the largest dimension of a subspace on which $\varphi$ is negative definite. So we have a \emph{geometric characterisation} of $p$ and $q$, which concludes the proof.
 \end{proof}
 
@@ -361,7 +368,8 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
 \begin{remark}
      $\operatorname{dim} K + r (\varphi)=n$.
 \end{remark}
-One can show using the above notation that there is a subspace $T$ of dimension $m-(p+q)+\min p,q$ such that $\varphi_T=0$. The subspace we want to take consists of all the basis vectors that are killed by the lower corner of $[\varphi]_B$, but it also includes the 'cancellations' between $I_p$ and $-I_q$.\newline 
+One can show using the above notation that there is a subspace $T$ of dimension $m-(p+q)+\min p,q$ such that $\varphi_T=0$. The subspace we want to take consists of all the basis vectors that are killed by the lower corner of $[\varphi]_B$, but it also includes the 'cancellations' between $I_p$ and $-I_q$.
+
 Moreover, one can show that the dimension of $T$ is the largest possible dimension of such a subspace.
 \subsection{Sesquilinear forms}
 Recall that the standard inner product on $\mathbb{C}^n$ is 
@@ -472,9 +480,6 @@ We now return to $F=\mathbb{R}$.
       Let $V$ be a finite $n$-dimensional vector space over $\mathbb{R}$. Let $\varphi$ be a skew symmetric bilinear form over $V$. Then there exists a basis $B$ of $V$ such that 
       \[B=\left(v_1,w_1,v_2,w_2, \ldots v_m,w_m,v_{2m+1},v_{2m+2},\ldots ,v_n\right).\]
 \end{theorem}
-\begin{corollary}
-     Skew symmetric matrices have an even rank.
-\end{corollary}
 \begin{proof}
       We give a sketch proof as this proof is again similar to past proofs. We proceed by induction on the dimension of $V$.
       \begin{enumerate}
@@ -487,7 +492,9 @@ We now return to $F=\mathbb{R}$.
            \item Finally we show $V=U \oplus W$ and apply our inductive hypothesis.
       \end{enumerate}
 \end{proof}
-
+\begin{corollary}
+     Skew symmetric matrices have an even rank.
+\end{corollary}
 \section{Inner product spaces}
 We will find that positive definite bilinear forms will be useful for a form of inner product, which leads us to norms (notions of distance). Looking past this course, this extends to an infinite dimensional counterpart of Hilbert spaces in Part II Linear Analysis.
 \begin{definition}[Inner product]
@@ -508,9 +515,9 @@ We will find that positive definite bilinear forms will be useful for a form of 
            .\]
            \item $V=\mathbb{C}^n$, $\langle x ,y \rangle =\sum_{i=1}^{n}x_i \overline{y_i} $.
            \item $V=C^{0} \left([0,1],\mathbb{C}\right)$. We define 
-           \[\langle f,g \rangle =\int_{0}^{1}f \left(t\right)\overline{g \left(t\right)} \ dt.\]
+           \[\langle f,g \rangle =\int_{0}^{1}f (t)\overline{g (t)} \ dt.\]
            \item We can fix a weight $\omega: [0,1] \rightarrow \mathbb{R}^*_+$ and define on $V=C^{0} \left([0,1],\mathbb{C}\right)$ 
-           \[\langle f,g \rangle =\int_{0}^{1}f \left(t\right)\overline{g \left(t\right)} \omega \left(t\right) \ dt.\]
+           \[\langle f,g \rangle =\int_{0}^{1}\omega(t)f (t)\overline{g (t)}  \ dt.\]
       \end{enumerate}
       One can check that all these examples are inner products. The only non-trivial thing that needs to be checked in this case is the positive definite property: 
       \[\langle u,u \rangle =0 \implies u=0.\]
@@ -616,7 +623,7 @@ We will find that positive definite bilinear forms will be useful for a form of 
 Having proved these facts, we now turn our attention to an important result which will lead to us understanding bases of inner product spaces.
 \subsection{Gram-Schmidt orthogonalisation}
 \begin{theorem}[Gram-Schmidt orthogonalisation process]
-      Let $V$ be an inner product space. Let $\left(v_i\right)_{i \in I}$ such that $I$ is countable, and the $v_i$ are non-zero and linearly independent. Then there exists a family $\left(r_i\right)_{i \in I}$ of \emph{orthonormal} vectors such that 
+      Let $V$ be an inner product space. Let $\left(v_i\right)_{i \in I}$ such that $I$ is countable, and the $v_i$ are non-zero and linearly independent. Then there exists a family $\left(e_i\right)_{i \in I}$ of \emph{orthonormal} vectors such that 
       \[\forall k \geq 1, \operatorname{span} \{v_1,\ldots ,v_k\}=\operatorname{span} \{e_1,\ldots ,e_k\}.\]
 \end{theorem}
 
@@ -690,8 +697,8 @@ Having proved these facts, we now turn our attention to an important result whic
       \[V=W \oplus W^{\perp}.\]
 \end{lemma}
 \begin{proof}
-     If $\omega \in W, \omega \in W^\perp$ then 
-     \[||\omega||^2=\langle \omega,\omega \rangle  =0 \implies \omega=0.\]
+     If $w \in W, w \in W^\perp$ then 
+     \[||w||^2=\langle w,w \rangle  =0 \implies w=0.\]
      We need to show $V=W+W^\perp$. Let $\left(e_1, \ldots ,e_k\right)$ be an orthonormal basis of $W$. Extend it to an orthonormal basis of $V$: $(e_1,\ldots ,e_k, e_{k+1},\ldots ,e_n)$. Observe that $(e_{k+1},\ldots ,e_n)\in W^\perp$. Therefore $V=W+W^\perp$.
 \end{proof}
 \begin{remark}
@@ -710,9 +717,9 @@ Having proved these facts, we now turn our attention to an important result whic
       Let $V$ be an inner product space. Let $W \leq V$ be finite dimensional. Let $(e_1, \ldots ,e_k)$ be an orthonormal basis of $W$. Then 
       \begin{itemize}
            \item[(i)] $\pi (v)=\sum_{i=1}^{k}\langle v,e_i\rangle  e_i  \ \forall v \in V $
-           \item[(ii)] For all $v \in V$, for all $\omega in W$, we have 
-           \[||v-\pi (v)||\leq ||v-\omega||,\]
-           with equality iff $\omega=\pi (v)$. ($\pi (v)$ is the point in $W$ which is closest to $v$.)
+           \item[(ii)] For all $v \in V$, for all $w \in W$, we have 
+           \[||v-\pi (v)||\leq ||v-w||,\]
+           with equality iff $w=\pi (v)$. ($\pi (v)$ is the point in $W$ which is closest to $v$.)
       \end{itemize}
 \end{lemma}
 \begin{proof}
@@ -720,8 +727,8 @@ Having proved these facts, we now turn our attention to an important result whic
       \begin{itemize}
            \item[(i)]We define $\pi (v)= \sum_{i=1}^{k}\langle v,e_i \rangle e_i$. Since $W=\operatorname{span}\{e_1,\ldots ,e_k\}$, $\pi (v) \in W$. We write 
            \[v=\underbrace{v-\pi (v)}_{\in W^\perp}+\underbrace{\pi (v)}_{\in W}.\]
-           Since we have claimed that $v-\pi (v) \in W^\perp$, we need to show for all $\omega \in W$, $\langle v-\pi (v), \omega \rangle =0$. This happens iff for all $1 \leq j \leq k$, 
-           \[\langle v-\pi (v),\omega \rangle=0 .\]
+           Since we have claimed that $v-\pi (v) \in W^\perp$, we need to show for all $w \in W$, $\langle v-\pi (v), w \rangle =0$. This happens iff for all $1 \leq j \leq k$, 
+           \[\langle v-\pi (v),w \rangle=0 .\]
            But 
            \begin{align*}
                 \langle v-\pi (v), e_j \rangle &=\langle v,e_j \rangle -\langle \sum_{i=1}^{k}\langle v,e_i \rangle e_i,e_j \rangle\\&=\langle v,e_j \rangle - \sum_{i=1}^{k}\langle v,e_i \rangle \underbrace{\langle e_i,e_j \rangle }_{=\delta_{ij}}\\&=\langle v,e_j \rangle -\langle v,e_j \rangle \\&=0
@@ -729,11 +736,11 @@ Having proved these facts, we now turn our attention to an important result whic
            So our claim is true and hence $V=W +W^\perp$. Since $W \cap W^\perp=\{0\},$ we have $V=W \oplus W^\perp$.
            \item[(ii)] Let $v \in V$, $w \in W$, and let us compute 
            \begin{align*}
-                ||v-\omega||^2&=||\underbrace{v-\pi (v)}_{\in W^\perp}+\underbrace{\pi (v)-\omega}_{\in W}||^2\\
-                &=||v-\pi (v)||^2+ ||\pi (v)-\omega||^2\\
-                \geq ||v-\pi (\omega)||^2
+                ||v-w||^2&=||\underbrace{v-\pi (v)}_{\in W^\perp}+\underbrace{\pi (v)-w}_{\in W}||^2\\
+                &=||v-\pi (v)||^2+ ||\pi (v)-w||^2\\
+                \geq ||v-\pi (w)||^2
            \end{align*}
-          with equality iff $\omega=\pi (v)$.
+          with equality iff $w=\pi (v)$.
       \end{itemize}
 \end{proof}
 \subsection{The adjoint map}
@@ -759,7 +766,7 @@ Having proved these facts, we now turn our attention to an important result whic
       We denote $\overline{A} ^T=A^\dagger$. We are using the same notation $\alpha^*$ for both the adjoint and the dual map. We can check that if $V,W$ are real product inner spaces and $\alpha \in L (V,W)$, then we can define 
       \[\psi_{R,V}: V \rightarrow V^{*}, v \rightarrow \langle .,v \rangle\]
       and 
-      \[\psi_{R,W}: W \rightarrow W^{*}, \omega \rightarrow \langle .,\omega \rangle.\]
+      \[\psi_{R,W}: W \rightarrow W^{*}, w \rightarrow \langle .,w \rangle.\]
       we can then find that the adjoint of $\alpha$ is given by: 
       \[W \underset{\psi_{R,W}}{\rightarrow }W^* \underset{\text{dual of } \alpha}{\rightarrow }V^* \underset{{\psi_{R,V}}^{-1}}{\rightarrow }V.\]
 \end{remark}
@@ -920,15 +927,15 @@ Having proved these facts, we now turn our attention to an important result whic
      Let $A \in M_n (\mathbb{R})$ (resp. $M_n (\mathbb{C})$) be a symmetric (resp. Hermitian) matrix. Then there is an orthogonal (resp. unitary) matrix $B$ such that $P^TAP$ (resp. $P^\dagger AP$) is diagonal with real-valued entries.
 \end{corollary}
 \begin{proof}
-      Let $F=\mathbb{R}$ WLOG. Let $\langle  \rangle $ be the standard inner product over $\mathbb{R}^n$. Then $A \in L (F^n)$ is self-adjoint, hence we can find an orthonormal (for the standard inner product) basis $\mathcal{B} $ of $F^n$ such that $A$ is diagonal in that basis $\mathcal{B} =(v_1, \ldots ,v_n)$. Let 
-      \[P= (v_1 | \ldots |v_n) \iff P \text{unitary} \iff P^TP=\operatorname{Id}.\]
+      Let $F=\mathbb{R}$ WLOG. Let $\langle \ , \ \rangle $ be the standard inner product over $\mathbb{R}^n$. Then $A \in L (F^n)$ is self-adjoint, hence we can find an orthonormal (for the standard inner product) basis $\mathcal{B} $ of $F^n$ such that $A$ is diagonal in that basis $\mathcal{B} =(v_1, \ldots ,v_n)$. Let 
+      \[P= (v_1 | \ldots |v_n) \iff P \text{ is unitary} \iff P^TP=\operatorname{Id}.\]
       We know that ${P}^{-1}AP=D$, where $D$ is diagonal. Then 
       \[P^TAP={P}^{-1}AP=D.\]
       Its entries are real since the elements of $P$ on the diagonal, $(\lambda_i)_{1 \leq i \leq n}$ are real (eigenvalues of a symmetric operator).
 \end{proof}
 
 \begin{corollary}
-     Let $V$ be a finite $n$-dimensional real (resp. complex) inner product space. Let $\varphi: V \times V \rightarrow F$ be a symmetric (resp. Hermitian) form. Then there exists an orthonormal basis of $V$ such tht $\varphi$ in this basis is represented by a diagonal matrix.
+     Let $V$ be a finite $n$-dimensional real (resp. complex) inner product space. Let $\varphi: V \times V \rightarrow F$ be a symmetric (resp. Hermitian) form. Then there exists an orthonormal basis of $V$ such that $\varphi$ in this basis is represented by a diagonal matrix.
 \end{corollary}
 
 \begin{proof}
@@ -947,12 +954,17 @@ Having proved these facts, we now turn our attention to an important result whic
 \begin{proof}
      The key point is that $\varphi$ is positive definite, which means that $V$ equipped with $\varphi$ is a finite dimensional inner product space. We define 
      \[\langle u,v \rangle =\varphi (u,v).\]
-     Hence there exists an orthonormal (for the $\varphi$-induced scalar product) basis of $V$ in which $\psi$ is represented by a diagonal matrix (since it's symmetric). Observe that $\varphi$ in this basis is just the identity matrix (since $\varphi (v_i,v_j)=\langle v_i,v_j \rangle \delta_{ij}$). So we are done.
+     Hence there exists an orthonormal (for the $\varphi$-induced scalar product) basis of $V$ in which $\psi$ is represented by a diagonal matrix (since it's symmetric). Observe that $\varphi$ in this basis is just the identity matrix (since $\varphi (v_i,v_j)=\langle v_i,v_j \rangle= \delta_{ij}$). So we are done.
 \end{proof}
 \begin{corollary}[Simultaneous diagonalisation for matrices]
-     Let $A,B \in M_n (\mathbb{R})$ (resp. $M_n (\mathbb{C})$) that are symmetric (resp. Hermitian). Assume for all $x \neq 0$, $\overline{x} ^TAx>0 \ (\ast)$. Then there exists $Q \in M_n (\mathbb{R})$ (resp. $M_n (\mathbb{C})$) such that both matrices 
+     Let $A,B \in M_n (\mathbb{R})$ (resp. $M_n (\mathbb{C})$) that are symmetric (resp. Hermitian). Assume for all $x \neq 0$, 
+     \begin{equation}
+          \overline{x} ^TAx>0 \tag{$\ast$}
+     \end{equation}
+     
+      Then there exists $Q \in M_n (\mathbb{R})$ (resp. $M_n (\mathbb{C})$) such that both matrices 
      \[Q^TAQ, Q^TBQ\]
-     are diagonal
+     are diagonal.
 \end{corollary}
 \begin{proof}
       $(\ast)$ just expresses the fact that $A$ induces a positive definite symmetric bilinear form by $\overline{x} ^T Ax=\varphi (x,x)$. Then the proof follows from the previous result.
