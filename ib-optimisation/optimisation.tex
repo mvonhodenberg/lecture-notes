@@ -163,7 +163,7 @@ We call the direction $-\nabla f(x)$ the descending direction. (Note we could al
 		 \item Start at some point $x_0$. Set $t=0$.
 		 \item Repeat the following: 
 		 \begin{itemize}
-			 \item Find a descending direction $v_t$ (e.g $-\nabla f(x)$)
+			 \item Find a descending direction $v_t$ (e.g $-\nabla f(x_t)$)
 			 \item Choose a step size $\eta_t$ (can depend on $t$)
 			 \item Update $x_{t+1}=x_t+\eta_t v_t$
 		 \end{itemize}
@@ -437,7 +437,7 @@ Let's look at an example.
 	Let's look at $\lambda_1\leq 0, \lambda_2=1$.
 	\[\frac{d}{dx_1}(-(1+\lambda_2)x_1-\lambda_1 x_1^2)=-(1+\lambda_2)-2\lambda_1 x_1=0 \implies x_1=\frac{-1}{\lambda_1}.\]
 	Similarly, differentiating wrt. $x_2$ gives $x_2=\frac{-1}{\lambda_1}$. Can we pick $\lambda_1$ so that $(x_1,x_2)$ satisfy the constraints? We need 
-	$x_1^2+x_2^2=4, x_1 +x_2 +x_3 =1$.nl Therefore 
+	$x_1^2+x_2^2=4, x_1 +x_2 +x_3 =1$. Therefore 
 	\[x_1^2=x_2^2=2 \implies x_1=x_2=\sqrt{2}.\] 
 	Since $\lambda_1 \leq 0$, our optimiser is 
 	\[x=(\sqrt{2},\sqrt{2},1-2 \sqrt{2}).\]
@@ -512,7 +512,7 @@ Before we do this, however, let's start with a weaker theorem.
 
 The problem of maximising $g (\lambda)$ subject to $\lambda \in \Lambda$ is called the \vocab{dual problem}, and the problem of minimising $f (\lambda)$ subject to $x \in X(b)$ is called the \vocab{primal problem}.\newline 
 The \vocab{duality gap} is 
-\[\inf_{x \in X(b)}f(x)- \sup_{\lambda \in \Lambda}g (x).\]
+\[\inf_{x \in X(b)}f(x)- \sup_{\lambda \in \Lambda}g (\lambda).\]
 If the gap is 0, we say that \vocab{strong duality} holds.
 \begin{definition}[Hyperplane]
 	 A function $\phi: \mathbb{R}^{m} \to \mathbb{R} $ is said to have a supporting hyperplane at $b$ if there exists a $\lambda \in \mathbb{R}^{m}$ such that for all $c \in \mathbb{R}^{m} $, the following holds: 
@@ -835,7 +835,6 @@ Recall the solutions to our linear programs are basic feasible solutions, with
 \[x=(0,\ldots,x_{B_{(1)}},\ldots) \text{ and } x_B =B^{-1}b.\]
 The optimality conditions tell us that we could find some kind of algorithm to find a solution, since we could check all of those conditions.
 
-\subsubsection{Towards the simplex method for solving linear programs}
 Recall that 
 \[\text{minimise }c^Tx \text{ subject to } Ax=b, x \geq 0 \underset{\text{dual} }{\to}  \text{maximise }\lambda^T b \text{ subject to } \lambda^TA \leq c^T.\]
 The optimality conditions are 
@@ -855,18 +854,224 @@ then all three optimality conditions are met. The vector $c-A^T {(B^T)}^{-1}c_B$
 \end{definition}
 
 Let $x$ be a BFS, let $B_{(1)},\ldots ,B_{(m)}$ be the indices of the basic variables. Let $B=[A_{B_{(1)}},\ldots , A_{B_{(m)}}]$. $x_B$ is as before.
-Suppose we move in a direction $d$ such that $d_j=1$ where $j \notin \{B_{(1),\ldots ,B_{(m)}}\}$ and $d_i$ for all other nonbasic $i$ where $i \neq j$. It doesn't matter what $\{d_{B_{(1)},\ldots ,d_{B_{(m)}}}\}$ are. The vector $d$ is the $j$th basic direction: 
+Suppose we move in a direction $d$ such that $d_j=1$ where $j \notin \{B_{(1),\ldots ,B_{(m)}}\}$ and $d_i=0$ for all other nonbasic $i$ where $i \neq j$. It doesn't matter what $\{d_{B_{(1)},\ldots ,d_{B_{(m)}}}\}$ are. The vector $d$ is the $j$th basic direction: 
 \[A (x+\theta d)=b \implies Ad=0 \implies B d_B +A_j=0 \implies d_B= -{B}^{-1}A_j.\]
 The $j$th basic direction is thus a feasible direction. How does the cost change when $x \to x+\theta d$? The new cost is 
-\[c^T(x+\theta d)=c^Tx+\theta c^T d =c^Tx+\theta (c_j-c_B^T {B}^{-1}A_j=c^T x +\theta \bar{c_j}.\]
+\[c^T(x+\theta d)=c^Tx+\theta c^T d =c^Tx+\theta (c_j-c_B^T {B}^{-1}A_j)=c^T x +\theta \bar{c_j}.\]
 \begin{theorem}
-	 Let $x$ be a BFS associated with a basis matrix B, and let $\bar{c}$ be the vector of reduced costs. Then $x$ is optimal if and only if $\bar{c} \geq 0$.
+	 Let $x$ be a BFS associated with a basis matrix $B$, and let $\bar{c}$ be the vector of reduced costs. Then $x$ is optimal if and only if $\bar{c} \geq 0$.
 \end{theorem}
 \begin{proof}
 	 Follows from optimality conditions from previous lectures.
 \end{proof}
+Suppose $x$ is a BFS. If $\overline{c} \geq 0$, then we are done. If $c_j <0$ for some $j$, then moving in the $j$th feasible direction will reduce the cost. Let $\theta^*$ be the largest possible $\theta$ such that $x+\theta d \geq 0$. We have two cases:
+\begin{enumerate}
+	\item If $d \geq 0$, then $\theta^*=\infty$, and the optimal cost is $-\infty$.
+	\item If $d_i<0$ for some $i$, we need $x_i+\theta^* d_i \geq 0 \implies \theta^* \leq -\frac{x_i}{d_i}$. We write 
+	\[\theta^*=\min_{i: d_i <0}(-\frac{x_i}{d_i})=\min_{i \in \left\{1,2,\ldots ,m\right\}: d_{B_{(i)}} <0}(-\frac{x_i}{d_i}).\]
+	(For all nonbasic $i$, $d_i=$0 or 1)
+	Let $l$ be the index minimisng the above term. Let $y=x+\theta^* d$. We know $y$ is feasible with $c^Ty <c^Tx$.
+\end{enumerate}
 
+\begin{theorem}
+	 $y$ is a basic feasible solution with basis matrix 
+	 \[\overline{B} =\begin{pmatrix} 
+		\vdots&&\vdots&\vdots&&\vdots\\
+		A_{B_{(1)}}&\ldots &A_{B_{(l-1)}}&A_j&\ldots &A_{B_{(m)}}\\
+		\vdots&&\vdots&\vdots&&\vdots
+	 \end{pmatrix}.\]
+\end{theorem}
+\begin{proof}
+	 $y$ has exactly $m$ nonzero entries. It's easy to check that $y=x+\theta d$.
+\end{proof}
+\begin{definition}[Simplex method]
+	This is an algorithm to find a solution to a linear program.
+	 \begin{enumerate}
+		 \item Start with a BFS	$x$ with $B=[A_{B(1)},\ldots ,A_{B(m)}]$.
+		 \item Calculate $\overline{c} $. If $\overline{c} \geq 0$, terminate the algorithm as $x$ is optimal. Otherwise, choose $j $ such that $c_j<0$. 
+		 \item Compute $u=-{B}^{-1}A_j$. If $u \leq 0$, then cost is $-\infty$, and the algorithm terminates.
+		 \item If some component of $u$ is $>0$, then set 
+		 \[\theta^*=\min_{i=1,2,\ldots ,m}\frac{x_{B(i)}}{u_i}.\]
+		 \item Let $l$ be such that $\frac{x_{B(l)}}{e_l}=\theta^*$, set $y=x-\theta^* u$.
+	 \end{enumerate}
+\end{definition}
+\subsubsection{The full tableau implementation}
+We define a \vocab{simplex tableau}: 
+\[\left|
+\begin{array}{c|c}
+	\hline
+	\text{cost, } -c_B^Tx_B &\text{reduced costs, } \overline{c}\\
+	\hline
+	\text{current BFS, } {B}^{-1}b &\text{reduced costs, } {B}^{-1}A\\
+	\hline
+\end{array}
+\right|.\]
+We follow this algorithm in order to apply the simplex method using the simplex tableau:
+\begin{enumerate}
+	\item Start with BFS $x$ and basis matrix $B$.
+	\item Examine $\overline{c} $ in the "zeroth" row. If $\overline{c} \geq 0$, then we are done. Otherwise choose $j$ such that $\overline{c_j} <0$.
+	\item Let $u={B}^{-1}A_j$. If $u \leq 0$, the optimal cost is $-\infty$ and we stop the algorithm.
+	\item Compute $\frac{x_{B(i)}}{u_i}$ for all $i$ such that $u_i >0. $ Let $l$ be such that $\frac{x_{B(l)}}{u_l}=\min_{u_i>0}\frac{x_{B(i)}}{u_i}$.
+	\item Add to each row of the tableau a constant multiple of the $l$th row so that $u_l $ becomes 1 and all other entries of the pivot column are 0.
+\end{enumerate}
+\section{Applications of linear programming}
+\subsection{Game theory}
+We will consider a two-person game. This is defined as two players, P1 and P2. P1 has $m$ possible actions $\left\{1,2,\ldots ,m\right\}$. P2 has $n$ possible actions $\left\{1,2,\ldots ,n\right\}$. This game works as follows:
 
+If P1 plays $i$ and P2 plays $j$, then P1 wins £ $a_{ij}$ (the entries of a matrix) and P2 loses the same amount. This game is called a "zero-sum game". What is the optimal strategy?
+\begin{definition}[Payoff matrix]
+	 The matrix 
+	 \[\begin{pmatrix} a_{11} &\ldots a_{1n}&\\\vdots&\ddots&\vdots\\a_{m1}&\ldots &a_{mn}\end{pmatrix}.\]
+\end{definition}
+Suppose P1 plays first. If P1 picks $i$, then he expects to earn 
+\[\min_{j \in \left\{1,\ldots ,m\right\}}a_ij.\]
+P1 will thus try to solve the problem
+\[\text{maximise } \min_{j \in \left\{1,\ldots ,m\right\}}a_ij \text{ subject to } i \in \left\{1,2,\ldots ,n\right\}.\]
+Now suppose P2 plays first. If P2 picks $j$, he expects P1 to earn
+\[\max_{i \in \left\{1,\ldots ,n\right\}}a_ij.\] 
+P2 will thus try to solve the problem
+\[\text{minimise } \max_{i \in \left\{1,\ldots ,n\right\}}a_ij \text{ subject to } j \in \left\{1,2,\ldots ,m\right\}.\]
+\begin{example}
+	 If $A=\begin{pmatrix} 1&2\\3&4 \end{pmatrix}$:
+	 \begin{itemize}
+		 \item If P1 plays first, then P1 will pick 2, and P2 will pick 1.
+		 \item If P2 plays first, then P2 will pick 1, and P1 will pick 2.
+	 \end{itemize}
+	 When this happens, (2,1) is called a \vocab{saddle point} and $a_{21}=3$ is called the \vocab{value} of the game.
 
+	 Instead, consider the case 
+	 \[A=\begin{pmatrix} 4&2\\1&3 \end{pmatrix}.\]
+	 \begin{itemize}
+		\item If P1 plays first, then P1 will pick 1, and P2 will pick 2.
+		\item If P2 plays first, then P2 will pick 2, and P1 will pick 2.
+	\end{itemize}
+	 So here we don't have a saddle point.
+\end{example}
+If we don't have a saddle point, then there's no clear best strategy if the players play simultaneously. This leads us to consider a strategy which uses \emph{randomness}.
+\subsubsection{Mixed strategies}
+Allow players to choose randomly; P1 picks from a distribution $(p_1,p_2,\ldots ,p_m)$ and P2 picks from $(q_1,q_2,\ldots ,q_n)$. If P1 picks from $(p_1,p_2,\ldots ,p_m)$, the expected reward of P1 if P2 plays $j$ is $\sum_{i=1}^{m}a_{ij}p_i$. So for P1 the optimisation problem we need to solve is 
+\[\text{maximise } \min_{j \in \left\{1,\ldots ,n\right\}}\sum_{i=1}^{m}a_{ij}p_i \text{ subject to } \sum_{i=1}^{m}p_i=1 \text{ and } p_i \geq 0 \text{ for } 1 \leq i \leq m.\]
+This can be equivalently expressed as follows: if $e=\begin{pmatrix} 1\\1\\\vdots\\1 \end{pmatrix}$, then our problem is  \[
+\text{maximise } V \text{subject to } A^{T}p \geq ve, e^{T}p=1,p \geq 0 
+.\] 
+This is a linear program. P2's corresponding linear program is \[
+\text{minimise } w \text{ subject to } Aq \leq we, e^{T}q=1, q \geq 0
+.\]
+We will show that this is the dual of P1's problem:
+
+Add a slack variable $s \geq 0$ such that $Aq \leq we$ becomes $Aq+s=we$, $s \geq 0$. Then the Lagrangian is \[
+L (w,q,s, \lambda_1 , \lambda_2 )=w (1-\lambda_1^{T}e)+(\lambda_1^{T}A-\lambda_2 e^{T})q+\lambda_1 s+\lambda_2. 
+.\]
+Our feasible set is \[
+	\Lambda=\left\{\lambda: \ \lambda_1^{T}e=1, \lambda_1^{T}A-\lambda_2 e^{T}\geq 0, \lambda_1 \geq 0\right\}
+.\]
+When $\lambda \in \Lambda$, $\inf L (w,q,s,\lambda_1,\lambda_2)=\lambda_2$, so the dual is exactly the same as P1's problem.
+\begin{theorem}
+	 A strategy $p=(p_1 ,\ldots ,p_m)$ is optimal for P1 iff there exist  $q$ and $v$ such that 
+	 \begin{enumerate}
+		 \item $A^{T}p \geq ve, e^{T}p=1, p\geq 0$ (primal feasibility)
+		 \item $Aq \leq ve, e^{T}q=1, q\geq 0$ (dual feasibility)
+	 \end{enumerate} 
+\end{theorem} 
+\begin{proof}
+	 $(p,v)$ and $(q,w)$ are optimal if $(Aq-we)^Tp=0$ and $q^t (A^{T}p-ve)=0$, i.e \[
+	 v=w=p^{T}Aq
+	 .\] 
+\end{proof}
+\subsubsection{Finding optimal strategies}
+\begin{enumerate}
+	\item Search for saddle points. If a saddle point exists, then we have solved the problem.
+	\item Look for dominating actions. Suppose there exists $i$ and $i'$ s.t. \[
+	a_{ij} \geq a_{i'j} \ \forall j \in \left\{1,2,\ldots ,n\right\}
+	.\] 
+	Then drop row $i'$ from $A$. Do the corresponding removal in the case for $j$ and $j'$.
+	\item Solve the linear program using the simplex method or any other method.
+\end{enumerate}
+\begin{example}
+	Take the matrix \[
+	A=\begin{pmatrix} 2&3&4\\3&1&\frac{1}{2}\\1&3&2 \end{pmatrix}
+	.\] Then we can note the first row dominates the last, and as such \[
+	\tilde{A}=\begin{pmatrix} 2&3&4\\3&1&\frac{1}{2} \end{pmatrix}
+	.\] 
+	P1's strategy is $(p,1-p,0)$. The optimisation problem is \[
+	\text{maximise } v \text{ subject to } A^{T}p \geq v, 2p+ 3 (1-p) \geq v, 3p+(1-p) \geq v, 4p + \frac{1-p}{2}\geq v.
+	.\] The three constraints can be written as 
+	\begin{enumerate}
+		\item $v \leq 3-p$ 
+		\item $v \leq 1+2p$ 
+		\item $v \leq \frac{1}{2}+\frac{7}{2}p$.
+	\end{enumerate}
+	Since this is a one-dimensional problem let's draw a picture:
+	\begin{figure}[H]
+		\centering
+		\incfig{70}{game-sketch}
+		\caption{The maximal value is reached inside the shaded area when $p=\frac{2}{3}, w=\frac{7}{3}$.}
+	\end{figure}
+	Thus P1 plays $(\frac{2}{3},\frac{1}{3},0)$ and so $v=\frac{7}{3}$. To solve P2's strategy, we can use complementary slackness. Since $p_1 ,p_2 \geq 0$, the first two constraints in the dual must be tight. Therefore $Aq=w$. Plugging in, \[
+	2q+3 (1-q)=\frac{7}{3} \implies q=\frac{2}{3}
+	.\] So P2's strategy is $(\frac{2}{3},\frac{1}{3},0)$.
+\end{example}
+\subsection{Network flows}
+\begin{definition}[Graph]
+	 A \vocab{directed graph} $G=(V,E)$, where $E \subset V \times V$. When $E$ is symmetric ( $(i,j) \in E \leftrightarrow (j,i) \in E$ ) then the graph is said to be undirected. We define $(i,j)$ to be the edge connecting vertex $i$ to vertex $j$.
+\end{definition}
+\subsubsection{Minimum cost flow on graphs}
+Given $G=(V,E)$ on $n$ vertices ( $|V|=n$ ), associate to every $(i,j) \in E$ the number $x_{ij}$. $x=\left\{x_{ij}\right\}_{(i,j)\in E}$ is called a \vocab{flow} on G. The flow $x$ is affected by 
+\begin{enumerate}
+	\item A vector $b \in \mathbb{R}^{n} $, where $b_i$ is the amount of flow entering vertex $i$. If $b_i >0$, we call $i$ a \emph{source}, and if $b_i <0$, we call $i$ a \emph{sink}. 
+	\item A matrix $C \in \mathbb{R}^{m \times n} $ which gives the cost $c_{ij}$ per unit of flow on $(i,j) \in E$. For a flow of $x_{ij}$ along $(i,j)$ , the cost is $c_{ij}x_{ij}$. 
+	\item Matrices $\overline{M} ,M$ determine the lower and upper bounds on $x_{ij}$ for $(i,j) \in E$: \[
+	M_{ij} \leq x_{ij} \leq \overline{M}_{ij} \ \forall (i,j) \in E.
+	.\]  
+\end{enumerate}  
+\begin{definition}[Minimum cost flow]
+	 The minimum cost flow is the linear program \[
+	 \text{ minimise } \sum_{(i,j) \in E}c_{ij}x_{ij}
+	 \] 
+	 subject to: 
+	 \begin{align*}
+		M_{ij} \leq x_{ij} \leq \overline{M}_{ij} \ \forall (i,j) \in E\\
+		b_i + \sum_{(j,i) \in E} x_{ji}=\sum_{(i,j) \in E}^{}x_{ij} \ \forall i \in V. 
+	 \end{align*}
+	 The second condition is a conservation law: the flow leaving a vertex must be equal to the flow entering it.
+\end{definition}
+\begin{definition}[Incidence matrix]
+	 We define a matrix $A \in \mathbb{R}^{|V|\times |E|} $ with rows $v_1 ,\ldots , v_n$ and columns $e_{ij}$, where $1 \leq i,j \leq n$. $e_{ij}$ represents the node leaving $i$ going to $j$: so $e_{ij}$ has a 1 in position $i$, -1 in position $j$, and $0$ elsewhere. 
+\end{definition}
+\begin{remark}
+	 For the linear problem to be feasible, $\sum b_i =0$.
+\end{remark}
+\subsubsection{The transport problem}
+Let's say we have $n$ suppliers and $m$ consumers. The suppliers have capacity $\left\{s_1 , s_2 , \ldots , s_m\right\}$ and the consumers have demands $\left\{d_1 ,d_2 , \ldots , d_m\right\}$. Assume $\sum_{i=1}^{n}s_i=\sum_{j=1}^{n}d_j$. The cost of transporting one unit of goods from supplier $i$ to consumer $j$ is $c_{ij}$. 
+
+In this example, our graph $G$ is a \emph{bipartite graph}: 
+[pic, all consumers on one side, all suppliers on the other]
+The optimisation problem we need to solve is \[
+\text{ minimise } \sum_{i=1}^{n} \sum_{j=1}^{n} c_{ij} x_{ij} \text{ subject to } \sum_{j=1}^{m}x_{ij}=s_i \text{ for } i=1,2, \ldots ,n \sum_{i=1}^{n}x_{ij}=d_i \text{ for } j=1,2,\ldots ,m
+.\] 
+\begin{theorem}
+	 Every minimum cost flow problem with finite capacities or non-negative capacities can be recast as an equivalent transport problem. 
+\end{theorem}
+\begin{proof}
+	 Consider a min cost flow problem on $G=(V,E)$. We may assume WLOG that $M_{ij}=0$ for all $(i,j)\in E$. This can be seen by writing $x_{ij}=M_{ij}+\widetilde{x}_{ij}$. Then the conservation equation becomes \[
+	 \widetilde{b}_i+\sum_{(j,i) \in E} \widetilde{x}_{ji}=\sum_{(i,j) \in E} \widetilde{x}_{ij}
+	 ,\]  where $\widetilde{b}_{i}=\sum_{(j,i) \in E}M_{ji}-\sum_{(i,j) \in E}M_{ij}$. Let's assume going ahead that $M_{ij}=0$ for all $(i,j) \in E$. If all the costs are $\geq 0$, and if a particular edge has infinite capacity, then we can replace that capacity value by a large number such as $\sum |b_{i}|$ and not change the optimal solution.
+
+	 Let's start with some minimum cost flow problem. Our goal is to construct the corresponding transport problem. For every vertex $i$, we create a consumer with demand $\sum_{(i,k)\in E}^{}\overline{m}_{ik} i b_{i}$. For every edge $(i,j)$, we create a supplier with supply $\overline{m}_ij$. Note that $\sum b_{i}=0$ so the total amount of flow in is equal to the total flow out. [picture] The total flow into $i$ is \[
+	 \sum_{k: \ (i,k) \in E} (\overline{m}_{ik}-x_{ik})+\sum_{k: \ (i,k) \in E} x_{ki}=\sum \overline{m}_{ik} - b_{i}
+	 .\]  
+	 Cancelling, this gives the conservation equation for the minimum cost flow problem. We can also easily check that $- \leq x_{ij} \leq \overline{m}_{ij}$. The cost of the flow in the transport problem is $\sum x_{ij}c_{ij}$, which is identical to the cost for a flow $x$ on the minimum cost problem. 
+\end{proof}
+\begin{theorem}
+	 If for some feasible $x$ we have dual variables $\lambda \in \mathbb{R}^{n} $ (for suppliers) and $\mu \in \mathbb{R}^{m} $ (for consumers) such that \[
+	 \lambda_{i}+\mu_{j} \leq c_{ij} \text{and } (c_{ij}-(\lambda_{i}+\mu_j))x_{ij}=0 \ \forall i,j 
+	 ,\] then $x$ is optimal.
+\end{theorem}
+\begin{proof}
+	 \begin{align*}
+		L (x,\lambda,\mu)&=\sum_{i=1}^{n}\sum_{j=1}^{n}c_{ij}x_{ij}-\sum_{i=1}^{n}\lambda_{i}(\sum_{j=1}^{n}x_{j}-s_i) - \sum_{j=1}^{m}\mu_{j} (\sum_{i=1}^{n}x_{ij}-d_{j})\\&=\sum_{i=1}^{n}\sum_{j=1}^{m}(c_{ij}-\lambda_{i}-\mu_{j})x_{ij}+\sum_{}^{}\lambda_{i}s_i +\sum_{}^{}\mu_{j}d_{j}.
+	 \end{align*}
+\end{proof}
+\subsubsection{The transport algorithm}
 
 \end{document}

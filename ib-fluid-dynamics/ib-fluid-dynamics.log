@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  18 JAN 2022 16:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  20 JAN 2022 11:02
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/ib-optimisation/optimisation.tex"
-(c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/ib-optimisation/optimisation.tex
+**"c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/ib-fluid-dynamics/ib-fluid-dynamics.tex"
+(c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/ib-fluid-dynamics/ib-fluid-dynamics.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-07-12> (c:/texlive/2021/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2021/06/25 v3.34 KOMA-Script document class (article)
@@ -444,7 +444,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: scrhack 2021/06/25 v3.34 KOMA-Script package (hacking other packages)
 ) (c:/texlive/2021/texmf-dist/tex/latex/asymptote/asymptote.sty
 Package: asymptote 2021/02/06 v1.36 Asymptote style file for LaTeX
- (./optimisation.pre)
+ (./ib-fluid-dynamics.pre)
 \ASYbox=\box63
 \ASYdimen=\dimen160
 \c@asy=\count284
@@ -472,7 +472,7 @@ Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 ) (c:/texlive/2021/texmf-dist/tex/generic/catchfile/catchfile.sty
 Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
 )
-\openout4 = `optimisation.pre'.
+\openout4 = `ib-fluid-dynamics.pre'.
 
 ) (c:/texlive/2021/texmf-dist/tex/latex/bbm-macros/bbm.sty
 Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
@@ -695,30 +695,39 @@ File: pppdftex.def 2021/03/06 v0.5t Pdfpages driver for pdfTeX (AM)
 \AM@templatesizebox=\box69
 ) (c:/texlive/2021/texmf-dist/tex/latex/transparent/transparent.sty
 Package: transparent 2019/11/29 v1.4 Transparency via pdfTeX's color stack (HO)
-) (./optimisation.aux)
-\openout1 = `optimisation.aux'.
+) (c:/texlive/2021/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2021/04/25 v1.2e Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+) (./ib-fluid-dynamics.aux)
+\openout1 = `ib-fluid-dynamics.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-Package scrbase Info: activating english \contentsname on input line 26.
-Package scrbase Info: activating english \listfigurename on input line 26.
-Package scrbase Info: activating english \listtablename on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+Package scrbase Info: activating english \contentsname on input line 27.
+Package scrbase Info: activating english \listfigurename on input line 27.
+Package scrbase Info: activating english \listtablename on input line 27.
 
 Couldn't patch \deferred@thm@head!
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -740,7 +749,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 26.
+Package hyperref Info: Link coloring ON on input line 27.
  (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -750,12 +759,12 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count315
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
- (./optimisation.out) (./optimisation.out)
+LaTeX Info: Redefining \ref on input line 27.
+LaTeX Info: Redefining \pageref on input line 27.
+LaTeX Info: Redefining \nameref on input line 27.
+ (./ib-fluid-dynamics.out) (./ib-fluid-dynamics.out)
 \@outlinefile=\write5
-\openout5 = `optimisation.out'.
+\openout5 = `ib-fluid-dynamics.out'.
 
 Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           Using `bookmark' together with `hyperref' is recommended,
@@ -764,7 +773,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 26.
+(scrartcl)           before \begin{document} on input line 27.
  (c:/texlive/2021/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
  (c:/texlive/2021/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
@@ -786,823 +795,54 @@ Package scrhack Info: \landscape patched to make \textheight change optional on 
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./optimisation.toc [1
-
-
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+) (./ib-fluid-dynamics.toc)
 \tf@toc=\write6
-\openout6 = `optimisation.toc'.
+\openout6 = `ib-fluid-dynamics.toc'.
 
- [2]
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 37.
+ [1
+
+
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 38.
  (c:/texlive/2021/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 47.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 47.
+(mdframed)              on input line 56.
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 56.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 65.
- (./figures/convex-drawing.pdf_tex
-<./figures//convex-drawing.pdf, id=96, page=1, 540.60239pt x 256.0748pt>
-File: ./figures//convex-drawing.pdf Graphic file (type pdf)
-<use ./figures//convex-drawing.pdf, page 1>
-Package pdftex.def Info: ./figures//convex-drawing.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 199.16928pt x 94.34372pt.
-<./figures//convex-drawing.pdf, id=97, page=2, 540.60239pt x 256.0748pt>
-File: ./figures//convex-drawing.pdf Graphic file (type pdf)
-<use ./figures//convex-drawing.pdf, page 2>
-Package pdftex.def Info: ./figures//convex-drawing.pdf , page2 used on input line 61.
-(pdftex.def)             Requested size: 199.16928pt x 94.34372pt.
-) [3 <./figures//convex-drawing.pdf> <./figures//convex-drawing.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figures//convex-drawing.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
+ [2]
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 75.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 75.
- (./figures/convex-function-drawing.pdf_tex
-<./figures//convex-function-drawing.pdf, id=129, page=1, 492.72437pt x 271.75757pt>
-File: ./figures//convex-function-drawing.pdf Graphic file (type pdf)
-<use ./figures//convex-function-drawing.pdf, page 1>
-Package pdftex.def Info: ./figures//convex-function-drawing.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 199.16928pt x 109.84972pt.
-<./figures//convex-function-drawing.pdf, id=130, page=2, 492.72437pt x 271.75757pt>
-File: ./figures//convex-function-drawing.pdf Graphic file (type pdf)
-<use ./figures//convex-function-drawing.pdf, page 2>
-Package pdftex.def Info: ./figures//convex-function-drawing.pdf , page2 used on input line 58.
-(pdftex.def)             Requested size: 199.16928pt x 109.84972pt.
-)
-Package mdframed Info: Not enough space on this page on input line 83.
-Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 85.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 96.
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 96.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 105.
- [4 <./figures//convex-function-drawing.pdf> <./figures//convex-function-drawing.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figures//convex-function-drawing.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 132.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 141.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 145.
- [5]
-Package mdframed Info: Not enough space on this page on input line 150.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 160.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 177.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 187.
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 187.
- [6]
-Package mdframed Info: Not enough space on this page on input line 189.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 191.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 204.
-Package hyperref Info: bookmark level for unknown corollary defaults to 0 on input line 204.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 207.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 223.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 228.
- [7]
-Package mdframed Info: Not enough space on this page on input line 237.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 240.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 248.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 255.
- [8]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 267.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 271.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 287.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 292.
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 304.
-
-Overfull \vbox (0.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (1.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (2.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (3.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (4.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (5.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (6.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (7.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (8.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (9.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (10.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (11.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (12.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (13.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (14.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (15.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (16.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (17.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (18.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (19.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (20.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (21.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (22.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (23.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (24.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (25.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (26.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (27.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (28.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (29.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (30.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (31.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (32.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (33.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (34.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (35.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (36.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (37.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (38.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (39.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (40.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (41.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (42.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (43.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (44.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (45.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (46.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (47.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (48.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (49.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (50.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (51.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (52.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (53.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (54.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (55.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (56.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (57.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (58.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (59.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (60.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (61.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (62.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (63.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (64.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (65.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (66.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (67.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (68.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (69.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (70.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (71.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (72.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (73.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (74.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (75.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (76.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (77.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (78.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (79.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (80.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (81.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (82.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (83.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (84.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (85.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (86.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (87.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (88.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (89.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (90.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (91.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (92.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (93.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (94.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (95.5733pt too high) detected at line 304
- []
-
-
-Overfull \vbox (96.5733pt too high) detected at line 304
- []
-
-
-Package mdframed Warning: correct box splittet fails
- It seems you are using a non splittable contents
-(mdframed)                 on input line 304.
-
-Package mdframed Info: You first box width is to small
- mdframed fixed it
-(mdframed)              on input line 304.
-[9]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 316.
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 316.
- (./figures/ellipse-contours.pdf_tex
-<./figures//ellipse-contours.pdf, id=202, page=1, 419.16402pt x 243.57503pt>
-File: ./figures//ellipse-contours.pdf Graphic file (type pdf)
-<use ./figures//ellipse-contours.pdf, page 1>
-Package pdftex.def Info: ./figures//ellipse-contours.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 199.16928pt x 115.7365pt.
-<./figures//ellipse-contours.pdf, id=203, page=2, 419.16402pt x 243.57503pt>
-File: ./figures//ellipse-contours.pdf Graphic file (type pdf)
-<use ./figures//ellipse-contours.pdf, page 2>
-Package pdftex.def Info: ./figures//ellipse-contours.pdf , page2 used on input line 60.
-(pdftex.def)             Requested size: 199.16928pt x 115.7365pt.
-) [10]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 331.
- (./figures/newton-curve.pdf_tex
-<./figures//newton-curve.pdf, id=212, page=1, 274.96687pt x 219.0548pt>
-File: ./figures//newton-curve.pdf Graphic file (type pdf)
-<use ./figures//newton-curve.pdf, page 1>
-Package pdftex.def Info: ./figures//newton-curve.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 199.16928pt x 158.67528pt.
-) [11 <./figures//ellipse-contours.pdf> <./figures//ellipse-contours.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figures//ellipse-contours.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./figures//newton-curve.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figures//newton-curve.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] (./figures/newton-root.pdf_tex
-<./figures//newton-root.pdf, id=225, page=1, 535.02809pt x 344.01715pt>
-File: ./figures//newton-root.pdf Graphic file (type pdf)
-<use ./figures//newton-root.pdf, page 1>
-Package pdftex.def Info: ./figures//newton-root.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 199.16928pt x 128.06123pt.
-)
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 374.
- [12 <./figures//newton-root.pdf>]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 396.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 405.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 420.
- [13]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 464.
- [14]
-Package mdframed Info: Not enough space on this page on input line 488.
- [15]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 494.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 500.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 517.
- (./figures/hyperplane-sketch.pdf_tex
-<./figures//hyperplane-sketch.pdf, id=265, page=1, 508.8397pt x 266.79503pt>
-File: ./figures//hyperplane-sketch.pdf Graphic file (type pdf)
-<use ./figures//hyperplane-sketch.pdf, page 1>
-Package pdftex.def Info: ./figures//hyperplane-sketch.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 199.16928pt x 104.42824pt.
-)
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 526.
- [16]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 528.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 533.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 536.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 562.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\phi' on input line 562.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 562.
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 563.
-
-Underfull \hbox (badness 10000) in paragraph at lines 564--565
-
- []
-
-[17 <./figures//hyperplane-sketch.pdf>]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 566.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 570.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 578.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 590.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 592.
-
-Underfull \hbox (badness 10000) in paragraph at lines 603--605
-
- []
-
-[18]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 611.
- [19]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 646.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 662.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 665.
-
-Overfull \hbox (22.00574pt too wide) detected at line 691
-[] [] \OT1/cmr/m/n/10.95 = [] [] = \OML/cmm/m/it/10.95 B [] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 b:
- []
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 697.
-Package mdframed Info: Not enough space on this page on input line 699.
-[20]
-Package mdframed Info: Not enough space on this page on input line 699.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 701.
-
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 707.
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 713.
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 740.
-[21]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 743.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 746.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 779.
- [22]
-Package mdframed Info: Not enough space on this page on input line 803.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 804.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 810.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 819.
- [23]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 852.
- [24]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 862.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 864.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 877.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 884.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 887.
- [25]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 922.
- [26]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 935.
- [27]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 970.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 976.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 991.
- (./figures/game-sketch.pdf_tex
-<./figures//game-sketch.pdf, id=389, page=1, 597.50786pt x 845.04686pt>
-File: ./figures//game-sketch.pdf Graphic file (type pdf)
-<use ./figures//game-sketch.pdf, page 1>
-Package pdftex.def Info: ./figures//game-sketch.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 199.16928pt x 281.67729pt.
-) [28]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1015.
- [29 <./figures//game-sketch.pdf>]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1027.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1038.
-
-Overfull \hbox (11.6855pt too wide) in paragraph at lines 1045--1046
-\OT1/cmr/m/n/10.95 Let's say we have $\OML/cmm/m/it/10.95 n$ \OT1/cmr/m/n/10.95 sup-pli-ers and $\OML/cmm/m/it/10.95 m$ \OT1/cmr/m/n/10.95 con-sumers. The sup-pli-ers have ca-pac-ity $[]$
- []
-
-
-Overfull \hbox (40.80429pt too wide) detected at line 1051
-[] [] [] \OML/cmm/m/it/10.95 c[]x[][] [] x[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 s[][]i \OT1/cmr/m/n/10.95 = 1\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 ; [] ; n [] x[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 d[][]j \OT1/cmr/m/n/10.95 = 1\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 ; [] ; m:
- []
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1053.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1055.
-[30]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1066.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 1070.
- [31] (./optimisation.aux)
-Package rerunfilecheck Info: File `optimisation.out' has not changed.
+(mdframed)              on input line 77.
+ [3] (./ib-fluid-dynamics.aux)
+Package rerunfilecheck Info: File `ib-fluid-dynamics.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20378 strings out of 478542
- 372751 string characters out of 5854402
- 885197 words of memory out of 5000000
- 37697 multiletter control sequences out of 15000+600000
- 414961 words of font info for 70 fonts, out of 8000000 for 9000
+ 20062 strings out of 478542
+ 365425 string characters out of 5854402
+ 875051 words of memory out of 5000000
+ 37624 multiletter control sequences out of 15000+600000
+ 419498 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,21n,108p,10683b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on optimisation.pdf (31 pages, 354715 bytes).
+ 108i,21n,108p,10690b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
+Output written on ib-fluid-dynamics.pdf (3 pages, 176918 bytes).
 PDF statistics:
- 699 PDF objects out of 1000 (max. 8388607)
- 605 compressed objects within 7 object streams
- 248 named destinations out of 1000 (max. 500000)
- 355 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 142 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
+ 18 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

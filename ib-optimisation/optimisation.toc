@@ -27,5 +27,13 @@
 \contentsline {subsubsection}{\numberline {3.4.1}The dual of a linear program}{22}{subsubsection.3.4.1}%
 \contentsline {subsubsection}{\numberline {3.4.2}Optimality conditions}{23}{subsubsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.5}The simplex method}{24}{subsection.3.5}%
-\contentsline {subsubsection}{\numberline {3.5.1}Towards the simplex method for solving linear programs}{24}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.1}The full tableau implementation}{26}{subsubsection.3.5.1}%
+\contentsline {section}{\numberline {4}Applications of linear programming}{26}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Game theory}{26}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Mixed strategies}{27}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Finding optimal strategies}{28}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Network flows}{29}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Minimum cost flow on graphs}{29}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}The transport problem}{30}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}The transport algorithm}{31}{subsubsection.4.2.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

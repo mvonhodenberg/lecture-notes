@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  25 DEC 2021 20:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  20 JAN 2022 12:03
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **"c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/template-stuff/template.tex"
@@ -695,6 +695,15 @@ File: pppdftex.def 2021/03/06 v0.5t Pdfpages driver for pdfTeX (AM)
 \AM@templatesizebox=\box69
 ) (c:/texlive/2021/texmf-dist/tex/latex/transparent/transparent.sty
 Package: transparent 2019/11/29 v1.4 Transparency via pdfTeX's color stack (HO)
+) (c:/texlive/2021/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2021/04/25 v1.2e Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 ) (./template.aux)
 \openout1 = `template.aux'.
 
@@ -797,14 +806,6 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write6
 \openout6 = `template.toc'.
 
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 39.
- (c:/texlive/2021/texmf-dist/tex/latex/base/ts1cmss.fd
-File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 44.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 44.
  [1
 
 
@@ -813,18 +814,18 @@ Package rerunfilecheck Info: File `template.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 19903 strings out of 478542
- 362557 string characters out of 5854402
- 871176 words of memory out of 5000000
- 37495 multiletter control sequences out of 15000+600000
- 413031 words of font info for 64 fonts, out of 8000000 for 9000
+ 19971 strings out of 478542
+ 362758 string characters out of 5854402
+ 868993 words of memory out of 5000000
+ 37555 multiletter control sequences out of 15000+600000
+ 417910 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,19n,108p,10678b,451s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on template.pdf (1 page, 93286 bytes).
+ 108i,20n,108p,10678b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on template.pdf (1 page, 57781 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 500000)
- 9 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 39 PDF objects out of 1000 (max. 8388607)
+ 25 compressed objects within 1 object stream
+ 3 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

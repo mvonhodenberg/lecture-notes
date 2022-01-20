@@ -1,18 +1,4 @@
 {
-	"display": {
-		"prefix": "dm",
-	 	"body": [
-	 		"\n\\[$1.\\]\n$0"
-		],
-	 	"description": "Display math"
-			},
-	"inline": {
-		"prefix": "mk",
-			"body": [
-				"$$1$$0"
-		],
-			"description": "Inline math"
-			},
 	"itemize": {
 		"prefix": "li",
 			"body": [
@@ -40,7 +26,7 @@
 	"curly brackets": {
 		"prefix": "cbr",
 			"body": [
-				"\\{$1\\\\}$0"
+				"\\left\\{$1\\right\\\\}$0"
 		],
 			"description": "Curly brackets"
 			},
@@ -61,7 +47,7 @@
 	"New page": {
 		"prefix": "npge",
 			"body": [
-				"\\newpage \n$0"
+				"\\newpage$0"
 		],
 			"description": "Insert a new page"
 			},
@@ -150,6 +136,30 @@
 				"\\end{remark}"
 		]
 	},
+	"lemma": {
+		"prefix": "lemma",
+			"body": [
+				"\\begin{lemma}",
+				"\t $0",
+				"\\end{lemma}"
+		]
+	},
+	"proposition": {
+		"prefix": "proposition",
+			"body": [
+				"\\begin{proposition}",
+				"\t $0",
+				"\\end{proposition}"
+		]
+	},
+	"problem": {
+		"prefix": "problem",
+			"body": [
+				"\\begin{problem}",
+				"\t $0",
+				"\\end{problem}"
+		]
+	},
 	"section": {
 		"prefix": "sec",
 			"body": [
@@ -182,10 +192,6 @@
 		"prefix": "nl",
 			"body": "\\newline \n$0"
 	},
-	"fraction":{
-		"prefix": "frk",
-			"body": "\\frac{$1}{$2}$0"
-	},
 	"vocab":{
 		"prefix": "voc",
 			"body": "\\vocab{$1}$0"
@@ -215,6 +221,10 @@
 	"brackets":{
 		"prefix": "br",
 			"body": "($1)$0"
+	},
+	"lrbrackets":{
+		"prefix": "brr",
+			"body": "\\left($1\\right)$0"
 	},
 	"real function":{
 		"prefix": "fun",
@@ -250,11 +260,11 @@
 	},
 	"matrix":{
 		"prefix": "pmat",
-			"body": "\\begin{pmatrix}\n$1\n\\end{pmatrix}\n$0"
+			"body": "\\begin{pmatrix} $1 \\end{pmatrix}$0"
 	},
 	"inverse":{
 		"prefix": "inv",
-			"body": "^{-1}$0"
+			"body": "{$1}^{-1}$0"
 	},
 	"begin": {
 		"prefix": "begin",
@@ -293,7 +303,57 @@
 		"prefix": "dots",
 			"body": ["\\ldots $0"
 		]
-	}
+	},
+	"include drawing":{
+		"prefix": "drawing",
+			"body": ["\\begin{figure}[H]",
+			"\t\\centering",
+			"\t\\incfig{70}{$1}",
+			"\t\\caption{$2.}",
+			"\\end{figure}\n$0"
+	]
+	},
+	"split matrix":{
+		"prefix": "smat",
+			"body": ["\\left(\n\\begin{array}{c|c}",
+			"\t0 &0\\",
+			"\t\\hline",
+            "\t0&0\\",
+			"\t\\end{array}",
+			"\\right)"
+	]
+	},
+	"overline": {
+		"prefix": "ol",
+			"body": ["\\overline{$1} $0"
+		]
+	},
+	"inner product": {
+		"prefix": "inner",
+			"body": ["\\langle $1 \\rangle $0"
+		]
+	},
+	"mathcal": {
+		"prefix": "cal",
+			"body": ["\\mathcal{$1}$0"
+		]
+	},
+	"list of roman numerals": {
+		"prefix": "lir",
+			"body": [
+				"\\begin{itemize}",
+				"\t\\item[(i)] $1",
+				"\t\\item[(ii)] $2",
+				"\\end{itemize}"
+
+		]
+	},
+    "bold mathmode": {
+		"prefix": "bm",
+			"body": ["\\bm{$1} $0"
+		]
+	} 
+            
 
 
 	
