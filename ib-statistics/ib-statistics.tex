@@ -1,0 +1,145 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[
+    fancytheorems, 
+    fancyproofs, 
+    noindent, 
+]{adam}
+\usepackage{floatrow}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{bm}
+
+\newcommand{\incfig}[2]{%
+    \def\svgwidth{#1mm}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\title{IB Statistics}
+\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
+\date{\today}
+\setcounter{section}{-1}
+
+\allowdisplaybreaks
+
+\begin{document}
+
+\maketitle
+
+This article constitutes my notes for the `IB Statistics' course, held in Lent 2022 at Cambridge. These notes are \emph{not a transcription of the lectures}, and differ significantly in quite a few areas. Still, all lectured material should be covered.
+
+
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+Statistics can be defined as the science of \emph{making informed decisions}. It can include:
+\begin{enumerate}
+    \item Formal statistical inference
+    \item Design of experiments and studies
+    \item Visualisation of data
+    \item Communication of uncertainty and risk
+    \item Formal decision theory
+\end{enumerate}
+In this course we will only focus on formal statistical inference.
+\begin{definition}[Parametric inference]
+     Let $X_1 , \ldots , X_n$ be iid. random variables. We will assume the distribution of $X_1 $ belongs to some family with parameter $\theta \in \Theta$.
+\end{definition}
+\begin{example}
+    We will give some examples of such families:
+     \begin{enumerate}
+         \item $X_1 \sim \operatorname{Po}(\mu), \theta=\mu \in \Theta=(0,\infty )$ .
+         \item $X_1 \sim N (\mu, \sigma^2) \quad N (\mu, \sigma^2)\in \Theta=\mathbb{R} \times (0, \infty)$.
+     \end{enumerate}
+\end{example}
+We will use the observed $X= (X_1 , \ldots X_n)$ to make inferences about $\theta$ such as:
+\begin{enumerate}
+    \item Point estimate $\theta (X)$ of $\theta$.
+    \item Interval estimate of $\theta$: $(\theta_1 (x),\theta_2 (x))$ 
+    \item Testing hypotheses about $\theta$: for example checking if there is evidence in $X$ against the hypothesis $H_0 : \ \theta=1$.
+\end{enumerate}
+\begin{remark}
+     In general, we'll assume the distribution of the family $X_1 , \ldots , X_n$ is known but the parameter is unknown. Some results (on mean square error, bias, Gauss-Markov theorem) will make weaker assumptions.
+\end{remark}
+
+\section{Probability}
+First we will briefly recap IA Probability.
+
+Let $\Omega$ be the \vocab{sample space} of outcomes in an experiment. A measurable subset of $\Omega$ is called an \vocab{event}. The set of events is denoted $\mathcal{F}$. 
+\begin{definition}[Probability measure]
+     A probability measure $\mathbb{P}: \mathcal{F} \rightarrow [0,1]$ satisfies:
+     \begin{enumerate}
+         \item $\mathbb{P} (\emptyset)=0$ 
+         \item $\mathbb{P}(\Omega)=1$
+         \item $\mathbb{P}\left(\bigcup_{i=1}^{\infty} A_i= \sum_{i}^{}\mathbb{P} (A_i)\right)$ if $(A_i)$ is a sequence of disjoint events.   
+     \end{enumerate} 
+\end{definition}
+\begin{definition}[Random variable]
+     A random variable is a (measurable) function $X: \Omega \rightarrow \mathbb{R}$.
+\end{definition}
+\begin{example}
+     Tossing two coins has $\Omega= \left\{HH,HT,TH,TT\right\}$. Since $\Omega$ is countable, $\mathcal{F}$ is the power set of $\Omega$. We can define $X$ to be the random variable that counts the number of heads. Then \[
+     X (HH)=2, X (HT)=X (TH)=1, X (TT)=0
+     .\] 
+\end{example}
+\begin{definition}[Distribution function]
+     The distribution function of $X$ is $F_X (x)=\mathbb{P} (X \leq x)$.
+\end{definition}
+A discrete random variable takes values in a countable set $S \subset \mathbb{R}$. Its probability mass function is \[
+p_X (x)=\mathbb{P}(X=x)
+.\] 
+A random variable $X$ has a continuous distribution if it has a probability density function $f_X (x)$ which satisfies \[
+\mathbb{P} (X \in A)=\int_A f_X (x) \mathrm{d}x
+,\]
+for measurable sets $A$. 
+
+The expectation of $X$ is 
+\begin{equation*}
+     \mathbb{E} (X)=
+     \begin{cases}
+         \sum_{x \in X}^{}x p_X (x) & X \text{ is discrete} \\
+         \int_{-\infty }^{\infty} x f_X (x)\mathrm{d}x & X \text{ is continuous}
+     \end{cases}
+\end{equation*}
+
+If $g: \mathbb{R} \to \mathbb{R} $, then for a continuous r.v \[
+\mathbb{E} (g (X))=\int_{-\infty }^{\infty} g (x) f_X (x)\mathrm{d}x
+.\] 
+
+The variance of $X$ is \[
+\operatorname{Var} (X)= \mathbb{E} [(X-\mathbb{E}(X))^2]
+.\] 
+We say $X_1 , \ldots ,X_n$ are independent if for all $x_1 , \ldots , x_n$ we have \[
+\mathbb{P} (X_1 \leq x_1 , \ldots ,X_n \leq x_n )=\mathbb{P}(X_1 \leq x_1) \ldots \mathbb{P}(X_n \leq x_n)
+.\] 
+If $X_1 , \ldots ,X_n $ have pdfs or pmfs $f_{X_1 }, \ldots,f_{X_n } $ then their joint pdf or pmf is \[
+f_X (x)=\prod_{i}f_{X_i}(x_i)
+.\] 
+
+If $Y=\max (X_1 , \ldots ,X_n)$ independent, then \[
+F_Y (y)=\mathbb{P} (Y \leq y)=\mathbb{P} (X_1 \leq y , \ldots ,X_n \leq y )=\prod_{i}F_{X_i}(y)
+.\] 
+
+The pdf of $Y$ (if it exists) is obtained by differentiating $F_Y$.
+\subsection{Linear transformations}
+Let $(a_1 , \ldots a_n)^T=a \in \mathbb{R}^{n}$ be a constant. \[
+\mathbb{E} (a_1 X_1 +\ldots +a_n X_n)=\mathbb{E}(a^{T}X)=a^{T}\mathbb{E}(X)
+.\]
+This gives linearity of expectation (does not require independence). 
+\[
+\operatorname{Var}(a^{T}X)=\sum_{i,j}^{}a_{i}a_{j}\underbrace{\operatorname{Cov}(X_{i}, X_{j})}_{=\mathbb{E}((X_{i}-\mathbb{E}(X_{i})(X_{j}-\mathbb{E}(X_{j}))))} =a^{T}\operatorname{Var}(X)a
+.\] 
+where the matrix $[\operatorname{Var}(X)]_{ij}=\operatorname{Cov}(X_{i},X_{j})$. This gives the "bilinearity of variance".
+\subsection{Standardised statistics}
+Let $X_1 , \ldots , X_n$ be iid. with $\mathbb{E}(X_1 )=\mu$ , $\operatorname{Var}(X_1)=\sigma^2$. We define $S_n=\sum_{i}^{}X_{i}$ and $\overline{X_n} \frac{S_n}{n} $ (the sample mean). By linearity \[
+\mathbb{E} (\overline{X_n} )=\mu, \quad \operatorname{Var }(\overline{X_n} )= \frac{\sigma^2}{n}
+.\]   
+Define $Z_{n}= \frac{S_{n}-n \mu}{n}$. Then $\mathbb{E}(Z_{n})=0$ and $\operatorname{Var}(Z_{n})=1$. 
+
+\subsection{Moment generating functions}
+
+
+\end{document}

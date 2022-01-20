@@ -1,0 +1,87 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[
+    fancytheorems, 
+    fancyproofs, 
+    noindent, 
+]{adam}
+\usepackage{floatrow}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{bm}
+
+\newcommand{\incfig}[2]{%
+    \def\svgwidth{#1mm}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\title{IB Fluid Dynamics}
+\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
+\date{\today}
+\setcounter{section}{-1}
+
+\allowdisplaybreaks
+
+\begin{document}
+
+\maketitle
+
+
+This article constitutes my notes for the `IB Fluid Mechanics' course, held in Lent 2021 at Cambridge. These notes are \emph{not a transcription of the lectures}, and differ significantly in quite a few areas. Still, all lectured material should be covered.
+
+
+
+\tableofcontents
+\newpage
+\section{Introduction}
+Continuum mechanics includes things like fluid mechanics. Flows of liquids and gases are both fluids, and continuum mechanics also includes solid mechanics such as elasticity and deformation. 
+
+What we are interested in in this course is the overall behaviour of a fluid at a macroscopic level. We aim to take averages over irrelevant molecular details to get a continuous description in terms of fields; e.g density $\rho (x,t)$ or velocity $u (x,t)$.
+
+We talk about \vocab{steady flows } $u=u (x)$, and \vocab{unsteady flows} $u=u (x,t)$. We combine simple physics (mass, momentum, Newton's laws) from IA Dynamics and Relativity with knowledge from IA Vector Calculus and IB Methods. Our goal is to find the flow $u (x,t)$ and the accompanying forces. 
+
+We will look at \vocab{inviscid flow} (very good for water and air, except on very small scales) and \vocab{simple viscous flow} - more on this in Part II Fluid Dynamics and Part II Waves.
+
+Fluids are everywhere, and as such this course has a wide range of applications (environmental science, biology, \ldots)
+
+\section{Kinematics}
+There are two natural perspectives on flow:
+\begin{enumerate}
+    \item A stationary observer watching the flow go past (\emph{Eulerian} viewpoint)
+    \item A moving observer travelling along with the flow (\emph{Lagrangian} viewpoint)
+\end{enumerate}
+\subsection{Streamlines}
+\begin{definition}[Streamline]
+     A \vocab{streamline} is a curve that is everywhere parallel to the flow at a given instant. The streamline through $\bm{x_0 } $ at time $t_0 $ can be found parametrically in the form \[
+     \bm{x} =\bm{x} (s; \bm{x_0 } , \bm{t_0 } )
+     .\] from solving $\frac{\mathrm{d}x}{\mathrm{d}s}=\bm{u} (\bm{x};t_0 )$ with $\bm{x} =\bm{x_0 } $ at $s=0$. The set of streamlines at a given instant shows the direction of the flow.
+\end{definition}
+For example, for a flow $u= (1,t)$ we would solve \[
+\int x = x_0 +s, y=y_0 +ts \implies y=y_0 +t (x-x_0 )
+.\] 
+\subsection{Pathlines / Particle paths}
+\begin{definition}[Pathline/Particle path]
+     A \vocab{pathline} is the trajectory of a fluid "particle" (i.e a very small blob of fluid). The pathline $x=x (t;x_0 )$ of the fluid particle at $x=x_0 $ when $t=0$ is given by $\frac{\mathrm{d}x}{\mathrm{d}t}=u (x,t)$ with $x=x_0 $ at $t=0$.
+\end{definition}
+In our previous example $u= (1,t)$ this would give 
+\begin{align*}
+    x=x_0 +t, \quad y=y_0 +t^2 \\
+    \implies y=y_0 + \frac{1}{2} (x-x_0)^2.
+\end{align*}
+This Lagrangian viewpoint is often more complicated than the Eulerian one, but we can for example consider all $x_0 $ in some region $\mathcal{D}$ to describe how the shape and position of a dyed patch of fluid evolves. Useful for thinking about transport and mixing.
+\begin{remark}
+     For steady flow only, pathlines and streamlines are the same. 
+\end{remark}
+\begin{definition}[Material derivative]
+     The \vocab{material derivative} is the rate of change moving with the fluid. [picture] For any quantitity $F (x,t)$, the rate of change seen by an observer with the flow is found from \[
+     \delta F =F (x+\delta x, t+\delta t)-F (x,t)=\delta x \cdot \nabla F +\left.\frac{\partial F}{\partial t}\right|_{\delta t}+o (t)
+     .\] 
+     The displacement of fluid moving with the flow is given by \[
+     do later
+     .\] Therefore dividing and taking the limit, we get the material derivative \[
+     \frac{DF}{Dt}=\underbrace{\frac{\partial F}{\partial t}}_{\text{Eulerian deriv.} } + \underbrace{u \cdot \nabla F}_{\text{convected derivative} } 
+     .\] 
+\end{definition}
+\end{document}

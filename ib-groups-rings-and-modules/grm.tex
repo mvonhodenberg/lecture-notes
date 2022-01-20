@@ -1,0 +1,136 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[
+    fancytheorems, 
+    fancyproofs, 
+    noindent, 
+]{adam}
+\usepackage{floatrow}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{bm}
+
+\newcommand{\incfig}[2]{%
+    \def\svgwidth{#1mm}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\title{IB Groups, Rings and Modules}
+\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
+\date{\today}
+\setcounter{section}{-1}
+
+\allowdisplaybreaks
+
+\begin{document}
+
+\maketitle
+
+
+
+\tableofcontents
+\newpage
+\section{Introduction}
+This course will contain several sections: 
+\begin{enumerate}
+    \item Groups; this will be a continuation from IA, focusing on simple groups, $p$-groups, and $p$-subgroups. The main result in this part of the course will be the Sylow theorems.
+    \item Rings; these are sets where you can add, subtract and multiply (e.g $\mathbb{Z}$ or $\mathbb{C}[X]$). We will study rings of integers such as $\mathbb{Z}[i], \mathbb{Z}[\sqrt{2}]$. These also generalise to polynomial rings. We will also study fields, which are rings where you can divide (e.g $\mathbb{Q},\mathbb{R},\mathbb{C}$ or $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime).
+    \item Modules; these are an analogue of vector spaces where the scalars belong to a ring instead of a field. We will classify modules over certain "nice" rings. This allows us to prove Jordan Normal Form, and classify finite abelian groups. 
+\end{enumerate}
+
+\section{Groups}
+\subsection{Recall of IA Groups}
+\begin{definition}[Group]
+     A group is a pair $(G, \cdot)$ where $G$ is a set and $\cdot: G \times G \rightarrow  G$ is a binary operation satisfying:
+     \begin{enumerate}
+         \item $a \cdot (b \cdot c)=(a \cdot b)\cdot c$ (associativity)
+         \item $\exists e \in G$ such that $e \cdot g= g \cdot e =g$ for all $g \in G$ (identity)
+         \item $\forall g \in G$, $\exists {g}^{-1} \in G$ such that $g \cdot {g}^{-1}={g}^{-1}\cdot g=e$ (inverses)
+     \end{enumerate}
+\end{definition}
+\begin{remark}
+     \begin{itemize}
+         \item In practice, one often needs to check closure in order to check that $\cdot $ is well-defined.
+         \item If using additive (respectively multiplicative) relations, we will often write 0 (or 1) for the identity.
+         \item We write $|G|$ for the number of elements in $G$.
+     \end{itemize}
+\end{remark}
+\begin{definition}[Subgroup]
+     A subset $H \subseteq G$ is a subgroup (written $H \leq G$) if $H$ is closed under $\cdot$ and $(H, \cdot)$ is a group.
+\end{definition}
+\begin{remark}
+     A non-empty subset $H$ of $G$ is a subgroup if $a,b \in H \implies a \cdot {b}^{-1} \in H$ (see IA Groups for the proof). 
+\end{remark}
+\begin{example}[Examples of groups]
+    Groups we have already seen include:
+    \begin{itemize}
+        \item Additive groups $(\mathbb{Z},+)\leq (\mathbb{Q},+)\leq (\mathbb{R},+)$.
+        \item Cyclic and dihedral groups $C_{n}$ and $D_{2n}$.
+        \item Abelian groups: those groups $G$ such that $a \cdot b= b \cdot a$ for all $a,b \in G$.
+        \item Symmetric and alternating groups $S_{n}=$ group of all permutations of $\left\{1, \ldots ,n\right\}$ and $A_{n} \leq S_n$, the group of all even permutations.
+        \item Quaternion group $Q_8 =\left\{\pm 1, \pm i, \pm j, \pm k\right\}$ where $i,j,k$ are quaternions.
+        \item General and special linear groups $GL_{n}(\mathbb{R})= n \times n$ matrices on $\mathbb{R}$ with $\operatorname{det} \neq 0 $, where the group operation is matrix multiplication. This contains the subgroup $SL_{n}(\mathbb{R}) \leq GL_{n}(\mathbb{R})$, which is the subgroup of matrices with $\operatorname{det}=1 $. 
+    \end{itemize}     
+\end{example}
+\begin{definition}[Direct product]
+     The direct product of groups $G$ and $H$ is the set $G \times H$ with operation \[
+     (g_1 , h_1 ) \cdot (g_2 ,h_2 )=(g_1 g_2 , h_1 h_2 )
+     .\] 
+\end{definition}
+\begin{theorem}[Lagrange's theorem]
+     Let $H \leq G$. Then the left cosets of $H$ in $G$ are the sets $gH=\left\{gh: \ h \in H\right\}$ for $g \in G$. These partition $G$, and each has the same cardinality as $H$. From this we can deduce Lagrange's theorem:
+
+     If $G$ is a finite group and $H \leq G$, then $|G|=|H| [G:H]$ where $[G:H]$ is the number of left cosets of $H$ in $G$ (the index of $H$ in $G$).
+\end{theorem}
+\begin{remark}
+     Can also carry this out with right cosets. A corollary of Lagrange's theorem is thus that the number of left cosets = number of right cosets.
+\end{remark}
+\begin{definition}[Order of an element]
+     Let $g \in G$. If $\exists n \geq 1$ such that $g^{n}=1$, then the least such $n$ is the order of $g$ in $G$. If no such $n$ exists, $g$ has infinite order.
+\end{definition}
+\begin{remark}
+     If $g$ has order $d$, then 
+     \begin{itemize}
+         \item $g^{n}=1 \implies d|n$. 
+         \item $\left\{1,g, \ldots , g^{d-1}\right\}\leq G$ and so if $G$ is finite, then $d | |G|$ (Lagrange).
+     \end{itemize}
+\end{remark}
+\begin{definition}[Normal subgroup]
+     A subgroup $H \leq G$ is normal if ${g}^{-1}Hg=H$ for all $g \in G$. We write $H \unlhd G$.
+\end{definition}
+\begin{proposition}
+     If $H \unlhd G$ then the set $G/H$ of left cosets of $H$ in $G$ is a group (called the quotient group) with operation \[
+     g_1 H \cdot g_2 H= g_1 g_2 H
+     .\] 
+\end{proposition}
+\begin{proof}
+     Check $\cdot $ is well-defined:
+
+     Suppose $g_1 H=g_1 ' H$ and $g_2 H= g_2 ' H$ for some $g_1 , g_1 ' \in G$. Then $g_1 ' =g_1 h_1 $ and $g_2 '=g_2 h_2 $ for some $h_1 , h_2 \in H$. Therefore 
+     \begin{align*}
+         g_1 ' g_2 ' &=g_1 h_1 g_2 h_2 \\
+         &=g_1 g_2 \underbrace{({g_2 }^{-1}h_1 g_2 )}_{\in H} \underbrace{ h_2}_{\in H} 
+     \end{align*}  
+     Therefore $g_1 ' g_2 ' H=g_1 g_2 H$.
+     Associativity is inherited from $G$, the identity is $H=eH$, and the inverse of $gH$ is ${g}^{-1}H$.
+\end{proof}
+
+\begin{definition}[Homomorphism]
+     If $G,H$ are groups, then a function $\phi: G \rightarrow H$ is a group homomorphism if $\phi (g_1 g_2)=\phi (g_1 g_2 )=\phi (g_1 )\phi (g_2 )$. It has kernel \[
+     \operatorname{ker} \phi= \left\{g \in G: \ \phi (g)=e\right\} \leq G
+     .\]  and image \[
+     \operatorname{Im} \phi = \left\{\phi (g): \ g \in G \right\} \leq H
+     .\] 
+\end{definition}
+\begin{remark}
+     If $a \in \operatorname{ker}\phi$ and $g \in G$, then 
+     \begin{align*}
+         \phi ({g}^{-1}ag)&=\phi ({g}^{-1}) \phi (a) \phi (g)\\
+         &=\phi ({g}^{-1}) \phi (g)\\
+         &= \phi ({g}^{-1}g)=\phi (e)=e.
+     \end{align*}
+     So ${g}^{-1}ag \in \operatorname{ker}\phi$ and hence $\operatorname{ker}\phi$ is a normal subgroup of $G$.
+\end{remark}
+\end{document}
