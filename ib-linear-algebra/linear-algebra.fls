@@ -1318,10 +1318,6 @@ INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
-INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
-INPUT ./linear-algebra.toc
-INPUT linear-algebra.toc
-INPUT linear-algebra.toc
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
@@ -1339,6 +1335,10 @@ INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT ./linear-algebra.toc
+INPUT linear-algebra.toc
+INPUT linear-algebra.toc
 OUTPUT linear-algebra.toc
 INPUT c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2021/texmf-dist/tex/latex/base/ts1cmss.fd

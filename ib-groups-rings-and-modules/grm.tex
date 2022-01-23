@@ -28,7 +28,7 @@
 
 \maketitle
 
-
+These are my notes for the IB course `Groups, Rings and Modules', which was lectured in Lent 2022 at Cambridge by Dr R.Zhou. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
 
 \tableofcontents
 \newpage
@@ -108,7 +108,7 @@ This course will contain several sections:
 \begin{proof}
      Check $\cdot $ is well-defined:
 
-     Suppose $g_1 H=g_1 ' H$ and $g_2 H= g_2 ' H$ for some $g_1 , g_1 ' \in G$. Then $g_1 ' =g_1 h_1 $ and $g_2 '=g_2 h_2 $ for some $h_1 , h_2 \in H$. Therefore 
+     Suppose $g_1 H=g_1 ' H$ and $g_2 H= g_2 ' H$ for some $g_1 , g_1 ',g_2 , g_2' \in G$. Then $g_1 ' =g_1 h_1 $ and $g_2 '=g_2 h_2 $ for some $h_1 , h_2 \in H$. Therefore 
      \begin{align*}
          g_1 ' g_2 ' &=g_1 h_1 g_2 h_2 \\
          &=g_1 g_2 \underbrace{({g_2 }^{-1}h_1 g_2 )}_{\in H} \underbrace{ h_2}_{\in H} 
@@ -133,4 +133,109 @@ This course will contain several sections:
      \end{align*}
      So ${g}^{-1}ag \in \operatorname{ker}\phi$ and hence $\operatorname{ker}\phi$ is a normal subgroup of $G$.
 \end{remark}
+
+\begin{definition}[Isomorphism]
+      An isomorphism of groups is a group homomorphism that is also a bijection. We say $G$ and $H$ are isomorphic and write $G \cong H$ if there exists an isomorphism $\phi: G \rightarrow H$. (Note it follows from the definition that ${\phi}^{-1}$ is also a group homomorphism)
+\end{definition}
+
+\begin{theorem}[First Isomorphism Theorem]
+      Let $\phi: G \rightarrow H$ be a group homomorphism. Then $\operatorname{ker}\phi \unlhd G$ and \[
+      G/\operatorname{ker}\phi \cong \operatorname{Im} \phi
+      .\] 
+\end{theorem}
+\begin{proof}
+      Let $K=\operatorname{ker} \phi$. We have already checked $K$ is normal. Now we define $\Phi: G/K \rightarrow \operatorname{Im} \phi$ by \[
+      gK \rightarrow \phi (g).
+      .\]
+      To show $\Phi$is well defined and injective: 
+      \begin{align*}
+           g_1 K= g_2 K &\iff {g_2 }^{-1}g_1 \in K\\
+           &\iff \phi ({g_2 }^{-1}g_1 )=e\\
+           &\iff \phi (g_1 )=\phi (g_2 ). 
+      \end{align*}
+      To show $\Phi$ is a group hom.: 
+      \begin{align*}
+           \Phi (g_1 K g_2 K)&=\Phi (g_1 g_2 K)\\
+           &=\phi (g_1 g_2 )=\phi (g_1 ) \phi (g_2 )\\
+           &=\Phi (g_1 K) \Phi (g_2 K)
+      \end{align*}
+      Showing $\Phi$ is surjective:
+
+      Let $x \in \operatorname{Im} \phi$, say $x= \phi (g)$ for some $g \in G$. Then $x=\phi (gR)$.
+\end{proof}
+\begin{example}
+      Let $\phi: \mathbb{C} \rightarrow \mathbb{C}^x= \left\{x \in C: x \neq 0\right\}$ given by $z \mapsto e^{z}$.
+
+      Since $e^{z+w}=e^{z}e^{w}$, this is a group homomorphism from $(\mathbb{C},+) \rightarrow (\mathbb{C}^{x},\times)$. We have that 
+      \begin{align*}
+          \operatorname{ker} \phi= \left\{z \in \mathbb{C}: \ e^x=1\right\}=2 \pi i \mathbb{Z}\\
+          \operatorname{Im} \phi=\mathbb{C}^{x} \ \text{by existence of log}
+      \end{align*}
+      Hence $\mathbb{C}/2 \pi i \mathbb{Z} \cong \mathbb{C}^{x}$. 
+\end{example}
+
+\begin{theorem}[Second Isomorphism Theorem]
+      Let $H \leq G$, and $K \unlhd G$. Then $HK = \left\{hk: h \in H, k \in K\right\} \leq G$ and $H \cap K \unlhd H$. Moreover, \[
+      HK/K \cong H/(H \cap K)
+      .\] 
+\end{theorem}
+\begin{proof}
+      Let $h_1 k_1 , h_2 k_2 \in HK$ (so $h_1 h_2 \in H, \ k_1 k_2 \in K$). Now \[
+      h_1 k_1 {(h_2 k_2 )}^{-1}=\underbrace{h_1 {h_2 }^{-1}}_{\in H} (\underbrace{h_2 k_1 {k_2 }^{-1} {h_2 }^{-1}}_{\in K} )\in HK 
+      .\] 
+     Thus $HK \leq G$ (by our previous remark). Let $\phi: H \rightarrow G/K$ be given by $h \rightarrow hK$. This is the composite of $H \rightarrow G$ and the quotient map $G \rightarrow G/K$; hence $\phi$ is a group homomorphism. Thus
+     \begin{align*}
+          \operatorname{ker} \phi = \left\{h \in H: hK=K\right\}=H \cap K \unlhd H \\
+          \operatorname{Im} \phi = \left\{hK: \ h \in H\right\}=HK/K
+     \end{align*}
+     Now by the First Isomorphism Theorem \[
+     HK/K \cong H/(H \cap K)
+     .\] 
+\end{proof}
+\begin{remark}
+      Suppose $K \unlhd G$. There is a bijection \[
+      \left\{\text{subgroups of }G/K\right\} \leftrightarrow \left\{\text{subgroups of }G \text{ containing }K\right\}
+      ,\] 
+     where $X \mapsto \left\{g \in G: gK \in X\right\}$ and $H/K \leftarrow H$. This further restricts to a bijection 
+     \[
+      \left\{\text{normal subgroups of }G/K\right\} \leftrightarrow \left\{\text{normal subgroups of }G \text{ containing }K\right\}
+      ,\] 
+\end{remark}
+\begin{theorem}[Third Isomorphism Theorem]
+      Let $K \leq H \leq G$ be normal subgroups of $G$. Then \[
+      \frac{G/K}{H/K} \cong G/H
+      .\] 
+\end{theorem}
+\begin{proof}
+      Let $\phi: G/K \rightarrow G/K$ be defined by $gK \mapsto gH$. If $g_1 K= g_2 K$, then ${g_2 }^{-1}g_1 \in K \leq H \implies  g_1 H= g_2 H$. Thus $\phi$ is well-defined.
+      
+      Thus $\phi$ is a surjective homomorphim with kernel $H/K$. Now just apply the First Isomorphism Theorem.
+\end{proof}
+\subsection{Simple groups}
+If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information about $G$. However, this approach is not always available. This is the case when a group is simple. 
+\begin{definition}[Simple group]
+      A group $G$ is simple if $\left\{e\right\}$ and $G$ are its only normal subgroups.
+\end{definition}
+\begin{remark}
+     It is convention to not consider the trivial group a simple group.
+\end{remark}
+\begin{lemma}
+     Let $G$ be an abelian group. $G$ is simple iff $G \cong C_{p}$ for some prime $p$. 
+\end{lemma}
+\begin{proof}
+      \textbf{$\impliedby$:}
+      Let $H \leq C_{p}$. Lagrange's theorem says that $|H| \ | |C_{p}|=p$. Since $p$ is prime, $|H|=1$ or $p$. So $H$ is the trivial group or $C_{p}$.  
+
+      \textbf{$\implies $:}
+      Let $g \in G$ where $g \neq e$. Consider the subgroup generated by $g$: \[
+      \langle g \rangle = \left\{\ldots , g^{-2},g^{-1},e, g, g^2, \ldots \right\}
+      .\]  This is normal in $G$ since $G$ is abelian. Since $G$ is simple, $\langle g \rangle =G$. If $G$ is infinite, $G \cong (\mathbb{Z}, +)$ and $2\mathbb{Z} \leq \mathbb{Z}$ which gives a contradiction. 
+
+      Otherwise, we now know $G \cong C_{n}$ for some $n$. Let $g$ be a generator. If $m |n $ then $g^{n/m}$ generates a subgroup of order $m$ and so $G$ simple $\implies $ the only factors of $n$ are 1 and $n$. Therefore $n$ is prime.  
+\end{proof}
+\begin{lemma}
+     If $G$ is a finite group, then $G$ has a composition series \[
+     e =G_{0} \unlhd G_1 \unlhd \ldots \unlhd G_{m}=G
+     ,\] with each quotient $G_{i}/G_{i-1}$ simple.
+\end{lemma}
 \end{document}

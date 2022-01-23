@@ -1,0 +1,122 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[
+    fancytheorems, 
+    fancyproofs, 
+    noindent, 
+]{adam}
+\usepackage{floatrow}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{bm}
+
+\newcommand{\incfig}[2]{%
+    \def\svgwidth{#1mm}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\title{IB Complex Analysis}
+\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
+\date{\today}
+
+
+\allowdisplaybreaks
+\begin{document}
+
+\maketitle
+These are my notes for the IB course Complex Analysis, which was lectured in Lent 2022 at Cambridge by Prof. N.Wickramasekera. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
+
+\tableofcontents
+\newpage
+
+\section{Basic notions}
+Recall definitions in $\mathbb{C}$ from IA courses. Note that $d (z,w)=|z-w|$ defines a metric on $\mathbb{C}$ (the standard metric). For $a \in \mathbb{C}$ and $r >0$, we write $D (a,r)= \left\{z \in \mathbb{C}: \ |z-a|<r \right\}$ for the open ball with centre $a$ and radius $r$. 
+\begin{definition}[Open subset of $\mathbb{C}$]
+     A subset $U \subset \mathbb{C}$ is open wrt. the standard metric if for all $a \in U$, there exists an $r$ such that $D (a,r) \in U$.
+\end{definition} 
+\begin{remark}
+     This is equivalent to being open wrt. the Euclidean metric on $\mathbb{R}^{2} $.
+\end{remark}
+
+This course is about complex valued functions of a single variable, i.e functions \[
+f: A \rightarrow \mathbb{C}, \quad \text{where } A \subset \mathbb{C}
+.\] 
+Identifying $\mathbb{C}$ with $\mathbb{R}^2$ in the usual way, we can write $f=u+iv$ for real functions $u,v$ and thus define $u= \operatorname{Re} (f)$, $v=\operatorname{Im} (f)$. 
+Almost exclusively we'll focus on differentiable functions $f$. But first let's recall continuity. 
+\begin{definition}[Continuous function on $\mathbb{C}$]
+     The function $f$ (as above) is continuous at a point $w \in A$ if \[
+     \forall \varepsilon >0, \ \exists \delta >0 \text{ such that } \forall z \in A,\quad  |z-w|<\delta \implies |f (z)- f (w)| <\varepsilon
+     .\] 
+\end{definition}
+\begin{remark}
+     This is equivalent to saying that $\lim_{z \rightarrow w} f(z)=f (w) $. 
+\end{remark}
+
+\subsection{Complex differentiation}
+Let $f: U \rightarrow \mathbb{C}$, where $U$ is open. 
+\begin{definition}[Differentiability]
+     $f$ is differentiable at $w \in U$ if the limit \[
+     f' (w)=\lim_{z \rightarrow w} \frac{f (z)-f (w)}{z-w}
+     .\] exists at a complex number.
+\end{definition}
+\begin{definition}[Holomorphic function]
+     $f$ is holomorphic at $w \in U$ if there is $\varepsilon >0$ such that $D (w, \varepsilon)\subset U$ and $f$ is differentiable at every point in $D (w, \varepsilon)$. 
+
+     Equivalently, $f$ is holomorphic in $U$ if $f$ is holomorphic at every point in $U$, or equivalently, $f$ is differentiable at every point in $U$.
+\end{definition}
+\begin{remark}
+     Sometimes we use "analytic" to mean holomorphic.
+\end{remark}
+Usual rules of differentiation of real functions of a real variable hold for complex functions. Derivatives of sums, products, quotients of functions are obtained in the same way (can easily be checked). 
+
+\begin{proposition}
+     The chain rule for composite functions also holds: if $f: U \rightarrow \mathbb{C}$, $g: V \rightarrow \mathbb{C}$ with $f (U) \subset V$, and $h= g \circ f : U \rightarrow \mathbb{C}$. If $f$ is differentiable at $w \in U$ and $g$ is differentiable at $f (w)$, then $h$ is differentiable at $w$ with \[
+     h' (w)=(g \circ f)' (w)= f' (w) (g' \circ f)(w)
+     .\] 
+\end{proposition}
+\begin{proof}
+     Omitted; analagous to the proof for the real case.
+\end{proof}
+We might ask ourselves a question: 
+
+Write $f (z)= u (x,y)+iv (x,y)$, $z=x+iy$. Is differentiability of $f$ at a point $w=c+id \in U$ is the same as differentiability of $u $ and $v$ at $(c,d)$? 
+
+Recall from IB Analysis \& Topology that $u : U \rightarrow \mathbb{R}$ is differentiable at $(c,d) \in U$ if there is a "good linear approximation of $u$ at $(c,d)$". We can show that if  $u$ is differentiable at $c,d$ then $L$ (the derivative of $u$ at $(c,d)$) is uniquely defined, and we write $L=Du (c,d)$; moreover, $L$ is given by the partial derivatives of $u$, i.e \[
+L (x,y)= \left(\frac{\partial u}{\partial x} (c,d)\right)x + \left( \frac{\partial u}{\partial y}(c,d)\right)y
+.\]  
+
+The answer to the above question is \textbf{no} (otherwise complex analysis would be useless!). Now we want to characterise differentiability of $f$ in terms of $u$ and $v$. 
+
+\begin{theorem}[Cauchy-Riemann equations]
+     This theorem states that $f=u+iv: \ U \rightarrow \mathbb{C}$ is differentiable at $w=c+id \in U$ if and only if 
+
+     $u,v$ are differentiable at $(c,d) \in U$ \textbf{and} $u,v$ satisfy the Cauchy-Riemann equations at $(c,d)$: \[
+     \frac{\partial u}{\partial x}=\frac{\partial v}{\partial y} \quad \text{and} \quad \frac{\partial u}{\partial y}=- \frac{\partial v}{\partial x}
+     .\]  
+     If $f$ is differentiable at $w=c+id$, then \[
+     f' (w)= \frac{\partial u}{\partial x} (c,d)+i \frac{\partial v}{\partial x} (c,d)
+     .\]  There are three other such expressions following from the Cauchy-Riemann equations. 
+\end{theorem}
+\begin{proof}
+     $f$ is differentiable at $w$ with derivative $f' (w)=p+iq$:
+     \begin{align*}
+         \iff & \lim_{z \rightarrow w} \frac{f (z)- f (w)}{z-w}=p+iq\\
+         \iff & \lim_{z \rightarrow w} \frac{f (z)- f (w)- (z-w)(p+iq)}{|z-w|}=0\\
+     \end{align*}
+     Writing $f=u+iv$ and separating real and imaginary parts, the above holds if and only if 
+     \begin{align*}
+        & \lim_{(x,y) \rightarrow (c,d)} \frac{u (x,y)- u (c,d)-p (x-c)+q (y-d)}{\sqrt{(x-c)^2+ (y-d)^2}}=0\\
+        \text{and } & \lim_{(x,y) \rightarrow (c,d)} \frac{v (x,y)- v (c,d)-q (x-c)+p (y-d)}{\sqrt{(x-c)^2+ (y-d)^2}}=0\\
+     \end{align*}
+     This is precisely the statement that $u$ is differentiable at $(c,d)$ with $Du (c,d)(x,y)=px-qy$, and $v$ is differentiable at $(c,d)$ with $Dv (c,d)(x,y)=qx+py$. 
+
+     So $\iff$ $u,v$ are differentiable at $(c,d)$ and $u_{x}(c,d)=p=v_{y}(c,d)$, $u_{y}(c,d)=-q=-v_{x}(c,d)$, i.e the Cauchy-Riemann equations hold at $(c,d)$. 
+
+     We also get from the above that if $f$ is differentiable at $w$, then $f' (w)=p+iq=u_{x}(c,d)+iv_{x} (c,d)$.  
+\end{proof}
+\begin{remark}
+     $u,v$ satisfying the Cauchy-Riemann equations at a point does \textbf{not} guarantee differentiability of $f$ on its own. 
+\end{remark}
+\end{document}

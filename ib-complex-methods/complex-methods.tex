@@ -1,0 +1,94 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[
+    fancytheorems, 
+    fancyproofs, 
+    noindent, 
+]{adam}
+\usepackage{floatrow}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{bm}
+\setcounter{section}{-1}
+\newcommand{\incfig}[2]{%
+    \def\svgwidth{#1mm}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\title{IB Complex Methods}
+\author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
+\date{\today}
+
+
+\allowdisplaybreaks
+\begin{document}
+
+\maketitle
+
+These are my notes for the IB course Complex Methods, which was lectured in Lent 2022 at Cambridge by Dr U. Sperhake. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
+
+
+
+\tableofcontents
+\newpage
+
+\section{Background material}
+\subsection{Complex numbers}
+Recall the definition of a complex number, its real and imaginary parts, complex conjugate, modulus, and argument. Note that $\operatorname{arg} z$ is only defined up to adding $2n \pi$, for $n \in \mathbb{Z}$. Recall also the definition of the principal argument ($\operatorname{arg}z \in [- \pi, \pi]$). 
+
+Recall the triangle inequality: \[
+|z_1 |+|z_2 | \leq |z_1 |+ |z_2 | \quad \forall z_1 , z_2 \in \mathbb{C}
+.\] 
+By setting $z_1 = \zeta_1 +\zeta_2 $ and $z_2 =-\zeta_2 $ we get the reverse triangle inequality \[
+||\zeta_1 |- |\zeta_2 ||\leq |\zeta_1 +\zeta_2 | \quad \forall \zeta_1 , \zeta_2 \in \mathbb{C}
+.\] 
+
+Recall the geometric series: for $z \in \mathbb{C}$, $z \neq 1$ and $n \in \mathbb{N}_0$: $\sum_{k=0}^{n}z^{k}= \frac{1-z^{n+1}}{1-z}$. 
+
+For $|z|<1$, this converges for $n \rightarrow \infty$: $\sum_{k=0}^{ \infty}z^{k}= \frac{1}{1-z}$
+
+\begin{definition}[Open set]
+     A set $D \subset \mathbb{C}$ is an "open set" if for all $z_0 \in D$, $\exists \varepsilon>0$ such that the $\varepsilon$-sphere $|z-z_0 |<\varepsilon$ lies in $D$. A neighbourhood of $z \in \mathbb{C}$ is an open set $D$ that contains $z$. 
+\end{definition}
+
+\subsection{Trigonometric and hyperbolic functions}
+Recall Euler's identity, and the complex definitions of cos, sin, and their hyperbolic counterparts. Recall that $\cos (ix)=\cosh (x)$  and $\sin (ix)= i \sinh (x)$ from the definitions.
+
+\subsection{Calculus of real functions in $\geq 1$ variables}
+Sometimes, we regard a complex function as 2 real functions on $\mathbb{R}^{2} : \ f (z)=u (x,y)+iv (x,y)$. (See IB Complex Analysis notes for more on this.)
+
+\begin{definition}
+     We define $C^{m}(\Omega)$ as the set of functions $f: \Omega \subset \mathbb{R}^{n} \rightarrow \mathbb{R}$ whose partial derivatives up to order $m$ exist and are continuous. 
+\end{definition}
+\begin{remark}
+     We need the continuity condition: consider $f: \mathbb{R}^{2} \rightarrow \mathbb{R}$ defined by
+     \begin{equation*}
+        f (x,y)=
+          \begin{cases}
+              x & y=0\\
+              y & x=0 \\
+              1 & \text{elsewhere}
+          \end{cases}      
+     \end{equation*}
+    Then $\frac{\partial f}{\partial x}(0,0)=1=\frac{\partial f}{\partial y}(0,0)$, but $f$ is not even continuous at $(0,0)$. 
+\end{remark}
+
+\begin{definition}[Differentiable function]
+     $f: \Omega \subset \mathbb{R}^{n} \rightarrow \mathbb{R}$ is differentiable at a point $x \in \Omega$ if there exists a linear function $A: \mathbb{R}^{n} \rightarrow R$ with \[
+     f (x+h)-f (x)=A (x)(h) +o (||h||)
+     .\] (See IB Analysis and Topology.) We define $f$ to be continuously differentiable if its partial derivatives are also continuous. This generalises to vector-valued functions $f: \Omega \rightarrow \mathbb{R}^{m}$ by considering each component $f_{i}$ separately.  
+\end{definition}
+
+\begin{definition}[Uniform convergence]
+     A sequence of functions $f_{k}: \Omega \subset \mathbb{R}^{n} \rightarrow \mathbb{R}$ is uniformly convergent with limit $f$ iff \[
+     \forall \varepsilon>0, \exists n \in \mathbb{N}: \quad  \forall k \geq n, x \in \Omega: \quad |f_{k} (x)- f (x)|< \varepsilon
+     .\]
+     See IB Analysis and Topology for more. In this course, we will use this to justify swapping limits with integrals and sums. 
+\end{definition}
+
+\section{Analytic functions}
+\subsection{The extended complex plane of the Riemann sphere}
+We can identify $\mathbb{C}$ with $\mathbb{R}^2$ since $z \leftrightarrow (x,y)$ is bijective with $z=x+iy$.
+\end{document}

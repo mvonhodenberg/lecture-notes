@@ -29,14 +29,14 @@
 \maketitle
 
 
-This article constitutes my notes for the `IB Fluid Mechanics' course, held in Lent 2021 at Cambridge. These notes are \emph{not a transcription of the lectures}, and differ significantly in quite a few areas. Still, all lectured material should be covered.
+These are my notes for the IB course Fluid Mechanics, which was lectured in Lent 2022 at Cambridge by Prof. J.R. Lister. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
 
 
 
 \tableofcontents
 \newpage
 \section{Introduction}
-Continuum mechanics includes things like fluid mechanics. Flows of liquids and gases are both fluids, and continuum mechanics also includes solid mechanics such as elasticity and deformation. 
+Fluid mechanics is a subset of a field called continuum mechanics. Flows of liquids and gases are both fluids, and continuum mechanics also includes solid mechanics such as elasticity and deformation. 
 
 What we are interested in in this course is the overall behaviour of a fluid at a macroscopic level. We aim to take averages over irrelevant molecular details to get a continuous description in terms of fields; e.g density $\rho (x,t)$ or velocity $u (x,t)$.
 
@@ -76,12 +76,12 @@ This Lagrangian viewpoint is often more complicated than the Eulerian one, but w
 \end{remark}
 \begin{definition}[Material derivative]
      The \vocab{material derivative} is the rate of change moving with the fluid. [picture] For any quantitity $F (x,t)$, the rate of change seen by an observer with the flow is found from \[
-     \delta F =F (x+\delta x, t+\delta t)-F (x,t)=\delta x \cdot \nabla F +\left.\frac{\partial F}{\partial t}\right|_{\delta t}+o (t)
+     \delta F =F (x+\delta x, t+\delta t)-F (x,t)=\delta x \cdot \nabla F +\delta t \frac{\partial F}{\partial t}+o (t)
      .\] 
      The displacement of fluid moving with the flow is given by \[
-     do later
-     .\] Therefore dividing and taking the limit, we get the material derivative \[
-     \frac{DF}{Dt}=\underbrace{\frac{\partial F}{\partial t}}_{\text{Eulerian deriv.} } + \underbrace{u \cdot \nabla F}_{\text{convected derivative} } 
+     \delta x= u (x,t) \delta t + o (t)
+     .\] Therefore dividing by $\delta t$ and taking the limit as $\delta \rightarrow 0$, we get the material derivative \[
+     \frac{\mathcal{D}F}{\mathcal{D}t}=\underbrace{\frac{\partial F}{\partial t}}_{\text{Eulerian deriv.} } + \underbrace{u \cdot \nabla F}_{\text{convected derivative} } 
      .\] 
 \end{definition}
 \end{document}
