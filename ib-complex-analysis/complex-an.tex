@@ -117,6 +117,104 @@ The answer to the above question is \textbf{no} (otherwise complex analysis woul
      We also get from the above that if $f$ is differentiable at $w$, then $f' (w)=p+iq=u_{x}(c,d)+iv_{x} (c,d)$.  
 \end{proof}
 \begin{remark}
-     $u,v$ satisfying the Cauchy-Riemann equations at a point does \textbf{not} guarantee differentiability of $f$ on its own. 
+     $u,v$ satisfying the Cauchy-Riemann equations at a point does \textbf{not} guarantee differentiability of $f$ on its own. We also can proceed in a more simple way if we simply want to show the reverse implication, by writing \[
+     f' (w)=\lim_{z \rightarrow w} \frac{f (z)- f (w)}{z-w}=\lim_{h \rightarrow 0} \frac{f (w+h)-f (w)}{h}
+     ,\]
+     and then choosing $h = t \in \mathbb{R}$ and $h=it$ (since we can choose any direction we want for $h$) in order to get that $u_{x},u_{y},v_{x},v_{y}$ exist and satisfy the Cauchy-Riemann equations.   
 \end{remark}
+\begin{example}[Differentiability (?) of conjugation map]
+      Let $f (z)=\overline{z} =x-iy$. For this, $u =x, v=-1$, so $u_{x}=1, v_{y}=-1$ and so the C-R equations are not satisfied and $f$ is not differentiable at any point.  
+\end{example}
+\begin{corollary}
+     Let $f=u+iv: U \rightarrow \mathbb{C}$. If $u,v$ have continuous partial derivatives at $(c,d) \in U$ and satisfy the C-R equations there, then $f$ is differentiable at $w=c+id$.
+     
+     In particular, if $u,v$ are $\mathbb{C}^{1}$ functions on $U$ (i.e have continuous partial derivatives in $U$) satisfying the C-R equations in $U$, then $f$ is holomorphic in $U$.
+\end{corollary}
+\begin{proof}
+      Continuity of partial derivatives of $u$ implies that $u$ is differentiable, and similarly for $v$ (IB Analysis \& Topology). So the corollary follows from the C-R theorem.
+\end{proof}
+Complex differentiability is much more restrictive than real differentiability of real and imaginary parts (because of the additional requirement that the Cauchy-Riemann equations must hold). This leads to surprising theorems compared to the real case, for example 
+\begin{itemize}
+     \item[(a)] If $f: \mathbb{C} \rightarrow \mathbb{C}$ is holomorphic and bounded, then $f$ is constant! (Liouville's theorem). This is false for real functions; for example $\sin (x): \mathbb{R} \rightarrow \mathbb{R}$ . 
+     \item[(b)] If $f: U \rightarrow \mathbb{C}$ is holomorphic, then $f$ is infinitely differentiable on $U$.  
+\end{itemize}
+We will prove these later on. Note that (b) implies that partial derivatives of $u,v$ of all orders exists. So we can differentiate the Cauchy-Riemann equations to get: 
+\begin{align*}
+     &(u_{x})_x=(v_{y})_x \implies u_{xx}=v_{yx} \text{  and} \\
+     &(u_{y})_y=(-v_{x})_y \implies u_{yy}=-v_{xy}.
+\end{align*} 
+This gives $\nabla^2 u=u_{xx}+u_{yy}=0$ in $U$. Similarly $\nabla^2 v=0$ in $U$.
+
+This means that real and imaginary parts of a holomorphic function are harmonic. This gives a deep connection between harmonic functions and complex analysis; some theorems can be viewed as giving results about harmonic functions. 
+
+Now we need some definitions before the next corollary.
+\begin{definition}
+      \begin{enumerate}
+           \item A curve is a continuous map $\gamma: [a,b] \rightarrow \mathbb{C}$, where $[a,b] \subset \mathbb{R}$ is a closed interval. We say $\gamma$ is a $C^{1}$ curve if $\gamma'$ exists and is continuous on $[a,b]$. 
+           \item An open set $U \subset \mathbb{C}$ is path-connected if for any two points $z,w \in U$, there is a curve $\gamma: [0,1] \rightarrow U$ such that $\gamma (0)=z$ and $\gamma (1)=w$. 
+           \item A domain is a non-empty, open, path-connected subset of $\mathbb{C}$.  
+      \end{enumerate}
+\end{definition}
+\begin{corollary}
+     If $U \in C$ is a domain and $f: U \rightarrow \mathbb{C}$ is holomorphic with $f' (z)=0$ for every $z \in U$, then $f$ is constant.
+\end{corollary}
+\begin{proof}
+      Write $f=u+iv$. By the C-R equations, $f'=0 \implies Du=Dv=0$ in $U$. Since $U$ is a domain, this means (IA Analysis and Topology) that $u$ and $v$ are constant, i.e $f$ is constant.
+\end{proof}
+Now we want to look at some examples of holomorphic functions other than polynomials on $\mathbb{C}$ and rational functions on their domains. We now look at power series, which will give us a wealth of examples. 
+
+\subsection{Power series}
+Recall the next theorem from IA Analysis:
+\begin{definition}[Radius of convergence]
+      If $(c_{n})_{n=0}^{ \infty}$ is a sequence of complex numbers, then there is a unique number $R \in [0, \infty]$ such that the power series \[
+      \sum_{n=0}^{ \infty}c_{n}(z-a)^{n} \qquad z,a \in \mathbb{C}
+      .\] 
+      converges absolutely if $|z-a|<R$ and diverges if $|z-a|>R$. If $0<r<R$, then the series converges uniformly wrt $z$ on the compact disk $D_{r}=\left\{z \in \mathbb{C}: \ |z-a|<R\right\}$. 
+
+      We call $R$ the radius of convergence of the power series. Note that when $z=R$, we cannot say anything in general about convergence.
+\end{definition}
+\begin{theorem}
+      Let $\sum_{n=0}^{ \infty}c_{n}(z-a)^{n}$ be a power series with radius of convergence $R>0$. Fix $a \in \mathbb{C}$, and define $f: D (a,R)\rightarrow \mathbb{C}$ by $f (z)= \sum_{n=0}^{ \infty}c_{n}(z-a)^{n}$. Then
+      \begin{enumerate}
+           \item $f$ is holomorphic on $D (a,R)$. 
+           \item The derived series $\sum_{n=1}^{ \infty}nc_{n}(z-a)^{n-1}$ also has radius of convergence $R$, and \[
+           f' (z)=\sum_{n=1}^{ \infty}nc_{n}(z-a)^{n-1} \quad \forall z \in D (a,R)
+           .\] 
+           \item $f$ has derivatives of all orders on $D (a,R)$, and $c_{n}= \frac{f^{(n)}(a)}{n!}$. 
+           \item If $f$ vanishes on $D (a, \varepsilon)$ for some $\varepsilon>0$, then $f \equiv 0$ on $D (a,R)$. 
+      \end{enumerate}
+\end{theorem}
+\begin{proof}
+      \textbf{Parts (i) and (ii)}: By considering $g (z)=f (z+a)$, we assume WLOG that $a=0$. So $f (z)=\sum_{n=0}^{ \infty}c_{n}z^{n}$ for $z \in D (0,R)$. 
+
+     The derived series $\sum_{n=1}^{ \infty}nc_{n}z^{n-1}$ will have some radius of convergence $R_1 \in [0, \infty]$. Now let $z \in D (0,R)$ be arbitrary. Choose $\rho$ such that $|z|<\rho<R$. Then since $n |\frac{z}{\rho}|^{n-1} \rightarrow 0 $ as $n \rightarrow \infty$, we have \[
+     n |c_n||z|^{n-1}=n |c_n||\frac{z}{\rho}|^{n-1}\rho^{n-1} \leq |c_n|p^{n-1}
+     .\]  
+     for sufficiently large $n$. Since $\sum_{}^{}|c_{n}|\rho^{n}$ converges, it follows that $\sum_{n=1}^{ \infty}nc_{n}z^{n-1}$ converges. Thus $D (0,R)\subset D (0,R_1 )$, i.e $R_1 \geq R$. Since \[
+     |c_{n}||z|^{n} \leq n|c_{n}||z|^{n}=|z|\left(|c_{n}||z|^{n-1}\right)
+     ,\] 
+     if $\sum_{}^{}n |c_{n}||z|^{n-1}$ converges then so does $\sum_{}^{}|c_{n}||z|^{n}$, so $R_1 \leq R$. So $R_1 =R$. 
+     
+     To prove that $f$ is differentiable with $f' (z)=\sum_{n=1}^{ \infty}nc_{n}(z-a)^{n-1}$, fix $z \in D (0,R)$. The key idea is that this is equivalent to continuity at $z$ of the function 
+     \begin{equation*}
+          g: D (0,R) \rightarrow \mathbb{C}, \quad g (w)=
+           \begin{cases}
+                \frac{f (w)- f (z)}{w-z} & w \neq z\\
+                \sum_{n=1}^{ \infty}nc_{n}z^{n-1} & w=z.
+           \end{cases}          
+     \end{equation*}
+     By subbing in $f$ we can write $g (w)=\sum_{n=1}^{ \infty}h_{n}(w)$ where 
+     \begin{equation*}
+          h_{n} (w)=
+          \begin{cases}
+               \frac{c_{n}(w^{n}-z^{n})}{w-z} & w \neq z\\
+               nc_{n}z^{n-1} & w=z.
+          \end{cases}  
+     \end{equation*}
+     Now $h_{n}$ is continuous on $D (0,R)$ (since $w \rightarrow w^{n}$ is differentiable with derivative $nw^{n-1}$). Using $ \frac{w^{n}-z^{n}}{w-z}=\sum_{j=0}^{n-1}z^{j}w^{n-1-j}$, we get that for any $r$ with $|z|<r<R$ and any $w \in D (0,r), |h_{n}(w)|\leq n |c_{n}|r^{n-1} \equiv M_{n}$. Since $\sum M_{n} < \infty$, by the Weierstrass M-test that $\sum_{}^{}h_{n}$ converges uniformly on $D (0,r)$. But a uniform limit of continuous functions is continuous, so $g = \sum_{}^{}h_{n}$ is continuous in $D (0,r)$ and in particular at $z$.
+
+     \textbf{Part (iii)}: Repeatedly apply (ii). The formula $c_{n}= \frac{f^{(n)(a)}}{n!}$ follows by differentiating the series $n$ times and setting $z=a$. 
+     
+     \textbf{Part (iv)}: If $f=0$ in $D (a, \varepsilon)$, then $f^{(n)}(a)=0$ for all $n$, so $c_{n}=0$ for all $n$ and hence $f=0$ in $D (a,R)$. 
+\end{proof}
 \end{document}
