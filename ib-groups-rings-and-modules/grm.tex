@@ -147,7 +147,7 @@ This course will contain several sections:
       Let $K=\operatorname{ker} \phi$. We have already checked $K$ is normal. Now we define $\Phi: G/K \rightarrow \operatorname{Im} \phi$ by \[
       gK \rightarrow \phi (g).
       .\]
-      To show $\Phi$is well defined and injective: 
+      To show $\Phi$ is well defined and injective: 
       \begin{align*}
            g_1 K= g_2 K &\iff {g_2 }^{-1}g_1 \in K\\
            &\iff \phi ({g_2 }^{-1}g_1 )=e\\
@@ -192,7 +192,7 @@ This course will contain several sections:
      HK/K \cong H/(H \cap K)
      .\] 
 \end{proof}
-\begin{remark}
+\begin{remark}[1.2]
       Suppose $K \unlhd G$. There is a bijection \[
       \left\{\text{subgroups of }G/K\right\} \leftrightarrow \left\{\text{subgroups of }G \text{ containing }K\right\}
       ,\] 
@@ -238,4 +238,91 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
      e =G_{0} \unlhd G_1 \unlhd \ldots \unlhd G_{m}=G
      ,\] with each quotient $G_{i}/G_{i-1}$ simple.
 \end{lemma}
+\begin{proof}
+      We induct on $|G|$. If $|G|=1$ it's obvious. If $|G|>1$, let $G_{m-1}$ be a normal subgroup of largest possible order that isn't $G$ itself. Remark 1.2 implies $G/G_{m-1}$ is simple. Then apply the induction hypothesis to $G_{m-1}$. 
+\end{proof}
+\subsection{Group actions}
+\begin{definition}[Permutation group]
+      For $X$ any set, let $\operatorname{Sym}(X)$ be the group of all bijections $X \rightarrow X$ under composition. This clearly forms a group with $e=\operatorname{Id}_X$.
+
+      A group $G$ is a permutation group of degree n if $G \leq \operatorname{Sym}(X)$ with $|X|=n$. 
+\end{definition}
+\begin{example}[Examples of permutation group]
+      \begin{itemize}
+           \item $S_{n}=\operatorname{Sym}(\left\{1,2,\ldots ,n\right\})$ is a permutation group of degree $n$, as is $A_{n}\leq S_{n}$.
+           \item $D_{2n}=$ (symmetries of a regular $n$-gon) is a subgroup of Sym($\left\{\text{vertices of n-gon}\right\}$).
+      \end{itemize}
+\end{example}
+\begin{definition}[Group action]
+      An actio of a group $G$ on a set $X$ is a function $\ast: G \times X \rightarrow X$ satisfying 
+      \begin{itemize}
+           \item[(i)] $e \ast x =x $ for all $x \in X$ 
+           \item[(ii)] $(g_1 g_2 )\ast x= g_1 \ast (g_2 \ast x)$ for all $g_1 ,g_2 \in G$, $x \in X$.
+      \end{itemize}
+\end{definition}
+\begin{proposition}
+     An action of a group $G$ on a set $X$ is equivalent to specifying a group homomorphism $\phi: G \rightarrow \operatorname{Sym}(X)$.
+\end{proposition}
+\begin{proof}
+      For each $g \in G$, let $\phi_{g}: X \rightarrow X$ send $x \mapsto g \ast x$. 
+
+      We have $\phi_{g_1 g_2 }(x)=(g_1 g_2 )\ast x=g_1 \ast (g_2 \ast x)=\phi_{g_1 }\circ \phi_{g_2 }(x)$. ($\dagger$)
+
+      In particular, $\phi_{g}\circ \phi_{{g}^{-1}}=\phi_{{g}^{-1}}\circ \phi_{g}=\phi_{e}=\operatorname{Id}_X$. Thus $\phi_{g} \in \operatorname{Sym}(X)$. Then the map $\phi: G \rightarrow \operatorname{Sym}(X)$ given by $g \mapsto \phi_{g}$ is a group homomorphism by ($\dagger$).
+
+      Conversely, let $\phi: G \rightarrow \operatorname{Sym}(X)$ be a group homomorphism. Define $\ast: G \times X \rightarrow X$ given by $(g,x) \mapsto \phi (g)(x)$. Then
+      \begin{itemize}
+           \item[(i)] $e \ast x=\phi (e)(x)=\operatorname{Id}_X (x)=x$.
+           \item[(ii)] $(g_1 g_2 )\ast x= \phi (g_1 g_2 )(x)=\phi (g_1 )(\phi (g_2)(x))=g_1 \ast (g_2 \ast x)$. 
+      \end{itemize}
+\end{proof}
+\begin{definition}
+      We say $\phi: G \rightarrow \operatorname{Sym}(X)$ is a permutation representation of $G$.
+\end{definition}
+\begin{definition}[Orbit and stabiliser]
+     Let $G$ act on a set $X$. 
+     \begin{itemize}
+          \item[(i)] The orbit of $x \in X$ is $\operatorname{orb}_G (x)=\left\{g \ast x: \ g \in G\right\} \subset X$
+          \item[(ii)] The stabiliser of $x \in X$ is \[
+          G_{x}=\left\{g \in G: \ g \ast x=x\right\} \leq G
+          .\] 
+     \end{itemize}
+\end{definition}
+Recall the Orbit-Stabiliser Theorem from IA Groups: There is a bijection $\operatorname{orb}_G (x) \leftrightarrow $ the set of left cosets of $G_{x}$ in $G$. In particular if $G$ is finite, then \[
+|G|=|\operatorname{orb}_G (x)| |G_{x}|
+.\] 
+\begin{example}[Example of Orbit-Stabiliser]
+      Let $G$ be the group of all symmetries of a cube, acting on the set of veretices $X$. We can reach any vertex from any other one, so $|\operatorname{orb}_G (x)|=8$. Some basic geometry gives $|G_{x}|=6$. Therefore $|G|=48$.
+\end{example} 
+\begin{remark}
+      \begin{itemize}
+           \item $\operatorname{ker} \phi=\bigcap_{x \in X}G_{x}$ is called the kernel of the group action. 
+           \item The orbits partition $X$. We say the action is transitive if there is only one orbit.
+           \item $G_{g \ast x}=g G_{x} {g}^{-1}$, so if $x,y \in X$ belong to the same orbit, then their stabilisers are conjugate.
+      \end{itemize}
+\end{remark}
+Later on a lot of the proofs will involve picking a nice group action. So let's look at some examples of group actions. 
+\begin{itemize}
+     \item[(i)] Let $G$ act on itself by left multiplication, i.e $g \ast x =gx$. The kernel of this action is \[
+     \left\{g \in G: gx=x \quad \forall x \in G\right\}=e
+     .\] Thus $G $ is injective into $\operatorname{Sym}(G)$. This proves Cayley's theorem:
+ \end{itemize}
+ \begin{theorem}[Cayley's theorem]
+     Any finite group $G$ is isomorphic to a subgroup of the symmetric group $S_{n}$ for some $n$. (Take $n=|G|$.)
+ \end{theorem}
+ \begin{proof}
+       As above in (i).
+ \end{proof}
+ \begin{itemize}
+      \item[(ii)] Let $H \leq G$; then $G$ acts on $G/H$ by left multiplication, i.e $g \ast x H= gxH$. This action is transitive (since $(x_2 {x_1 }^{-1})x_1 H=x_2 H$) with 
+      \begin{align*}
+          G_{xH}&=\left\{g \in G: gxH=xH\right\}\\&=\left\{g \in G: {x}^{-1}gx \in H\right\}\\&=xH {x}^{-1} 
+      \end{align*} Thus $\operatorname{ker}(\phi)=\bigcap_{x \in G}xH {x}^{-1}$. This is the largest normal subgroup of $G$ that is contained in $H$.  
+ \end{itemize}
+ \begin{theorem}
+       Let $G$ be a non-abelian simple group, and $H \leq G$ a subgroup of index $n>1$. Then $n \geq 5$ and $G$ is isomorphic to a subgroup of $A_{n}$.
+ \end{theorem}
+ \begin{proof}
+     Let $G$ act on $X=G/H$ by left multiplication, and let $\phi: G \rightarrow \operatorname{Sym}(X)$ be the associated permutation representation. As $G$ is simple, $\operatorname{ker}(\phi)=e$ or $G$. If $\operatorname{ker}(\phi)=G$, then $\operatorname{Im}(\phi)=e$. This is a contradiction since $G$ acts transitively on $X$ and $|X|>1$. Thus $\operatorname{ker}(\phi)=e$ and $G \cong \operatorname{Im}(\phi) \leq S_{n}.$ Since $G \leq S_{n}$ and $A_n \unlhd S_n$, the second isomorphism theorem gives $G \cap A_n \unlhd G$ and $G/(G \cap A_n) \cong GA_n/A_n \leq S_n / A_n \cong C_2 $. Since $G$ is simple, $G \cap A_n=e$ (this is impossible as $G \leq C_2 $ but $G$ isn't abelian) or $G$. Thus $G \leq A_{n} $. Finally, if $n \leq 4$, then $A_n$ has no non-abelian simple subgroups.
+ \end{proof}
 \end{document}

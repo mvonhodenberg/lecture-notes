@@ -217,4 +217,29 @@ Recall the next theorem from IA Analysis:
      
      \textbf{Part (iv)}: If $f=0$ in $D (a, \varepsilon)$, then $f^{(n)}(a)=0$ for all $n$, so $c_{n}=0$ for all $n$ and hence $f=0$ in $D (a,R)$. 
 \end{proof}
+If $f: \mathbb{C} \rightarrow \mathbb{C}$ is holomorphic on all of $\mathbb{C}$, we say $f$ is entire. 
+
+\begin{proposition}
+      The complex exponential function is defined by \[
+      e^{z}= \operatorname{exp}(z)= \sum_{n=0}^{ \infty} \frac{z^{n}}{n!}
+      .\] 
+      \begin{itemize}
+           \item[(i)] $e^{z}$ is entire, with $(e^{z})'=e^{z}$. 
+           \item[(ii)] $e^{z} \neq 0$ and $e^{z+w}=e^{z}e^{w}$ for all $z,w \in \mathbb{C}$.
+           \item[(iii)] $e^{x+iy}=e^{x}(\cos (y)+i sin (y))$ for $x,y \in \mathbb{R}$. 
+           \item[(iv)] $e^{z}=1$ iff $z=2n \pi i$ for some $n \in \mathbb{Z}$. 
+           \item[(v)] Let $z \in \mathbb{C}$. There exists $w \in \mathbb{C}$ such that $e^{w}=z$ iff $z \neq 0$.  
+      \end{itemize}
+\end{proposition}
+\begin{proof}
+     \textbf{Part (i):} The r.o.c of the series is $ \infty$. To see $(e^{z}=z'),$ differentiate the series term by term using the previous theorem. 
+
+     \textbf{Part (ii):} Fix any $w \in \mathbb{C}$ and set $F (z)= e^{z+w}e^{-z}$. Then $F' (z)=-e^{z+w}e^{-z}+e^{z+w}e^{-z}=0$, so $F(z)$ is a constant. Thus $F (z)=F (0)=e^{w}$ for all $z \in \mathbb{C}$. Thus \[
+     e^{z+w}e^{-z}=e^{w} \quad \forall z,w \in \mathbb{C}
+     .\] Taking $w=0$, $e^{z}e^{-z}=1$. So $e^{z} \neq 0$. Multiplying by $e^{z}$, we get $e^{z+w}=e^{z}e^{w}$. 
+
+     \textbf{Part (iii):} $e^{x+iy}=e^{x}e^{iy}$ by (ii). Now use the definition of $e^{iy}$, and the series for $\sin (y), \cos (y)$ for $y \in \mathbb{R}$.
+
+     \textbf{Part (iv) and (v):} Follow from (iii). (Exercise)
+\end{proof}
 \end{document}

@@ -2,4 +2,5 @@
 \contentsline {section}{\numberline {1}Groups}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Recall of IA Groups}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Simple groups}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Group actions}{7}{subsection.1.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
