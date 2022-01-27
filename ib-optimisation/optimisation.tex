@@ -10,7 +10,7 @@
 \usepackage{xifthen}
 \usepackage{pdfpages}
 \usepackage{transparent}
-
+\usepackage{tikz}
 \newcommand{\incfig}[2]{%
     \def\svgwidth{#1mm}
     \import{./figures/}{#2.pdf_tex}
@@ -922,13 +922,13 @@ If P1 plays $i$ and P2 plays $j$, then P1 wins £ $a_{ij}$ (the entries of a mat
 	 \[\begin{pmatrix} a_{11} &\ldots a_{1n}&\\\vdots&\ddots&\vdots\\a_{m1}&\ldots &a_{mn}\end{pmatrix}.\]
 \end{definition}
 Suppose P1 plays first. If P1 picks $i$, then he expects to earn 
-\[\min_{j \in \left\{1,\ldots ,m\right\}}a_ij.\]
+\[\min_{j \in \left\{1,\ldots ,m\right\}}a_{ij}.\]
 P1 will thus try to solve the problem
-\[\text{maximise } \min_{j \in \left\{1,\ldots ,m\right\}}a_ij \text{ subject to } i \in \left\{1,2,\ldots ,n\right\}.\]
+\[\text{maximise } \min_{j \in \left\{1,\ldots ,m\right\}}a_{ij} \text{ subject to } i \in \left\{1,2,\ldots ,n\right\}.\]
 Now suppose P2 plays first. If P2 picks $j$, he expects P1 to earn
-\[\max_{i \in \left\{1,\ldots ,n\right\}}a_ij.\] 
+\[\max_{i \in \left\{1,\ldots ,n\right\}}a_{ij}.\] 
 P2 will thus try to solve the problem
-\[\text{minimise } \max_{i \in \left\{1,\ldots ,n\right\}}a_ij \text{ subject to } j \in \left\{1,2,\ldots ,m\right\}.\]
+\[\text{minimise } \max_{i \in \left\{1,\ldots ,n\right\}}a_{ij} \text{ subject to } j \in \left\{1,2,\ldots ,m\right\}.\]
 \begin{example}
 	 If $A=\begin{pmatrix} 1&2\\3&4 \end{pmatrix}$:
 	 \begin{itemize}
@@ -1011,7 +1011,7 @@ When $\lambda \in \Lambda$, $\inf L (w,q,s,\lambda_1,\lambda_2)=\lambda_2$, so t
 \end{example}
 \subsection{Network flows}
 \begin{definition}[Graph]
-	 A \vocab{directed graph} $G=(V,E)$, where $E \subset V \times V$. When $E$ is symmetric ( $(i,j) \in E \leftrightarrow (j,i) \in E$ ) then the graph is said to be undirected. We define $(i,j)$ to be the edge connecting vertex $i$ to vertex $j$.
+	 A \vocab{directed graph} is defined as a pair of sets of vertices and edges $G=(V,E)$, where $E \subset V \times V$. When $E$ is symmetric ( $(i,j) \in E \leftrightarrow (j,i) \in E$ ) then the graph is said to be undirected. We define $(i,j)$ to be the edge connecting vertex $i$ to vertex $j$.
 \end{definition}
 \subsubsection{Minimum cost flow on graphs}
 Given $G=(V,E)$ on $n$ vertices ( $|V|=n$ ), associate to every $(i,j) \in E$ the number $x_{ij}$. $x=\left\{x_{ij}\right\}_{(i,j)\in E}$ is called a \vocab{flow} on G. The flow $x$ is affected by 
@@ -1028,8 +1028,8 @@ Given $G=(V,E)$ on $n$ vertices ( $|V|=n$ ), associate to every $(i,j) \in E$ th
 	 \] 
 	 subject to: 
 	 \begin{align*}
-		M_{ij} \leq x_{ij} \leq \overline{M}_{ij} \ \forall (i,j) \in E\\
-		b_i + \sum_{(j,i) \in E} x_{ji}=\sum_{(i,j) \in E}^{}x_{ij} \ \forall i \in V. 
+		M_{ij} \leq x_{ij} \leq \overline{M}_{ij} \quad \forall (i,j) \in E\\
+		b_i + \sum_{j: \ (j,i) \in E} x_{ji}=\sum_{j: \ (i,j) \in E}^{}x_{ij} \quad \forall i \in V. 
 	 \end{align*}
 	 The second condition is a conservation law: the flow leaving a vertex must be equal to the flow entering it.
 \end{definition}
@@ -1044,9 +1044,10 @@ Let's say we have $n$ suppliers and $m$ consumers. The suppliers have capacity $
 
 In this example, our graph $G$ is a \emph{bipartite graph}: 
 [pic, all consumers on one side, all suppliers on the other]
-The optimisation problem we need to solve is \[
-\text{ minimise } \sum_{i=1}^{n} \sum_{j=1}^{n} c_{ij} x_{ij} \text{ subject to } \sum_{j=1}^{m}x_{ij}=s_i \text{ for } i=1,2, \ldots ,n \sum_{i=1}^{n}x_{ij}=d_i \text{ for } j=1,2,\ldots ,m
-.\] 
+The optimisation problem we need to solve is
+\begin{align*}
+	\text{ minimise } \sum_{i=1}^{n} \sum_{j=1}^{n} c_{ij} x_{ij} \text{ subject to }& \sum_{j=1}^{m}x_{ij}=s_i \text{ for } i=1,2, \ldots ,n\\& \sum_{i=1}^{n}x_{ij}=d_i \text{ for } j=1,2,\ldots ,m
+\end{align*}
 \begin{theorem}
 	 Every minimum cost flow problem with finite capacities or non-negative capacities can be recast as an equivalent transport problem. 
 \end{theorem}
@@ -1062,7 +1063,7 @@ The optimisation problem we need to solve is \[
 \end{proof}
 \begin{theorem}
 	 If for some feasible $x$ we have dual variables $\lambda \in \mathbb{R}^{n} $ (for suppliers) and $\mu \in \mathbb{R}^{m} $ (for consumers) such that \[
-	 \lambda_{i}+\mu_{j} \leq c_{ij} \text{and } (c_{ij}-(\lambda_{i}+\mu_j))x_{ij}=0 \ \forall i,j 
+	 \lambda_{i}+\mu_{j} \leq c_{ij} \text{  and  } (c_{ij}-(\lambda_{i}+\mu_j))x_{ij}=0 \quad  \forall i,j 
 	 ,\] then $x$ is optimal.
 \end{theorem}
 \begin{proof}
@@ -1071,5 +1072,104 @@ The optimisation problem we need to solve is \[
 	 \end{align*}
 \end{proof}
 \subsubsection{The transport algorithm}
+The optimality conditions for $x$ are that there exists $\lambda_1 ,\ldots , \lambda_n$ (Lagrange variables for suppliers) and $\mu_1 ,\ldots ,\mu_{n}$ (Lagrange variables for consumers) satisfying 
+\begin{align*}
+	\lambda_{i} +\mu_{j} \leq c_{ij} \quad \forall i,j \text{ (dual feasibility) } \\
+	(c_{ij}-\lambda_{i}-\mu_{j})x_{ij}=0 \quad \forall i,j \text{ complementary slackness }.
+\end{align*}
+Note that we can shift $\lambda_{1}, \mu_{1} \mapsto \lambda_{1}-c, \mu_{1}+c$ for any constant $c$ so we can pick $\lambda_1 =0$ WLOG.
+
+To solve the transport problem we are going to have a 'transportation tableau': \[
+\left|
+	\begin{array}{c|c|c|c}
+		\hline
+		\lambda_1 +\mu_1 , x_{11} , c_{11} & \lambda_1 +\mu_2 , x_{12} , c_{12}&\ldots & \lambda_1 +\mu_m , x_{1m} , c_{1m}\\
+		\hline
+		\lambda_2 +\mu_1 , x_{21} , c_{21} & \lambda_2 +\mu_2 , x_{22} , c_{22}&\ldots & \lambda_2 +\mu_m , x_{2m} , c_{2m}\\
+		\hline
+		\vdots & \vdots &\ddots &\vdots \\
+		\hline
+		\lambda_n +\mu_1 , x_{n1} , c_{n1} & \lambda_n +\mu_2 , x_{n2} , c_{n2}&\ldots & \lambda_n +\mu_m , x_{nm} , c_{nm}\\
+		\hline
+	\end{array}
+\right|
+.\] 
+ How do we construct the initial transportation tableau? 
+ \begin{enumerate}
+	 \item Take the first supplier and try and transport as much as possible to the first consumer (increase $x_{11} $ until either $s_1$ or $d_1 $ is satisfied)
+	 \item If the supplier is satisfied, we go to the next supplier and repeat step 1.
+	 \item If the demand is satisfied, move to the next consumer. Repeat step 1.
+ \end{enumerate}  
+ This process gives our initial 'naive' basic feasible solution. 
+
+In order to see how to use this, let's look at an example. Suppose our initial graph is
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,209); %set diagram left start at 0, and has height of 209
+
+%Shape: Circle [id:dp7908081224089281] 
+\draw   (269,84) .. controls (269,77.37) and (274.37,72) .. (281,72) .. controls (287.63,72) and (293,77.37) .. (293,84) .. controls (293,90.63) and (287.63,96) .. (281,96) .. controls (274.37,96) and (269,90.63) .. (269,84) -- cycle ;
+%Shape: Circle [id:dp1401138050936448] 
+\draw   (269,122) .. controls (269,115.37) and (274.37,110) .. (281,110) .. controls (287.63,110) and (293,115.37) .. (293,122) .. controls (293,128.63) and (287.63,134) .. (281,134) .. controls (274.37,134) and (269,128.63) .. (269,122) -- cycle ;
+%Shape: Circle [id:dp547936410525149] 
+\draw   (268,163) .. controls (268,156.37) and (273.37,151) .. (280,151) .. controls (286.63,151) and (292,156.37) .. (292,163) .. controls (292,169.63) and (286.63,175) .. (280,175) .. controls (273.37,175) and (268,169.63) .. (268,163) -- cycle ;
+%Shape: Circle [id:dp7958224490931569] 
+\draw   (367,64) .. controls (367,57.37) and (372.37,52) .. (379,52) .. controls (385.63,52) and (391,57.37) .. (391,64) .. controls (391,70.63) and (385.63,76) .. (379,76) .. controls (372.37,76) and (367,70.63) .. (367,64) -- cycle ;
+%Shape: Circle [id:dp24156316128200306] 
+\draw   (366,105) .. controls (366,98.37) and (371.37,93) .. (378,93) .. controls (384.63,93) and (390,98.37) .. (390,105) .. controls (390,111.63) and (384.63,117) .. (378,117) .. controls (371.37,117) and (366,111.63) .. (366,105) -- cycle ;
+%Shape: Circle [id:dp6344344926476859] 
+\draw   (366,145) .. controls (366,138.37) and (371.37,133) .. (378,133) .. controls (384.63,133) and (390,138.37) .. (390,145) .. controls (390,151.63) and (384.63,157) .. (378,157) .. controls (371.37,157) and (366,151.63) .. (366,145) -- cycle ;
+%Shape: Circle [id:dp2782911896772646] 
+\draw   (365,183) .. controls (365,176.37) and (370.37,171) .. (377,171) .. controls (383.63,171) and (389,176.37) .. (389,183) .. controls (389,189.63) and (383.63,195) .. (377,195) .. controls (370.37,195) and (365,189.63) .. (365,183) -- cycle ;
+
+% Text Node
+\draw (271,75) node [anchor=north west][inner sep=0.75pt]   [align=left] {14};
+% Text Node
+\draw (270,114) node [anchor=north west][inner sep=0.75pt]   [align=left] {10};
+% Text Node
+\draw (275,154) node [anchor=north west][inner sep=0.75pt]   [align=left] {9};
+% Text Node
+\draw (368,56) node [anchor=north west][inner sep=0.75pt]   [align=left] {12};
+% Text Node
+\draw (372,98) node [anchor=north west][inner sep=0.75pt]   [align=left] {5};
+% Text Node
+\draw (372,138) node [anchor=north west][inner sep=0.75pt]   [align=left] {8};
+% Text Node
+\draw (371,175) node [anchor=north west][inner sep=0.75pt]   [align=left] {8};
+% Text Node
+\draw (246,11) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textbf{Suppliers}};
+% Text Node
+\draw (340,11) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textbf{Consumers}};
+
+
+\end{tikzpicture}
+
+The cost matrix for this problem is given to be \[
+C=\begin{pmatrix} 5&3&4&6\\2&7&4&1 \\5&6&2&4 \end{pmatrix}
+.\] We know that since $x_{ij}>0$ for all $i,j$ we have $\lambda_{i}+\mu_{j}=C_{ij}$. Solving these five equations gives us \[
+\lambda_1 =0, \mu_1 =5, \mu_2 =3, \lambda_2 =4, \mu_3 =0, \lambda_3 =2, \mu_4 =2
+.\] 
+\begin{theorem}
+	 Let $x$ be a basic feasible solution formed by the earlier process. Then the set of edges with strictly positive flow form a connected graph that has no cycle. This graph $T$ is a spanning tree with exactly $m+n-1$ edges.
+\end{theorem}
+\begin{proof}
+	 The proof is beyond the scope of this course; we simply state this theorem, so that we know that this always happens!
+\end{proof}
+Now let's do the transport tableau as in the example. 
+\[
+\left|
+	\begin{array}{c|c|c|c}
+		\hline
+		5 , 12 , 5 & 3,2, 3& 0,0, 4& 2,0,6\\
+		\hline
+		9,0,2&7,3,7&4,7,4&6,0,1\\
+		\hline
+		7,0,5&5,0,6&2,1,2&4,8,4\\
+		\hline
+	\end{array}
+\right|
+.\] 
+If $c_{ij} \geq \lambda_{i}+\mu_{j}$ for all $i,j$ then $x$ is optimal. If $(i,j) \notin T$ such that $c_{ij}<\lambda_{i}+\mu_{j}$ then $(i,j)$ and the edges of $T$ of form a loop. Then we increase $x_{ij}$ until $x_{ab}=0$ for some $(a,b) \in T$. Then we update $\lambda, \mu$ and repeat until we get an optimal value. 
+\subsubsection{Max flow - min cut}
 
 \end{document}

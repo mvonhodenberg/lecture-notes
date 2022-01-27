@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{595.27559055bp}%
+    \setlength{\unitlength}{326.66332816bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,16 +50,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.41428571)%
+  \begin{picture}(1,1.10633804)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{game-sketch.pdf}}%
-    \put(0.32849127,0.6912438){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.24650735,0.69193762){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2/3\end{tabular}}}}%
-    \put(0.15405752,0.845365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.11275015,0.78438745){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1/2\end{tabular}}}}%
-    \put(0.14618945,1.15025273){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
-    \put(0.10818598,1.23725413){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w$\end{tabular}}}}%
-    \put(0.59816586,0.66275388){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p$\end{tabular}}}}%
+    \put(0.39682657,0.06423374){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.24742804,0.06549808){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2/3\end{tabular}}}}%
+    \put(0.07895755,0.34508738){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.00368352,0.23396856){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1/2\end{tabular}}}}%
+    \put(0.06461964,0.90068151){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(-0.00463374,1.05922337){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w$\end{tabular}}}}%
+    \put(0.88825211,0.01231681){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{game-sketch.pdf}}%
   \end{picture}%
 \endgroup%
