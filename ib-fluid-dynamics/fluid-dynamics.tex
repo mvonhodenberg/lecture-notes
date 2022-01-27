@@ -16,6 +16,7 @@
     \def\svgwidth{#1mm}
     \import{./figures/}{#2.pdf_tex}
 }
+\renewcommand{\vec}[1]{\underline{#1}}
 
 \title{IB Fluid Dynamics}
 \author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
@@ -52,7 +53,7 @@ There are two natural perspectives on flow:
     \item A stationary observer watching the flow go past (\emph{Eulerian} viewpoint)
     \item A moving observer travelling along with the flow (\emph{Lagrangian} viewpoint)
 \end{enumerate}
-\subsection{Streamlines}
+\subsection{Particle paths and streamlines}
 \begin{definition}[Streamline]
      A \vocab{streamline} is a curve that is everywhere parallel to the flow at a given instant. The streamline through $\bm{x_0 } $ at time $t_0 $ can be found parametrically in the form \[
      \bm{x} =\bm{x} (s; \bm{x_0 } , \bm{t_0 } )
@@ -61,7 +62,6 @@ There are two natural perspectives on flow:
 For example, for a flow $u= (1,t)$ we would solve \[
 \int x = x_0 +s, y=y_0 +ts \implies y=y_0 +t (x-x_0 )
 .\] 
-\subsection{Pathlines / Particle paths}
 \begin{definition}[Pathline/Particle path]
      A \vocab{pathline} is the trajectory of a fluid "particle" (i.e a very small blob of fluid). The pathline $x=x (t;x_0 )$ of the fluid particle at $x=x_0 $ when $t=0$ is given by $\frac{\mathrm{d}x}{\mathrm{d}t}=u (x,t)$ with $x=x_0 $ at $t=0$.
 \end{definition}
@@ -84,4 +84,58 @@ This Lagrangian viewpoint is often more complicated than the Eulerian one, but w
      \frac{\mathcal{D}F}{\mathcal{D}t}=\underbrace{\frac{\partial F}{\partial t}}_{\text{Eulerian deriv.} } + \underbrace{u \cdot \nabla F}_{\text{convected derivative} } 
      .\] 
 \end{definition}
+\subsection{Conservation of mass}
+Consider an arbitrary volume $V$, fixed in space, bounded by a surface $\partial V$ with outward normal $\vec{n}$ with a flow of mass across it.
+
+The mass $\int_{V}^{}\rho  \mathrm{d}V $ inside $V$ can only change due to the flow of mass across the boundary $\partial V$.
+[picture]
+Volume out over $\partial S$ in time $\delta t$ =$(\vec{u}\cdot \vec{n})\delta S \delta t$. Therefore the mass out is $\rho(\vec{u}\cdot \vec{n})\delta S \delta t$. Thus
+\begin{align*}
+    &\frac{\mathrm{d}}{\mathrm{d}t} \int_{V}^{}\rho \mathrm{d}V =- \int_{\partial V}^{}\rho (\vec{u}\cdot \vec{n}) \mathrm{d}S\\
+    \text{V fixed} \implies & \int_{V}^{}\frac{\partial \rho}{\partial t} \mathrm{d} V=-\int_{V}^{}\nabla \cdot (\rho \vec{u}) \mathrm{d}V \text{ by divergence theorem}\\ 
+    \text{true for any } V \implies & \frac{\partial \rho}{\partial t} +\nabla \cdot (\rho \vec{u})=0.
+\end{align*}
+We say that $\rho u$ is the \vocab{mass flux}. The density at a point changes due to the divergence/convergence of the mass flux. Using $\nabla \cdot (\rho \vec{u})= \vec{u}\cdot \nabla \rho + \rho \nabla \cdot \vec{u}$ we can rewrite this as \[
+\frac{\mathcal{D}\rho}{\mathcal{D}t}=-\rho \nabla \cdot \vec{u}
+.\] The density of a blob of fluid decreases if the velocity is divergent (spreading out). 
+
+If a fluid is incompressible, i.e the density of a fluid particle cannot change, then $\frac{\mathcal{D}\rho}{\mathcal{D}t}= 0 \implies \nabla \cdot \vec{u} =0$. This course will consider fluids with a constant uniform density $\rho$. 
+\subsection{Kinematic boundary conditions}
+Suppose the material boundary of a body of fluid has velocity $\vec{U} (\vec{x},t)$. At a point $\vec{x}$ on the boundary, the fluid velocity relative to the moving boundary is $\vec{u} (\vec{x},t)-\vec{U} (\vec{x}, t)$. The condition that there is no mass flux across the boundary is \[
+\rho (\vec{u}-\vec{U})\cdot \vec{n} \delta S \delta t=0 \quad \implies \vec{u}\cdot \vec{n}=\vec{U}\cdot \vec{n}
+.\] We can use this in several examples: 
+\begin{enumerate}
+    \item For example at a fixed boundary, $\vec{U}=0$. This implies $\vec{u} \cdot \vec{n}$.
+    \item Water waves (chapter 5) have water/air interface $z=\zeta (x,y,t)$. If the water surface has normal $\vec{n}$ and we think of it as a contour of $F (x,y,z,t)=z- \zeta (x,y,t)$, then $\vec{n}$ is parallel to \[
+    \nabla F= (-\zeta_{x},-\zeta_{y}, 1 )
+    .\] We can take $\vec{U}=(0,0,\zeta_{t})$ and $\vec{u}=(u,v,w)$; then \[
+    -u \zeta_{x}-v \zeta_{y}+w= \zeta_{t}
+    .\] This equation is equivalent to $ \frac{\mathcal{D}\zeta}{\mathcal{D}t}=w$, i.e fluid blobs on the interface change height at rate $w$. 
+\end{enumerate}
+\subsection{Streamfunction for 2D incompressible flow}
+Recall incompressible $\implies \nabla \cdot \vec{u}=0 \iff \vec{u}=\nabla \times \vec{A}$ for some vector potential $\vec{A}$ (IA Vector Calculus). Now if we restrict ourselves to 2D flow, we can write $\vec{u}=(u (x,y), v (x,y),0)$ and take $\vec{A}=(0,0,\psi (x,y))$. By taking the curl of $A$ we get
+\begin{align*}
+    \implies & \left(\frac{\partial \psi}{\partial y}, -\frac{\partial \psi}{\partial x},0\right)\\
+    \implies & \nabla \cdot \vec{u}=\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0 \text{ as expected } .
+\end{align*}
+The scalar $\psi (x,y)$ is the \vocab{streamfunction}. This has several properties, which we will prove on Example Sheet 1: 
+\begin{itemize}
+    \item[(i)] The streamlines are given by $\psi=$ const (parallel to the contours of $\psi$)
+    \item[(ii)] $|\vec{u}|=|\nabla \psi|$ so the flow is faster when the streamlines are closer. 
+    \item[(iii)] $\psi (\vec{x_0})-\psi (\vec{x_1})=\int_{\vec{x_0}}^{\vec{x_1}}\vec{u} \cdot \vec{n} \mathrm{d}l $ which is the flux crossing the line $\vec{x_0} \rightarrow \vec{x_1}$.
+    \item[(iv)] $\psi$ is a constant or a stationary rigid boundary. (kinematic boundary condition and (iii)).  
+\end{itemize}
+\begin{example}
+     Let $\vec{u}=(y,x)$. Then $\nabla \cdot \vec{u}=0$ so $\psi$exists. 
+     \begin{align*}
+        &\frac{\partial v}{\partial y}=y \implies \psi=\frac{1}{2} y^{2}+f (x)\\
+        &-\frac{\partial v}{\partial x}=x  \implies f=-\frac{1}{2}x^2.
+     \end{align*}
+     The streamlines are $\frac{1}{2}( y^2-x^2)=$ const. 
+\end{example}
+\subsubsection{Polar coordinates}
+Let us express $\vec{u}$ and $\vec{A}$ in polar coordinates: \[
+\vec{u}=(u_{r}(r,\theta), u_{v}(r, \theta),0) \quad \vec{A}=(0,0,\psi (r,\theta))
+.\] 
+Therefore 
 \end{document}

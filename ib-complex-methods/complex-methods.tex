@@ -91,4 +91,90 @@ Sometimes, we regard a complex function as 2 real functions on $\mathbb{R}^{2} :
 \section{Analytic functions}
 \subsection{The extended complex plane of the Riemann sphere}
 We can identify $\mathbb{C}$ with $\mathbb{R}^2$ since $z \leftrightarrow (x,y)$ is bijective with $z=x+iy$.
+\begin{definition}[Extended complex domain]
+     We define the extended complex domain $\mathbb{C}^*=\mathbb{C}\cup \infty$. We have seen this before in IA Groups. Some things to remember: 
+     \begin{itemize}
+          \item $z= \infty$ is a single point
+          \item $z=- \infty$ means we approach this point along the negative real axis. 
+          \item We can visualise this as the Riemann sphere: [image] We have the projection mapping $P \leftrightarrow z$ via the line $\vec{NP}$. The south pole $P$ is mapped to $z=0$ and the north pole $N$ is mapped to $z= \infty$. In practice, $f$ has a property at $z= \infty$ if $f \left(\frac{1}{\zeta}\right)$ has this property at $\zeta=0$.
+     \end{itemize}
+\end{definition}
+\subsection{Complex differentiation and analytic functions}
+\begin{definition}[Differentiability in $\mathbb{C}$]
+      $f: \mathbb{C} \rightarrow \mathbb{C}$ is "differentiable" at $z \in \mathbb{C}$ if \[
+      f' (z) \equiv \lim_{\delta z \rightarrow 0} \frac{f (z+ \delta z)-f (z)}{\delta z}
+      \] exists and is independent of the direction of approach.
+\end{definition}
+\begin{remark}
+      Direction independence is a strong requirement! (See IB Complex Analysis for more). In $\mathbb{R}$, we have only 2 directions: for example, $f (x)=|x|$ is not differentiable at $x=0$. Conversely, in $\mathbb{C}$, we have infinitely many directions. 
+\end{remark}
+\begin{definition}[Analyticity]
+      A complex function $f$ is analytic at $z \in \mathbb{C}$ iff there exists a neighbourhood $D$ of $z$ where $f$ is differentiable.
+\end{definition}
+\begin{remark}
+      \begin{itemize}
+           \item In this course, we will almost exclusively consider analytic functions.
+           \item Analyticity implies many things: an analytic function can be differentiated infinitely many times, as opposed to in $\mathbb{R}$.
+           \item Many rules of differentiation of real functions hold for complex ones, too. 
+      \end{itemize}
+\end{remark}
+Let us consider 2 directions for $f (z)=u (x,y)+iv (x,y)$. 
+\begin{enumerate}
+     \item Real axis: $\delta z= \delta x$. So we have 
+     \begin{align*}
+          f' (z)&= \lim_{\delta x \rightarrow 0} \frac{f (z+\delta x)-f (z)}{\delta x}\\
+          &=\lim_{\delta x \rightarrow 0} \frac{u (x+\delta x,y)+iv (x+\delta x,y)-u (x,y)-iv (x,y)}{\delta x}\\
+          &=\frac{\partial u}{\partial x}+i \frac{\partial v}{\partial x}
+     \end{align*}
+     \item Imaginary axis: $\delta z= i \delta y$. So we have 
+     \begin{align*}
+          f' (z)&= \lim_{\delta y \rightarrow 0} \frac{f (z+i\delta y)-f (z)}{i \delta y}\\
+          &=\lim_{\delta y \rightarrow 0} \frac{u (x,y+\delta y)+iv (x,y+ \delta y)-u (x,y)-iv (x,y)}{i \delta y}\\
+          &=-i\frac{\partial u}{\partial y}+\frac{\partial v}{\partial y}
+     \end{align*}
+\end{enumerate}
+But these two expressions must agree in their real and imaginary parts.
+\begin{proposition}
+      Any differentiable function $f (z)=u (x,y)+iv (x,y)$ must satisfy the Cauchy-Riemann equations \[
+      \frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y}= - \frac{\partial v}{\partial x}
+      .\] The converse does not hold; we also need that $u,v$ are differentiable (see IB Complex Analysis)
+\end{proposition}
+In practice we use 
+\begin{proposition}
+      If $f (z)=u (x,y)+iv (x,y)$ saitsfies the Cauchy-Riemann equations at $z=z_0 $ and the partial derivatives are continuous in a neighbourhood of $z_0 $, then $f (z)$ is differentiable at $z_0 $. See IB Complex Analysis for the proof. 
+\end{proposition}
+\begin{proposition}[Product rule]
+      The product of two analytic functions $f,g$ is analytic with \[
+      (fg)' (z)=f' (z)g (z)+ f (z)g' (z)
+      .\]
+\end{proposition}
+\begin{proof}
+      Let us define 
+      \begin{align*}
+           &\overline{\nu} = \frac{f (z+h)-f (z)}{h}-f' (z)\\
+           &\nu= \frac{g (z+h)-g (z)}{h}-g' (z)
+      \end{align*}
+      so both $\overline{\nu} ,\nu \rightarrow 0$ as $h \rightarrow 0$, and 
+      \begin{align*}
+           (gf)'&= \lim_{h \rightarrow 0} \frac{g (z+h)f (z+h)-g (z)f (z)}{h}\\
+           &= \lim_{h \rightarrow 0} \frac{[g (z)+ (g' (z)+\nu)h][f (z)+(f' (z)+\overline{\nu} )h]-g (z)f (z)}{h}\\
+           &= \lim_{h \rightarrow 0} \frac{(g' (z)+\nu)h f (z)+((f' (z)+\overline{\nu} )h g (z))+(g'(z)+\nu)h (f' (z)+\overline{\nu} )h     }{h}\\
+           &=g' (z)f (z)+ g (z)f' (z).
+      \end{align*}
+\end{proof}
+\begin{proposition}[Chain rule]
+      The composition of two analytic functions $f,g$ is analytic with \[
+      (f \circ g)' (z)= f' (g (z)) g' (z)
+      .\] 
+\end{proposition}
+\begin{proof}
+      Omitted.
+\end{proof}
+\begin{example}
+     Now let's look at some examples. 
+      \begin{enumerate}
+           \item $f (z)=z=x+iy$ is \vocab{entire}, i.e analytic in all of $\mathbb{C}$. This is true since $\frac{\partial u}{\partial x}=1= \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y}=0 =- \frac{\partial v}{\partial y}$ and they are continuous. The definition of $f' (z)$ gives us $f' (z)=1$.
+           \item $e^{z}=e^{x+iy}$ 
+      \end{enumerate}
+\end{example}
 \end{document}
