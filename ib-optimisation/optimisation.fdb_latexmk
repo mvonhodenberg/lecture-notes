@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1643243171 "c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/ib-optimisation/optimisation.tex" "optimisation.pdf" "optimisation" 1643243175
-  "c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/ib-optimisation/optimisation.tex" 1643243152 64720 b19a83ead225d9f518c30dac3bf1bcaf ""
+["pdflatex"] 1643310022 "c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/ib-optimisation/optimisation.tex" "optimisation.pdf" "optimisation" 1643310026
+  "c:/Users/mjvon/OneDrive/Documents/Cambridge/lecture notes/ib-optimisation/optimisation.tex" 1643310017 69580 f19dbf58e8c114a9f1b29d1f4223697b ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1626793113 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1626794096 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1626793659 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -255,15 +255,15 @@
   "figures/hyperplane-sketch.pdf_tex" 1640095805 2570 8424674773f891cf03c981eb0841ce9c ""
   "figures/newton-curve.pdf_tex" 1640020570 2439 fa1cd6d1159cf421f06183c14792d25c ""
   "figures/newton-root.pdf_tex" 1640034279 2435 d3a6438fec6075303e7c4af1b4184560 ""
-  "optimisation.aux" 1643243174 33423 9d95c9855b8ac5f03898fcef63b3134f "pdflatex"
-  "optimisation.out" 1643243174 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "optimisation.pre" 1643243173 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "optimisation.tex" 1643243152 64720 b19a83ead225d9f518c30dac3bf1bcaf ""
-  "optimisation.toc" 1643243175 3808 6a53538eaeeffec0331f04387fb05cd3 "pdflatex"
+  "optimisation.aux" 1643310026 35243 c5554b9dafabe74ab060ebc9398c437d "pdflatex"
+  "optimisation.out" 1643310025 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "optimisation.pre" 1643310024 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "optimisation.tex" 1643310017 69580 f19dbf58e8c114a9f1b29d1f4223697b ""
+  "optimisation.toc" 1643310026 3915 08d15c2c6631f2ca80a9b3e5728cd965 "pdflatex"
   (generated)
-  "optimisation.toc"
   "optimisation.out"
-  "optimisation.pre"
   "optimisation.pdf"
-  "optimisation.aux"
   "optimisation.log"
+  "optimisation.aux"
+  "optimisation.toc"
+  "optimisation.pre"

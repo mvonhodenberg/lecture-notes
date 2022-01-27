@@ -37,4 +37,5 @@
 \contentsline {subsubsection}{\numberline {4.2.2}The transport problem}{30}{subsubsection.4.2.2}%
 \contentsline {subsubsection}{\numberline {4.2.3}The transport algorithm}{31}{subsubsection.4.2.3}%
 \contentsline {subsubsection}{\numberline {4.2.4}Max flow - min cut}{33}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}The bipartite matching problem}{35}{subsubsection.4.2.5}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

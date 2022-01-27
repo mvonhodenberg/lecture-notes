@@ -1171,5 +1171,82 @@ Now let's do the transport tableau as in the example.
 .\] 
 If $c_{ij} \geq \lambda_{i}+\mu_{j}$ for all $i,j$ then $x$ is optimal. If $(i,j) \notin T$ such that $c_{ij}<\lambda_{i}+\mu_{j}$ then $(i,j)$ and the edges of $T$ of form a loop. Then we increase $x_{ij}$ until $x_{ab}=0$ for some $(a,b) \in T$. Then we update $\lambda, \mu$ and repeat until we get an optimal value. 
 \subsubsection{Max flow - min cut}
+Consider a network consisting of $n$ nodes labelled $1, \ldots ,n$ and directed edges between them with capacities $c_{ij}$ on the arc from node $i$ to node $j$. Let $x_{ij}$ denote the flow in
+the arc $i \rightarrow j$, where $0 \leq x_{ij} \leq c_{ij}.$
 
+Our problem is
+\begin{align*}
+	\text{ maximise } \delta (\text{ the flow } )\\
+	\text{ subject to }& \sum_{\left\{j: \ (i,j) \in E\right\}}^{}x_{ij}-\sum_{\left\{j: \ (i,j) \in E\right\}}^{}x_{ji}=0 \quad \forall i \in \left\{2,3,\ldots ,n-1\right\}\\
+	&\sum_{\left\{j: \ (i,j) \in E\right\}}^{}x_{1j}-\sum_{\left\{j: \ (i,j) \in E\right\}}^{}x_{j1}=\delta \quad \forall i \in \left\{2,3,\ldots ,n-1\right\}\\
+	&\sum_{\left\{j: \ (i,j) \in E\right\}}^{}x_{nj}-\sum_{\left\{j: \ (i,j) \in E\right\}}^{}x_{jn}=-\delta \quad \forall i \in \left\{2,3,\ldots ,n-1\right\}\\
+	&0 \leq x_{ij} \leq c_{ij} \quad \forall (i,j) \in E.
+\end{align*}
+In this problem, we don't have any costs associated with the flow; the problem is essentially finding the maximum flow through the graph.
+\begin{definition}[Cut]
+	 A cut of a graph $G$ is a partition of its vertices into two sets $S$ and $V\backslash S$. The capacity of a cut is given by \[
+	 \mathcal{C} (S)=\sum_{\left\{(i,j)\in E: \ i \in S, j \in V \backslash S\right\}}^{}c_{ij}
+	 .\] 
+\end{definition}
+\begin{theorem}
+	 Let $x$ be a feasible flow to the max flow problem with value $\delta$. Then for any cut $(S, V \backslash S)$ such that $1 \in S$, $n \in V \backslash S$ we have $\delta \leq \mathcal{C} (S)$. 
+\end{theorem}
+\begin{proof}
+	 For any two sets $X,Y \subseteq V$ define \[
+	 f_{x}(X,Y)= \sum_{\left\{(i,j)\in E: \ i \in X, j \in Y\right\}}^{}x_{ij}
+	 .\] Let $(S, V \backslash S)$ be a cut s.t $1 \in S$, $n \in V \backslash S$. Then summing the flow conservation conditions in $S$, we have 
+	 \begin{align*}
+		\delta&= \sum_{i \in S}^{}\left(\sum_{\left\{j: \ (i,j) \in E\right\}}^{}x_{ij}-\sum_{\left\{j: \ (i,j) \in E\right\}}^{}x_{ji}\right)\\
+		&=f_{x}(S,V)- f_{x}(V,S)\\
+		&=f_{x}(S,S)+ f_{x}(S,V \backslash S)-f_{x}(S,S)-f_{x}(V \backslash S, S)\\
+		&= f_{x}(S, V\backslash S)-f_{x}(V\backslash S, S)\\
+		& \leq f_{x}(S, V \backslash S)
+		& \leq \mathcal{C}(S).
+	 \end{align*}
+\end{proof}
+\begin{theorem}[Max flow - min cut theorem]
+	 Let $\delta^{*}$ be the value of the max. flow. Then we have \[
+	 \delta^{*}=\min \left\{ \mathcal{C} (S): \ 1 \in S, n \in V \backslash S, S \subseteq V\right\}
+	 .\] 
+\end{theorem}
+\begin{proof}
+	 A path $v_0 , v_1 , \ldots ,v_k$ is a sequence of vertices such that for every pair of adjacent vertices is connected by an edge in either direction.
+
+	 A path is called an \vocab{augmenting path} if every `forward' edge satisfies $x_{ij} < c_{ij}$ and every `reverse' edge satisfies $x_{ij}>0$. Augmenting paths are special because we can tweak them to increase the flow. An optimal flow cannot have augmenting paths from 1 to $n$. 
+
+	 If $x$ is optimal, we define \[
+	 S= \left\{1\right\} \cup \left\{i: \ \exists \text{ an augmenting path from } 1 \text{ to } i\right\}
+	 .\] Note that $n \in V \backslash S$, so this is a valid cut. We have \[
+	 \delta^* = f_{x} (S, V \backslash S)- f_{x}(V \backslash S, S)=f_{x} (S, V \backslash S)=\mathcal{C}(S)
+	 .\] 
+\end{proof}
+The algorithm we used is called the Ford-Fulkerson algorithm:
+\begin{enumerate}
+	\item Start with a feasible flow (say $x=0$)
+	\item Find an augmenting path; if no such path exists, $x$ is optimal.
+	\item Increase the flow along the path as much as possible. 
+	\item Repeat back to step 1. 
+\end{enumerate}
+\begin{example}
+	 Take a graph with six vertices: [picture]
+	 [do later when i can be bothered]
+\end{example}
+\begin{proposition}
+	If all capacities are rational, then the Ford-Fulkerson algorithm always finds the best flow in a finite number of steps.
+\end{proposition}
+\begin{proof}
+	 First scale the whole problem WLOG so all capacities are integers. Then the flow increases by at least 1 at each step.
+\end{proof}
+\subsubsection{The bipartite matching problem}
+We take a $k$-regular bipartite graph of size $2n$, i.e a bipartite graph where there are $n$ nodes on each side and each edge has $k$ connections. Our problem is to match the left and right nodes bijectively using the edges given.
+\begin{theorem}
+	Every $k$-regular bipartite graph has a perfect matching.
+\end{theorem}
+\begin{proof}
+	 First construct two new vertices on the left and right that are connected to their respective sides of the bipartite graph, and initialise a max-flow problem as in the image: [picture]
+	 For every edge, we attach a flow of $\frac{1}{k}$. This is clearly a feasible flow. Note that we know by considering the cut $\left\{1\right\}$ that the max flow for this new graph is $\frac{n}{2}$. 
+\end{proof}
+\begin{remark}
+	 End of notes!
+\end{remark}
 \end{document}
