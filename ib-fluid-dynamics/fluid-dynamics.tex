@@ -18,7 +18,7 @@
 }
 \renewcommand{\vec}[1]{\underline{#1}}
 
-\title{IB Fluid Dynamics}
+\title{IB Fluid Dynamics (up to lecture 2)}
 \author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
 \date{\today}
 \setcounter{section}{-1}
@@ -138,4 +138,11 @@ Let us express $\vec{u}$ and $\vec{A}$ in polar coordinates: \[
 \vec{u}=(u_{r}(r,\theta), u_{v}(r, \theta),0) \quad \vec{A}=(0,0,\psi (r,\theta))
 .\] 
 Therefore 
+\begin{align*}
+    \implies \vec{u}=\nabla \times \vec{A}=(\frac{1}{r} \frac{\partial \psi}{\partial \theta}, -\frac{\partial \psi}{\partial r},0)\\
+    \implies \nabla \cdot \vec{u}= \frac{1}{r} \frac{\partial}{\partial r}(ru_{r})+\frac{1}{r} \frac{\partial u_{\theta}}{\partial \theta}=0, \text{ as expected } 
+\end{align*}
+Axisymmetric flows in spherical polars have $u_{\phi}=0, \frac{\partial }{\partial \phi}=0$. If $\nabla \cdot \vec{u}=0$ and we take $\vec{A}=(0,0, \frac{\Psi (r, \theta)}{r \sin \theta})$, then \[
+\vec{u}=\left(\frac{1}{r^2 \sin \theta} \frac{\partial \psi}{\partial \theta}, -\frac{1}{r \sin \theta}\frac{\partial \psi}{\partial r},0 \right)
+.\] So $\vec{u}$ is parallel to the contours of the Stokes stream function $\Psi (r,\theta)$.
 \end{document}
