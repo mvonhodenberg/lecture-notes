@@ -219,7 +219,7 @@ Recall the next theorem from IA Analysis:
 \end{proof}
 If $f: \mathbb{C} \rightarrow \mathbb{C}$ is holomorphic on all of $\mathbb{C}$, we say $f$ is entire. 
 
-\begin{proposition}
+\begin{proposition}\label{eprop}
       The complex exponential function is defined by \[
       e^{z}= \operatorname{exp}(z)= \sum_{n=0}^{ \infty} \frac{z^{n}}{n!}
       .\] 
@@ -242,4 +242,98 @@ If $f: \mathbb{C} \rightarrow \mathbb{C}$ is holomorphic on all of $\mathbb{C}$,
 
      \textbf{Part (iv) and (v):} Follow from (iii). (Exercise)
 \end{proof}
+\begin{definition}[Logarithm]
+      Given $z \in \mathbb{C}$, we say a complex $w \in \mathbb{C}$ is a \vocab{logarithm} of $z$ if $e^{w}=z$. 
+
+      By Proposition \ref{eprop}(v), $z$ has a logarithm iff $z \neq 0$. By (ii) and (iv), if $z \neq 0$ then $z$ has infinitely many logarithms, with any two differing from each other by $2n \pi i$ for some integer $n$. 
+      
+      If $w$ is a logarithm of $z$, then $e^{\operatorname{Re}(w)}=|z|$, so $\operatorname{Re}(w)=\operatorname{log} |z|$ (the real logarithm of the positive number $|z|$); in particular, this is well-defined.
+\end{definition}
+\begin{definition}[Branch of a logarithm]
+      Let $U \subset \mathbb{C} \backslash \left\{0\right\}$ be open. Then a branch of logarithm on $U$ is a continuous function $\lambda: U \rightarrow \mathbb{C}$ such that $e^{\lambda (z)}=z$ for each $z \in U$.
+\end{definition}
+\begin{proposition}
+      If $\lambda$ is a branch of log on $U$ then $\lambda$ is automatically holomorphic in $U$, with $\lambda' (z)=\frac{1}{z}$.
+\end{proposition}
+\begin{proof}
+      If $w \in U$ then 
+      \begin{align*}
+           \lim_{z \rightarrow w} \frac{\lambda (z)- \lambda (w)}{z-w}&=\lim_{z \rightarrow w} \frac{1}{\left( \frac{e^{\lambda (z)}-e^{\lambda (w)}}{\lambda (z)- \lambda (w)}\right)}\\
+           &=\frac{1}{e^{\lambda (w)}}\lim_{z \rightarrow w} \frac{1}{\left(\frac{e^{\lambda (z)-\lambda (w)}-1}{\lambda (z)- \lambda (w)}\right)}\\
+           &=\frac{1}{e^{\lambda (w)}} \lim_{h \rightarrow 0} \frac{1}{\left( \frac{e^{h}-1}{h}\right)} \quad \text{ since } \lambda \text{ is continuous } \\
+           &=\frac{1}{e^{\lambda (w)}}=\frac{1}{w}.
+      \end{align*}
+\end{proof}
+\begin{definition}[Principal branch of logarithm]
+      The principal branch of logarithm is the function \[
+      \operatorname{Log}: U_1 =\mathbb{C} \backslash \left\{x \in \mathbb{R}: \ x \leq 0\right\} \rightarrow \mathbb{C}
+      .\] defined by \[
+      \operatorname{Log}(z)= \operatorname{log}|z|+i \operatorname{arg}(z)
+      .\] where $\operatorname{arg}(z)$ is the unique argument of $z \in U_1 $ in $(-\pi,\pi)$.
+\end{definition}
+\begin{remark}
+      do later, why it's a branch of log
+\end{remark}
+\begin{proposition}
+      \begin{itemize}
+           \item[(i)] Log is holomorphic on $U_1 $ with $\operatorname{Log}' (z)=\frac{1}{z}$. 
+           \item[(ii)] For $|z|<1$, we have \[
+           \operatorname{Log}(1+z)=\sum_{n=1}^{ \infty} \frac{(-1)^{n-1}z^{n}}{n}
+           .\] 
+      \end{itemize} 
+\end{proposition}
+\begin{proof}
+      \begin{itemize}
+           \item[(i)] is the remark above. 
+           \item[(ii)] To see this, note that the R.O.C of the series is 1, and $|z|<1 \implies 1+z \in U_1 $, so both sides are defined on $|z|<1$. 
+           
+           Let $F (z)=\operatorname{Log}(1+z)-\sum_{n=1}^{ \infty} \frac{(-1)^{n-1}z^{n}}{n}$ for $|z|<1$. Then \[
+           F' (z)= \frac{1}{1+z}-\sum_{n=1}^{ \infty}(-z)^{n-1}=0
+           .\] So $F (z)=\text{ constant } =F (0)=0$.
+      \end{itemize}
+\end{proof}
+Using exp and Log we can define further useful functions. 
+\begin{enumerate}
+     \item For any $\alpha \in \mathbb{C}$, define \[
+     z^{\alpha}=e^{\alpha \operatorname{Log}(z)}, \quad z \in U_1 
+     .\] This is the principal branch of $z^{\alpha}$. It's holomorphic on $U_1 $ with derivative $\alpha z^{\alpha-1}$. 
+     \item We can define the familiar functions 
+     \begin{itemize}
+          \item $\cos (z)= \frac{e^{iz}+e^{-iz}}{2}$ 
+          \item $\sin (z)= \frac{e^{iz}-e^{-iz}}{2i}$ 
+          \item $\cosh (z)= \frac{e^{z}+e^{-z}}{2}$ 
+          \item $\sinh (z)= \frac{e^{z}-e^{-z}}{2}$ 
+     \end{itemize}
+     These are all entire since exp is entire, with derivatives given by the familiar expressions from real variables.
+\end{enumerate}
+\subsection{Conformality}
+Let $f: U \rightarrow \mathbb{C}$ be holomorphic ($U \subset C $ is open). Let $w \in U$ and suppose that $f' (w) \neq 0$. Take two $C^{1}$ curves $\gamma_1 , \gamma_2 : [-1,1] \rightarrow U$ such that $\gamma_1 (0)=\gamma_2 (0)=w$ and with nonzero derivative. Then $f \circ \gamma_i$ are $C^{1}$ curves passing through $f (w)$. Moreover, $(f \circ \gamma_i)' (0)=f' (w)\gamma_{i}' (0)\neq 0$. Thus \[
+\frac{(f \circ \gamma_1 )' (0)}{(f \circ \gamma_2 )' (0)}= \frac{\gamma_1 ' (0)}{\gamma_2 ' (0)}
+.\]
+Hence \[
+\operatorname{arg}(f \circ \gamma_1 )' (0)-\operatorname{arg}(f \circ \gamma_2 )' (0)=\operatorname{arg}\gamma_1 ' (0)-\operatorname{arg}\gamma_2 ' (0)
+.\] This means that the angle that the curves $\gamma_1 , \gamma_2 $ make at $w$ is the same as the angle their images make at $f (w)$. We say f is `angle-preserving at $w$', whenever $f' (w) \neq 0$.
+\begin{remark}
+      If $f$ is a $C^{1}$ map on $U$, the converse of this also holds. See Example Sheet 1. 
+\end{remark}
+\begin{definition}[Conformal map]
+      A holomorphic function $f: U \rightarrow \mathbb{C}$ on an open set $U$ is said to be \vocab{conformal} at a point $w \in U$ if $f' (w) \neq 0$.
+\end{definition}
+\begin{definition}[Conformal equivalence]
+      Let $U, \widetilde{U} $ be domains in $\mathbb{C}$. A map $f: U \rightarrow \widetilde{U}$ is said to be a conformal equivalence between $U$ and $\widetilde{U}$ if f is a bijective holomorphic map with $f' (z) \neq 0$ for every $z \in U$.
+\end{definition}
+\begin{remark}
+      \begin{itemize}
+           \item If $f$ is holomorphic and injective, then $f' (z) \neq 0$ for each $z$. We will prove this later. So in the above definition $f' (z) \neq 0$ is redundant. 
+           \item It is automatic that the inverse ${f}^{-1}: U \rightarrow \widetilde{U}$ is holomorphic. This can be proved using the holomorphic inverse function theorem, which you will prove on Example Sheet 1.
+      \end{itemize}
+\end{remark}
+\begin{example}
+     Let's look at some examples of conformal equivalence.
+      \begin{enumerate}
+           \item Mobius maps are defined for $a,b,c,d \in \mathbb{C}$ with $ad-bc \neq 0$ (see IA Groups): \[
+           f (z)= \frac{az+b}{cz+d}
+           .\] 
+      \end{enumerate}
+\end{example}
 \end{document}

@@ -6,4 +6,6 @@
 \contentsline {subsection}{\numberline {1.4}Limits of r.v's}{5}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Conditional probability}{5}{subsection.1.5}%
 \contentsline {subsection}{\numberline {1.6}Estimation}{6}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Bias-variance decomposition}{7}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}Sufficiency}{7}{subsection.1.8}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

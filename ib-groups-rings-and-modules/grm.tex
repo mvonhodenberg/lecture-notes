@@ -320,9 +320,119 @@ Later on a lot of the proofs will involve picking a nice group action. So let's 
       \end{align*} Thus $\operatorname{ker}(\phi)=\bigcap_{x \in G}xH {x}^{-1}$. This is the largest normal subgroup of $G$ that is contained in $H$.  
  \end{itemize}
  \begin{theorem}
-       Let $G$ be a non-abelian simple group, and $H \leq G$ a subgroup of index $n>1$. Then $n \geq 5$ and $G$ is isomorphic to a subgroup of $A_{n}$.
+       Let $G$ be a non-abelian simple group, and $H \leq G$ a subgroup of index $n>1$. Then $n \geq (5$ and $G$ is isomorphic to a subgroup of $A_{n}$.
  \end{theorem}
  \begin{proof}
      Let $G$ act on $X=G/H$ by left multiplication, and let $\phi: G \rightarrow \operatorname{Sym}(X)$ be the associated permutation representation. As $G$ is simple, $\operatorname{ker}(\phi)=e$ or $G$. If $\operatorname{ker}(\phi)=G$, then $\operatorname{Im}(\phi)=e$. This is a contradiction since $G$ acts transitively on $X$ and $|X|>1$. Thus $\operatorname{ker}(\phi)=e$ and $G \cong \operatorname{Im}(\phi) \leq S_{n}.$ Since $G \leq S_{n}$ and $A_n \unlhd S_n$, the second isomorphism theorem gives $G \cap A_n \unlhd G$ and $G/(G \cap A_n) \cong GA_n/A_n \leq S_n / A_n \cong C_2 $. Since $G$ is simple, $G \cap A_n=e$ (this is impossible as $G \leq C_2 $ but $G$ isn't abelian) or $G$. Thus $G \leq A_{n} $. Finally, if $n \leq 4$, then $A_n$ has no non-abelian simple subgroups.
  \end{proof}
+\begin{itemize}
+     \item[(iii)] Let $G$ act on itself by conjugation, i.e $g \ast x= gx {g}^{-1}$. We define the conjugacy class of $x \in G$ to be \[
+     \operatorname{ccl}_G (x)=\operatorname{orb}_{G}(x)=\left\{gx {g}^{-1} \in G: \quad g \in G\right\}
+     .\] We also define the centraliser of $x$ by \[
+     C_{G}(x)=G_{x}= \left\{g \in G: \quad gx=xg\right\} \leq G
+     .\] We define the centre of $G$ by \[
+     Z (G)=\operatorname{Ker}(\phi)=\left\{g \in G: \quad gx=xg \ \forall x \in G\right\}
+     .\] Note that the $\phi (g): G \rightarrow G$ given by $h \mapsto gh {g}^{-1}$ satisfies \[
+     \phi (g)(h_1 h_2 )=gh_1 h_2 {g}^{-1}=gh_1 {g}^{-1} gh_2 {g}^{-1} =\phi (g)(h_1 )\phi (g)(h_2 )
+     .\]  Thus $\phi (g)$ is a group homomorphism, and also a bijection i.e $\phi (g)$ is an isomorphism. 
+\end{itemize}
+\begin{definition}[Automorphism]
+      $\operatorname{Aut}(G)=\left\{\text{ group isomorphisms } \zeta: G \rightarrow G\right\}$. Then $\operatorname{Aut}(G)\leq \operatorname{Sym}(G)$ and $\phi: G \rightarrow \operatorname{Sym}(G)$ has image in $\operatorname{Aut}(G).$ 
+\end{definition}
+\begin{itemize}
+     \item[(iv)] Let $X$ be the set of all subgroups of $G$. Then $G$ acts on $X$ by conjugation, i.e $g \ast H=gH {g}^{-1}$. The stabiliser of $H$ is \[
+     \left\{g \in G: \quad g H {g}^{-1}=H\right\}=N_{G}(H)
+     .\] This is also called the normaliser of $H$ in $G$, and is the largest subgroup of $G$ containing $H$ as a normal subgroup. In particular, \[
+     H \unlhd G \iff N_{G}(H) =G
+     .\] 
+\end{itemize}
+\subsection{Alternating groups}
+From IA Groups, we know that elements in $S_{n}$ are conjugate iff they have the same cycle type. For example, in $S_5$, we have the following:
+\begin{center}
+\begin{tabular}{|c|c|c|}
+     \hline
+     Cycle type & Number of elements & Sign\\
+     \hline
+     id &1&+1\\
+     ($\ast$$\ast$)&10&-1\\
+     ($\ast$$\ast$)($\ast$$\ast$)&15&+1\\
+     ($\ast$$\ast$$\ast$)& 20&+1\\
+     ($\ast$$\ast$)($\ast$$\ast$$\ast$) & 20&-1\\
+     ($\ast$$\ast$$\ast$$\ast$) & 30&-1\\
+     ($\ast$$\ast$$\ast$$\ast$$\ast$) & 24&+1\\
+     \hline
+     Total:& 120=5!=$|S_5 |$&\\
+     \hline
+\end{tabular}
+\end{center}
+
+
+Let $g \in A_n$. Then $C_{A_n}(g)=C_{S_n}(g) \cap A_{n}$. We effectively have two cases: 
+\begin{itemize}
+     \item If there exists an odd permutation commuting with $g$, then $|C_{A_{n}}(g)|=\frac{1}{2}|C_{S_{n}}(g)|$ and by Orbit-Stabiliser, $|\operatorname{ccl}_{A_{n}}(g)|=|\operatorname{ccl}_{S_{n}}(g)|$.
+     \item Otherwise,  $|C_{A_{n}}(g)|=|C_{S_{n}}(g)|$ and by Orbit-Stabiliser, $|\operatorname{ccl}_{A_{n}}(g)|=\frac{1}{2}|\operatorname{ccl}_{S_{n}}(g)|$.
+\end{itemize}
+\begin{example}[Conjugacy classes of $A_5 $]
+      If we take $n=5$, then first consider the element (12)(34), which commutes with (12). Also, (123) commutes with (45). 
+
+      But if we take $g=(12345)$, then $h \in C_{S_5 }(g)$ means 
+      \begin{align*}
+           (12345)&=h (12345) {h}^{-1}\\
+           &= (h (1) h (2) h (3) h (4) h (5))
+           \implies h \in \langle g \rangle \leq A_5 . 
+      \end{align*}
+      In this case, the conjugacy class does split. 
+
+      Thus $A_5 $ has conjugacy classes of sizes 1,15,20,12,12.
+\end{example}
+\begin{proposition}
+     $A_5 $ is simple.
+\end{proposition}
+\begin{proof}
+      If $H \unlhd A_5$, then $H$ is a union of conjugacy classes. Therefore \[
+      |H|=1+15a+20b+12c \quad \text{ for some } a,b \in \left\{0,1\right\} \text{ and } c \in \left\{0,1,2\right\}
+      .\] Since $H |60$, this implies $H=1$ or 60, i.e $A_5 $ is simple. 
+\end{proof}
+Now we move on to a more general statement about $A_n$ being simple. Before we can do that, we will need some lemmas for the proof. 
+\begin{lemma}\label{an1}
+      $A_n$ is generated by 3-cycles. 
+\end{lemma}
+\begin{proof}
+      Each $\sigma \in A_n$ is a product of an even number of transpositions. Thus it suffices to write the product of any two transpositions as a product of 3-cycles. For $a,b,c,d$ distinct, we can have 
+      \begin{equation*}
+            \begin{cases}
+                 (ab)(bc)=(abc)\\
+                 (ab)(cd)=(acb)(acd).
+            \end{cases}  
+      \end{equation*}
+\end{proof}
+\begin{lemma}\label{an2}
+     If $n \geq 5$, then all 3-cycles in $A_n$ are conjugate. 
+\end{lemma}
+\begin{proof}
+     We claim that every 3-cycle is conjugate to (123). Indeed, if $(abc)$ is a 3-cycle, then $(abc)=\sigma (abc) {\sigma}^{-1}$ for some $\sigma \in S_n$. If $\sigma \notin A_{n}$, then replace $\sigma$ by $\sigma (45)$ (using the fact that $n \geq 5$).
+\end{proof}
+\begin{theorem}
+      $A_n$ is simple for all $n \geq 5$.
+\end{theorem}
+\begin{proof}
+      Let $e \neq N \unlhd A_{n}$. Suffices to show that $N$ contains a 3-cycle, since by \ref{an1} and \ref{an2} we then have $N=A_n$.
+
+      Take $e \neq \sigma \in N$ and write $\sigma$ in its disjoint cycle decomposition. We have three cases: 
+      \begin{enumerate}
+           \item  $\sigma$ contains a cycle of length $r \geq 4$. WLOG $\sigma=(123 \ldots r)\tau$, where $\tau$ is some product of cycles that fixes $1,2, \ldots ,r$. 
+           
+           Let $\delta =(123)$. Then consider the element \[
+           \underbrace{{\sigma}^{-1}}_{\in N} \underbrace{{\delta}^{-1} \sigma \delta}_{\in N} = (r \ldots 21)(132)(12 \ldots r)(123)=(23r) \in N
+           .\] Note $\tau$ gets cancelled as it fixes 1 to $r$. Therefore $N$ contains a 3-cycle and we are done. 
+           \item $\sigma$ contains two 3-cycles. WLOG $\sigma= (123)(456)\tau$. Let $b=(124).$ Then \[
+               {\sigma}^{-1} {\delta}^{-1} \sigma \delta = (132)(465)(142)(123)(456)(124)=(12436) \in N
+          .\] Then we are back to Case 1, so we are done.
+          \item $\sigma$ contains two 2-cycles. WLOG $\sigma=(12)(34)\tau$. Let $\delta=(123)$ and consider \[
+               {\sigma}^{-1} {\delta}^{-1} \sigma \delta = (12)(34)(132)(12)(34)(123)=(14)(23)=\pi \in N
+               .\] Let $\varepsilon= (235)$. Then \[
+               {\pi}^{-1}{\varepsilon}^{-1}\pi \varepsilon =(14)(23)(253)(14)(23)(235)=(253)
+               .\] So we are done.
+      \end{enumerate}
+\end{proof}
 \end{document}

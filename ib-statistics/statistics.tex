@@ -236,4 +236,44 @@ In our example, $\hat{\mu}$ is unbiased because \[
      .\] 
      It tells us "how far" $\hat{\theta}$ is from $\theta$ "on average".
 \end{definition}
+\subsection{Bias-variance decomposition}
+We expand the square in the definition of mse to get
+\begin{align*}
+     \operatorname{mse}(\hat{\theta})&=\mathbb{E}_{\theta} \left[ (\hat{\theta}-\theta)^2\right]\\
+     &=\mathbb{E}_{\theta} \left((\hat{\theta}-\mathbb{E}_{\theta}\hat{\theta}-\theta)^{2}\right)
+     &=\operatorname{Var}_{\theta}(\hat{\theta})+\operatorname{bias}^2 (\hat{\theta})\\
+     & \geq 0
+\end{align*}
+There is a tradeoff between bias and variance. For example, let $X \sim \operatorname{Bin}(n,\theta)$. Suppose $n$ is known, and $\theta \in [0,1]$ is our unknown parameter. We define $T_{u}=\frac{X}{n}$, i.e the proportion of successes observed. Clearly $T_{u}$ is unbiased since \[
+\mathbb{E}_{\theta} (T_{u})= \frac{E_{\theta}(X)}{n}=n \theta /n =\theta
+.\] We can caculate \[
+\operatorname{mse}(T_{u})=\operatorname{Var}_{\theta}(\frac{X}{n})= \frac{\operatorname{Var}_{\theta}}{n^2}= \frac{\theta (1-\theta)}{n}
+.\] Consider another estimator $T_{B}= \frac{X+1}{n+2}=w \frac{X}{n}+ (1-w )\frac{1}{2}$ for $w=\frac{n}{n+2}$. This is called a "fixed estimator". In this case we have \[
+\operatorname{bias}(T_{B})=\mathbb{E}_{\theta}(T_{B})-\theta=\mathbb{E}_{\theta}( \frac{X+1}{n+2})-\theta=\frac{n}{n+2}\theta +\frac{1}{n+2}-\theta
+.\] This is $\neq 0$ for all but one value of $\theta$. Note that 
+\begin{align*}
+     \operatorname{Var}_{\theta}(T_{B})= \frac{\operatorname{Var}_{\theta}(X+1)}{(n+2)^2}\\
+     \implies \operatorname{mse}(T_{B})=(1-w^2)\left(\frac{1}{2}-\theta\right)^2.
+\end{align*}
+\begin{remark}
+     In this example, there are regions where either estimator is better. Prior judgement on the true value of $\theta$ determines which estimator is better. 
+\end{remark}
+Unbiasedness is not necessarily desirable. Let's look at a pathological example:
+\begin{example}
+     Suppose $X \sim \operatorname{Po}(\lambda)$. We want to estimate $\theta= \mathbb{P} (X=0)^2=e^{-2\lambda}$. For some estimator $T (X)$ to be unbiased, we need \[
+          \mathbb{E}_{\lambda}(T (x))=\sum_{x=0}^{ \infty}T (x) \frac{\lambda^{x}e^{-\lambda}}{x!}=e^{-2\lambda}=\theta \iff \sum_{x=0}^{ \infty}T (x) \frac{\lambda^{x}}{x!}=e^{-\lambda}=\sum_{x=0}^{ \infty}(-1)^{x} \frac{\lambda^{x}}{x!}  
+          .\] The only function $T: N \rightarrow \mathbb{R}$ satisfying this equality is $T (x)=(-1)^{x}$. This is clearly an absurd estimator.
+\end{example}
+\subsection{Sufficiency}
+\begin{definition}[Sufficiency]
+     A statistic $T (X)$ is sufficient for $\theta$ if the conditional distribution of $X$ given $T (X)$ does not depend on $\theta$.
+\end{definition}
+\begin{remark}
+      $\theta$ can be a vector and $T (X)$ can also be vector-valued.
+\end{remark}
+\begin{example}
+      Let $X_1 , \ldots ,X_n$ be iid. Bernoulli$(\theta)$  variables for some $\theta$. Then \[
+      f_{X}(X|\theta)=\prod_{i=1}^n \theta^{x_{i}}(1-\theta)^{1-x_{i}}=\theta^{\sum_{}^{}x_{i}} (1-\theta)^{n-\sum_{}^{}x_{i}}
+      .\] This only depends on $x$ through $T (X)=\sum_{}^{}x_{i}$. 
+\end{example}
 \end{document}
