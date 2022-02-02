@@ -54,17 +54,17 @@ There are two natural perspectives on flow:
     \item A moving observer travelling along with the flow (\emph{Lagrangian} viewpoint)
 \end{enumerate}
 \subsection{Particle paths and streamlines}
-\begin{definition}[Streamline]
+\begin{definition*}[Streamline]
      A \vocab{streamline} is a curve that is everywhere parallel to the flow at a given instant. The streamline through $\bm{x_0 } $ at time $t_0 $ can be found parametrically in the form \[
      \bm{x} =\bm{x} (s; \bm{x_0 } , \bm{t_0 } )
      .\] from solving $\frac{\mathrm{d}x}{\mathrm{d}s}=\bm{u} (\bm{x};t_0 )$ with $\bm{x} =\bm{x_0 } $ at $s=0$. The set of streamlines at a given instant shows the direction of the flow.
-\end{definition}
+\end{definition*}
 For example, for a flow $u= (1,t)$ we would solve \[
 \int x = x_0 +s, y=y_0 +ts \implies y=y_0 +t (x-x_0 )
 .\] 
-\begin{definition}[Pathline/Particle path]
+\begin{definition*}[Pathline/Particle path]
      A \vocab{pathline} is the trajectory of a fluid "particle" (i.e a very small blob of fluid). The pathline $x=x (t;x_0 )$ of the fluid particle at $x=x_0 $ when $t=0$ is given by $\frac{\mathrm{d}x}{\mathrm{d}t}=u (x,t)$ with $x=x_0 $ at $t=0$.
-\end{definition}
+\end{definition*}
 In our previous example $u= (1,t)$ this would give 
 \begin{align*}
     x=x_0 +t, \quad y=y_0 +t^2 \\
@@ -74,7 +74,7 @@ This Lagrangian viewpoint is often more complicated than the Eulerian one, but w
 \begin{remark}
      For steady flow only, pathlines and streamlines are the same. 
 \end{remark}
-\begin{definition}[Material derivative]
+\begin{definition*}[Material derivative]
      The \vocab{material derivative} is the rate of change moving with the fluid. [picture] For any quantitity $F (x,t)$, the rate of change seen by an observer with the flow is found from \[
      \delta F =F (x+\delta x, t+\delta t)-F (x,t)=\delta x \cdot \nabla F +\delta t \frac{\partial F}{\partial t}+o (t)
      .\] 
@@ -83,7 +83,7 @@ This Lagrangian viewpoint is often more complicated than the Eulerian one, but w
      .\] Therefore dividing by $\delta t$ and taking the limit as $\delta \rightarrow 0$, we get the material derivative \[
      \frac{\mathcal{D}F}{\mathcal{D}t}=\underbrace{\frac{\partial F}{\partial t}}_{\text{Eulerian deriv.} } + \underbrace{u \cdot \nabla F}_{\text{convected derivative} } 
      .\] 
-\end{definition}
+\end{definition*}
 \subsection{Conservation of mass}
 Consider an arbitrary volume $V$, fixed in space, bounded by a surface $\partial V$ with outward normal $\vec{n}$ with a flow of mass across it.
 
@@ -125,14 +125,14 @@ The scalar $\psi (x,y)$ is the \vocab{streamfunction}. This has several properti
     \item[(iii)] $\psi (\vec{x_0})-\psi (\vec{x_1})=\int_{\vec{x_0}}^{\vec{x_1}}\vec{u} \cdot \vec{n} \mathrm{d}l $ which is the flux crossing the line $\vec{x_0} \rightarrow \vec{x_1}$.
     \item[(iv)] $\psi$ is a constant or a stationary rigid boundary. (kinematic boundary condition and (iii)).  
 \end{itemize}
-\begin{example}
+\begin{example*}
      Let $\vec{u}=(y,x)$. Then $\nabla \cdot \vec{u}=0$ so $\psi$exists. 
      \begin{align*}
         &\frac{\partial v}{\partial y}=y \implies \psi=\frac{1}{2} y^{2}+f (x)\\
         &-\frac{\partial v}{\partial x}=x  \implies f=-\frac{1}{2}x^2.
      \end{align*}
      The streamlines are $\frac{1}{2}( y^2-x^2)=$ const. 
-\end{example}
+\end{example*}
 \subsubsection{Polar coordinates}
 Let us express $\vec{u}$ and $\vec{A}$ in polar coordinates: \[
 \vec{u}=(u_{r}(r,\theta), u_{v}(r, \theta),0) \quad \vec{A}=(0,0,\psi (r,\theta))
@@ -145,4 +145,37 @@ Therefore
 Axisymmetric flows in spherical polars have $u_{\phi}=0, \frac{\partial }{\partial \phi}=0$. If $\nabla \cdot \vec{u}=0$ and we take $\vec{A}=(0,0, \frac{\Psi (r, \theta)}{r \sin \theta})$, then \[
 \vec{u}=\left(\frac{1}{r^2 \sin \theta} \frac{\partial \psi}{\partial \theta}, -\frac{1}{r \sin \theta}\frac{\partial \psi}{\partial r},0 \right)
 .\] So $\vec{u}$ is parallel to the contours of the Stokes stream function $\Psi (r,\theta)$.
+\section{Dynamics of inviscid flow}
+In this chapter, we move onto dynamics, thinking about forces and accelerations. We will focus on inviscid fluids for this chapter.
+\subsection{Surface and volume forces}
+Two types of force act on a fluid:
+\begin{itemize}
+    \item[(i)] Those proportional to the volume, like gravity. We call these \vocab{volume forces}.
+    \item[(ii)] Those proportional to the area, like pressure. We call these \vocab{surface forces}. 
+\end{itemize}
+\begin{definition*}[Volume force]
+     We denote the force on a small volume element $\delta V$ by $\vec{F} (\vec{x},t)\delta V$. $\vec{F}$ is often \textbf{conservative} with potential energy/ unit volume $\chi$ and $F=-\nabla \chi$.
+
+     The most common case for us is $\vec{F} \delta V$=$\rho \vec{g} \delta V$ with $\chi=pgz$ if $\vec{g}=(0,0-g)$. We write $p \vec{g}$ for the weight/unit volume.
+\end{definition*}
+\begin{definition*}[Surface force]
+     Consider a small element of area $\vec{n} \delta A$. Here $\vec{n}$ is the direction of the force. Denote the surface force exerted by the + side on the - side by \[
+     \vec{\tau} (\vec{x},t,\vec{n})\delta A
+     .\] where $\vec{\tau}$ is called the \vocab{stress} acting on the area element. (A stress is a force per unit area.)
+\end{definition*}
+\begin{remark}
+     The stress $\vec{\tau}$ depends on the orientation of the surface $\vec{n}$. For example, by Newton's third law, the force exerted by the - side on the + side is $-\vec{\tau}$.
+\end{remark}
+We defer any discussion of viscous stresses (e.g. friction) to Section 3. In many phenomena, the viscous stresses are negligible, and the fluid behaves as if it is \vocab{inviscid} (frictionless). In this model, the stress $\vec{t}$ acting on $\vec{n}\delta A$ has no tangential component, and it has a magnitude independent of orientation \[
+\vec{t} (\vec{x}, t , \vec{n})=- p (\vec{x},t) \vec{n}
+.\] where $p$ is the pressure.
+\subsection{The Euler equation}
+Consider an arbitrary volume $V$, fixed in space, bounded by a surface $\partial V$ with outward normal $\vec{n}$. The momentum inside $V$ is \[
+\int_{V}^{}p \vec{u} \ \mathrm{d}dV 
+.\] and can change due to 
+\begin{itemize}
+    \item[(i)] Flow of momentum across the bounding surface $\partial V$. 
+    \item[(ii)] Volume/body forces.
+    \item[(iii)] Surface forces.
+\end{itemize}
 \end{document}

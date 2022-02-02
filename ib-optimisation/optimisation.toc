@@ -1,41 +1,41 @@
 \contentsline {section}{\numberline {0}Introduction}{3}{section.0}%
-\contentsline {section}{\numberline {1}Convex optimisation}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Convexity}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {1}Convex optimisation}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Convexity}{4}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Unconstrained optimisation}{4}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}First order conditions for convexity}{4}{subsubsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.2}Second-order conditions for convexity}{5}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}First order conditions for convexity}{5}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Second-order conditions for convexity}{6}{subsubsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.3}The gradient descent algorithm}{6}{subsection.1.3}%
-\contentsline {subsubsection}{\numberline {1.3.1}Smoothness assumption}{6}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.1}Smoothness assumption}{7}{subsubsection.1.3.1}%
 \contentsline {subsubsection}{\numberline {1.3.2}Strong convexity assumption}{8}{subsubsection.1.3.2}%
-\contentsline {subsubsection}{\numberline {1.3.3}Efficiency of gradient descent}{9}{subsubsection.1.3.3}%
+\contentsline {subsubsection}{\numberline {1.3.3}Efficiency of gradient descent}{10}{subsubsection.1.3.3}%
 \contentsline {subsection}{\numberline {1.4}Alternatives to gradient descent}{10}{subsection.1.4}%
 \contentsline {subsubsection}{\numberline {1.4.1}Newton's method}{10}{subsubsection.1.4.1}%
-\contentsline {subsubsection}{\numberline {1.4.2}Convergence of Newton's method}{11}{subsubsection.1.4.2}%
-\contentsline {subsubsection}{\numberline {1.4.3}Barrier methods}{12}{subsubsection.1.4.3}%
+\contentsline {subsubsection}{\numberline {1.4.2}Convergence of Newton's method}{12}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}Barrier methods}{13}{subsubsection.1.4.3}%
 \contentsline {section}{\numberline {2}The Lagrange multiplier method}{13}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Lagrange sufficiency}{13}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Complementary slackness}{14}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Strong duality and shadow prices}{15}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}When does $\phi (b)$ have a separating hyperplane?}{17}{subsubsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.2}Complementary slackness}{15}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Strong duality and shadow prices}{16}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}When does $\phi (b)$ have a separating hyperplane?}{18}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}Economics interpretations}{18}{subsubsection.2.3.2}%
 \contentsline {section}{\numberline {3}Solving linear programs}{19}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Maximising convex functions}{19}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}Maximising convex functions}{20}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Basic solutions and basic feasible solutions}{20}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}How to find basic solutions}{20}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1}How to find basic solutions}{21}{subsubsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.3}Extreme points of the feasible set}{21}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Duality in linear programming}{22}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}The dual of a linear program}{22}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Optimality conditions}{23}{subsubsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.5}The simplex method}{24}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.4.1}The dual of a linear program}{23}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Optimality conditions}{24}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}The simplex method}{25}{subsection.3.5}%
 \contentsline {subsubsection}{\numberline {3.5.1}The full tableau implementation}{26}{subsubsection.3.5.1}%
-\contentsline {section}{\numberline {4}Applications of linear programming}{26}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Game theory}{26}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Mixed strategies}{27}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Finding optimal strategies}{28}{subsubsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.2}Network flows}{29}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Minimum cost flow on graphs}{29}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}The transport problem}{30}{subsubsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.3}The transport algorithm}{31}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}Max flow - min cut}{33}{subsubsection.4.2.4}%
-\contentsline {subsubsection}{\numberline {4.2.5}The bipartite matching problem}{35}{subsubsection.4.2.5}%
+\contentsline {section}{\numberline {4}Applications of linear programming}{27}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Game theory}{27}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Mixed strategies}{28}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Finding optimal strategies}{29}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Network flows}{30}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Minimum cost flow on graphs}{30}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}The transport problem}{31}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}The transport algorithm}{32}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Max flow - min cut}{34}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}The bipartite matching problem}{36}{subsubsection.4.2.5}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

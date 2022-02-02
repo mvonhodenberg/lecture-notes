@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  27 JAN 2022 13:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  2 FEB 2022 01:14
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -576,19 +576,23 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip144
 )
-Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=examplebg, nobreak=false ')
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=examplebg, linecolor=examplefg, nobreak=false, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmexamplebox' on input line 128.
-Package thmtools Info: Key `mdframed' (with value `backgroundcolor=definitionbg')
+(thmtools)             that uses `style=thmexamplebox' on input line 136.
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=definitionbg, linecolor=definitionfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmdefinitionbox' on input line 136.
-Package thmtools Info: Key `mdframed' (with value `backgroundcolor=theorembg')
+(thmtools)             that uses `style=thmdefinitionbox' on input line 152.
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=theorembg, linecolor=theoremfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmtheorembox' on input line 144.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 148.
+(thmtools)             that uses `style=thmtheorembox' on input line 168.
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=propositionbg, linecolor=propositionfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
+(thmtools)             is not a known style key.
+(thmtools)             Will pass this to every \declaretheorem
+(thmtools)             that uses `style=thmpropositionbox' on input line 184.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 188.
  (c:/texlive/2021/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2020/08/01 v0.72
 )
@@ -817,11 +821,11 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 48.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 48.
+Package hyperref Info: bookmark level for unknown definition* defaults to 0 on input line 48.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 52.
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 52.
+Package hyperref Info: bookmark level for unknown example* defaults to 0 on input line 52.
 Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 65.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -856,9 +860,6 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 233.
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 238.
  [6]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -877,18 +878,18 @@ Package rerunfilecheck Info: File `statistics.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20127 strings out of 478542
- 366168 string characters out of 5854402
- 879998 words of memory out of 5000000
- 37639 multiletter control sequences out of 15000+600000
- 419839 words of font info for 86 fonts, out of 8000000 for 9000
+ 20100 strings out of 478542
+ 366264 string characters out of 5854402
+ 883066 words of memory out of 5000000
+ 37627 multiletter control sequences out of 15000+600000
+ 420131 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,21n,108p,10679b,662s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on statistics.pdf (8 pages, 240928 bytes).
+ 108i,21n,108p,10679b,674s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb>
+Output written on statistics.pdf (8 pages, 240351 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
+ 245 PDF objects out of 1000 (max. 8388607)
+ 191 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

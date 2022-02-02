@@ -49,9 +49,9 @@ Recall the geometric series: for $z \in \mathbb{C}$, $z \neq 1$ and $n \in \math
 
 For $|z|<1$, this converges for $n \rightarrow \infty$: $\sum_{k=0}^{ \infty}z^{k}= \frac{1}{1-z}$
 
-\begin{definition}[Open set]
+\begin{definition*}[Open set]
      A set $D \subset \mathbb{C}$ is an "open set" if for all $z_0 \in D$, $\exists \varepsilon>0$ such that the $\varepsilon$-sphere $|z-z_0 |<\varepsilon$ lies in $D$. A neighbourhood of $z \in \mathbb{C}$ is an open set $D$ that contains $z$. 
-\end{definition}
+\end{definition*}
 
 \subsection{Trigonometric and hyperbolic functions}
 Recall Euler's identity, and the complex definitions of cos, sin, and their hyperbolic counterparts. Recall that $\cos (ix)=\cosh (x)$  and $\sin (ix)= i \sinh (x)$ from the definitions.
@@ -59,9 +59,9 @@ Recall Euler's identity, and the complex definitions of cos, sin, and their hype
 \subsection{Calculus of real functions in $\geq 1$ variables}
 Sometimes, we regard a complex function as 2 real functions on $\mathbb{R}^{2} : \ f (z)=u (x,y)+iv (x,y)$. (See IB Complex Analysis notes for more on this.)
 
-\begin{definition}
+\begin{definition*}
      We define $C^{m}(\Omega)$ as the set of functions $f: \Omega \subset \mathbb{R}^{n} \rightarrow \mathbb{R}$ whose partial derivatives up to order $m$ exist and are continuous. 
-\end{definition}
+\end{definition*}
 \begin{remark}
      We need the continuity condition: consider $f: \mathbb{R}^{2} \rightarrow \mathbb{R}$ defined by
      \begin{equation*}
@@ -75,42 +75,42 @@ Sometimes, we regard a complex function as 2 real functions on $\mathbb{R}^{2} :
     Then $\frac{\partial f}{\partial x}(0,0)=1=\frac{\partial f}{\partial y}(0,0)$, but $f$ is not even continuous at $(0,0)$. 
 \end{remark}
 
-\begin{definition}[Differentiable function]
+\begin{definition*}[Differentiable function]
      $f: \Omega \subset \mathbb{R}^{n} \rightarrow \mathbb{R}$ is differentiable at a point $x \in \Omega$ if there exists a linear function $A: \mathbb{R}^{n} \rightarrow R$ with \[
      f (x+h)-f (x)=A (x)(h) +o (||h||)
      .\] (See IB Analysis and Topology.) We define $f$ to be continuously differentiable if its partial derivatives are also continuous. This generalises to vector-valued functions $f: \Omega \rightarrow \mathbb{R}^{m}$ by considering each component $f_{i}$ separately.  
-\end{definition}
+\end{definition*}
 
-\begin{definition}[Uniform convergence]
+\begin{definition*}[Uniform convergence]
      A sequence of functions $f_{k}: \Omega \subset \mathbb{R}^{n} \rightarrow \mathbb{R}$ is uniformly convergent with limit $f$ iff \[
      \forall \varepsilon>0, \exists n \in \mathbb{N}: \quad  \forall k \geq n, x \in \Omega: \quad |f_{k} (x)- f (x)|< \varepsilon
      .\]
      See IB Analysis and Topology for more. In this course, we will use this to justify swapping limits with integrals and sums. 
-\end{definition}
+\end{definition*}
 
 \section{Analytic functions}
 \subsection{The extended complex plane of the Riemann sphere}
 We can identify $\mathbb{C}$ with $\mathbb{R}^2$ since $z \leftrightarrow (x,y)$ is bijective with $z=x+iy$.
-\begin{definition}[Extended complex domain]
+\begin{definition*}[Extended complex domain]
      We define the extended complex domain $\mathbb{C}^*=\mathbb{C}\cup \infty$. We have seen this before in IA Groups. Some things to remember: 
      \begin{itemize}
           \item $z= \infty$ is a single point
           \item $z=- \infty$ means we approach this point along the negative real axis. 
           \item We can visualise this as the Riemann sphere: [image] We have the projection mapping $P \leftrightarrow z$ via the line $\vec{NP}$. The south pole $P$ is mapped to $z=0$ and the north pole $N$ is mapped to $z= \infty$. In practice, $f$ has a property at $z= \infty$ if $f \left(\frac{1}{\zeta}\right)$ has this property at $\zeta=0$.
      \end{itemize}
-\end{definition}
+\end{definition*}
 \subsection{Complex differentiation and analytic functions}
-\begin{definition}[Differentiability in $\mathbb{C}$]
+\begin{definition*}[Differentiability in $\mathbb{C}$]
       $f: \mathbb{C} \rightarrow \mathbb{C}$ is "differentiable" at $z \in \mathbb{C}$ if \[
       f' (z) \equiv \lim_{\delta z \rightarrow 0} \frac{f (z+ \delta z)-f (z)}{\delta z}
       \] exists and is independent of the direction of approach.
-\end{definition}
+\end{definition*}
 \begin{remark}
       Direction independence is a strong requirement! (See IB Complex Analysis for more). In $\mathbb{R}$, we have only 2 directions: for example, $f (x)=|x|$ is not differentiable at $x=0$. Conversely, in $\mathbb{C}$, we have infinitely many directions. 
 \end{remark}
-\begin{definition}[Analyticity]
+\begin{definition*}[Analyticity]
       A complex function $f$ is analytic at $z \in \mathbb{C}$ iff there exists a neighbourhood $D$ of $z$ where $f$ is differentiable.
-\end{definition}
+\end{definition*}
 \begin{remark}
       \begin{itemize}
            \item In this course, we will almost exclusively consider analytic functions.
@@ -170,11 +170,11 @@ In practice we use
 \begin{proof}
       Omitted.
 \end{proof}
-\begin{example}
+\begin{example*}
      Now let's look at some examples. 
       \begin{enumerate}
            \item $f (z)=z=x+iy$ is \vocab{entire}, i.e analytic in all of $\mathbb{C}$. This is true since $\frac{\partial u}{\partial x}=1= \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y}=0 =- \frac{\partial v}{\partial y}$ and they are continuous. The definition of $f' (z)$ gives us $f' (z)=1$.
            \item $e^{z}=e^{x+iy}$ 
       \end{enumerate}
-\end{example}
+\end{example*}
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  28 JAN 2022 14:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  2 FEB 2022 16:00
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -576,19 +576,23 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip144
 )
-Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=examplebg, nobreak=false ')
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=examplebg, linecolor=examplefg, nobreak=false, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmexamplebox' on input line 128.
-Package thmtools Info: Key `mdframed' (with value `backgroundcolor=definitionbg')
+(thmtools)             that uses `style=thmexamplebox' on input line 136.
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=definitionbg, linecolor=definitionfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmdefinitionbox' on input line 136.
-Package thmtools Info: Key `mdframed' (with value `backgroundcolor=theorembg')
+(thmtools)             that uses `style=thmdefinitionbox' on input line 152.
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=theorembg, linecolor=theoremfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmtheorembox' on input line 144.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 148.
+(thmtools)             that uses `style=thmtheorembox' on input line 168.
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=propositionbg, linecolor=propositionfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
+(thmtools)             is not a known style key.
+(thmtools)             Will pass this to every \declaretheorem
+(thmtools)             that uses `style=thmpropositionbox' on input line 184.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 188.
  (c:/texlive/2021/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2020/08/01 v0.72
 )
@@ -817,7 +821,7 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 36.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 36.
+Package hyperref Info: bookmark level for unknown definition* defaults to 0 on input line 36.
 Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 40.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -833,10 +837,16 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 75.
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 75.
-Package mdframed Info: Not enough space on this page on input line 78.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 79.
+LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 80.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/bx/n' instead on input line 80.
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 92.
@@ -844,11 +854,14 @@ Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 102.
- [3]
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 118.
+[3]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 125.
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 125.
+Package hyperref Info: bookmark level for unknown example* defaults to 0 on input line 125.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 129.
@@ -869,11 +882,21 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 168.
+
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on input line 175.
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 175.
+[5]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 177.
- [5]
-Package mdframed Info: Not enough space on this page on input line 186.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 187.
@@ -893,11 +916,11 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 252.
+ [7]
+Package mdframed Info: Not enough space on this page on input line 254.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 256.
- [7]
-Package mdframed Info: Not enough space on this page on input line 257.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 258.
@@ -917,29 +940,506 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 322.
+
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on input line 324.
+
+[9]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 332.
-Package mdframed Info: Not enough space on this page on input line 338.
- [9]
-Package mdframed Info: Not enough space on this page on input line 338.
- [10] (./complex-an.aux)
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 349.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 352.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 358.
+ [10]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 367.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 371.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 382.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 387.
+ [11]
+Package mdframed Info: Not enough space on this page on input line 404.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 405.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 413.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 420.
+ [12]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 433.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 445.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 451.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 456.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 463.
+
+Overfull \vbox (4.33311pt too high) detected at line 468
+ []
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 468.
+
+Overfull \vbox (5.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (6.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (7.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (8.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (9.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (10.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (11.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (12.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (13.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (14.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (15.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (16.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (17.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (18.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (19.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (20.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (21.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (22.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (23.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (24.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (25.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (26.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (27.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (28.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (29.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (30.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (31.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (32.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (33.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (34.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (35.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (36.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (37.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (38.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (39.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (40.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (41.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (42.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (43.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (44.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (45.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (46.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (47.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (48.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (49.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (50.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (51.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (52.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (53.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (54.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (55.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (56.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (57.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (58.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (59.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (60.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (61.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (62.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (63.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (64.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (65.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (66.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (67.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (68.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (69.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (70.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (71.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (72.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (73.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (74.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (75.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (76.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (77.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (78.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (79.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (80.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (81.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (82.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (83.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (84.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (85.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (86.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (87.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (88.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (89.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (90.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (91.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (92.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (93.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (94.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (95.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (96.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (97.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (98.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (99.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (100.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (101.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (102.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (103.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (104.33311pt too high) detected at line 468
+ []
+
+
+Overfull \vbox (105.33311pt too high) detected at line 468
+ []
+
+
+Package mdframed Warning: correct box splittet fails
+ It seems you are using a non splittable contents
+(mdframed)                 on input line 468.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 468.
+[13] [14] (./complex-an.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
 Package rerunfilecheck Info: File `complex-an.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20135 strings out of 478542
- 366600 string characters out of 5854402
- 886004 words of memory out of 5000000
- 37641 multiletter control sequences out of 15000+600000
- 419839 words of font info for 86 fonts, out of 8000000 for 9000
+ 20149 strings out of 478542
+ 367423 string characters out of 5854402
+ 890072 words of memory out of 5000000
+ 37638 multiletter control sequences out of 15000+600000
+ 420487 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,21n,108p,10685b,630s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on complex-an.pdf (10 pages, 248869 bytes).
+ 108i,21n,108p,10685b,659s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb>
+Output written on complex-an.pdf (14 pages, 270702 bytes).
 PDF statistics:
- 254 PDF objects out of 1000 (max. 8388607)
- 198 compressed objects within 2 object streams
- 73 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 290 PDF objects out of 1000 (max. 8388607)
+ 229 compressed objects within 3 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

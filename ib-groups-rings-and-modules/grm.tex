@@ -10,7 +10,6 @@
 \usepackage{xifthen}
 \usepackage{pdfpages}
 \usepackage{transparent}
-\usepackage{bm}
 
 \newcommand{\incfig}[2]{%
     \def\svgwidth{#1mm}
@@ -31,6 +30,7 @@
 These are my notes for the IB course `Groups, Rings and Modules', which was lectured in Lent 2022 at Cambridge by Dr R.Zhou. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
 
 \tableofcontents
+
 \newpage
 \section{Introduction}
 This course will contain several sections: 
@@ -39,31 +39,31 @@ This course will contain several sections:
     \item Rings; these are sets where you can add, subtract and multiply (e.g $\mathbb{Z}$ or $\mathbb{C}[X]$). We will study rings of integers such as $\mathbb{Z}[i], \mathbb{Z}[\sqrt{2}]$. These also generalise to polynomial rings. We will also study fields, which are rings where you can divide (e.g $\mathbb{Q},\mathbb{R},\mathbb{C}$ or $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime).
     \item Modules; these are an analogue of vector spaces where the scalars belong to a ring instead of a field. We will classify modules over certain "nice" rings. This allows us to prove Jordan Normal Form, and classify finite abelian groups. 
 \end{enumerate}
-
 \section{Groups}
+The first subsection will just recap the results seen in IA Groups; it can be skipped by anyone with a sufficient knowledge of the course.
 \subsection{Recall of IA Groups}
-\begin{definition}[Group]
+\begin{definition*}[Group]
      A group is a pair $(G, \cdot)$ where $G$ is a set and $\cdot: G \times G \rightarrow  G$ is a binary operation satisfying:
      \begin{enumerate}
          \item $a \cdot (b \cdot c)=(a \cdot b)\cdot c$ (associativity)
          \item $\exists e \in G$ such that $e \cdot g= g \cdot e =g$ for all $g \in G$ (identity)
          \item $\forall g \in G$, $\exists {g}^{-1} \in G$ such that $g \cdot {g}^{-1}={g}^{-1}\cdot g=e$ (inverses)
      \end{enumerate}
-\end{definition}
-\begin{remark}
+\end{definition*}
+\begin{remarks}\hfill
      \begin{itemize}
          \item In practice, one often needs to check closure in order to check that $\cdot $ is well-defined.
          \item If using additive (respectively multiplicative) relations, we will often write 0 (or 1) for the identity.
          \item We write $|G|$ for the number of elements in $G$.
      \end{itemize}
-\end{remark}
-\begin{definition}[Subgroup]
+\end{remarks}
+\begin{definition*}[Subgroup]
      A subset $H \subseteq G$ is a subgroup (written $H \leq G$) if $H$ is closed under $\cdot$ and $(H, \cdot)$ is a group.
-\end{definition}
+\end{definition*}
 \begin{remark}
      A non-empty subset $H$ of $G$ is a subgroup if $a,b \in H \implies a \cdot {b}^{-1} \in H$ (see IA Groups for the proof). 
 \end{remark}
-\begin{example}[Examples of groups]
+\begin{example*}[Examples of groups]
     Groups we have already seen include:
     \begin{itemize}
         \item Additive groups $(\mathbb{Z},+)\leq (\mathbb{Q},+)\leq (\mathbb{R},+)$.
@@ -73,12 +73,12 @@ This course will contain several sections:
         \item Quaternion group $Q_8 =\left\{\pm 1, \pm i, \pm j, \pm k\right\}$ where $i,j,k$ are quaternions.
         \item General and special linear groups $GL_{n}(\mathbb{R})= n \times n$ matrices on $\mathbb{R}$ with $\operatorname{det} \neq 0 $, where the group operation is matrix multiplication. This contains the subgroup $SL_{n}(\mathbb{R}) \leq GL_{n}(\mathbb{R})$, which is the subgroup of matrices with $\operatorname{det}=1 $. 
     \end{itemize}     
-\end{example}
-\begin{definition}[Direct product]
+\end{example*}
+\begin{definition*}[Direct product]
      The direct product of groups $G$ and $H$ is the set $G \times H$ with operation \[
      (g_1 , h_1 ) \cdot (g_2 ,h_2 )=(g_1 g_2 , h_1 h_2 )
      .\] 
-\end{definition}
+\end{definition*}
 \begin{theorem}[Lagrange's theorem]
      Let $H \leq G$. Then the left cosets of $H$ in $G$ are the sets $gH=\left\{gh: \ h \in H\right\}$ for $g \in G$. These partition $G$, and each has the same cardinality as $H$. From this we can deduce Lagrange's theorem:
 
@@ -87,9 +87,9 @@ This course will contain several sections:
 \begin{remark}
      Can also carry this out with right cosets. A corollary of Lagrange's theorem is thus that the number of left cosets = number of right cosets.
 \end{remark}
-\begin{definition}[Order of an element]
+\begin{definition*}[Order of an element]
      Let $g \in G$. If $\exists n \geq 1$ such that $g^{n}=1$, then the least such $n$ is the order of $g$ in $G$. If no such $n$ exists, $g$ has infinite order.
-\end{definition}
+\end{definition*}
 \begin{remark}
      If $g$ has order $d$, then 
      \begin{itemize}
@@ -97,9 +97,9 @@ This course will contain several sections:
          \item $\left\{1,g, \ldots , g^{d-1}\right\}\leq G$ and so if $G$ is finite, then $d | |G|$ (Lagrange).
      \end{itemize}
 \end{remark}
-\begin{definition}[Normal subgroup]
+\begin{definition*}[Normal subgroup]
      A subgroup $H \leq G$ is normal if ${g}^{-1}Hg=H$ for all $g \in G$. We write $H \unlhd G$.
-\end{definition}
+\end{definition*}
 \begin{proposition}
      If $H \unlhd G$ then the set $G/H$ of left cosets of $H$ in $G$ is a group (called the quotient group) with operation \[
      g_1 H \cdot g_2 H= g_1 g_2 H
@@ -117,13 +117,13 @@ This course will contain several sections:
      Associativity is inherited from $G$, the identity is $H=eH$, and the inverse of $gH$ is ${g}^{-1}H$.
 \end{proof}
 
-\begin{definition}[Homomorphism]
+\begin{definition*}[Homomorphism]
      If $G,H$ are groups, then a function $\phi: G \rightarrow H$ is a group homomorphism if $\phi (g_1 g_2)=\phi (g_1 g_2 )=\phi (g_1 )\phi (g_2 )$. It has kernel \[
      \operatorname{ker} \phi= \left\{g \in G: \ \phi (g)=e\right\} \leq G
      .\]  and image \[
      \operatorname{Im} \phi = \left\{\phi (g): \ g \in G \right\} \leq H
      .\] 
-\end{definition}
+\end{definition*}
 \begin{remark}
      If $a \in \operatorname{ker}\phi$ and $g \in G$, then 
      \begin{align*}
@@ -134,9 +134,9 @@ This course will contain several sections:
      So ${g}^{-1}ag \in \operatorname{ker}\phi$ and hence $\operatorname{ker}\phi$ is a normal subgroup of $G$.
 \end{remark}
 
-\begin{definition}[Isomorphism]
+\begin{definition*}[Isomorphism]
       An isomorphism of groups is a group homomorphism that is also a bijection. We say $G$ and $H$ are isomorphic and write $G \cong H$ if there exists an isomorphism $\phi: G \rightarrow H$. (Note it follows from the definition that ${\phi}^{-1}$ is also a group homomorphism)
-\end{definition}
+\end{definition*}
 
 \begin{theorem}[First Isomorphism Theorem]
       Let $\phi: G \rightarrow H$ be a group homomorphism. Then $\operatorname{ker}\phi \unlhd G$ and \[
@@ -163,7 +163,7 @@ This course will contain several sections:
 
       Let $x \in \operatorname{Im} \phi$, say $x= \phi (g)$ for some $g \in G$. Then $x=\phi (gR)$.
 \end{proof}
-\begin{example}
+\begin{example*}
       Let $\phi: \mathbb{C} \rightarrow \mathbb{C}^x= \left\{x \in C: x \neq 0\right\}$ given by $z \mapsto e^{z}$.
 
       Since $e^{z+w}=e^{z}e^{w}$, this is a group homomorphism from $(\mathbb{C},+) \rightarrow (\mathbb{C}^{x},\times)$. We have that 
@@ -172,7 +172,7 @@ This course will contain several sections:
           \operatorname{Im} \phi=\mathbb{C}^{x} \ \text{by existence of log}
       \end{align*}
       Hence $\mathbb{C}/2 \pi i \mathbb{Z} \cong \mathbb{C}^{x}$. 
-\end{example}
+\end{example*}
 
 \begin{theorem}[Second Isomorphism Theorem]
       Let $H \leq G$, and $K \unlhd G$. Then $HK = \left\{hk: h \in H, k \in K\right\} \leq G$ and $H \cap K \unlhd H$. Moreover, \[
@@ -213,13 +213,13 @@ This course will contain several sections:
 \end{proof}
 \subsection{Simple groups}
 If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information about $G$. However, this approach is not always available. This is the case when a group is simple. 
-\begin{definition}[Simple group]
+\begin{definition*}[Simple group]
       A group $G$ is simple if $\left\{e\right\}$ and $G$ are its only normal subgroups.
-\end{definition}
+\end{definition*}
 \begin{remark}
      It is convention to not consider the trivial group a simple group.
 \end{remark}
-\begin{lemma}
+\begin{lemma}\label{abeliansimpleiffCp}
      Let $G$ be an abelian group. $G$ is simple iff $G \cong C_{p}$ for some prime $p$. 
 \end{lemma}
 \begin{proof}
@@ -233,7 +233,7 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
 
       Otherwise, we now know $G \cong C_{n}$ for some $n$. Let $g$ be a generator. If $m |n $ then $g^{n/m}$ generates a subgroup of order $m$ and so $G$ simple $\implies $ the only factors of $n$ are 1 and $n$. Therefore $n$ is prime.  
 \end{proof}
-\begin{lemma}
+\begin{lemma}\label{compositionserieslemma}
      If $G$ is a finite group, then $G$ has a composition series \[
      e =G_{0} \unlhd G_1 \unlhd \ldots \unlhd G_{m}=G
      ,\] with each quotient $G_{i}/G_{i-1}$ simple.
@@ -242,24 +242,24 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
       We induct on $|G|$. If $|G|=1$ it's obvious. If $|G|>1$, let $G_{m-1}$ be a normal subgroup of largest possible order that isn't $G$ itself. Remark 1.2 implies $G/G_{m-1}$ is simple. Then apply the induction hypothesis to $G_{m-1}$. 
 \end{proof}
 \subsection{Group actions}
-\begin{definition}[Permutation group]
+\begin{definition*}[Permutation group]
       For $X$ any set, let $\operatorname{Sym}(X)$ be the group of all bijections $X \rightarrow X$ under composition. This clearly forms a group with $e=\operatorname{Id}_X$.
 
       A group $G$ is a permutation group of degree n if $G \leq \operatorname{Sym}(X)$ with $|X|=n$. 
-\end{definition}
-\begin{example}[Examples of permutation group]
+\end{definition*}
+\begin{example*}[Examples of permutation group]\hfill
       \begin{itemize}
            \item $S_{n}=\operatorname{Sym}(\left\{1,2,\ldots ,n\right\})$ is a permutation group of degree $n$, as is $A_{n}\leq S_{n}$.
            \item $D_{2n}=$ (symmetries of a regular $n$-gon) is a subgroup of Sym($\left\{\text{vertices of n-gon}\right\}$).
       \end{itemize}
-\end{example}
-\begin{definition}[Group action]
+\end{example*}
+\begin{definition*}[Group action]
       An actio of a group $G$ on a set $X$ is a function $\ast: G \times X \rightarrow X$ satisfying 
       \begin{itemize}
            \item[(i)] $e \ast x =x $ for all $x \in X$ 
            \item[(ii)] $(g_1 g_2 )\ast x= g_1 \ast (g_2 \ast x)$ for all $g_1 ,g_2 \in G$, $x \in X$.
       \end{itemize}
-\end{definition}
+\end{definition*}
 \begin{proposition}
      An action of a group $G$ on a set $X$ is equivalent to specifying a group homomorphism $\phi: G \rightarrow \operatorname{Sym}(X)$.
 \end{proposition}
@@ -276,10 +276,10 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
            \item[(ii)] $(g_1 g_2 )\ast x= \phi (g_1 g_2 )(x)=\phi (g_1 )(\phi (g_2)(x))=g_1 \ast (g_2 \ast x)$. 
       \end{itemize}
 \end{proof}
-\begin{definition}
+\begin{definition*}
       We say $\phi: G \rightarrow \operatorname{Sym}(X)$ is a permutation representation of $G$.
-\end{definition}
-\begin{definition}[Orbit and stabiliser]
+\end{definition*}
+\begin{definition*}[Orbit and stabiliser]
      Let $G$ act on a set $X$. 
      \begin{itemize}
           \item[(i)] The orbit of $x \in X$ is $\operatorname{orb}_G (x)=\left\{g \ast x: \ g \in G\right\} \subset X$
@@ -287,13 +287,13 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
           G_{x}=\left\{g \in G: \ g \ast x=x\right\} \leq G
           .\] 
      \end{itemize}
-\end{definition}
+\end{definition*}
 Recall the Orbit-Stabiliser Theorem from IA Groups: There is a bijection $\operatorname{orb}_G (x) \leftrightarrow $ the set of left cosets of $G_{x}$ in $G$. In particular if $G$ is finite, then \[
 |G|=|\operatorname{orb}_G (x)| |G_{x}|
 .\] 
-\begin{example}[Example of Orbit-Stabiliser]
+\begin{example*}[Example of Orbit-Stabiliser]
       Let $G$ be the group of all symmetries of a cube, acting on the set of veretices $X$. We can reach any vertex from any other one, so $|\operatorname{orb}_G (x)|=8$. Some basic geometry gives $|G_{x}|=6$. Therefore $|G|=48$.
-\end{example} 
+\end{example*} 
 \begin{remark}
       \begin{itemize}
            \item $\operatorname{ker} \phi=\bigcap_{x \in X}G_{x}$ is called the kernel of the group action. 
@@ -336,9 +336,9 @@ Later on a lot of the proofs will involve picking a nice group action. So let's 
      \phi (g)(h_1 h_2 )=gh_1 h_2 {g}^{-1}=gh_1 {g}^{-1} gh_2 {g}^{-1} =\phi (g)(h_1 )\phi (g)(h_2 )
      .\]  Thus $\phi (g)$ is a group homomorphism, and also a bijection i.e $\phi (g)$ is an isomorphism. 
 \end{itemize}
-\begin{definition}[Automorphism]
+\begin{definition*}[Automorphism]
       $\operatorname{Aut}(G)=\left\{\text{ group isomorphisms } \zeta: G \rightarrow G\right\}$. Then $\operatorname{Aut}(G)\leq \operatorname{Sym}(G)$ and $\phi: G \rightarrow \operatorname{Sym}(G)$ has image in $\operatorname{Aut}(G).$ 
-\end{definition}
+\end{definition*}
 \begin{itemize}
      \item[(iv)] Let $X$ be the set of all subgroups of $G$. Then $G$ acts on $X$ by conjugation, i.e $g \ast H=gH {g}^{-1}$. The stabiliser of $H$ is \[
      \left\{g \in G: \quad g H {g}^{-1}=H\right\}=N_{G}(H)
@@ -372,7 +372,7 @@ Let $g \in A_n$. Then $C_{A_n}(g)=C_{S_n}(g) \cap A_{n}$. We effectively have tw
      \item If there exists an odd permutation commuting with $g$, then $|C_{A_{n}}(g)|=\frac{1}{2}|C_{S_{n}}(g)|$ and by Orbit-Stabiliser, $|\operatorname{ccl}_{A_{n}}(g)|=|\operatorname{ccl}_{S_{n}}(g)|$.
      \item Otherwise,  $|C_{A_{n}}(g)|=|C_{S_{n}}(g)|$ and by Orbit-Stabiliser, $|\operatorname{ccl}_{A_{n}}(g)|=\frac{1}{2}|\operatorname{ccl}_{S_{n}}(g)|$.
 \end{itemize}
-\begin{example}[Conjugacy classes of $A_5 $]
+\begin{example*}[Conjugacy classes of $A_5 $]
       If we take $n=5$, then first consider the element (12)(34), which commutes with (12). Also, (123) commutes with (45). 
 
       But if we take $g=(12345)$, then $h \in C_{S_5 }(g)$ means 
@@ -384,7 +384,7 @@ Let $g \in A_n$. Then $C_{A_n}(g)=C_{S_n}(g) \cap A_{n}$. We effectively have tw
       In this case, the conjugacy class does split. 
 
       Thus $A_5 $ has conjugacy classes of sizes 1,15,20,12,12.
-\end{example}
+\end{example*}
 \begin{proposition}
      $A_5 $ is simple.
 \end{proposition}
@@ -418,21 +418,189 @@ Now we move on to a more general statement about $A_n$ being simple. Before we c
 \begin{proof}
       Let $e \neq N \unlhd A_{n}$. Suffices to show that $N$ contains a 3-cycle, since by \ref{an1} and \ref{an2} we then have $N=A_n$.
 
-      Take $e \neq \sigma \in N$ and write $\sigma$ in its disjoint cycle decomposition. We have three cases: 
+      Take $e \neq \sigma \in N$ and write $\sigma$ in its disjoint cycle decomposition. Consider the cases: 
       \begin{enumerate}
            \item  $\sigma$ contains a cycle of length $r \geq 4$. WLOG $\sigma=(123 \ldots r)\tau$, where $\tau$ is some product of cycles that fixes $1,2, \ldots ,r$. 
            
            Let $\delta =(123)$. Then consider the element \[
            \underbrace{{\sigma}^{-1}}_{\in N} \underbrace{{\delta}^{-1} \sigma \delta}_{\in N} = (r \ldots 21)(132)(12 \ldots r)(123)=(23r) \in N
-           .\] Note $\tau$ gets cancelled as it fixes 1 to $r$. Therefore $N$ contains a 3-cycle and we are done. 
+           .\] Note $\tau$ gets cancelled as it fixes 1 to $r$. Therefore $N$ contains a 3-cycle. 
            \item $\sigma$ contains two 3-cycles. WLOG $\sigma= (123)(456)\tau$. Let $b=(124).$ Then \[
                {\sigma}^{-1} {\delta}^{-1} \sigma \delta = (132)(465)(142)(123)(456)(124)=(12436) \in N
-          .\] Then we are back to Case 1, so we are done.
+          .\] Then we are back to Case 1, so $N$ contains a 3-cycle..
           \item $\sigma$ contains two 2-cycles. WLOG $\sigma=(12)(34)\tau$. Let $\delta=(123)$ and consider \[
                {\sigma}^{-1} {\delta}^{-1} \sigma \delta = (12)(34)(132)(12)(34)(123)=(14)(23)=\pi \in N
                .\] Let $\varepsilon= (235)$. Then \[
                {\pi}^{-1}{\varepsilon}^{-1}\pi \varepsilon =(14)(23)(253)(14)(23)(235)=(253)
-               .\] So we are done.
+               .\] Thus $N$ contains a 3-cycle.
       \end{enumerate}
+      To conclude the proof, we consider the remaining cases:
+      \begin{enumerate}
+           \item Cycle type ($\ast$ $\ast$) $\implies \sigma \notin A_n$.
+           \item Cycle type ($\ast$$\ast$$\ast$) $\implies \sigma$ is a 3-cycle.
+           \item Cycle type ($\ast$$\ast$)($\ast$$\ast$$\ast$) $\implies  \sigma \notin A_n$. 
+      \end{enumerate}
+      This concludes the proof.
+\end{proof}
+\subsection{$p$-groups and $p$-subgroups}
+\begin{definition*}[$p$-group]
+      Let $p$ be a prime. A finite group $G$ is a $p$-group if $|G|=p^{n}$, $n \geq 1$. 
+\end{definition*}
+\begin{theorem}\label{pgroup1}
+      If $G$ is a $p$-group, then $Z (G) \neq 1$.
+\end{theorem}
+\begin{proof}
+      For $g \in G$, we have $|\operatorname{ccl}_{G}(g)||C_{G}(g)|=|G|=p^{n}$. So each conjugacy class must have size that is a power of $p$. Since $G$ is a dijoint union of conjugacy classes,
+      \begin{align*}
+          |G|\equiv (\text{number of conjugacy classes of size } 1)& \mod p\\
+          \implies 0 \equiv |Z (G)| & \mod p\\
+          \implies Z (G) \neq 1.
+      \end{align*}
+      We have used the fact that the conjugacy classes of size 1 are precisely the elements of $Z (G)$: \[
+      g \in Z(G) \iff {x}^{-1}gx =g \ \forall x \in G \iff \operatorname{ccl}_{G}(g)=\left\{g\right\}
+      .\] 
+\end{proof}
+\begin{corollary}\label{simplepgroup}
+     The only simple $p$-group is $C_p$. 
+\end{corollary}
+\begin{proof}
+      Let $G$ be a simple $p$-group. Since $Z (G) \unlhd G$, we have $Z (G)=1$ or $G$. By \ref{pgroup1}, we must have $Z (G)=G$. Therefore $G$ is abelian. Conclude by Lemma \ref{abeliansimpleiffCp}.
+\end{proof}
+\begin{corollary}
+     Let $G$ be a $p$-group of order $p^{n}$. Then $G$ has a subgroup of order $p^{r}$ for $0 \leq r \leq n$.
+\end{corollary}
+\begin{proof}
+      By Lemma \ref{compositionserieslemma}, $G$ has a composition series \[
+      1=G_{0} \unlhd G_1 \unlhd \ldots \unlhd G_{m-1} \unlhd G _{m}=G
+      .\] with each $G_{i}/G_{i-1}$ simple. Since $G$ is a $p$-group, all of the $G_{i}/G_{i-1}$ must be $p$-groups. Therefore have by Proposition \ref{simplepgroup} that $G_{i}/G_{p-1} \cong C_p$. 
+      
+      Thus $|G_{i}|=p^{i}$ for all $0 \leq i \leq m$ and $m=n$.
+\end{proof}
+\begin{lemma}\label{pgroup2}
+      For $G$ a group, if $G/Z (G)$ is cyclic, then $G$ is abelian (so in fact $G/Z (G)=1$).
+\end{lemma}
+\begin{proof}
+      Let $g Z (G)$ be a generator for $G/Z (G)$. Then each coset is of the form $g^{r} Z (G)$ for some $r \in \mathbb{Z}$. Thus \[
+      G= \left\{g^{r}z : \ r \in \mathbb{Z}, z \in Z (G)\right\}
+      .\] We now check that elements in this group always commute: 
+      \begin{align*}
+          g^{r_1 }z_1 g^{r_2 }z_2 &=g^{r_1 +r_2 }z_1 z_2 \quad \text{ since } z \in Z (G)\\
+          &= g^{r_1 +r_2 } z_2 z_1 \\
+          &= g^{r_2 }z_2 g^{r_1 }z_1.
+      \end{align*}
+     Therefore $G$ is abelian.
+\end{proof}
+\begin{corollary}
+      If $|G|=p^{2}$ then $G$ is abelian.
+\end{corollary}
+\begin{proof}
+      We know that $|Z (G)| \in \left\{1,p,p^2\right\}$. We can't have 1 by \ref{pgroup1}. If we have $p$, then $|G/Z (G)|=p$ and therefore is cyclic. Now applying \ref{pgroup2} we have that $G$ is abelian. If we have $p^2$ then $Z (G)=G$ so $G$ is abelian. 
+\end{proof}
+\subsection{The Sylow theorems}
+\begin{theorem}[Sylow theorems]\label{sylow}
+      Let $G$ be a finite group of order $p^{a}m$ where $p$ is a prime with $p \nmid m$. Then 
+      \begin{itemize}
+           \item[(i)] The set $\operatorname{Syl}_{p}(G)=\left\{P \leq G: \ |P|=p^{a}\right\}$ of Sylow $p$-subgroups is non-empty.
+           \item[(ii)] All elements of $\operatorname{Syl}_{p}(G)$ are conjugate.
+           \item[(iii)] We define $n_{p} =|\operatorname{Syl}_{p}(G)|$ satisfies $n_{p} \equiv 1 \mod p$ and $n_{p}| \ |\ |G|$ (and so $n_{p}|m$ )
+      \end{itemize}
+\end{theorem}
+\begin{proof}
+      \begin{itemize}
+           \item[(i)] Let $\Omega$ be the set of all \textbf{subsets} of $G$ of order $p^{a}$. We know that \[
+           |\Omega|= {p^{a}m \choose p^{a}}=\left( \frac{p^{a}m}{p^{a}}\right)\left( \frac{p^{a}m -1}{p^{a}-1}\right)\ldots \left( \frac{p^{a}m- p^{a}+1}{1}\right)
+           .\] For $0 \leq k \leq p^{a}$, the number $p^{a}m-k$ and $p^{a}-k$ are divisible by the same power of $p$. 
+
+           Therefore $|\Omega|$ is coprime to $p$.\hfill $\quad (\dagger)$ 
+
+           Let $G$ act on $\Omega$ by left-multiplication, i.e for $g \in G$ and $x \in \Omega$ we have \[
+           g \ast X= \left\{gx: \ x \in X\right\} \in \Omega
+           .\] For any $X \in \Omega$ we have \[
+           |G_{x}|\ |\operatorname{orb}_{G}(X)|=|G|=p^{a}m
+           .\] By $(\dagger)$, there exists $X$ such that $|\operatorname{orb}_{G}(X)|$ is coprime to $p$. This is because the orbits give a partition of $\Omega$, and so they can't all divide $p$. Thus
+           \begin{equation}\label{sylproof1}
+               p^{a} | \ |G_{x}
+           \end{equation}
+            On the other hand, if $g \in G$ and $x \in X$, then $g \in (g {x}^{-1})\ast X$ and hence
+           \begin{align}
+               &G = \bigcup_{g \in G} g \ast X=\bigcup_{y \in \operatorname{orb}_{G}(X)} Y \nonumber\\ 
+               \implies & |G| \leq |\operatorname{orb}_{G}| \cdot  |X| \quad \text{ since } |Y|=|X| \nonumber\\
+               \implies & |G_{x}|= \frac{|G|}{|\operatorname{orb}_{G}(X)|=|X|=p^{a}} \label{sylproof2}.
+           \end{align}
+           By \ref{sylproof1} and \ref{sylproof2}, $|G_{X}|=p^{a}$, i.e $G_{x} \in \operatorname{Syl}_{p}(G)$.
+           \item[(ii)] We prove a stronger result. We claim that if $P \in \operatorname{Syl}_{p}(G)$ and $Q \leq G$ is a $p$-subgroup, then $Q \leq g {P}^{-1} {g}^{-1}$ for some $g \in G$.
+           
+           The proof is as follows: let $Q$ act on the set of left cosets (not a group!) $G/P$ by left multiplication, i.e $q \ast gP= qgP$. By Orbit-Stabiliser, each orbit has size $|Q|$, so either 1 or a multiple of $p$. Since $|G/P|=m$ by definition, and $m$ is coprime to $p$, there must exist some orbit of size 1, i.e 
+           \begin{align*}
+               &\exists g \in G: \quad qgP =gP \quad \forall q \in Q\\
+               \implies & {g}^{-1} qg \in P \quad \forall q \in Q\\
+               \implies & Q \leq gP {g}^{-1}.
+           \end{align*}
+           So we are done.
+           \item[(iii)] Let $G$ act on $\operatorname{Syl}_{p}(G)$ by conjugation. Sylow (ii) tells us this action is transitive. Thus orbit-stabiliser implies \[
+           n_{p}= |\operatorname{Syl}_{p}(G)| \ | \ |G|
+           .\] Now to show that $n_p \equiv 1 \mod p$, let $P \in \operatorname{Syl}_{p}(G)$ act on $\operatorname{Syl}_{p}(G)$ by conjugation. The orbits have size dividing $|P|=p^{a}$, so either 1 or a multiple of $p$. To show $n_{p} \equiv 1 \mod p$, it suffices to show that $\left\{P\right\}$ is the unique orbit of size 1.
+
+           If $\left\{Q\right\}$ is another orbit of size 1, then $P$ normalises $Q$, i.e $P \leq N_{G}(Q)$. Now $P,Q$ are both Sylow $p$-subgroups of $N_{G}(Q)$ since $|N_{G}(Q)| \leq p^{a}$. Thus by (ii), $P$ and $Q$ are conjugate in $N_{G}(Q)$ - but $Q \unlhd N_{G}(Q)$, thus $P=Q$. This completes the proof.
+      \end{itemize}
+\end{proof}
+Now let's look at an application of these theorems.
+\begin{corollary}
+      If $n_{p}=1$, then the unique Sylow $p$-subgroup is normal. 
+\end{corollary}
+\begin{proof}
+      Let $g \in G$ and $P \in \operatorname{Syl}_{p}(G)$. Then $gP {g}^{-1} \in \operatorname{Syl}_{p}(G)$, and so $gP {g}^{-1}=P$. Thus $P \unlhd G$.
+\end{proof}
+This is very useful to show groups of certain orders can't be simple.
+\begin{example*}
+      Let $|G|=1000=2^{3} \cdot 5^{3}$. Then $n_5 =1 \mod 5$ and $n_5 | 8$ so $n_5 =1$. Thus the unique Sylow 5-subgroup is normal and hence $G$ is not simple.
+\end{example*}
+\begin{example*}
+      Let $|G|=132=2^2 \cdot 3 \cdot  11$. We have that $n_{11} =1 \mod 11$ and $n_{11} | 12$. So $n_{11} =1$ or 12. Suppose $G$ is simple. Then $n_{11} \neq 1$ (otherwise the Sylow 11-subgroup is normal). Hence $n_{11} =12$. 
+      
+      Now $n_3 \equiv 1 \mod 3$ and $n_3 | 44$. Thus $n_3 \in \left\{1,4,22\right\}$. But the case $n_3 =1$ can't occur as before. Now suppose $n_3 =4$. Then letting $G$ act on $\operatorname{Syl}_{3}(G)$ by conjugation gives a group homomorphism $\phi: G \rightarrow S_4$. But then $\operatorname{Ker}\phi \unlhd G \implies \operatorname{Ker}\phi =1$ or $G$. But $\operatorname{Ker}\phi=1$ would mean that $G$ injects into $S_4 $, which is a contradiction as $|G|=132>24=|S_4 |$, and $\operatorname{Ker}\phi=G$ would be a contradiction to Sylow (ii). 
+      
+      Thus $n_3 =22$ and $n_{11} =12$. Thus $G$ has $22 \cdot (3-1)=44$ elements of order 3 and $120= 12 \cdot (11-1)$ elements of order 11. But $44+120 > 132= |G|$ which is a contradiction. Hence $G$ is not simple.
+\end{example*}
+\subsection{Matrix groups}
+Matrix groups provide a wealth of examples of finite groups, and are crucial in the classification of finite simple groups. First we will recap a few groups we've seen before in IA Groups.
+
+For a field $F$, let $GL_{n}(F)$ be the set of $n \times n$ invertible matrices over $F$. 
+
+This contains the subgroup $SL_{n}=\operatorname{Ker}(GL_{n}(F) \xrightarrow{\operatorname{det}} F^{\times})$. Here $F^{\times}=F \backslash \left\{0\right\}.$ 
+
+Let $Z \unlhd GL_{n}(F)$ be the normal subgroup of scalar multiples of $I$. This is in fact the centre of $GL_{n}(F)$, but we won't prove this in the course since the proof is pretty involved.
+\begin{definition*}
+      We define the projective general linear group by \[
+      PGL_{n}(F)=GL_{n}(F)/Z
+      ,\] and the projective special linear group by \[
+          PGL_{n}(F)= \frac{SL_{n}(F)}{Z \cap SL_{n}(F)} \cong \frac{Z \cdot  SL_{n}(F)}{Z} \leq PGL_{n}(F) \quad \text{ by 2nd isom. theorem}
+      .\] 
+\end{definition*}
+\begin{example*}
+     Consider $G=GL_{n}(\mathbb{Z}/p\mathbb{Z})$. A list of $n$ vectors in $(\mathbb{Z}/p\mathbb{Z})^{n}$ are the columns of some $A \in G$ iff they are linearly independent. Thus 
+     \begin{align*}
+          |G|&= \underbrace{(p^{n}-1)}_{\text{1st col.} }\underbrace{(p^{n}-p)}_{\text{2nd col.} } \underbrace{(p^{n}-p^2)}_{\text{3rd col.} } \ldots \underbrace{(p^{n}-p^{n-1})}_{\text{last col.} } \\
+          &=p^{1+2+\ldots +n-1} (p^{n-1}-1)(p^{n}-1)\ldots (p-1)\\
+          &=p^{n (n-1)/2} \prod_{i=1}^n (p^{i}-1).
+     \end{align*}
+     So the Sylow $p$-subgroups have size $p^{n (n-1)/2}$. Let \[
+     U=\left\{\begin{pmatrix} 1&&&\\ &1&M& \\&&&\ddots & \\ &&&1 \end{pmatrix}\right\} \leq G
+     \] be the set of upper triangular matrices with 1's on the diagonal. Then $U \in \operatorname{Syl}_{p}(G)$, since it has $n (n-1)/2$ entries and each can take $p$ values.
+\end{example*}
+Just as $PGL_{2}(\mathbb{C})$ acts on $\mathbb{C} \cup \left\{ \infty\right\}$ via Möbius transformations, $PGL_{2}(\mathbb{Z}/p\mathbb{Z})$ acts on $\mathbb{Z}/p\mathbb{Z} \cup \left\{ \infty\right\}$ via \[
+\begin{pmatrix} a&b\\c&d  \end{pmatrix}\mapsto  \frac{az+b}{cz+d}
+.\] Since scalar matrices act trivially, we obtain an action of $PGL_{2}(\mathbb{Z}/p\mathbb{Z})$.
+\begin{lemma}
+      The permutation representation $PGL_{2}(\mathbb{Z}/p\mathbb{Z}) \rightarrow S_{p+1}$ is injective (in fact an isomorphism if $p=2$ or $3$).
+\end{lemma}
+\begin{proof}
+      Suppose $\frac{az+b}{cz+d}=z$ for all $z \in \mathbb{Z}/p\mathbb{Z} \cup \left\{ \infty\right\}$. 
+      \begin{itemize}
+           \item Setting $z=0$ gives $b=0$.
+           \item Setting $z= \infty$ gives $c=0$.
+           \item Setting $z=1$ gives $a=d$.
+      \end{itemize}
+      So $\begin{pmatrix} a&b\\c&d \end{pmatrix}$ is a scalar matrix, hence it is trivial in $PGL_{2}(\mathbb{Z}/p\mathbb{Z}) $.
 \end{proof}
 \end{document}

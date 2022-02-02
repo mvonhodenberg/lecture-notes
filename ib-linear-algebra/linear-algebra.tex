@@ -44,17 +44,17 @@ These are my notes for the IB course Linear Algebra, which was lectured in Lent 
      This is just a special case of the general change of basis formula; see that proof.
 \end{proof}
 
-\begin{definition}[Congruent matrices]
+\begin{definition*}[Congruent matrices]
      Two square matrices $A,B$ are said to be \vocab{congruent} if there exists an invertible square matrix $P$ such that 
      \[A=P^T B P.\]
-\end{definition}
+\end{definition*}
 \begin{remark}
      This defines an equivalence relation.
 \end{remark}
-\begin{definition}[Symmetric bilinear form]
+\begin{definition*}[Symmetric bilinear form]
      A bilinear form on $V$ is said to be \vocab{symmetric} if 
      \[\varphi(u,v)=\varphi(v,u) \ \forall u,v \in V.\]
-\end{definition}
+\end{definition*}
 \begin{remark}
      We have encountered this definition before in IA Vectors and Matrices.
     \begin{enumerate}
@@ -65,10 +65,10 @@ These are my notes for the IB course Linear Algebra, which was lectured in Lent 
     \end{enumerate}
      
 \end{remark}
-\begin{definition}[Quadratic form]
+\begin{definition*}[Quadratic form]
      A map $Q: V \rightarrow F$ is said to be a \vocab{quadratic form} if there exists a bilinear form $\varphi: V \times V \rightarrow F$ such that 
      \[\forall u \in V, \ Q(u)=\varphi (u,u).\]
-\end{definition}
+\end{definition*}
 \begin{remark}[Computation in a basis]
      Let $B=(e_i)_{1 \leq i \leq n}$ be a basis of $V$, and let $A=[\varphi]_B$. Let $u=\sum_{i=1}^{n}u_i e_i$, then 
      \[Q (u)=\varphi (u,u)=\varphi \left(\sum_{i=1}^{n}u_i e_i, \sum_{j=1}^{n}u_j e_j\right)=\sum_{i,j=1}^{n}u_i u_j \varphi(e_i,e_j)=\sum_{i,j=1}^{n}a_{ij} u_i u_j.\]
@@ -152,7 +152,7 @@ These are my notes for the IB course Linear Algebra, which was lectured in Lent 
      \end{itemize}
 \end{proof}
 
-\begin{example}
+\begin{example*}
      Let $V=\mathbb{R}^{3}$, and 
      \begin{equation*}
            \begin{split}
@@ -196,7 +196,7 @@ These are my notes for the IB course Linear Algebra, which was lectured in Lent 
      \end{pmatrix}
      .\]
      
-\end{example}
+\end{example*}
 
 Recall our theorem that a symmetric bilinear form has a diagonal basis.
 
@@ -290,13 +290,13 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
     \end{equation*}
     Then this basis will do the job.
 \end{proof}
-\begin{definition}[Signature of a quadratic form]
+\begin{definition*}[Signature of a quadratic form]
      For $F=\mathbb{R}$, we define the \vocab{signature} of $\varphi$
      \[s(\varphi)=p-q.\]
      This is also the signature of the associated quadratic form $Q$. We will soon see that this is well-defined.
-\end{definition}
+\end{definition*}
 
-\begin{definition}[Positive definite quadratic/bilinear form]
+\begin{definition*}[Positive definite quadratic/bilinear form]
      Let $\varphi$ be a symmetric bilinear form on a real vector space $V$. We say that 
      \begin{itemize}
          \item[(i)] $\varphi$ is positive definite if 
@@ -308,8 +308,8 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
          \item[(iv)] $\varphi$ is negative semidefinite if 
          \[\varphi (u,u) \leq 0 \ \forall u \in V \backslash \{0\}.\]
      \end{itemize}
-\end{definition}
-\begin{example}
+\end{definition*}
+\begin{example*}
      The matrix 
      \[\left(
      \begin{array}{c|c}
@@ -324,7 +324,7 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
          \item positive definite for $p=n$
          \item positive semidefinite for $1 \leq p \leq n$.
      \end{itemize}
-\end{example}
+\end{example*}
 \subsection{Sylvester's law}
 
 \begin{theorem}[Sylvester's law of inertia]
@@ -359,10 +359,10 @@ Recall our theorem that a symmetric bilinear form has a diagonal basis.
      Similarly, we show that $q$ is the largest dimension of a subspace on which $\varphi$ is negative definite. So we have a \emph{geometric characterisation} of $p$ and $q$, which concludes the proof.
 \end{proof}
 
-\begin{definition}[Kernel of a bilinear form]
+\begin{definition*}[Kernel of a bilinear form]
      Define the kernel of the bilinear form
      \[K=\{v \in V : \ \forall u \in V, \varphi (u,v)=0 \}.\]
-\end{definition}
+\end{definition*}
 \begin{remark}
      $\operatorname{dim} K + r (\varphi)=n$.
 \end{remark}
@@ -379,7 +379,7 @@ y_1\\\ldots \\y_n
 =\sum_{i=1}^{n}x_i \overline{y_i}
 .\]
 However note that this map is \textbf{not} a bilinear form, since the conjugation of the second coordinate prevents this. However, it is still bilinear 'in a way'. We now explore this further.
-\begin{definition}[Sesquilinear form]
+\begin{definition*}[Sesquilinear form]
      Let $V,W$ be vector spaces over $\mathbb{C}$. A sesquilinear form on $V \times W$ is a function 
      \[\varphi: V \times W \to \mathbb{C} .\]
      such that 
@@ -389,7 +389,7 @@ However note that this map is \textbf{not} a bilinear form, since the conjugatio
      \end{enumerate}
      For $B$ a basis of $V$, C a basis of $W$, we define the matrix 
      \[[\varphi]_{B,C}=(\varphi (v_i,w_j))_{1 \leq i \leq m, 1 \leq j \leq n}.\]
-\end{definition}
+\end{definition*}
 \begin{lemma}
      If $B$ basis for $V$, $C$ a basis for $W$,
      \[\varphi (v,w)=[v]_B^T [\varphi]_{B,C}\overline{[w]_C}.\]
@@ -403,10 +403,10 @@ However note that this map is \textbf{not} a bilinear form, since the conjugatio
 
 \subsection{Hermitian forms}
 We will now generalise symmetric bilinear forms to sesquilinear forms.
-\begin{definition}[Hermitian form]
+\begin{definition*}[Hermitian form]
      Let $V$ be a finite dimensional vector space and $\varphi: V \times V \rightarrow C$ be a sesquilinear form. We call $\varphi$ \vocab{hermitian} if for all $(u,v) \in V \times V$ we have 
      \[\varphi (u,v)=\overline{\varphi (v,u)}.\]
-\end{definition}
+\end{definition*}
 \begin{remark}
      If $\varphi$ is Hermitian, then $\varphi (u,u)=\overline{\varphi (u,u)} \implies \varphi (u,u) \in \mathbb{R}$. Moreover, 
      \[\varphi (\lambda u , \lambda u)= |\lambda|^2 \varphi (u,u).\]
@@ -460,11 +460,11 @@ This allows us to talk about negative/ positive definite Hermitian form.
 
 \subsection{Skew symmetric forms}
 We now return to $F=\mathbb{R}$.
-\begin{definition}[Skew symmetric bilinear forms]
+\begin{definition*}[Skew symmetric bilinear forms]
       Let $V$ be a vector space over $\mathbb{R}$, and $\operatorname{dim}V=n$. A bilinear form $\varphi: V \times V \rightarrow \mathbb{R}$ is \vocab{skew symmetric} if: 
       
       \[\forall \left(u,v\right) \in V \times V, \ \varphi \left(u,v\right)=-\varphi \left(v,u\right).\]
-\end{definition}
+\end{definition*}
 \begin{remark} This leads to a few easy consequences:
       \begin{enumerate}
            \item $\varphi \left(u,u\right)=\varphi \left(u,u\right) \implies \varphi \left(u,u\right)=0$.
@@ -495,12 +495,12 @@ We now return to $F=\mathbb{R}$.
 \end{corollary}
 \section{Inner product spaces}
 We will find that positive definite bilinear forms will be useful for a form of inner product, which leads us to norms (notions of distance). Looking past this course, this extends to an infinite dimensional counterpart of Hilbert spaces in Part II Linear Analysis.
-\begin{definition}[Inner product]
+\begin{definition*}[Inner product]
       Let $V$ be a vector space over $\mathbb{R}$ (resp. $\mathbb{C}$). An \vocab{inner product} on $V$ is a positive definite symmetric (resp. Hermitian) bilinear form $\varphi$ on $V$. We use the notation 
       \[\langle u ,v \rangle =\varphi \left(u,v\right).\]
       We call $V$ a real (resp. complex) inner product space.
-\end{definition}
-\begin{example}
+\end{definition*}
+\begin{example*}
      Here are several examples of inner product spaces.
       \begin{enumerate}
            \item $V=\mathbb{R}^{n} $, where we define 
@@ -519,15 +519,15 @@ We will find that positive definite bilinear forms will be useful for a form of 
       \end{enumerate}
       One can check that all these examples are inner products. The only non-trivial thing that needs to be checked in this case is the positive definite property: 
       \[\langle u,u \rangle =0 \implies u=0.\]
-\end{example}
+\end{example*}
 \begin{remark}
       The study of $L^2$ spaces is the heart of the definition of a new integral, the Lebesgue integral.
 \end{remark}
 
-\begin{definition}[Norm/length]
+\begin{definition*}[Norm/length]
       We define the \vocab{norm} of $v$ by 
       \[||v||=\sqrt{\langle v,v \rangle }.\]
-\end{definition}
+\end{definition*}
 \begin{remark}
       We say that the norm derives from a scalar product.
 \end{remark}
@@ -574,13 +574,13 @@ We will find that positive definite bilinear forms will be useful for a form of 
 \begin{remark}
       $||.||$ is a norm.
 \end{remark}
-\begin{definition}[Orthogonal/orthonormal family]
+\begin{definition*}[Orthogonal/orthonormal family]
       A set $\left(e_1, \ldots ,e_k\right)$ of vectors of $V$ is 
       \begin{itemize}
            \item[(i)] \vocab{orthogonal} if $\langle e_i,e_j \rangle  =0 \ \forall i \neq j$
            \item[(ii)] \vocab{orthonormal} if $\langle e_i,e_j \rangle  =\delta_{ij} \ \forall i,j$
       \end{itemize}
-\end{definition}
+\end{definition*}
 
 \begin{lemma}
       If $\left(e_1, \ldots , e_k\right)$ are orthogonal non-zero vectors, then 
@@ -662,10 +662,10 @@ Having proved these facts, we now turn our attention to an important result whic
       \[A^T A =\operatorname{Id} (\mathbb{R}), A^T\overline{A}\operatorname{Id} (\mathbb{C}).\]
 \end{remark}
 
-\begin{definition}[Orthogonal/unitary matrix]
+\begin{definition*}[Orthogonal/unitary matrix]
       We say $A \in M_n(\mathbb{R})$ is \vocab{orthogonal} if $A^T A= \operatorname{Id}$. \newline 
       We say $A \in M_n(\mathbb{C})$ is \vocab{unitary} if $A^T \overline{A} = \operatorname{Id}$. 
-\end{definition}
+\end{definition*}
 
 \begin{proposition}
       Let $A \in M_n(\mathbb{R})$ (resp. $M_n \left(\mathbb{C}\right)$) be non-singular. Then $A$ can be written as $A=RT$ where $T$ is upper triangular, and $R$ is orthogonal (resp. unitary).
@@ -675,20 +675,20 @@ Having proved these facts, we now turn our attention to an important result whic
 \end{proof}
 
 \subsection{Orthogonal complement and projection}
-\begin{definition}[Orthogonal direct sum]
+\begin{definition*}[Orthogonal direct sum]
       Let $V$ be an inner product space, and $V_1, V_2 \leq V$. We say that $V$ is the \vocab{orthogonal direct sum} of $V_1$ and $V_2$ if 
       \begin{enumerate}
            \item $V=v_1 \oplus V_2$.
            \item $\forall (v_1,v_2) \in V_1 \times V_2: \ \langle v_1 ,v_2 \rangle =0 $.
       \end{enumerate}
-\end{definition}
+\end{definition*}
 \begin{remark}
       The directness of the sum in 1. is redundant (it follows from 2.)
 \end{remark}
-\begin{definition}[Orthogonal complement]
+\begin{definition*}[Orthogonal complement]
       For $V$ an inner product space and $W \leq V$, the \vocab{orthogonal complement} of $W$ in $V$ is 
       \[W^{\perp}=\{v \in V: \ \forall w \in W, \ \langle v,w \rangle =0 \}.\]
-\end{definition}
+\end{definition*}
 
 \begin{lemma}
       Let $V$ be a finite dimensional inner product space, and $W \leq V$. Then 
@@ -702,11 +702,11 @@ Having proved these facts, we now turn our attention to an important result whic
 \begin{remark}
       To make sense of this in infinite dimensions we would have to introduce a notion of \emph{topology}.
 \end{remark}
-\begin{definition}[Projection map]
+\begin{definition*}[Projection map]
      Suppose we can decompose a vector space $V$ as $V=U \oplus W$. ($U$ is a \vocab{complement} of $W$ in $V$). Now define 
      \[\pi: V \rightarrow W, \pi(v)=\pi(u+w)=w.\]
      We have that $\pi$ is well-defined, linear, and $\pi^2=\pi$. We say that $\pi$ is the \vocab{projection operator} onto $W$.
-\end{definition}
+\end{definition*}
 \begin{remark}
      $\operatorname{Id}-\pi$ is the projection onto $U$. We can make the project map very explicit when $U=W^\perp$, and $V$ is an inner product space.
 \end{remark}
@@ -742,12 +742,12 @@ Having proved these facts, we now turn our attention to an important result whic
       \end{itemize}
 \end{proof}
 \subsection{The adjoint map}
-\begin{definition}[Adjoint map]
+\begin{definition*}[Adjoint map]
       Let $V,W$ be finite dimensional inner product spaces and let $\alpha \in L (V,W)$. Then there is a unique linear map $\alpha^* : W \rightarrow V$ such that for all $(v,w) \in V \times W$, 
       \[\langle \alpha (v),w \rangle =\langle v,\alpha^* (w) \rangle .\]
       Moreover, if $B$ is an orthonormal basis of $V$ and $C$ is an orthonormal basis of $W$, then 
       \[[\alpha^*]_{C,B}=(\overline{[\alpha]_{B,C}} )^T.\]
-\end{definition}
+\end{definition*}
 \begin{proof}
       We just do a brute force computation. Let $B =\{v_1, \ldots , v_n \} $ and $C= \{ \omega_1, \ldots , \omega_m\}$. Let $A=[\alpha]_{B,C}=(a_{ij})$. Let $C$ be the matrix be defined by $c_{ij}=\overline{a_{ij}} $. We compute 
       \begin{align*}
@@ -816,13 +816,13 @@ Having proved these facts, we now turn our attention to an important result whic
       If $B$ is an orthonormal basis of $V$, we have that $[\alpha^*]_B=(\overline{[\alpha]_B})^T $.\newline 
      In (i) we have that $(\overline{[\alpha]_B} )^T=[\alpha]_B$, and in (ii) we have that $(\overline{[\alpha]_B} )^T={[\alpha]_B}^{-1}$.
 \end{proof}
-\begin{definition}[Orthogonal/unitary group]
+\begin{definition*}[Orthogonal/unitary group]
       Let $V$ be a finite dimensional inner product space.\newline 
      In $\mathbb{R}$ we define the \vocab{orthogonal group} of $V$ by 
       \[O (V)=\{\alpha \in L (V): \ \alpha \text{ is an isometry} \}.\]
       In $\mathbb{C}$ we define the \vocab{unitary group} of $V$ by 
       \[U (V)=\{\alpha \in L (V): \ \alpha \text{ is an isometry} \}.\]
-\end{definition}
+\end{definition*}
 \subsection{Spectral theory for self-adjoint maps and isometries}
 \begin{lemma}
       Let $V$ be a finite dimensional inner product space. Let $\alpha \in L (V)$ be self-adjoint. Then
@@ -908,7 +908,7 @@ Having proved these facts, we now turn our attention to an important result whic
       We used the complex structure to assert that there is a complex eigenvalue. In general, a real valued orthonormal matrix $A$ with $A A^T=\operatorname{Id}$ CANNOT be diagonalised over $\mathbb{R}$.
 \end{remark}
 
-\begin{example}[Rotation in $\mathbb{R}^{2} $]
+\begin{example*}[Rotation in $\mathbb{R}^{2} $]
       Consider the matrix 
       \[A=\begin{pmatrix}
       \cos (\theta)&- \sin (\theta)\\
@@ -918,7 +918,7 @@ Having proved these facts, we now turn our attention to an important result whic
       This is clearly an orthogonal matrix. However 
       \[\chi_A (\lambda)=(\cos (\theta)-\lambda)^2+\sin^2 (\theta).\]
       The roots of this are $\lambda=e^{\pm i \theta}$, so the roots are not generally real.
-\end{example}
+\end{example*}
 
 \subsection{Applications to bilinear forms}
 \begin{corollary}
