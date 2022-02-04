@@ -19,7 +19,7 @@
 
 \title{IB Statistics}
 \author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
-\date{\today}
+\date{Last updated: \today}
 \setcounter{section}{-1}
 
 \allowdisplaybreaks
@@ -29,9 +29,6 @@
 \maketitle
 
 These are my notes for the IB course Statistics, which was lectured in Lent 2022 at Cambridge by Dr S.Bacallado. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
-
-
-
 \tableofcontents
 \newpage
 
@@ -64,11 +61,12 @@ We will use the observed $X= (X_1 , \ldots X_n)$ to make inferences about $\thet
 \begin{remark}
      In general, we'll assume the distribution of the family $X_1 , \ldots , X_n$ is known but the parameter is unknown. Some results (on mean square error, bias, Gauss-Markov theorem) will make weaker assumptions.
 \end{remark}
-
-\section{Probability}
+\newpage
+\subsection{Probability}
 First we will briefly recap IA Probability.
 
 Let $\Omega$ be the \vocab{sample space} of outcomes in an experiment. A measurable subset of $\Omega$ is called an \vocab{event}. The set of events is denoted $\mathcal{F}$. 
+\subsubsection*{Random variables}
 \begin{definition*}[Probability measure]
      A probability measure $\mathbb{P}: \mathcal{F} \rightarrow [0,1]$ satisfies:
      \begin{enumerate}
@@ -88,43 +86,45 @@ Let $\Omega$ be the \vocab{sample space} of outcomes in an experiment. A measura
 \begin{definition*}[Distribution function]
      The distribution function of $X$ is $F_X (x)=\mathbb{P} (X \leq x)$.
 \end{definition*}
-A discrete random variable takes values in a countable set $S \subset \mathbb{R}$. Its probability mass function is \[
-p_X (x)=\mathbb{P}(X=x)
-.\] 
-A random variable $X$ has a continuous distribution if it has a probability density function $f_X (x)$ which satisfies \[
-\mathbb{P} (X \in A)=\int_A f_X (x) \mathrm{d}x
-,\]
-for measurable sets $A$. 
-
-The expectation of $X$ is 
-\begin{equation*}
-     \mathbb{E} (X)=
-     \begin{cases}
-         \sum_{x \in X}^{}x p_X (x) & X \text{ is discrete} \\
-         \int_{-\infty }^{\infty} x f_X (x)\mathrm{d}x & X \text{ is continuous}
-     \end{cases}
-\end{equation*}
-
-If $g: \mathbb{R} \to \mathbb{R} $, then for a continuous r.v \[
-\mathbb{E} (g (X))=\int_{-\infty }^{\infty} g (x) f_X (x)\mathrm{d}x
-.\] 
-
-The variance of $X$ is \[
-\operatorname{Var} (X)= \mathbb{E} [(X-\mathbb{E}(X))^2]
-.\] 
-We say $X_1 , \ldots ,X_n$ are independent if for all $x_1 , \ldots , x_n$ we have \[
-\mathbb{P} (X_1 \leq x_1 , \ldots ,X_n \leq x_n )=\mathbb{P}(X_1 \leq x_1) \ldots \mathbb{P}(X_n \leq x_n)
-.\] 
-If $X_1 , \ldots ,X_n $ have pdfs or pmfs $f_{X_1 }, \ldots,f_{X_n } $ then their joint pdf or pmf is \[
-f_X (x)=\prod_{i}f_{X_i}(x_i)
-.\] 
-
-If $Y=\max (X_1 , \ldots ,X_n)$ independent, then \[
-F_Y (y)=\mathbb{P} (Y \leq y)=\mathbb{P} (X_1 \leq y , \ldots ,X_n \leq y )=\prod_{i}F_{X_i}(y)
-.\] 
-
-The pdf of $Y$ (if it exists) is obtained by differentiating $F_Y$.
-\subsection{Linear transformations}
+\begin{definition*}[Discrete/continuous random variable]
+     A discrete random variable takes values in a countable set $S \subset \mathbb{R}$. Its probability mass function is \[
+          p_X (x)=\mathbb{P}(X=x)
+          .\] 
+     
+     A random variable $X$ has a continuous distribution if it has a probability density function $f_X (x)$ which satisfies \[
+          \mathbb{P} (X \in A)=\int_A f_X (x) \mathrm{d}x
+     ,\]
+     for measurable sets $A$. 
+\end{definition*}
+\begin{definition*}[Expectation/variance]
+     The expectation of $X$ is 
+     \begin{equation*}
+          \mathbb{E} (X)=
+          \begin{cases}
+              \sum_{x \in X}^{}x p_X (x) & X \text{ is discrete} \\
+              \int_{-\infty }^{\infty} x f_X (x)\mathrm{d}x & X \text{ is continuous}
+          \end{cases}
+     \end{equation*}
+     
+     If $g: \mathbb{R} \to \mathbb{R} $, then for a continuous r.v \[
+     \mathbb{E} (g (X))=\int_{-\infty }^{\infty} g (x) f_X (x)\mathrm{d}x
+     .\] 
+     The variance of $X$ is \[
+          \operatorname{Var} (X)= \mathbb{E} [(X-\mathbb{E}(X))^2]
+     .\] 
+\end{definition*}
+\begin{definition*}[Independence]
+     We say $X_1 , \ldots ,X_n$ are independent if for all $x_1 , \ldots , x_n$ we have \[
+     \mathbb{P} (X_1 \leq x_1 , \ldots ,X_n \leq x_n )=\mathbb{P}(X_1 \leq x_1) \ldots \mathbb{P}(X_n \leq x_n)
+     .\] 
+     If $X_1 , \ldots ,X_n $ have pdfs or pmfs $f_{X_1 }, \ldots,f_{X_n } $ then their joint pdf or pmf is \[
+     f_X (x)=\prod_{i}f_{X_i}(x_i)
+     .\] 
+     If $Y=\max (X_1 , \ldots ,X_n)$ independent, then \[
+     F_Y (y)=\mathbb{P} (Y \leq y)=\mathbb{P} (X_1 \leq y , \ldots ,X_n \leq y )=\prod_{i}F_{X_i}(y)
+     .\] The pdf of $Y$ (if it exists) is obtained by differentiating $F_Y$.
+\end{definition*}
+\subsubsection*{Linear transformations}
 Let $(a_1 , \ldots a_n)^T=a \in \mathbb{R}^{n}$ be a constant. \[
 \mathbb{E} (a_1 X_1 +\ldots +a_n X_n)=\mathbb{E}(a^{T}X)=a^{T}\mathbb{E}(X)
 .\]
@@ -133,17 +133,18 @@ This gives linearity of expectation (does not require independence).
 \operatorname{Var}(a^{T}X)=\sum_{i,j}^{}a_{i}a_{j}\underbrace{\operatorname{Cov}(X_{i}, X_{j})}_{=\mathbb{E}((X_{i}-\mathbb{E}(X_{i})(X_{j}-\mathbb{E}(X_{j}))))} =a^{T}\operatorname{Var}(X)a
 .\] 
 where the matrix $[\operatorname{Var}(X)]_{ij}=\operatorname{Cov}(X_{i},X_{j})$. This gives the "bilinearity of variance".
-\subsection{Standardised statistics}
+\subsubsection*{Standardised statistics}
 Let $X_1 , \ldots , X_n$ be iid. with $\mathbb{E}(X_1 )=\mu$ , $\operatorname{Var}(X_1)=\sigma^2$. We define $S_n=\sum_{i}^{}X_{i}$ and $\overline{X_n} \frac{S_n}{n} $ (the sample mean). By linearity \[
 \mathbb{E} (\overline{X_n} )=\mu, \quad \operatorname{Var }(\overline{X_n} )= \frac{\sigma^2}{n}
 .\]   
 Define $Z_{n}= \frac{S_{n}-n \mu}{n}$. Then $\mathbb{E}(Z_{n})=0$ and $\operatorname{Var}(Z_{n})=1$. 
-
-\subsection{Moment generating functions}
-The mgf of a random variable $X$ is the function \[
-M_{x}(t)=\mathbb{E}(e^{tx})
-.\] 
-provided that it exists for $t$ in some neighbourhood of 0. This is the Laplace transform of the pdf. It relates to moments of the pdf, for example $M_{x}^{(n)}(0)=\mathbb{E} (X^{n})$. 
+\subsubsection*{Moment generating functions}
+\begin{definition*}[Moment generating function]
+     The \vocab{moment generating function} (mgf) of a random variable $X$ is the function \[
+          M_{x}(t)=\mathbb{E}(e^{tx})
+     ,\] 
+     provided that it exists for $t$ in some neighbourhood of 0.
+\end{definition*} This is the Laplace transform of the pdf. It relates to moments of the pdf, for example $M_{x}^{(n)}(0)=\mathbb{E} (X^{n})$. 
 
 Under broad conditions $M_{x}=M_{y} \iff F_{X}=F_{Y}$. (The Laplace transform is invertible.) The mgf is also useful for finding distributions of sums of independent random variables: 
 \begin{example*}
@@ -152,9 +153,9 @@ Under broad conditions $M_{x}=M_{y} \iff F_{X}=F_{Y}$. (The Laplace transform is
      .\] 
      What is $M_{S_{n}}$? We have \[
      M_{S_{n}}(t)=\mathbb{E}(e^{t (X_1 +\ldots +X_n)})=\prod_{i=1}^n e^{tX_{i}}=e^{-n \mu (1-e^{t})}
-     .\] So we conclude $S_{n} \sim \operatorname{Po}(n \mu)$ 
+     .\] So we conclude $S_{n} \sim \operatorname{Po}(n \mu)$.
 \end{example*}
-\subsection{Limits of r.v's}
+\subsubsection*{Limits of random variables}
 The weak law of large numbers states that $\forall \varepsilon >0$, as $n \rightarrow \infty$, \[
 \mathbb{P} \left(|\overline{X_n} -\mu > \epsilon|\right) \rightarrow 0
 .\] 
@@ -163,52 +164,54 @@ The strong law of large numbers states that as $n \rightarrow \infty$, \[
 .\] The central limit theorem states that if we have the variable $Z_{n}= \frac{S_{n}-n \mu}{\sigma \sqrt{n}}$, then as $n \rightarrow \infty$ we have \[
 \mathbb{P}(Z_{n} \leq z) \rightarrow \Phi (z) \quad \forall z \in \mathbb{R}
 .\] where $\Phi$ is the distribution function of a $N (0,1)$ random variable.  
-\subsection{Conditional probability}
-If $X,Y$ are discrete r.v's then \[
-P_{X|Y}(x|y)= \frac{\mathbb{P}(X=x, Y=y)}{\mathbb{P}(Y=y)}
-.\]   
-If $X,Y$ are continuous then the joint pdf of $X,Y$ satisfies: \[
-\mathbb{P}(X \leq x, P Y \leq y)=\int_{- \infty}^{x}\int_{- \infty}^{y}f_{X,Y} (x',y')\mathrm{d}y'  \mathrm{d}x' 
-.\] 
-The conditional pdf of $X$ given $Y$ is \[
-f_{x|y}= \frac{f_{X,Y}(x,y)}{\int_{- \infty}^{ \infty}f_{X,Y}(x,y) \mathrm{d}x }
-.\] 
-The conditional expectation of $X$ given $Y$ is 
-\begin{align*}
-    \mathbb{E}(X|Y)=
-    \begin{cases}
-        \sum_{x}^{}xp_{X|Y}(x|Y) & \text{discrete}\\
-        \int_{}^{}x f_{X|Y}(x|Y) \mathrm{d}x & \text{continuous}
-    \end{cases}
-\end{align*}
-Note this is itself a random variable, as it is a function of $Y$. We define $\operatorname{Var}(X|Y)$ similarly. 
-
-Tower property: $\mathbb{E}(\mathbb{E}(X|Y))=\mathbb{E}(X)$
-
-Law of total variance: $\operatorname{Var}(X)=\mathbb{E}(\operatorname{Var}(X|Y))+\operatorname{Var}(\mathbb{E}(X|Y))$. 
-
-Change of variables (in 2D):
-
-Let $(x,y) \mapsto (u,v)$ be a differentiable bijection $\mathbb{R}^{2} \rightarrow \mathbb{R}^{2} $. Then \[
-f_{U,V}(u,v)=f_{X,Y}(x (u,v),y (u,v))|\det (J)|
-.\] where $J=\frac{\partial (x,y)}{\partial (u,v)}$ is the Jacobian matrix we have seen before. 
-
-If $X_{i} \sim \Gamma (\alpha_{i}, \lambda)$ for $i=1,\ldots ,n$ with $X_1 , \ldots X_n$ independent, then what is the distribution of $S_{n}=\sum_{i=1}^{n}X_{i}$? \[
-M_{S_{n}}(t)=\prod_{i}M_{X_{i}}(t)=
-\begin{cases}
-    \left(\frac{\lambda}{\lambda t}\right)^{\sum_{i}^{}\alpha_{i}} & t<\lambda\\
-    \infty & t>\lambda
-\end{cases}
-.\]  
-So $S_{n}$ is $\Gamma (\sum_{i}^{}a_{i}, \lambda)$. We call the first parameter the "shape parameter", and the second one the "rate parameter". A consequence of what we have just done is that if $X \sim \Gamma (\alpha, \lambda)$, then for all $b>0$ we have $bX \sim \Gamma (\alpha, \frac{\lambda}{b})$. 
-
-Special cases: 
+\subsubsection*{Conditional probability}
+\begin{definition*}[Conditional probability]
+     If $X,Y$ are discrete r.v's then \[
+     P_{X|Y}(x|y)= \frac{\mathbb{P}(X=x, Y=y)}{\mathbb{P}(Y=y)}
+     .\]   
+     If $X,Y$ are continuous then the joint pdf of $X,Y$ satisfies: \[
+     \mathbb{P}(X \leq x, P Y \leq y)=\int_{- \infty}^{x}\int_{- \infty}^{y}f_{X,Y} (x',y')\mathrm{d}y'  \mathrm{d}x' 
+     .\] 
+     The conditional pdf of $X$ given $Y$ is \[
+     f_{x|y}= \frac{f_{X,Y}(x,y)}{\int_{- \infty}^{ \infty}f_{X,Y}(x,y) \mathrm{d}x }
+     .\] 
+     The conditional expectation of $X$ given $Y$ is 
+     \begin{align*}
+          \mathbb{E}(X|Y)=
+          \begin{cases}
+               \sum_{x}^{}xp_{X|Y}(x|Y) & \text{discrete}\\
+               \int_{}^{}x f_{X|Y}(x|Y) \mathrm{d}x & \text{continuous}
+          \end{cases}
+     \end{align*}
+     Note this is itself a random variable, as it is a function of $Y$. We define $\operatorname{Var}(X|Y)$ similarly. 
+\end{definition*}
+There are several notable properties of conditional random variables:
 \begin{itemize}
-    \item $\Gamma (1, \lambda)=\operatorname{Exp}(\lambda)$ 
-    \item $\Gamma \left(\frac{k}{2},\frac{1}{2}\right)=\chi_k^2$ (the chi-squared distribution with $k$ degrees of freedom, i.e the distribution of a sum of $k$ independent squared $N (0,1)$ r.v's.)
-\end{itemize}
+     \item Tower property: $\mathbb{E}(\mathbb{E}(X|Y))=\mathbb{E}(X)$.
+     \item Law of total variance: $\operatorname{Var}(X)=\mathbb{E}(\operatorname{Var}(X|Y))+\operatorname{Var}(\mathbb{E}(X|Y))$. 
+     \item Change of variables (in 2D):
 
-\subsection{Estimation}
+     Let $(x,y) \mapsto (u,v)$ be a differentiable bijection $\mathbb{R}^{2} \rightarrow \mathbb{R}^{2} $. Then \[
+     f_{U,V}(u,v)=f_{X,Y}(x (u,v),y (u,v))|\det (J)|
+     ,\] where $J=\frac{\partial (x,y)}{\partial (u,v)}$ is the Jacobian matrix we have seen before. 
+\end{itemize}
+\begin{example*}[mgf of the gamma distribution]
+     If $X_{i} \sim \Gamma (\alpha_{i}, \lambda)$ for $i=1,\ldots ,n$ with $X_1 , \ldots X_n$ independent, then what is the distribution of $S_{n}=\sum_{i=1}^{n}X_{i}$? \[
+          M_{S_{n}}(t)=\prod_{i}M_{X_{i}}(t)=
+          \begin{cases}
+              \left(\frac{\lambda}{\lambda t}\right)^{\sum_{i}^{}\alpha_{i}} & t<\lambda\\
+              \infty & t>\lambda
+          \end{cases}
+          .\]  
+          So $S_{n}$ is $\Gamma (\sum_{i}^{}a_{i}, \lambda)$. We call the first parameter the "shape parameter", and the second one the "rate parameter". A consequence of what we have just done is that if $X \sim \Gamma (\alpha, \lambda)$, then for all $b>0$ we have $bX \sim \Gamma (\alpha, \frac{\lambda}{b})$. 
+          
+          Special cases: 
+          \begin{itemize}
+              \item $\Gamma (1, \lambda)=\operatorname{Exp}(\lambda)$ 
+              \item $\Gamma \left(\frac{k}{2},\frac{1}{2}\right)=\chi_k^2$ (the chi-squared distribution with $k$ degrees of freedom, i.e the distribution of a sum of $k$ independent squared $N (0,1)$ r.v's.)
+          \end{itemize}
+\end{example*}
+\section{Estimation}
 Suppose $X_1 , \ldots X_n$ are iid observations with pdf or pdf (or pmf) $f_{X}(x| \theta)$ where $\theta$ is an unknown parameter in $\Theta$. Let $X=(X_1 , \ldots , X_{n})$. 
 \begin{definition*}[Estimator]
      An estimator is a statistic or function of the data $T (X)=\hat{\theta}$ which does not depend on $\theta$, and is used to approximate the true parameter $\theta$. The distribution of $T (X)$ is called its "sampling distribution". 
@@ -265,6 +268,9 @@ Unbiasedness is not necessarily desirable. Let's look at a pathological example:
           .\] The only function $T: N \rightarrow \mathbb{R}$ satisfying this equality is $T (x)=(-1)^{x}$. This is clearly an absurd estimator.
 \end{example*}
 \subsection{Sufficiency}
+\begin{notation}
+     From now on in the course we drop the $\theta$ subscript on expectations etc. in order to simplify notation.
+\end{notation}
 \begin{definition*}[Sufficiency]
      A statistic $T (X)$ is sufficient for $\theta$ if the conditional distribution of $X$ given $T (X)$ does not depend on $\theta$.
 \end{definition*}
@@ -274,6 +280,188 @@ Unbiasedness is not necessarily desirable. Let's look at a pathological example:
 \begin{example*}
       Let $X_1 , \ldots ,X_n$ be iid. Bernoulli$(\theta)$  variables for some $\theta$. Then \[
       f_{X}(X|\theta)=\prod_{i=1}^n \theta^{x_{i}}(1-\theta)^{1-x_{i}}=\theta^{\sum_{}^{}x_{i}} (1-\theta)^{n-\sum_{}^{}x_{i}}
-      .\] This only depends on $x$ through $T (X)=\sum_{}^{}x_{i}$. 
+      .\] This only depends on $x$ through $T (X)=\sum_{}^{}x_{i}$. To check it's sufficient: 
+      \begin{align*}
+           f_{X|T=t}(x|T=t)&= \frac{\mathbb{P}(X=x, T (x)=t)}{\mathbb{P} (T (x)=t)}\\
+           \text{ If } \sum_{}^{}x_i =t, \quad &= \frac{\theta^{\sum x_i}(1-\theta)^{n-\sum x_i}}{\mathbb{P}(T (x)=t)}\\
+           &= \frac{\theta^{\sum x_i}(1-\theta)^{n-\sum x_i}}{{n \choose t}\theta^{t}(1-\theta)^{n-t}} \text{ since } \sum X_i \sim Bin (n,\theta)\\
+           &= {n \choose t}^{-1}
+      \end{align*}
+      Therefore $T$ is sufficient.
 \end{example*}
+\begin{theorem}[Factorisation criterion]
+     $T$ is sufficient for $\theta$ iff $f_{x}(x| \theta)=g (T (x), \theta)h (x)$ for suitable functions $g,h$.
+\end{theorem}
+\begin{proof}
+      We will only prove this for the discrete case; the continuous case is similar. 
+      
+      \underline{Reverse implication:} Suppose $f_{x}(x| \theta)=g (T (x), \theta)h (x)$. Then if $T (x)=t$, we have 
+      \begin{align*}
+           f_{X|T=t} (x|T=t)&= \frac{\mathbb{P}(X=x,T (x)=t)}{\mathbb{P}(T (x)=t)}\\
+           &= \frac{g t, \theta)h (x)}{\sum_{x': \ T (x')=t}^{}g (t, \theta)h (x')}\\
+           &=\frac{h (x)}{\sum_{x': \ T (x')=t}^{}h (x')}.
+      \end{align*}
+      This doesn't depend on $\theta$ so $T$ is sufficient.
+
+      \underline{Forward implication:} Suppose $T (X)$ is sufficient. Then we have 
+      \begin{align*}
+           f_X (x| \theta)&=\mathbb{P} (X=x, T (X)=T (x))\\
+           &=\underbrace{\mathbb{P}(X=x| T (X)=T (x))}_{h (x)} \underbrace{\mathbb{P}(T(X)=T (x))}_{g (T (X),\theta)}.
+      \end{align*}
+      By noting that $\mathbb{P}(X=x| T (X)=x)$ only depends on $x$ by assumption and $\mathbb{P}(T(X)=T (x))$ only depends on $x$ through $T (x)$, we are done.
+\end{proof}
+\begin{remark}
+      This criterion makes our previous example much easier.
+\end{remark}
+Let's look at another example.
+\begin{example*}
+      Let $X_1 , \ldots ,X_n \sim U ([0, \theta])$ be iid with $\theta >0$. Then \[
+      f_{X}(x| \theta)=\prod_{i=1}^{n}\frac{1}{\theta} 1_{x_{i} \in [0, \theta]}=\prod_{i=1}^{n}\frac{1}{\theta^{n}} 1_{\min_i x_{i} \geq 0} 1_{\max_i x_{i} \leq \theta} 
+      .\] Define $T (x)=\max_i x_i$. Then we can write \[
+      g (T (x), \theta)=\frac{1}{\theta^{n}}1_{\max_i x_{i} \leq \theta} , \quad h (x)=1_{\min_i x_{i} \geq 0}
+      .\] So $T (x)$ is sufficient.
+\end{example*}
+\subsection{Minimal sufficiency}
+Sufficient statistics are \textbf{not} unique. 
+\begin{remark}
+      Any bijection applied to a sufficient statistic yields another sufficient statistic.
+\end{remark}
+It's not hard to find sufficient statistics, for example $T (X)=X$ is a trivial sufficient statistic (that is useless!). Instead, we want statistics which give us `maximal' compression of the data in $X$. This motivates our next definition.
+\begin{definition*}[Minimal sufficient statistic]
+      $T (X)$ is \vocab{minimal sufficient} if for every other sufficient statistic $T'$, \[
+      T' (x)=T' (y) \implies x=y \quad \forall x,y \in X^{n}
+      .\] Note that it follows from this definition that minimal sufficient statistics are unique up to bijection.
+\end{definition*}
+\begin{theorem}
+      Suppose that $f_{X}(x| \theta)/f_{X}(y| \theta)$ is constant in $\theta$ iff $T (x)= T (y)$. Then $T$ is minimal sufficient.
+\end{theorem}
+\begin{proof}
+      Let $x \overset{1}{\sim}  y$ if $f_{X}(x| \theta)/f_{X}(y| \theta)$ is constant in $\theta$. It's easily checked that this defines an equivalence relation. Similarly, let $x \overset{2}{\sim} y$ if $T (x)=T (y)$; this is also an equivalence relation. The hypothesis in the theorem states that the equivalence classes of $\overset{1}{\sim} $ and $\overset{2}{\sim} $ are the same. 
+      
+      We will construct a statistic $T$ which is constant on the equivalence classes of $\overset{1}{\sim} $. For any value $t$ of $T$ let $z_{t}$ be a representative from $\left\{x; T (x)=t\right\}$. Then
+      \begin{align*}
+           f_{X}(x| \theta)&=f_{X}(z_{T (x)}|\theta)= \frac{f_{X}(x|\theta)}{f_{X}(z_{T (x)}| \theta)}\\
+           &=g (T (x), \theta) h (x).
+      \end{align*}
+      Hence $T$ is sufficient by the factorisation criterion. To prove $T$ is minimal sufficient, let $S$ be any other sufficient statistic. By the factorisation criterion, there exist functions $g_{S}, h_{S}$ such that \[
+      f_{X}(x| \theta)=g_{S}(S (x),\theta)h_{S}(x)
+      .\] Now suppose $S (x)=S (y)$ for some $x,y$. Then \[
+          \frac{f_{X}(x|\theta)}{f_{X}(y| \theta)}= \frac{g_{S}(S (x),\theta)h_{S}(x)}{g_{S}(S (y),\theta)h_{S}(y)}= \frac{h_{S}(x)}{h_{S}(y)}
+      .\] which is constant in $\theta$, so $x \overset{1}{\sim} y$. By the hypothesis, $x \overset{2}{\sim} y$ and $T (x)=T (y)$. 
+\end{proof}
+\begin{example*}
+      Suppose $X_1 , \ldots ,X_n \overset{\operatorname{iid}}{\sim} N (\mu, \sigma^2)$. Then 
+      \begin{align*}
+          \frac{f_{x}\left(\pi \mid \mu, \sigma^{2}\right)}{f_{x}\left(y \mid \mu, \sigma^{2}\right)}&=\frac{\left(2 \pi \sigma^{2}\right)^{-\pi / 2} \exp \left\{-\frac{1}{2 \sigma^{2}} \sum_{i}\left(x_{i}-\mu\right)^{2}\right\}}{\left(2 \pi \sigma^{2}\right)^{-n / 2} \exp \left\{-\frac{1}{2 \sigma^{2}} \sum_{i}\left(y_{i}-\mu\right)^{2}\right\}}\\
+          &=\exp \left\{-\frac{1}{2 \sigma^{2}}\left(\sum_{i} x_{i}^{2}-\sum_{i} y_{i}^{2}\right)+\frac{\mu}{\sigma^{2}}\left(\sum x_{i}-\sum y_{i}\right)\right\}.
+      \end{align*}
+      This is constant in $\left(\mu, \sigma^{2}\right)$ iff $\sum x_{i}^{2}=\sum y_{i}^{2}$ and $\Sigma x_{i}=\sum y_{i}$. Hence $\left(\sum x_{i}^{2}, \sum x_{i}\right)$ is a minimal sufficient statistic.A more common minimal sufficient statistic is obtained by taking a bijection of $\left(\Sigma x_{i}^{2}, \Sigma x_{i}\right)$ :
+     $$
+     \begin{aligned}
+     &S(x)=\left(\bar{x}_{n}, S_{x x}\right) \\
+     &\bar{x}_{n}=\frac{1}{n} \sum x_{i} \quad S_{x x}=\sum_{i}\left(x_{i}-\bar{x}_{n}\right)^{2}
+     \end{aligned}
+     $$
+In this example $\theta=\left(\mu, \sigma^{2}\right)$ has same dimension as $S(x)$. In general, they can be different.
+\end{example*}
+\subsection{Rao-Blackwell theorem}
+We will now look at the Rao-Blackwell theorem. This theorem allows us to start from any estimator $\widetilde{\theta}$, and then by conditioning on a sufficient statistic we get a better one.
+\begin{theorem}[Rao-Blackwell theorem]
+      Let $T$ be a sufficient statistic for $\theta$ and define an estimator $\widetilde{\theta}$ with $\mathbb{E}(\widetilde{\theta}^2)< \infty$ for all $\theta$. Define a new estimator \[
+      \hat{\theta}=\mathbb{E} (\widetilde{\theta} (T (x)))
+      .\] Then for all $\theta \in \Theta$, \[
+      \mathbb{E}((\hat{\theta}-\theta)^2) \leq \mathbb{E} ((\widetilde{\theta}-\theta)^2)
+      .\] Furthermore, the inequality is strict unless $\widetilde{\theta}$ is a function of $T (x)$.
+\end{theorem}
+\begin{proof}
+      By tower property of $\mathbb{E}$, we have \[
+      \mathbb{E}(\hat{\theta})=\mathbb{E}(\mathbb{E}(\widetilde{\theta}|T))=\mathbb{E}(\widetilde{\theta})
+      .\] By the conditional variance formula, 
+      \begin{align*}
+          \operatorname{Var}(\widetilde{\theta})&=\mathbb{E}(\operatorname{Var}(\widetilde{\theta}|T))+\operatorname{Var}(\mathbb{E}(\widetilde{\theta}|T))\\
+          &=\mathbb{E}(\operatorname{Var}(\widetilde{\theta}|T))+\operatorname{Var}(\hat{\theta})\\
+          &\geq \operatorname{Var}(\hat{\theta}).
+      \end{align*}
+      So by the bias-variance decomposition, $\operatorname{mse} \widetilde{\theta}\geq \operatorname{mse}\hat{\theta}$. The inequality is strict unless $\operatorname{Var}(\widetilde{\theta}|T)=0$ with probability 1, which requires $\widetilde{\theta}$ is a function of $T$.
+\end{proof}
+\begin{remark}
+      $T$ must be sufficient, since otherwise $\hat{\theta}$ would be a function of $\theta$, so it wouldn't be an estimator.
+\end{remark}
+We will now look at a few examples to show how powerful this theorem can be.
+\begin{example*}
+      $X_1 , \ldots ,X_n \overset{\operatorname{iid}}{\sim} \operatorname{Poi}(\lambda)$. Let $\theta=\mathbb{P}(X_1 =0)=e^{-\lambda}$. Then 
+      \begin{align*}
+           f_{X}(x|\lambda)&= \frac{e^{-n \lambda}\lambda^{\Sigma x_{i}}}{\prod_{i}^{}x_{i}!}\\
+           \implies f_{X}(x|\theta)&= \frac{\theta^{n}(-\log \theta)^{\sum_{}^{}x_i}}{\prod_{i=1}^{}x_{i}!}=g (\sum_{}^{}x_i, \theta)h (x)
+      \end{align*}
+      So $\sum_{}^{}x_i=T (x)$ is sufficient by factorisation.
+
+      Recall $\sum_{}^{}X_{i} \sim \operatorname{Poi}(n \lambda)$. Let $\widetilde{\theta}=1_{X_1 =0}$ (which only depends on $X_1$, so it is a bad estimator). However, it is unbiased, which is desirable as the Rao-Blackwell process will then also yield an unbiased estimator. So let's calculate 
+      \begin{align*}
+           \hat{\theta}&=\mathbb{E}(\widetilde{\theta}|T=t)=\mathbb{P}(X_1 =0|\sum_{i=1}^{n}X_{i}=t)\\
+           &= \frac{\mathbb{P}(X_1 =0, \sum_{i=1}^{n}X_{i}=t)}{\mathbb{P}(\sum_{i=1}^{n}X_{i}=t)}
+      \end{align*}
+\end{example*}
+\begin{example*}
+      Let $X_1 , \ldots , X_n $ be iid. $U ([0, \theta])$; want to estimate $\theta$.
+
+      We previously saw that $T=\max_{i}X_i$ is sufficient. Let $\widetilde{\theta} =2 X_1 $, an unbiased estimator of $\theta$. Then 
+      \begin{align*}
+          \hat{\theta}&=\mathbb{E} (\widetilde{\theta} | T=t)=2 \mathbb{E} (X_1 |\max_{i}X_i=t )\\
+          &=2 \mathbb{E} (X_1 |\max_{i}X_i=t, X_1 =\max_{i}X_i) \mathbb{P}(\max_{i}X_i=X_1| \max_{i}X_i=t )+2\mathbb{E} (X_1 |\max_{i}X_i=t, X_1 \neq \max_{i}X_i) \mathbb{P}(\max_{i}X_i \neq X_1 | \max_{i}X_i=t )\\
+          &=\frac{2t}{n}+ \frac{2 (n-1)}{n}\underbrace{\mathbb{E}(X_1 | X_1 <t, \max_{2 \leq i \leq n}X_i =t)}_{=t/2 \text{ as } X_1 | X_1 <t \sim U ([0,t])} \\
+          &= \frac{n+1}{n }\max_i X_i.
+      \end{align*}
+      By Rao-Blackwell $\operatorname{mse}(\hat{\theta}) \leq \operatorname{mse}(\widetilde{\theta} )$. Also, $\hat{\theta} $ is unbiased.
+\end{example*}
+\subsection{Maximum likelihood estimation}
+\begin{definition*}[Likelihood function/Maximum likelihood estimator]
+     Let $X_1 , \ldots ,X_n $ be iid. with pdf (or pmf ) $f_{X}(\cdot | \theta)$. The \vocab{likelihood function} $L: \theta \rightarrow \mathbb{R}$ is given by \[
+     L (\theta)=f_{X}(x| \theta)=\prod_{i=1}^n f_{X_i}(x_{i}| \theta)
+     .\] (We take $X$ to be fixed observations.) We further define the \vocab{log-likelihood} \[
+     l (\theta)=\log L (\theta)=\sum_{i=1}^{n}\log f_{X_i}(x_{i}| \theta)
+     .\]A \vocab{maximum likelihood estimator} (mle) is an estimator that maximises $L$ over $\Theta$.
+\end{definition*}
+\begin{example*}
+      Let $X_1 , \ldots X_n \sim^{iid} $Ber$(p)$. Then we have
+      \begin{align*}
+          l (p)&=\sum_{i=1}^{n }X_{i} \log p+ (1-X_i) \log (1-p)\\
+          &=\log p (\sum_{}^{}X_{i})+\log (1-p)(n-\sum_{}^{}X_i)\\
+          \implies \frac{\mathrm{d}l}{\mathrm{d}p}= \frac{\sum_{}^{}X_i}{p}+ \frac{n-\sum_{}^{}X_i}{1-p}
+      \end{align*}
+      This is $>0$ iff $p=\frac{1}{n}\sum_{}^{}X_i= \overline{X_i}$. We have $\mathbb{E} (\overline{X_i})=\frac{n}{n}\mathbb{E} (X_1 )=p$. So the mle $\hat{p} =\overline{X_i}$ is unbiased.
+\end{example*}
+Now let's try a more involved example.
+\begin{example*}
+      Let $X_1 , \ldots X_n \sim^{iid} N(\mu, \sigma^2)$. Then we have
+      \begin{align*}
+           l (\mu, \sigma^2)&=-\frac{n}{2}\log ( 2\pi)-\frac{n}{2 }\log (\sigma^2)-\frac{1}{2\sigma^2 }\sum_{i}^{}(X_i-\mu)^2.
+      \end{align*}
+      This is maximised when $\frac{\partial l}{\partial \mu}=\frac{\partial l}{\partial \sigma^2}=0$. But $\frac{\partial l}{\partial \mu}=\frac{1}{\sigma^2}\sum_{i=1}^{n}(X_i-\mu)$ so is equal to 0 iff \[
+      \mu=\hat{X_n}=\frac{1}{n}\sum_{}^{}X_i
+      .\] for all $\sigma^2 >0$.
+      We also have that $\frac{\partial l}{\partial \sigma^2}=-\frac{n}{2\sigma^2}+\frac{1}{2\sigma^4} \sum_{i=1}^{n}(X_i-\mu)^2$.
+      If we set $\mu=\overline{X_n}$, $\frac{\partial l}{\partial \sigma^2}=0$ iff \[
+      \sigma^2= \frac{1}{n} \sum_{i=1}^{n}(X_i-\hat{X_n})^2= \frac{S_{xx}}{n}
+      .\] Hence the mle is $(\hat{\mu},\hat{\sigma^2})=(\overline{X_n},\frac{S_{xx}}{n}) $. We can check $\hat{\mu}$ is unbiased. Later in the course we will see that \[
+          \frac{S_{xx}}{\sigma^2}=\frac{n \hat{\sigma}^2}{\sigma^2} \sim \chi_{n-1}^2
+      .\] Therefore $\mathbb{E} (\sigma^2)= \frac{\sigma^2}{n}\mathbb{E}(\chi_{n-1}^2)= \frac{n-1}{n}\sigma^2 \neq \sigma^2.$ Hence $\hat{\sigma}^2$ is biased. But as $n \rightarrow \infty$ the bias converges to 0, so we say $\hat{\sigma}^2$ is \vocab{asymptotically unbiased}. 
+\end{example*}
+The next example will focus on an example where the mle is discontinuous, and doesn't behave as nicely.
+\begin{example*}
+     Let $X_1 , \ldots , X_n $ be iid. $U ([0, \theta])$. Recall the estimator we derived, $\hat{\theta}=\frac{n+1}{n }\max_i X_i$. The mle is \[
+     L (\theta)=\frac{1}{\theta^{n}} 1_{\max_i X_i \leq \theta}
+     .\] Hence the mle is $\hat{\theta}^{\operatorname{mle}}=\max_i X_{i}$. As $\hat{\theta}$ is unbiased, $\hat{\theta}^{\operatorname{mle}}$ is \textbf{not} unbiased.
+\end{example*}
+\subsubsection{Properties of the mean likelihood estimator}
+\begin{enumerate}
+     \item If $T$ is sufficient for $\theta$, then the mle is a function of $T$. Recall \[
+     L (\theta)=g (T, \theta)h (X)
+     .\] So the maximiser of $L$ only depends on $X$ through $T$.
+     \item If we parameterise $\theta$ in some way, say $\phi= H (\theta)$ where $H$ is a bijection, and $\hat{\theta}$ is the mle for $\theta$, then $H (\hat{\theta})$ is the mle for $\phi$.
+     \item Asymptotic normality: Under regularity conditions, as $n \rightarrow \infty$ the statistic $\sqrt{n}(\hat{\theta}-\theta)$ is approx $N (0,\Sigma)$, i.e for some `nice' set $A$ we have \[
+     \mathbb{P}(\sqrt{n}(\hat{\theta}-\theta) \in A) \xrightarrow{n \rightarrow \infty}\mathbb{P} (Z \in A), \quad \text{ where } Z \sim N (0, \Sigma)
+     .\] The limiting covariance matrix $\Sigma$ is a known function of $L$. In some sense it is the `best' or `smallest' variance that any estimator can achieve asymptotically. See Part II Principles of Statistics for more on this.
+     \item When the mle is not available analytically in closed form, in real-world applications it is often found numerically (see Part IB Numerical Analysis).
+\end{enumerate}
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  2 FEB 2022 16:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  4 FEB 2022 16:24
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -995,432 +995,31 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 451.
+
+Overfull \hbox (0.40527pt too wide) detected at line 455
+[] \OT1/cmr/m/n/10.95 = [] \OMS/cmsy/m/n/10.95 ^^T [][] [] \OML/cmm/m/it/10.95 dt \OMS/cmsy/m/n/10.95 ^^T [] j\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ))\OMS/cmsy/m/n/10.95 j []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^M\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 :
+ []
+
+
+Overfull \hbox (23.91048pt too wide) in paragraph at lines 455--456
+\OT1/cmr/m/n/10.95 If $\OML/cmm/m/it/10.95 ^^M$ \OT1/cmr/m/n/10.95 is piece-wise $\OML/cmm/m/it/10.95 C[]$ \OT1/cmr/m/n/10.95 then the re-sult fol-lows from the def-i-ni-tion $[][] \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 z\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 dz \OT1/cmr/m/n/10.95 = [][] [][] \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 z\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 dz$
+ []
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 456.
+(mdframed)              on input line 458.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 463.
-
-Overfull \vbox (4.33311pt too high) detected at line 468
- []
-
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 468.
-
-Overfull \vbox (5.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (6.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (7.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (8.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (9.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (10.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (11.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (12.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (13.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (14.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (15.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (16.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (17.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (18.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (19.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (20.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (21.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (22.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (23.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (24.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (25.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (26.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (27.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (28.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (29.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (30.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (31.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (32.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (33.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (34.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (35.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (36.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (37.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (38.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (39.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (40.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (41.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (42.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (43.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (44.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (45.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (46.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (47.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (48.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (49.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (50.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (51.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (52.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (53.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (54.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (55.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (56.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (57.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (58.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (59.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (60.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (61.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (62.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (63.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (64.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (65.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (66.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (67.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (68.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (69.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (70.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (71.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (72.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (73.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (74.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (75.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (76.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (77.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (78.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (79.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (80.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (81.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (82.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (83.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (84.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (85.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (86.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (87.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (88.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (89.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (90.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (91.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (92.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (93.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (94.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (95.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (96.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (97.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (98.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (99.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (100.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (101.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (102.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (103.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (104.33311pt too high) detected at line 468
- []
-
-
-Overfull \vbox (105.33311pt too high) detected at line 468
- []
-
-
-Package mdframed Warning: correct box splittet fails
- It seems you are using a non splittable contents
-(mdframed)                 on input line 468.
-
-Package mdframed Info: You first box width is to small
- mdframed fixed it
-(mdframed)              on input line 468.
-[13] [14] (./complex-an.aux)
+(mdframed)              on input line 465.
+[13]
+Package mdframed Info: Not enough space on this page on input line 470.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 477.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 488.
+ [14] (./complex-an.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1428,18 +1027,18 @@ Package rerunfilecheck Info: File `complex-an.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20149 strings out of 478542
- 367423 string characters out of 5854402
+ 20153 strings out of 478542
+ 367510 string characters out of 5854402
  890072 words of memory out of 5000000
- 37638 multiletter control sequences out of 15000+600000
+ 37639 multiletter control sequences out of 15000+600000
  420487 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,21n,108p,10685b,659s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb>
-Output written on complex-an.pdf (14 pages, 270702 bytes).
+Output written on complex-an.pdf (14 pages, 272923 bytes).
 PDF statistics:
- 290 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
- 89 named destinations out of 1000 (max. 500000)
+ 294 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 92 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

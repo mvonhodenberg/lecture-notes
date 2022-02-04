@@ -18,7 +18,7 @@
 
 \title{IB Groups, Rings and Modules}
 \author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
-\date{\today}
+\date{Last updated: \today}
 \setcounter{section}{-1}
 
 \allowdisplaybreaks
@@ -26,9 +26,7 @@
 \begin{document}
 
 \maketitle
-
 These are my notes for the IB course `Groups, Rings and Modules', which was lectured in Lent 2022 at Cambridge by Dr R.Zhou. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
-
 \tableofcontents
 
 \newpage
@@ -40,8 +38,8 @@ This course will contain several sections:
     \item Modules; these are an analogue of vector spaces where the scalars belong to a ring instead of a field. We will classify modules over certain "nice" rings. This allows us to prove Jordan Normal Form, and classify finite abelian groups. 
 \end{enumerate}
 \section{Groups}
-The first subsection will just recap the results seen in IA Groups; it can be skipped by anyone with a sufficient knowledge of the course.
 \subsection{Recall of IA Groups}
+This first subsection will just recap the results seen in IA Groups; it can be skipped by anyone with a sufficient knowledge of the course.
 \begin{definition*}[Group]
      A group is a pair $(G, \cdot)$ where $G$ is a set and $\cdot: G \times G \rightarrow  G$ is a binary operation satisfying:
      \begin{enumerate}
@@ -502,7 +500,7 @@ Now we move on to a more general statement about $A_n$ being simple. Before we c
       \begin{itemize}
            \item[(i)] The set $\operatorname{Syl}_{p}(G)=\left\{P \leq G: \ |P|=p^{a}\right\}$ of Sylow $p$-subgroups is non-empty.
            \item[(ii)] All elements of $\operatorname{Syl}_{p}(G)$ are conjugate.
-           \item[(iii)] We define $n_{p} =|\operatorname{Syl}_{p}(G)|$ satisfies $n_{p} \equiv 1 \mod p$ and $n_{p}| \ |\ |G|$ (and so $n_{p}|m$ )
+           \item[(iii)] We define $n_{p} =|\operatorname{Syl}_{p}(G)|$. This satisfies $n_{p} \equiv 1 \mod p$ and $n_{p}| \ |\ |G|$ (and so $n_{p}|m$ )
       \end{itemize}
 \end{theorem}
 \begin{proof}
@@ -591,7 +589,7 @@ Let $Z \unlhd GL_{n}(F)$ be the normal subgroup of scalar multiples of $I$. This
 Just as $PGL_{2}(\mathbb{C})$ acts on $\mathbb{C} \cup \left\{ \infty\right\}$ via Möbius transformations, $PGL_{2}(\mathbb{Z}/p\mathbb{Z})$ acts on $\mathbb{Z}/p\mathbb{Z} \cup \left\{ \infty\right\}$ via \[
 \begin{pmatrix} a&b\\c&d  \end{pmatrix}\mapsto  \frac{az+b}{cz+d}
 .\] Since scalar matrices act trivially, we obtain an action of $PGL_{2}(\mathbb{Z}/p\mathbb{Z})$.
-\begin{lemma}
+\begin{lemma}\label{permrep}
       The permutation representation $PGL_{2}(\mathbb{Z}/p\mathbb{Z}) \rightarrow S_{p+1}$ is injective (in fact an isomorphism if $p=2$ or $3$).
 \end{lemma}
 \begin{proof}
@@ -602,5 +600,102 @@ Just as $PGL_{2}(\mathbb{C})$ acts on $\mathbb{C} \cup \left\{ \infty\right\}$ v
            \item Setting $z=1$ gives $a=d$.
       \end{itemize}
       So $\begin{pmatrix} a&b\\c&d \end{pmatrix}$ is a scalar matrix, hence it is trivial in $PGL_{2}(\mathbb{Z}/p\mathbb{Z}) $.
+\end{proof}
+\begin{lemma}
+      If $p$ is an odd prime, then \[
+      |PSL_{2}(\mathbb{Z}/p\mathbb{Z})|=p (p-1)(p+1)/2
+      .\] 
+\end{lemma}
+\begin{proof}
+      By Example 5.1, $|GL_2 (\mathbb{Z}/p\mathbb{Z})|=p (p^2-1)(p-1)$. The homomorphism $GL_2 (\mathbb{Z}/p\mathbb{Z}) \xrightarrow{\operatorname{det}} (\mathbb{Z}/p\mathbb{Z})^{\times}$ is surjective.
+      
+      Thus $|SL_2 (\mathbb{Z}/p\mathbb{Z})|=|GL_2 (\mathbb{Z}/p\mathbb{Z})|/(p-1)=p (p-1)(p+1)$. If $\begin{pmatrix} \lambda &0 \\ \lambda&0 \end{pmatrix} \in SL_2 (\mathbb{Z}/p\mathbb{Z})$, then $\lambda^2 \equiv 1 \mod p \implies \lambda \equiv \pm 1 \mod p$ (since $p$ is prime). 
+
+      Thus $Z \cap SL_2 (\mathbb{Z}/p\mathbb{Z})=\left\{\pm I\right\}$ which are distinct since $p>2$. Therefore \[
+          |PSL_2 (\mathbb{Z}/p\mathbb{Z})|=\frac{1}{2}|SL_2 (\mathbb{Z}/p\mathbb{Z})|=p (p-1)(p+1)/2
+      .\] 
+\end{proof}
+\begin{example*}
+      Let $G=PSL_2 (\mathbb{Z}/5\mathbb{Z})$. Then $|G|= \frac{4 \cdot 5 \cdot  6}{2}=60$. 
+      
+      Let $G$ act on $\mathbb{Z}/5\mathbb{Z} \cup \left\{ \infty\right\}$ via Mobius transformations. By Lemma \ref{permrep}, the permutation representation \[
+      \phi: G \rightarrow \operatorname{Sym}(\left\{0,1,2,3,4\right\}\cup \infty) \cong S_{6} \quad  \text{ is injective.}
+      .\]
+      \textbf{Claim.} $\operatorname{Im} (\phi) \leq A_6 $, i.e $\psi: G \rightarrow S_6 \xrightarrow{\operatorname{sgn}} \left\{\pm 1\right\}$ is trivial. 
+      
+      \textbf{Proof.} Let $h \in G$ have order $2^{m}m$, $m$ odd. If $\psi (h^{m})=1$, then $\psi (h)^{m}=1 \implies \psi (h)=1$. So suffices to show $\psi (g)=1$ for all $g \in G$ with order a power of 2. But we know that every such $g$ belongs to a Sylow 2-subgroup. It then suffices to show $\psi (H)=1$, for $H$ a Sylow 2-subgroup (since $\operatorname{Ker} \psi$ is normal and all Sylow 2-subgroups are conjugate). Take \[
+          H=\left\langle \begin{pmatrix} 2&0\\0&3 \end{pmatrix}(\pm I),\begin{pmatrix} 0&1\\-1&0 \end{pmatrix} (\pm I)\right\rangle
+      .\] We compute that $\phi \begin{pmatrix} 2&0\\0&3 \end{pmatrix}= (14)(23)$, since it acts as $z \mapsto -z$. Also, $\phi \begin{pmatrix} 0&1\\-1&0 \end{pmatrix}= (0 \infty)(14)$, since it acts as $z \mapsto -\frac{1}{z}$. Thus $\psi (H)=1$. This proves the claim. 
+
+      See Example Sheet 1 Q14 for a similar result: If $G \leq A_6 $ and $|
+      G|=60$, then $G \cong A_5 $.
+\end{example*}
+\begin{remarks}
+      (Not proved in this course)\hfill 
+      \begin{itemize}
+           \item $PSL_n (\mathbb{Z}/p\mathbb{Z})$ is a simple group for all $n \geq 2$ and $p$ a prime, e.g $(n,p)=(2,2), (2,3)$ (finite groups of Lie type). 
+           \item The smallest non-abelian simple groups are $A_5 \cong PSL_2 (\mathbb{Z}/5\mathbb{Z})$ of order 60, and $PSL_2 (\mathbb{Z}/7\mathbb{Z})$ of order 168.
+      \end{itemize}
+\end{remarks}
+\subsection{Finite abelian groups}
+We now investigate finite abelian groups, which we can actually characterise very effectively.
+\begin{lemma}
+      If $m,n \in \mathbb{N}$ are coprime, then $C_m \times C_n \cong C_{mn}$.
+\end{lemma}
+\begin{proof}
+      Let $g$ and $h$ be generators of $C_n$ and $C_m$. Then $(g,h)\in C_m \times C_n$ and $(g,h)^{r}=(g^{r}, h^{r})$. Hence 
+      \begin{align*}
+           (g,h)^{r}=1 &\iff m|r \text{ and } n|r\\
+           & \iff mn|r \quad \text{ as } m,n \text{ coprime}.
+      \end{align*}
+      Thus $(g,h)$ has order $mn =|C_m \times C_n|$. So \[
+      C_m \times C_n \cong C_{mn} \cong \langle (g,h) \rangle 
+      .\]
+\end{proof}
+\begin{corollary}\label{finabl1}
+     Let $G$ be a finite abelian group. Then \[
+     G \cong C_{n_1 } \times C_{n_2 }\times \ldots \times C_{n_k}
+     ,\] where $n_{i}$ are prime powers. 
+\end{corollary}
+\begin{proof}
+      If $n=p_1^{a_1 }\ldots p_r ^{a_r}$, where $p_1 ,\ldots , p_r$ are distinct primes, then we just apply our previous lemma inductively to get \[
+      C_{n}\cong C_{p_1 ^{a_1 }}\times C_{p_2 ^{a_2 }}\times \ldots \times C_{p_r ^{a_r }}
+      .\] 
+\end{proof}
+\begin{theorem}\label{finabl2}
+     Every finite abelian group $G$ is isomorphic to a product of cyclic groups.
+
+     Note such an isomorphism is not unique.
+\end{theorem}
+\begin{proof}
+      Immediate by applying Corollary \ref{finabl1}.
+\end{proof}
+\begin{theorem}\label{finabl3}
+      Let $G$ be a finite abelian group. Then $G \cong C_{d_1 }\times C_{d_2 }\times \ldots C_{d_t}$, for some $d_1 | d_2 | \ldots | d_t$ (they are successively divisible).
+\end{theorem}
+\begin{remark}
+      
+\end{remark}
+This almost immediately shows that finite abelian groups are pretty easy to work with. Let's use our results to compute what the abelian groups of various orders are in an example.
+\begin{example*}
+      \begin{itemize}
+           \item[(i)] The abelian groups of order 8 are \[
+               C_8 , C_2 \times C_4 , C_2 \times C_2 \times C2 
+               .\] 
+           \item[(ii)] For the abelian groups of order 12, using \ref{finabl2} we get that they are \[
+           C_2 \times C_2 \times C_3 , C_4 \times C_3 
+           .\] Using \ref{finabl3} we get \[
+           C_2 \times C_6 , C_{12} 
+           .\] This isn't a problem as these are pairwise isomorphic.
+      \end{itemize}
+\end{example*}
+\begin{definition*}[Exponent of a group]
+      The \vocab{exponent} of a group $G$ is the least integer $n \geq 1$ such that $g^{n}=1$ for all $g \in G$, i.e the LCM of the orders of the elements of $G$. For example, $A_4 $ has exponent 6.
+\end{definition*}
+\begin{corollary}
+     Every finite abelian group contains an element whose order is the exponent of the group.
+\end{corollary}
+\begin{proof}
+      If $G \cong C_{d_1 }\times C_{d_2 }\times \ldots C_{d_t}$ with $d_1 | d_2 | \ldots | d_t$, then every $g \in G$ has order dividing $d_{t}$, and $h \in C_{d_t}$ of order $d_t$, then $(1,\ldots ,h)\in G$ has order $d_t$. Thus $G$ has exponent $d_t$.
 \end{proof}
 \end{document}

@@ -449,8 +449,10 @@ We aim to extend Riemann integration to complex functions $f: U \rightarrow \mat
      where $\sup _{\gamma}|f|=\sup _{t \in[a, b]}|f(\gamma(t))|$.
 \end{proposition}
 \begin{proof}
-     If $\gamma$ is $C^{1}$, then $\left|\int_{\gamma} f(z) d z\right|=\left|\int_{a}^{b} f(\gamma(t)) \gamma^{\prime}(t) d t\right| \leq$
-     $\int_{a}^{b}\left|f(\gamma(t)) \| \gamma^{\prime}(t)\right| d t \leq \sup _{t \in[a, b]}|f(\gamma(t))|$ length $(\gamma)$. If $\gamma$ is piecewise $C^{1}$ then the result follows from the definition $\int_{\gamma} f(z) d z=\sum_{j=1}^{n} \int_{\gamma_{j}} f(z) d z$ where $\gamma_{j}$ is $C^{1}$, and the triangle inequality.
+     If $\gamma$ is $C^{1}$, then \[
+          \left|\int_{\gamma} f(z) d z\right|=\left|\int_{a}^{b} f(\gamma(t)) \gamma^{\prime}(t) d t\right| \leq
+          \int_{a}^{b}\left|f(\gamma(t)) \| \gamma^{\prime}(t)\right| d t \leq \sup _{t \in[a, b]}|f(\gamma(t))|\operatorname{length}(\gamma)
+     .\] If $\gamma$ is piecewise $C^{1}$ then the result follows from the definition $\int_{\gamma} f(z) d z=\sum_{j=1}^{n} \int_{\gamma_{j}} f(z) d z$ where $\gamma_{j}$ is $C^{1}$, and the triangle inequality.
 \end{proof}
 We can now look at the complex version of the FTC.
 \begin{theorem}[Fundamental Theorem of Calculus]
@@ -471,4 +473,19 @@ We can now look at the complex version of the FTC.
      
      We shall see later (by infinite differentiability of holomorphic functions) that if $F^{\prime}(z)=f(z)$, then $f$ is automatically continuous.
 \end{remark}
+\begin{example*}
+      Let $\int_{\gamma}^{}z^{n} \ \mathrm{d}z $ for $n \in \mathbb{Z}$, where $\gamma: [0,1]\rightarrow \mathbb{C}$, $\gamma (t)=R e^{2\pi it}$ for some $R>0$. (The image of $\gamma$ is the circle of radius $R$ centred at 0). 
+
+      For $n \neq 1$, $ \frac{z^{n+1}}{n+1}$ is an antiderivative of $z^{n}$ in $\mathbb{C}\backslash \left\{0\right\}$, so by the FTC, $\int_{\gamma}^{}z^{n} \ \mathrm{d}z =0$ since $\gamma$ is a closed curve.
+
+      For $n=-1$, use the definition of the integral: \[
+          \int_{\gamma}^{}\frac{1}{z} \ \mathrm{d}z =\int_{0}^{1} \frac{\gamma' (t)}{\gamma (t)} \ \mathrm{d}t=\int_{0}^{1} \frac{2 \pi iR e^{2\pi it}}{R e^{2\pi it}} \ \mathrm{d}t= 2 \pi i
+      .\] 
+      Since $\int_{\gamma} \frac{1}{z} d z \neq 0$, we can conclude that for any $R>0, \frac{1}{z}$ has no anti-derivative in any open set containing the circle $\{|z|=R\}$.
+
+      In particular, since for any branch $\lambda(z)$ of logarithm the derivative $\lambda^{\prime}(z)=\frac{1}{z}$, there is no branch of logarithm on $\mathbb{C}^{\star}=\mathbb{C} \backslash\{0\} .$
+\end{example*}
+\begin{theorem}[Converse to FTC]
+      
+\end{theorem}
 \end{document}
