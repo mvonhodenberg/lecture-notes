@@ -62,13 +62,10 @@ Let $f: U \rightarrow \mathbb{C}$, where $U$ is open.
      .\] exists at a complex number.
 \end{definition*}
 \begin{definition*}[Holomorphic function]
-     $f$ is holomorphic at $w \in U$ if there is $\varepsilon >0$ such that $D (w, \varepsilon)\subset U$ and $f$ is differentiable at every point in $D (w, \varepsilon)$. 
+     $f$ is \vocab{holomorphic}\footnotemark at $w \in U$ if there is $\varepsilon >0$ such that $D (w, \varepsilon)\subset U$ and $f$ is differentiable at every point in $D (w, \varepsilon)$. 
 
      Equivalently, $f$ is holomorphic in $U$ if $f$ is holomorphic at every point in $U$, or equivalently, $f$ is differentiable at every point in $U$.
-\end{definition*}
-\begin{remark}
-     Sometimes we use "analytic" to mean holomorphic.
-\end{remark}
+\end{definition*}\footnotetext{Sometimes we use "analytic" to mean holomorphic.}
 Usual rules of differentiation of real functions of a real variable hold for complex functions. Derivatives of sums, products, quotients of functions are obtained in the same way (can easily be checked). 
 
 \begin{proposition}
@@ -272,7 +269,19 @@ If $f: \mathbb{C} \rightarrow \mathbb{C}$ is holomorphic on all of $\mathbb{C}$,
       .\] where $\operatorname{arg}(z)$ is the unique argument of $z \in U_1 $ in $(-\pi,\pi)$.
 \end{definition*}
 \begin{remark}
-      do later, why it's a branch of log
+     $\operatorname{Log}$ is a branch of logarithm in $U_{1}:$ to check continuity of $\operatorname{Log}$, note that
+     $z \mapsto \log |z|$ is continuous on $\mathbb{C} \backslash\{0\}$ (by continuity of $z \mapsto|z|$ and
+     continuity of $r \mapsto \log r$ for $r>0$ ); also, $z \mapsto \arg (z)$ is continuous, since
+     $\theta \mapsto e^{i \theta}$ is a homeomorphism $(-\pi, \pi) \rightarrow \mathbb{S}^{1} \backslash\{-1\}$ (as can be checked
+     directly, where $\left.\mathbb{S}^{1}=\{z:|z|=1\}\right)$, and $z \mapsto \frac{z}{|z|}$ is continuous on
+     $\mathbb{C} \backslash\{0\} .$ So $z \mapsto \log (z)$ is continuous on $U_{1}$.
+     We also have \[
+          e^{\operatorname{Log} (z)}=e^{\ln |z|+i \arg (z)}=e^{\ln |z|} \cdot e^{i \text { arg }(z)}=
+          |z|(\cos \arg (z)+i \sin \arg (z))=z
+     .\]  So $\operatorname{Log}$ is a branch of logarithm in $U_{1}$.
+\end{remark}
+\begin{remark}
+      $\operatorname{Log}$ does not have a continuous extension to $\mathbb{C} \backslash\{0\}$ since $\arg (z) \rightarrow \pi$ as $z \rightarrow-1$ with $\operatorname{Im}(z)>0$, and $\arg (z) \rightarrow-\pi$ as $z \rightarrow-1$ with $\operatorname{Im}(z)<0$.
 \end{remark}
 \begin{proposition}
       \begin{itemize}
@@ -350,8 +359,8 @@ Aside:
       Any simply connected domain $U \subset \mathbb{C}$ with $U \neq \mathbb{C}$ is conformally equivalent to $D (0,1)$.
 \end{theorem}
 \begin{proof}
-      This is beyond the scope of the course. See Rudin's \emph{Real and Complex Analysis}.
-\end{proof}
+      This is beyond the scope of the course.\footnotemark
+\end{proof}\footnotetext{See Rudin's \emph{Real and Complex Analysis}.}
 \section{Complex Integration: Part I}
 We aim to extend Riemann integration to complex functions $f: U \rightarrow \mathbb{C}$ along curves in $U$. First we take a look at complex functions of a real variable. 
 \begin{definition*}

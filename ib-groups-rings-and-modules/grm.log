@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  3 FEB 2022 21:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.20)  7 FEB 2022 19:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -579,20 +579,24 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=examplebg, linecolor=examplefg, nobreak=false, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmexamplebox' on input line 136.
+(thmtools)             that uses `style=thmexamplebox' on input line 138.
 Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=definitionbg, linecolor=definitionfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmdefinitionbox' on input line 152.
+(thmtools)             that uses `style=thmdefinitionbox' on input line 154.
 Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=theorembg, linecolor=theoremfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmtheorembox' on input line 168.
+(thmtools)             that uses `style=thmtheorembox' on input line 170.
+Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=corollarybg, linecolor=corollaryfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
+(thmtools)             is not a known style key.
+(thmtools)             Will pass this to every \declaretheorem
+(thmtools)             that uses `style=thmcorollarybox' on input line 186.
 Package thmtools Info: Key `mdframed' (with value ` backgroundcolor=propositionbg, linecolor=propositionfg, topline=false, rightline=false, bottomline=false, leftline=true, linewidth=1.5pt, ')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmpropositionbox' on input line 184.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 188.
+(thmtools)             that uses `style=thmpropositionbox' on input line 202.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 206.
  (c:/texlive/2021/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2020/08/01 v0.72
 )
@@ -1115,7 +1119,33 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 698.
- [19] (./grm.aux)
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 703.
+ [19]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 720.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 724.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 747.
+ [20]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 752.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 760.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 765.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 779.
+ [21] [22] (./grm.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1123,18 +1153,18 @@ Package rerunfilecheck Info: File `grm.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 20120 strings out of 478542
- 367250 string characters out of 5854402
- 895229 words of memory out of 5000000
- 37576 multiletter control sequences out of 15000+600000
+ 20146 strings out of 478542
+ 367737 string characters out of 5854402
+ 896588 words of memory out of 5000000
+ 37587 multiletter control sequences out of 15000+600000
  415264 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,21n,108p,10686b,678s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb>
-Output written on grm.pdf (19 pages, 302871 bytes).
+Output written on grm.pdf (22 pages, 315421 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 333 compressed objects within 4 object streams
- 137 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 438 PDF objects out of 1000 (max. 8388607)
+ 366 compressed objects within 4 object streams
+ 152 named destinations out of 1000 (max. 500000)
+ 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 

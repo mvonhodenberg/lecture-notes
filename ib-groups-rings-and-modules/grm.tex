@@ -623,7 +623,7 @@ Just as $PGL_{2}(\mathbb{C})$ acts on $\mathbb{C} \cup \left\{ \infty\right\}$ v
       .\]
       \textbf{Claim.} $\operatorname{Im} (\phi) \leq A_6 $, i.e $\psi: G \rightarrow S_6 \xrightarrow{\operatorname{sgn}} \left\{\pm 1\right\}$ is trivial. 
       
-      \textbf{Proof.} Let $h \in G$ have order $2^{m}m$, $m$ odd. If $\psi (h^{m})=1$, then $\psi (h)^{m}=1 \implies \psi (h)=1$. So suffices to show $\psi (g)=1$ for all $g \in G$ with order a power of 2. But we know that every such $g$ belongs to a Sylow 2-subgroup. It then suffices to show $\psi (H)=1$, for $H$ a Sylow 2-subgroup (since $\operatorname{Ker} \psi$ is normal and all Sylow 2-subgroups are conjugate). Take \[
+      \textbf{Proof.} Let $h \in G$ have order $2^{n}m$, $m$ odd. If $\psi (h^{m})=1$, then $\psi (h)^{m}=1 \implies \psi (h)=1$. So suffices to show $\psi (g)=1$ for all $g \in G$ with order a power of 2. But we know that every such $g$ belongs to a Sylow 2-subgroup. It then suffices to show $\psi (H)=1$, for $H$ a Sylow 2-subgroup (since $\operatorname{Ker} \psi$ is normal and all Sylow 2-subgroups are conjugate). Take \[
           H=\left\langle \begin{pmatrix} 2&0\\0&3 \end{pmatrix}(\pm I),\begin{pmatrix} 0&1\\-1&0 \end{pmatrix} (\pm I)\right\rangle
       .\] We compute that $\phi \begin{pmatrix} 2&0\\0&3 \end{pmatrix}= (14)(23)$, since it acts as $z \mapsto -z$. Also, $\phi \begin{pmatrix} 0&1\\-1&0 \end{pmatrix}= (0 \infty)(14)$, since it acts as $z \mapsto -\frac{1}{z}$. Thus $\psi (H)=1$. This proves the claim. 
 
@@ -696,6 +696,93 @@ This almost immediately shows that finite abelian groups are pretty easy to work
      Every finite abelian group contains an element whose order is the exponent of the group.
 \end{corollary}
 \begin{proof}
-      If $G \cong C_{d_1 }\times C_{d_2 }\times \ldots C_{d_t}$ with $d_1 | d_2 | \ldots | d_t$, then every $g \in G$ has order dividing $d_{t}$, and $h \in C_{d_t}$ of order $d_t$, then $(1,\ldots ,h)\in G$ has order $d_t$. Thus $G$ has exponent $d_t$.
+      If $G \cong C_{d_1 }\times C_{d_2 }\times \ldots C_{d_t}$ with $d_1 | d_2 | \ldots | d_t$, then every $g \in G$ has order dividing $d_{t}$, and $h \in C_{d_t}$ of order $d_t$, then $(1,1,\ldots ,h)\in G$ has order $d_t$. Thus $G$ has exponent $d_t$.
 \end{proof}
+\section{Rings}
+\subsection{Definitions and examples}
+\begin{definition*}[Ring]
+       A \vocab{ring} is a triple $(R, +, \cdot )$ consisting of a set $R$ and two binary operations $+: R \times R \rightarrow R$, $\cdot  : R \times R \rightarrow R$ satisfying: 
+       \begin{itemize}
+             \item[(i)] Addition: $(R,+)$ is an abelian group, with identity element 0.
+             \item[(ii)] Multiplication: the operation $\cdot $ is associative, and has an identity 1.
+             \item[(iii)] Distributivity: $x \cdot  (y+z)= x \cdot y + x \cdot  z$ and $(y +z) \cdot  x=y \cdot x +z \cdot  x $ for all $x,y,z \in R$.
+       \end{itemize}
+       We say $R$ is a \vocab{commutative ring} if $x \cdot  y= y \cdot  x$ for all $x,y \in R$. In this course, we will only consider commutative rings.
+\end{definition*}
+\begin{remarks}\leavevmode
+       \begin{itemize}
+             \item[(i)] As in the case of groups, we should check closure!
+             \item[(ii)] For any $x \in R$, write $-x$ for the inverse of $x$ under $+$, and abbreviate $x+ (-y)$ as $x-y$.
+             \item[(iii)] $0 \cdot x= (0+0)\cdot x=0=0 \cdot x+ 0 \cdot x $. Therefore $0 \cdot x=0$ for all $x \in R$.
+             \item[(iv)] $0=0 \cdot  x=(1-1) \cdot  x= 1 \cdot x + (-1) \cdot x=x+ (-1)\cdot x$. So $(-1)\cdot  x=-x$ for all $x \in R$.
+       \end{itemize}
+\end{remarks}
+\begin{definition*}[Subring]
+       A subset $S \subset R$ is a subring (written $S \leq R$) if it is a ring under $+$ and $\cdot $, with the same identity elements 0 and 1.
+\end{definition*}
+\begin{example*}
+       \leavevmode
+       \begin{itemize}
+             \item[(i)] $\mathbb{Z} \leq \mathbb{Q} \leq \mathbb{R} \leq \mathbb{C}$ are all rings.
+             \item[(ii)] $\mathbb{Z}[i]=\left\{a+bi: \ a,b \in \mathbb{Z}\right\} \leq \mathbb{C}$ is a ring. This is called the ring of Gaussian integers.
+             \item[(iii)] $\mathbb{Q}[\sqrt{2}]=\left\{a+b \sqrt{2}: \ a,b \in Q\right\}\leq \mathbb{R}$.
+             \item[(iv)] $\mathbb{Z}/n\mathbb{Z}=$ (integers modulo $n$)
+             \item[(v)] If $R,S$ are rings, we define the \vocab{product ring} to be the set $R \times S$ via \begin{align*}
+                  (r_1 ,s_1 )+ (r_2 ,s_2 )=(r_1 +r_2 ,s_1 +s_2 )\\
+                  (r_1 ,s_1 )\cdot  (r_2 ,s_2 )=(r_1 \cdot r_2 ,s_1 \cdot s_2 )\\
+                  0_{R \times S}=(0_{R},0_{S}) \text{ and } 1_{R \times S}=(1_R,1_S).
+             \end{align*}  
+             \item[(vi)] For $R$ a ring, a \vocab{polynomial} $f$ over $R$ is an expression \[
+             f=a_0 + a_1 X+a_2 X^2+ a_n X^{n}, \quad a_{i} \in R
+             .\] "$X$" is just a formal symbol (i.e our definition of a polynomial just means some finite sequence in $R$). The degree of $f$ is the largest $n \in \mathbb{N}$ s.t $a_{n} \neq 0$. We write $R[X]$ for the set of all polynomials over $R$.
+
+             If $g=b_0 +b_1 X + \ldots + b_{m}X^{m}$ is another polynomial, set 
+             \begin{align*}
+                   f+g= \sum_{i}^{}(a_{i}+b_{i})X^{i}\\
+                   f \cdot g=\sum_{i}^{}(\sum_{j=0}^{i}a_{j}b_{i-j})X^{i}
+             \end{align*}
+             Then $R[X]$ is a ring with identities $0_{R}$ and $1_{R}$, which are constant polynomials. We identify $R$ with the subring of constant polynomials (i.e $a_{i}=0$ for all $i>0$)
+       \end{itemize}
+\end{example*}
+\begin{definition*}[Unit]
+       An element $r \in R$ is a \vocab{unit} if it has an inverse under multiplication, i.e $\exists s \in R: \ s \cdot r=1$.
+
+       The units in $R$ form an abelian group $(R^{\times},\cdot )$ under multiplication. For example, $\mathbb{Z}^{\times}=\left\{\pm 1\right\}$ and $\mathbb{Q}^{\times}=\mathbb{Q}\backslash 0$. 
+\end{definition*}
+\begin{definition*}[Field]
+       A \vocab{field} is a ring with $0 \neq 1$, such that every non-zero element is a unit. It's ``a ring where you can divide''. Examples of rings are $\mathbb{Q} $ and $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime.
+\end{definition*}
+\begin{remark}
+       If $R$ is a ring where $0=1$, then for all $x \in R$ we have \[
+       x=1 \cdot x =0 \cdot x=0
+       .\] So $R=\left\{0\right\}$ is the trivial ring. This is why we stipulate that $0 \neq 1$ for a ring to be a field.
+\end{remark}
+\begin{proposition}[Euclidean algorithm for rings]
+       Let $f,g \in R[X]$. Suppose the leading coefficient of $g$ is a unit. Then there exist $q, r \in R[X]$ s.t. \[
+       f (X)=q (X)g (X)+r (X) \quad \text{ where } \operatorname{deg}(r) < \operatorname{deg}(g)
+       .\] 
+\end{proposition}
+\begin{proof}
+       Induction on $n=\operatorname{deg}(f)$. Write \begin{align*}
+             f (X)= a_{n}X^{n}+a_{n-1}X^{n-1}+ \ldots +a_0 , \quad a_{n}\neq 0\\
+             g (X)= b_{n}X^{n}+b_{n-1}X^{n-1}+ \ldots +b_0 , \quad b_{n}\neq 0
+       \end{align*}
+       If $n<m$, then let $q=0$ and $r=f$. Done. Otherwise, we have $n \geq m$ and we set \[
+       f_1 (X)= f (X)-a_{n} {b_{m}}^{-1} g (X) X ^{n-m}
+       .\] The coefficient of $X^{n}$ is $a_{n}-a_{n}{b_{m}}^{-1}b_{m}=0$. Thus  $\operatorname{deg}(f_{1})<n$. 
+       
+       By the inductive hypothesis, $\exists q_1 ,r \in R[X]$ such that $f_1 (X)=q_1 (X)g (X)+r (X)$ where $\operatorname{deg}(r) < \operatorname{deg}(g)$. Therefore \[
+       f (X)=\underbrace{q_1 (X)+a_n {b_{m}}^{-1} X ^{n-m}}_{q (X)}+r (X) 
+       .\] So we are done. 
+\end{proof}
+\begin{example*}
+       Let's look at further examples of rings.
+       \begin{itemize}
+             \item[(i)] If $R$ is a ring and $X$ is a set, then the set of all functions $X \rightarrow R$ is a ring under pointwise operations: \begin{align*}
+                   (f+g)(x)= f (x)+g (x)\\
+                   (f \cdot  g)(x)=f (x) \cdot  g (x)
+             \end{align*} Further interesting examples appear as subrings, for example the ring of all $C^{1}$ functions from $\mathbb{R} \rightarrow \mathbb{R}$.
+             \item[(ii)] 
+       \end{itemize}
+\end{example*}
 \end{document}

@@ -8,4 +8,6 @@
 \contentsline {subsection}{\numberline {1.6}The Sylow theorems}{13}{subsection.1.6}%
 \contentsline {subsection}{\numberline {1.7}Matrix groups}{15}{subsection.1.7}%
 \contentsline {subsection}{\numberline {1.8}Finite abelian groups}{17}{subsection.1.8}%
+\contentsline {section}{\numberline {2}Rings}{19}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Definitions and examples}{19}{subsection.2.1}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
