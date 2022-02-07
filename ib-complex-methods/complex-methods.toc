@@ -1,8 +1,0 @@
-\contentsline {section}{\numberline {0}Background material}{2}{section.0}%
-\contentsline {subsection}{\numberline {0.1}Complex numbers}{2}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Trigonometric and hyperbolic functions}{2}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Calculus of real functions in $\geq 1$ variables}{2}{subsection.0.3}%
-\contentsline {section}{\numberline {1}Analytic functions}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}The extended complex plane of the Riemann sphere}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Complex differentiation and analytic functions}{3}{subsection.1.2}%
-\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

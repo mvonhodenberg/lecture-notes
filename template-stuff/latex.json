@@ -6,23 +6,26 @@
 				"\t\\item $0",
 				"\\end{itemize}"
 
-		],
-			"description": "Inline math"
-			},
-	"infty": {
-		"prefix": "ooo",
-			"body": [
-				"\\infty"
-		],
-			"description": "Infinity"
-			},
+		]
+	},
 	"sum": {
 		"prefix": "sum",
 			"body": [
 				"\\sum_{$1}^{$2}$0"
-		],
-			"description": "Sum"
-			},
+		]
+	},
+	"product": {
+		"prefix": "prod",
+			"body": [
+				"\\prod_{$1}^{$2}$0"
+		]
+	},
+	"integral": {
+		"prefix": "int",
+			"body": [
+				"\\int_{$1}^{$2}$3 \\ \\mathrm{d}$4 $0"
+		]
+	},
 	"curly brackets": {
 		"prefix": "cbr",
 			"body": [
@@ -72,13 +75,6 @@
 		],
 			"description": "exists symbol"
 			},
-	"text": {
-		"prefix": "txt",
-			"body": [
-				"\\text{$1} $0"
-		],
-			"description": "Write text in math mode"
-			},
 	"in": {
 		"prefix": "in",
 			"body": [
@@ -92,16 +88,23 @@
 				"\\mathbb{R}^{$1} $0"
 		],
 			"description": "the set R to the _"
-			},
+	},
 	"definition": {
 		"prefix": "def",
 			"body": [
-				"\\begin{definition}[$1]",
+				"\\begin{definition*}[$1]",
 				"\t $0",
-				"\\end{definition}"
-		],
-			"description": "insert brackets with escape"
-			},
+				"\\end{definition*}"
+		]
+	},
+	"corollary": {
+		"prefix": "cor",
+			"body": [
+				"\\begin{corollary}",
+				"\t $0",
+				"\\end{corollary}"
+		]
+	},
 	"proof": {
 		"prefix": "proof",
 			"body": [
@@ -123,9 +126,9 @@
 	"example": {
 		"prefix": "example",
 			"body": [
-				"\\begin{example}[$1]",
+				"\\begin{example*}",
 				"\t $0",
-				"\\end{example}"
+				"\\end{example*}"
 		]
 	},
 	"remark": {
@@ -134,6 +137,14 @@
 				"\\begin{remark}",
 				"\t $0",
 				"\\end{remark}"
+		]
+	},
+	"remarks": {
+		"prefix": "remarks",
+			"body": [
+				"\\begin{remarks}\\leavevmode",
+				"\t $0",
+				"\\end{remarks}"
 		]
 	},
 	"lemma": {
@@ -169,7 +180,7 @@
 			"description": "section"
 			},
 	"subsection": {
-		"prefix": "ssec",
+		"prefix": "sec1",
 			"body": [
 				"\\subsection{$1}",
 				"$0"
@@ -177,20 +188,20 @@
 			"description": "subsection"
 			},
 	"subsubsection": {
-		"prefix": "sssec",
+		"prefix": "sec2",
 			"body": [
 				"\\subsubsection{$1}",
 				"$0"
 		],
 			"description": "subsubsection"
 			},
-	"partial":{
-		"prefix": "pdev",
-			"body": "\\frac{\\partial $1}{\\partial $2} $0"
-	},
 	"newline":{
 		"prefix": "nl",
 			"body": "\\newline \n$0"
+	},
+	"fraction":{
+		"prefix": "frk",
+			"body": "\\frac{$1}{$2}$0"
 	},
 	"vocab":{
 		"prefix": "voc",
@@ -223,7 +234,7 @@
 			"body": "($1)$0"
 	},
 	"lrbrackets":{
-		"prefix": "brr",
+		"prefix": "lrbr",
 			"body": "\\left($1\\right)$0"
 	},
 	"real function":{
@@ -261,10 +272,6 @@
 	"matrix":{
 		"prefix": "pmat",
 			"body": "\\begin{pmatrix} $1 \\end{pmatrix}$0"
-	},
-	"inverse":{
-		"prefix": "inv",
-			"body": "{$1}^{-1}$0"
 	},
 	"begin": {
 		"prefix": "begin",
@@ -352,7 +359,126 @@
 		"prefix": "bm",
 			"body": ["\\bm{$1} $0"
 		]
-	} 
+	}, 
+	"Align*": {
+		"prefix": "al",
+		"body": [
+			"\\begin{align*}",
+			"\t$0",
+			"\\end{align*}"
+		]
+	},
+	"underbrace": {
+		"prefix": "underbrace",
+		"body": [
+			"\\underbrace{${1:${TM_SELECTED_TEXT}}}_{$2} $0"
+		]
+	},
+	"overbrace": {
+		"prefix": "overbrace",
+		"body": [
+			"\\overbrace{${1:${TM_SELECTED_TEXT}}}_{$2} $0"
+		]
+	},
+	"underset": {
+		"prefix": "underset",
+		"body": [
+			"\\underset{$1}{${2:${TM_SELECTED_TEXT}}} $0"
+		]
+	},
+	"overset": {
+		"prefix": "overset",
+		"body": [
+			"\\overset{$1}{${2:${TM_SELECTED_TEXT}}} $0"
+		]
+	},
+	"determinant": {
+		"prefix": "det",
+		"body": [
+			"\\operatorname{det}($1) $0"
+		]
+	},  
+	"trace": {
+		"prefix": "tr",
+		"body": [
+			"\\operatorname{tr}($1) $0"
+		]
+	},
+	"minimise": {
+		"prefix": "mini",
+		"body": [
+			"\\text{ minimise }$0"
+		]
+	},
+	"subject to": {
+		"prefix": "subj",
+		"body": [
+			"\\text{ subject to }$0"
+		]
+	},
+	"variance": {
+		"prefix": "var",
+		"body": [
+			"\\operatorname{Var}$0"
+		]
+	},
+	"kernel": {
+		"prefix": "ker",
+		"body": [
+			"\\operatorname{Ker}$0"
+		]
+	},
+	"image": {
+		"prefix": "im",
+		"body": [
+			"\\operatorname{Im}$0"
+		]
+	},
+	"mse": {
+		"prefix": "mse",
+		"body": [
+			"\\operatorname{mse}$0"
+		]
+	},
+	"orb": {
+		"prefix": "orb",
+		"body": [
+			"\\operatorname{orb}$0"
+		]
+	},
+	"aut": {
+		"prefix": "aut",
+		"body": [
+			"\\operatorname{Aut}$0"
+		]
+	},
+	"real": {
+		"prefix": "re",
+		"body": [
+			"\\operatorname{Re}$0"
+		]
+	},
+	"normal subgroup": {
+		"prefix": "nrs",
+		"body": [
+			"\\unlhd $0"
+		]
+	},
+	"reference": {
+		"prefix": "ref",
+		"body": [
+			"\\ref{$1}$0"
+		]
+	},
+	"limit": {
+		"prefix": "lim",
+		"body": [
+			"\\lim_{$1}$0"
+		]
+	}
+
+	   
+	
             
 
 
