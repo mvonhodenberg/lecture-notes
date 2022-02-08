@@ -362,6 +362,7 @@ Aside:
       This is beyond the scope of the course.\footnotemark
 \end{proof}\footnotetext{See Rudin's \emph{Real and Complex Analysis}.}
 \section{Complex Integration: Part I}
+\subsection{Definitions and basic properties}
 We aim to extend Riemann integration to complex functions $f: U \rightarrow \mathbb{C}$ along curves in $U$. First we take a look at complex functions of a real variable. 
 \begin{definition*}
       If $f: [a,b] \subset \mathbb{R} \rightarrow C$ is a complex function and if $f$ is Riemann integrable, define \[
@@ -463,6 +464,7 @@ We aim to extend Riemann integration to complex functions $f: U \rightarrow \mat
           \int_{a}^{b}\left|f(\gamma(t)) \| \gamma^{\prime}(t)\right| d t \leq \sup _{t \in[a, b]}|f(\gamma(t))|\operatorname{length}(\gamma)
      .\] If $\gamma$ is piecewise $C^{1}$ then the result follows from the definition $\int_{\gamma} f(z) d z=\sum_{j=1}^{n} \int_{\gamma_{j}} f(z) d z$ where $\gamma_{j}$ is $C^{1}$, and the triangle inequality.
 \end{proof}
+\subsection{Fundamental theorem of calculus}
 We can now look at the complex version of the FTC.
 \begin{theorem}[Fundamental Theorem of Calculus]
      Suppose that $f: U \rightarrow \mathbb{C}$ is continuous, $U \subset \mathbb{C}$ open. If there is a function $F: U \rightarrow \mathbb{C}$ such that $F^{\prime}(z)=f(z)$ for all $z \in U$, then for any curve $\gamma:[a, b] \rightarrow U$,
@@ -494,7 +496,187 @@ We can now look at the complex version of the FTC.
 
       In particular, since for any branch $\lambda(z)$ of logarithm the derivative $\lambda^{\prime}(z)=\frac{1}{z}$, there is no branch of logarithm on $\mathbb{C}^{\star}=\mathbb{C} \backslash\{0\} .$
 \end{example*}
-\begin{theorem}[Converse to FTC]
+\begin{theorem}[Converse to FTC]\label{ftcconverse}
+      Let $U \subset \mathbb{C}$ be a domain. If $f: U \rightarrow \mathbb{C}$ is continuous and if $\int_{\gamma}^{}f (z) \ \mathrm{d}z =0$ for every closed curve $\gamma$ in $U$, then $f$ has an antiderivtive, i.e there is a holomorphic function $F: U \rightarrow \mathbb{C}$ such that $F' (z)=f (z)$ for each $z \in U$.
+\end{theorem}
+\begin{proof}
+      Fix $a_0 \in U$. For $w \in U$, define \[
+      F (w) \int_{\gamma_{w}}^{}f (z) \ \mathrm{d}z 
+      .\] where $\gamma_{w}: [0,1] \rightarrow \mathbb{C}$ is a curve with $\gamma_{w} (0)=a_0 , \ \gamma_{w}(1)=w$ (exists since $U$ is path-connected). The definition of $F$ is independent of the chocie of $\gamma_{w}$ by our hypothesis that $\int_{\gamma}^{}f (z) \ \mathrm{d}z =0$ for every closed curve $\gamma$ in $U$. So $F: U \rightarrow \mathbb{C}$ is well-defined.
+
+      Fix $w \in U$. Since $U$ is open, there is $r>0$ such that $D (w,r) \subset  U$. For $h \in \mathbb{C}$ with $0 < |h|<r$, let $\delta_{h}$ be the straight line path $t \mapsto w+th$ for $t \in [0,1]$. Let \[
+      \gamma= \gamma_{w}+\delta_{h}+ (-\gamma_{w+h})
+      .\] $\gamma$ is closed so $\int_{\gamma}^{}f \ \mathrm{d}z=0 $. Thus \[
+      \int_{\gamma_{w+h}}^{}f (z) \ \mathrm{d}z =\int_{\gamma_{w}}^{}f (z) \ \mathrm{d}z +int_{\delta_{h}}^{}f (z) \ \mathrm{d}z 
+      .\] In terms of $F$, this says that \[
+     F (w+h)=F (w)+int_{\delta_{h}}^{}f (z) \ \mathrm{d}z =F (w)+ h f (w)+int_{\delta_{h}}^{}f (z)-f (w) \ \mathrm{d}z 
+      .\] So 
+      \begin{align*}
+           \left| \frac{F (w+h)-F (w)}{h}- f (w)\right| &= \frac{1}{|h|}|int_{\delta_{h}}^{}f (z)-f (w) \ \mathrm{d}z |\\
+           &\leq \frac{1}{|h|}\operatorname{length}(\delta_{h})\sup_{z}|f (z)-f (w)|\\
+           &=\sup_{z}|f (z)-f (w)|\\
+           & \rightarrow 0 \text{ as } h \rightarrow 0 \quad \text{ since } f \text{ is continuous.}
+      \end{align*}
+      Therefore $F$ is differentiable at $w$ with $F' (w)=f (w)$.
+\end{proof}
+The FTC is true for any domain, but next we restrict ourselves to a smaller subset of domains and prove some results for domains of certain shapes.
+\begin{definition*}[Star-shaped domain]
+      A domain $U$ is \vocab{star-shaped} if there is $a_0 \in U$ such that got each $w \in U$, the straight-line segment $[a_0 ,w] \subset U$.
+\end{definition*}
+\begin{remark}
+      $U$ is a disk $\implies $ $U$ is convex $\implies $ $U$ is star-shaped $\implies $ $U$ is path-connected. None of the reverse implications hold.
+      \begin{figure}[H]
+           \centering
+           \incfig{85}{star-drawing}
+      \end{figure}
+      
+\end{remark}
+\begin{definition*}[Triangle]
+      A \vocab{traingle} in $\mathbb{C}$ is the convex hull of three points in $\mathbb{C}$. The three points are the vertices of the triangle.
+\end{definition*}
+\begin{notation}
+     For a triangle $T$, we write $\int_{\partial T}^{}f (z) \ \mathrm{d}z $ to denote the integral of $f$ along the piecewise affine closed curve $\gamma=\gamma_1 +\gamma_2 +\gamma_3 $ where $\gamma_1 , \gamma_2 , \gamma_3 $ parameterise the three straight lines that are the sides of $T$ with the interior of $T$ to the left of them.
+\end{notation}
+\begin{corollary}[of Theorem \ref{ftcconverse}]\label{starantideriv}
+      If $U$ is star-shaped, $f: U \rightarrow \mathbb{C}$ is continuous and $\int_{\partial T}^{}f (z) \ \mathrm{d}z =0$ for any triangle $T \subset U$, then $f$ has an antiderivative in $U$.
+\end{corollary}
+\begin{proof}
+      Suppose $U$ is star-shaped with respect to a point $a_0 \in U$ and let $w \in U$ be some point. Let $\gamma_{w}$ be the function parameterising $[a_0 ,w]$ and let $F (w)=\int_{\gamma_{w}}^{}f (z) \ \mathrm{d}z .$ With $h, \delta_{h}$ and $\gamma$ as in the proof of Theorem \ref{ftcconverse}, we then have that $\int_{\gamma} f(z) d z=\pm \int_{\partial T} f(z) d z$ for a triangle $T \subset U$ (with the - sign if $T$ lies to the right of the directed boundary segments).
+      Since $\int_{\partial T} f(z) d z=0$ by hypothesis, we have that $\int_{\gamma} f(z) d z=0$. We can now proceed exactly as in the proof of Theorem \ref{ftcconverse}.
+\end{proof}
+We will soon see that the validity of $\int_{\gamma}^{}f (z) \ \mathrm{d}z=0 $ for any holomorphic $f$ on $U$ and any curve $\gamma$ in $U$ has important consequences.
+
+One of our goals in the course will be to characterise these domains $U$. We are going to build towards Cauchy's theorem, which states that this is true for simply connected $U$.
+
+The next object of discussion is an elegant proof of Cauchy's theorem restricted to the special case of triangles in $\mathbb{C}$.
+\begin{theorem}[Cauchy's theorem for triangles]\label{cauchytriangle}
+      Let $U \subset \mathbb{C}$ be open and $f: U \rightarrow \mathbb{C}$ be holomorphic. Then $\int_{\partial T}^{}f (z) \ \mathrm{d}z=0 $ for any triangle $T \subset U$.
+\end{theorem}
+\begin{proof}
+      Let $\eta (T)=\int_{\partial T}^{}f (z) \ \mathrm{d}z$.
+      
+      \emph{First key idea:} subdivide $T$ into four smaller triangles $T^{(1)},T^{(2)},T^{(3)},T^{(4)}$ by joining the midpoints of the sides of T:
+      
+      \incfig{40}{4triangles}
+      
+      Note that \[
+          \eta(T)=\int_{\partial T(1)} f(z) d z+\int_{\partial T(2)} f(z) d z+\int_{\partial T(3)} f(z) d z+\int_{\partial T^{(4)}} f(z) d z
+      .\] 
+     So by the triangle inequality,
+     $$
+     \left|\int_{\partial T^{(j)}} f(z) d z\right| \geq \frac{|\eta(T)|}{4}
+     $$
+     for some $j \in\{1,2,3,4\}$. Let $T_{1}=T^{(j)}$ for this $j$, and write $T_{0}=T$. So $\left|\eta\left(T_{1}\right)\right| \geq \frac{1}{4}\left|\eta\left(T_{0}\right)\right|$. Also, length $\left(\partial T_{1}\right)=\frac{1}{2}$ length $\left(\partial T_{0}\right)$.
+     Now repeat the process: subdivide $T_{1}$ and choose a new triangle $T_{2} \subset T_{1}$ exactly the same way. Doing this indefinitely generates a sequence of triangles $T_{0} \supset T_{1} \supset T_{2} \supset \ldots$ satisfying, for $n=1,2,3, \ldots$, \[
+     |\eta (T_{n})| \geq \frac{1}{4}|\eta (T_{n-1})| \text{ and } \operatorname{length}(\partial T_{n})=\frac{1}{2}\operatorname{length}(\partial T_{n-1})
+     .\] Iterating, we get \[
+          |\eta (T_{n})|=\geq \frac{1}{4^{n}}|\eta (T_{0})| \text{ and } \operatorname{length}(\partial T_{n})=\frac{1}{2^{n}}\operatorname{length}(\partial T_{0})
+     .\] Since $T_{n}$ are non-empty, nested closed subsets with $\operatorname{diam}(T_{n})\rightarrow 0$ and $\mathbb{C}$ is a complete metric space, we have that $\bigcup_{n=1}^{ \infty}T_{n}=\left\{z_0 \right\}$ for some $z_0 \in \mathbb{C}$ (Analysis \& Topology sheet 3).
+
+     Now let $\varepsilon >0$. Since $f$ is differentiable at $z_0 $, there is $\delta >0$ such that for all $z \in U$, \[
+     |z-z_0 |<\delta \implies |f (z)-f (z_0 )-f' (z_0 )(z-z_0 )| < \varepsilon |z-z_0 |
+     .\] \emph{Second key idea:} observe that for any $n$, \[
+          \int_{\partial T_{n}} f(z) d z=\int_{\partial T_{n}}\left(f(z)-f\left(z_{0}\right)-f^{\prime}\left(z_{0}\right)\left(z-z_{0}\right)\right) d z
+     \] (since $\int_{\partial T_{n}} 1 d z=\int_{\partial T_{n}} z d z=0$, by the FTC). 
+     
+     So choosing $n$ with $T_{n} \subset D\left(z_{0}, \delta\right)$ (which is possible since $z_{0} \in T_{n}$ for all $n$ and $\operatorname{diam}\left(T_{n}\right) \rightarrow 0$),
+     \begin{align*}
+          \frac{1}{4^{n}}\left|\eta\left(T_{0}\right)\right| &\leq\left|\eta\left(T_{n}\right)\right|=\left|\int_{\partial T_{n}} f(z) d z\right|\\
+          &=\left|\int_{\partial T_{n}}\left(f(z)-f\left(z_{0}\right)-f^{\prime}\left(z_{0}\right)\left(z-z_{0}\right)\right) d z\right|\\
+          &\leq\left(\sup _{z \in \partial T_{n}}\left|f(z)-f\left(z_{0}\right)-f^{\prime}\left(z_{0}\right)\left(z-z_{0}\right)\right|\right) \operatorname{length}\left(\partial T_{n}\right)\\
+          &=\leq \epsilon\left(\sup _{z \in \partial T_{n}}\left|z-z_{0}\right|\right)\operatorname{length}\left(\partial T_{n}\right) \leq \epsilon\left(\operatorname{length}\left(\partial T_{n}\right)\right)^{2}\\
+          &=\frac{\epsilon}{4^{n}}\left(\operatorname{length}\left(\partial T_{0}\right)\right)^{2}.
+     \end{align*}
+     Cancel $\frac{1}{4^{n}}$ on both sides and let $\epsilon \rightarrow 0$. This gives $\eta\left(T_{0}\right)=0$.
+\end{proof}
+For later applications, we want to generalise this theorem to continuous functions which are assumed holomorphic \emph{except at a finite number of points}.
+\begin{theorem}
+      Let $U \subset \mathbb{C}$ be open and $f: U \rightarrow \mathbb{C}$ be continuous. Let $S \subset U$ be a finite set and suppose that $f$ is holomorphic on $U\backslash S$. Then \[
+      \int_{\partial T}^{}f (z) \ \mathrm{d} z =0 \quad \text{ for every triangle } T \subset U
+      .\] 
+\end{theorem}
+\begin{proof}
+      Subdivide $T$ into a total of $N=4^{n}$ smaller triangles by the iterative procedure before, where at each step we join up the midpoints of the sides of the triangles at the previous step. This time we keep all the smaller triangles; call them $T_1 , T_2 , \ldots , T_N$. (Note the notational difference from before.) Then since the integrals along the sides of the smaller triangles that are interior to $T$ cancel, we get that \[
+      \int_{\partial T}^{}f (z) \ \mathrm{d}z = \sum_{j=1}^{N} \int_{ \partial T_{j}}^{}f (z) \ \mathrm{d}z
+      .\] Note by the previous theorem that $\int_{ \partial T_{j}}^{}f (z) \ \mathrm{d}z=0$ unless $T_{j}\cap S \neq \emptyset$. So letting $I=\left\{j: T_{j} \cup S = \emptyset\right\}$, we have that $\int_{\partial T}^{}f (z) \ \mathrm{d}z=\sum_{j \in I}^{}\int_{ \partial T_{j}}^{}f (z) \ \mathrm{d}z$. Since any point can be in at most 6 smaller triangles and $\operatorname{length}( \partial T_{j})=\frac{1}{2^{n}}\operatorname{length} ( \partial T)$, we get that \[
+      \left|\int_{ \partial T}^{}f (z) \ \mathrm{d}z \right| \leq 6 \left|S\right|\left(\sup_{z \in T} \left|f (z)\right|\right) \frac{\operatorname{length} ( \partial T)}{2^{n}}
+      .\] Then let $n \rightarrow \infty$ and we are done.
+\end{proof}
+\begin{corollary}(Convex Cauchy)
+      Let $U \subset C$ be convex, or more generally, a star domain. Let $f: U \rightarrow \mathbb{C}$ be continuous and holomorphic in $U \backslash S$ where $S$ is a finite set. Then $\int_{\gamma}^{}f (z) \ \mathrm{d}z=0 $ for any closed curve $\gamma$ in $U$.
+\end{corollary}
+\begin{proof}
+      By Theorem \ref{cauchytriangle}, $\int_{ \partial T}^{} f (z)\ \mathrm{d}z=0 $ for any triangle $T \subset U$. Since $U$ is a star domain and $f$ is continuous, this means that by Corollary \ref{starantideriv} that $f$ has an antiderivative in $U$. The result now follows from the FTC.
+\end{proof}
+Now we are ready to draw a series of very nice corollaries of "convex Cauchy". The main corollary is a representation formula known as the \emph{Cauchy integral formula}, from which the other results will follow.
+\subsection{Cauchy integral formula}
+\begin{notation}
+     For a disk $D (a,\rho)$ we will write $\int_{ \partial D (a, \rho)}^{}f (z) \ \mathrm{d}z $ to mean $\int_{\gamma}^{}f (z) \ \mathrm{d}z $ where $\gamma$ is the curve $\gamma (t)=a+\rho e^{2\pi i t}$ (which parameterises the boundary of the disk with positive orientation, i.e so that the disk lies to the left of the directed boundary circle). 
+\end{notation}
+\begin{theorem}[Cauchy integral formula for a disk]
+      Let $D=D (a,r)$ and let $f: D \rightarrow \mathbb{C}$ be holomorphic. Then for any $\rho$ with $0 < \rho< r$ and any $w \in D (a, \rho)$ wehave that \[
+      f (w)=\frac{1}{2\pi i} \int_{ \partial D (a, \rho)}^{} \frac{f (z)}{z-w} \ \mathrm{d}z
+      .\] In particular (taking $w=a$), \[
+          f (a)=\frac{1}{2\pi i} \int_{ \partial D (a, \rho)}^{} \frac{f (z)}{z-a} \ \mathrm{d}z= \int_{0}^{1}f (a+ \rho e^{2\pi it}) \ \mathrm{d}t 
+      .\] This is called the \emph{mean value property} for holomorphic functions.
+\end{theorem}
+For the proof we will need the following fact:
+\begin{lemma}
+      If $\gamma: [a,b] \rightarrow \mathbb{C}$ is a curve and $\left(f_{n}\right)$ is a sequence of continuous complex functions on image $(\gamma)$ converging uniformly to a function $f$ on image $(\gamma)$, then $\int_{\gamma} f_{n}(z) d z \rightarrow \int_{\gamma} f(z) d z$.
+      This is true because
+      $$
+      \begin{array}{r}
+      \left|\int_{\gamma} f_{n}(z) d z-\int_{\gamma} f(z) d z\right|=\left|\int_{\gamma}\left(f_{n}(z)-f(z)\right) d z\right| \\
+      \leq \sup _{z \in \operatorname{image}(\gamma)}\left|f_{n}(z)-f(z)\right| \operatorname{length}(\gamma)
+      \end{array}
+      $$
+\end{lemma}
+Now let's prove the Cauchy integral formula.
+\begin{proof}
+     Fix $w \in D (a, \rho)$ and define $h: D \rightarrow C$ by 
+     \begin{equation*}
+           h (z)=
+           \begin{cases}
+                \frac{f (z)-f (w)}{z-w}& z \neq w\\
+                f' (w) & z=w
+           \end{cases}
+     \end{equation*}
+     Then $h$ is continuous on $D$ and holomorphic in $D \backslash \left\{w\right\}$, so by ``convex Cauchy'', \[
+     \int_{ \partial D (a,\rho)}^{}h (z) \ \mathrm{d}z=0 
+     .\] Substituting for $h$, we get \[
+     f (w) \int_{ \partial D (a,\rho)}^{} \frac{1}{z-w} \ \mathrm{d}z=\int_{ \partial D (a,\rho)}^{} \frac{f (z)}{z-w} \ \mathrm{d}z
+     .\] Now we just have to show that $\int_{\partial D(a, \rho)} \frac{1}{z-w} d z=2 \pi i$. To do this, note that $\frac{1}{z-w}=\frac{1}{z-a+a-w}=\frac{1}{(z-a)\left(1-\frac{w-a}{z-a}\right)}=\sum_{j=0}^{\infty} \frac{(w-a)^{j}}{(z-a)^{j+1}}$, where the convergence is uniform for $z \in \partial D(a, \rho)$ by the Weierstrass $M$-test (since $\left|\left(\frac{w-a}{z-a}\right)^{j}\right|=\left(\frac{|w-a|}{\rho}\right)^{j} \equiv M_{j}$, and $\left.\sum M_{j}<\infty .\right)$ Therefore, by the above fact, we can interchange summation and integration to get,
+     $$
+     \int_{\partial D(a, \rho)} \frac{d z}{z-w}=\sum_{j=0}^{\infty}(w-a)^{j} \int_{\partial D(a, \rho)} \frac{1}{(z-a)^{j+1}} d z
+     $$
+     Now for $j \geq 1$, the function $\frac{1}{(z-a)^{j+1}}$ has an anti-derivative $\left(=-\frac{1}{j(z-a)^{j}}\right)$ in a neighbourhood of $\partial D(a, \rho)$, so by FTC, all integrals on the right for $j \geq 1$ are zero. For $j=0$, by direct computation $\int_{\partial D(a, \rho)} \frac{1}{z-a} d z=2 \pi i$.
+     So $\int_{\partial D(a, \rho)} \frac{1}{z-w} d z=2 \pi i$, which concludes the proof.
+\end{proof}
+This finally gives us the tools to prove two very deep results: Liouville's theorem and the Fundamental Theorem of Algebra.
+\begin{theorem}[Liouville's theorem]
+      If $f: \mathbb{C} \rightarrow \mathbb{C}$ is entire (holomorphic on $\mathbb{C}$) and bounded, then $f$ is constant. More generally, if $f$ is entire with sub-linear growth (i.e there are constants $K>0$ and $\alpha<1$ such that $\left|f (z)\right|\leq K (1+\left|z\right|^{\alpha})$) for all $z \in \mathbb{C}$, then $f$ is constant. 
+\end{theorem}
+\begin{proof}
+     For any given $w \in \mathbb{C}$ and any $\rho>|w|$, we have by $\mathrm{CIF}$ that $f(w)=\frac{1}{2 \pi i} \int_{\partial D(0, \rho)} \frac{f(z)}{z-w} d z$ and $f(0)=\frac{1}{2 \pi i} \int_{\partial D(0, \rho)}\left(\frac{f(z)}{z} d z\right.$. Thus
+     $$
+     \begin{aligned}
+     |f(w)-f(0)| &=\frac{1}{2 \pi}\left|\int_{\partial D(0, \rho)} \frac{w f(z)}{z(z-w)} d z\right| \\
+     & \leq \frac{|w|}{2 \pi} \sup _{z \in \partial D(0, \rho)} \frac{|f(z)|}{|z||| z|-| w||} \operatorname{length}(\partial D(0, \rho)) \\
+     & \leq \frac{|w| K\left(1+\rho^{\alpha}\right)}{2 \pi \rho(\rho-|w|)} 2 \pi \rho=\frac{|w| K\left(1+\rho^{\alpha}\right)}{\rho-|w|}
+     \end{aligned}
+     $$
+     Let $\rho \rightarrow \infty$ in this, keeping $w$ fixed to conclude that $f(w)=f(0)$. So we are done.
+\end{proof}
+\begin{theorem}[Fundamental Theorem of Algebra]
+      Every non-constant polynomial with complex coefficients has a complex root.
+\end{theorem}
+\begin{proof}
+     Let $p(z)=a_{n} z^{n}+a_{n-1} z^{n-1}+\ldots+a_{1} z+a_{0}$ be a complex polynomial of degree $n \geq 1$. Then $a_{n} \neq 0$, and for $z \neq 0$ we can write $p(z)=z^{n}\left(a_{n}+\frac{a_{n-1}}{z}+\ldots+\frac{a_{0}}{z^{n}}\right)$. So by the triangle inequality,
+     $|p(z)| \geq\left(|z|^{n}\left(\left|a_{n}\right|-\frac{\left|a_{n-1}\right|}{|z|}-\ldots-\frac{\left|a_{0}\right|}{|z|^{n}}\right)\right.$. This implies that we can find
+     $R>0$ such that $|p(z)| \geq 1$ for $|z|>R^{\prime}$ (in fact $|p(z)| \rightarrow \infty$ as $\left.|z| \rightarrow \infty\right)$.
+     Now if $p(z) \neq 0$ for all $z$, then $g(z)=\frac{1}{p(z)}$ is entire. By the above, $|g(z)| \leq 1$ for $|z|>R$. By continuity of $g$, we also have that $|g(z)|$ bounded from above on the compact set $\{|z| \leq R\}$. Thus $g$ is a bounded entire function, so by Liouville's theorem $g$ is constant. Since $p$ is non-constant, this is impossible. So $p$ must have a zero.
+\end{proof}
+\begin{theorem}[Local maximum modulus principle]
       
 \end{theorem}
 \end{document}

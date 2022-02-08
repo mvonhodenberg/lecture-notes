@@ -31,7 +31,9 @@ These are my notes for the IB course `Groups, Rings and Modules', which was lect
 
 \newpage
 \section{Introduction}
-This course will contain several sections: 
+This is a second course in abstract algebra that will extend our knowledge of groups and introduce other fundamental objects.
+
+The course is divided into several sections: 
 \begin{enumerate}
     \item Groups; this will be a continuation from IA, focusing on simple groups, $p$-groups, and $p$-subgroups. The main result in this part of the course will be the Sylow theorems.
     \item Rings; these are sets where you can add, subtract and multiply (e.g $\mathbb{Z}$ or $\mathbb{C}[X]$). We will study rings of integers such as $\mathbb{Z}[i], \mathbb{Z}[\sqrt{2}]$. These also generalise to polynomial rings. We will also study fields, which are rings where you can divide (e.g $\mathbb{Q},\mathbb{R},\mathbb{C}$ or $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime).
@@ -190,15 +192,15 @@ This first subsection will just recap the results seen in IA Groups; it can be s
      HK/K \cong H/(H \cap K)
      .\] 
 \end{proof}
-\begin{remark}[1.2]
+\begin{lemma}\label{1p2}
       Suppose $K \unlhd G$. There is a bijection \[
       \left\{\text{subgroups of }G/K\right\} \leftrightarrow \left\{\text{subgroups of }G \text{ containing }K\right\}
       ,\] 
      where $X \mapsto \left\{g \in G: gK \in X\right\}$ and $H/K \leftarrow H$. This further restricts to a bijection 
      \[
       \left\{\text{normal subgroups of }G/K\right\} \leftrightarrow \left\{\text{normal subgroups of }G \text{ containing }K\right\}
-      ,\] 
-\end{remark}
+      .\] 
+\end{lemma}
 \begin{theorem}[Third Isomorphism Theorem]
       Let $K \leq H \leq G$ be normal subgroups of $G$. Then \[
       \frac{G/K}{H/K} \cong G/H
@@ -237,7 +239,7 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
      ,\] with each quotient $G_{i}/G_{i-1}$ simple.
 \end{lemma}
 \begin{proof}
-      We induct on $|G|$. If $|G|=1$ it's obvious. If $|G|>1$, let $G_{m-1}$ be a normal subgroup of largest possible order that isn't $G$ itself. Remark 1.2 implies $G/G_{m-1}$ is simple. Then apply the induction hypothesis to $G_{m-1}$. 
+      We induct on $|G|$. If $|G|=1$ it's obvious. If $|G|>1$, let $G_{m-1}$ be a normal subgroup of largest possible order that isn't $G$ itself. Lemma \ref{1p2} implies $G/G_{m-1}$ is simple. Then apply the induction hypothesis to $G_{m-1}$. 
 \end{proof}
 \subsection{Group actions}
 \begin{definition*}[Permutation group]
@@ -252,7 +254,7 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
       \end{itemize}
 \end{example*}
 \begin{definition*}[Group action]
-      An actio of a group $G$ on a set $X$ is a function $\ast: G \times X \rightarrow X$ satisfying 
+      An action of a group $G$ on a set $X$ is a function $\ast: G \times X \rightarrow X$ satisfying 
       \begin{itemize}
            \item[(i)] $e \ast x =x $ for all $x \in X$ 
            \item[(ii)] $(g_1 g_2 )\ast x= g_1 \ast (g_2 \ast x)$ for all $g_1 ,g_2 \in G$, $x \in X$.
