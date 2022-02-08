@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="175.8092mm"
+   height="93.68734mm"
+   viewBox="0 0 175.8092 93.68734"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="mle1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.32"
+     inkscape:cx="362.5"
+     inkscape:cy="300"
+     inkscape:window-width="2256"
+     inkscape:window-height="1410"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs2">
+    <rect
+       x="43.695396"
+       y="40.681919"
+       width="111.4986"
+       height="33.148235"
+       id="rect5518" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect3333"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       style="overflow:visible"
+       id="marker1774"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1772" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1496" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1499" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-10.217457,-5.7329425)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker1774)"
+       d="M 11.561074,10.763758 V 87.30604"
+       id="path958" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.166107;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 69.135371,87.306038 H 165.84161"
+       id="path1073" />
+    <circle
+       style="fill:#ffffff;stroke:#ff0100;stroke-width:0.297;stroke-opacity:1"
+       id="path1281"
+       cx="67.173828"
+       cy="87.106712"
+       r="1.7939597" />
+    <circle
+       style="fill:#ffffff;stroke:#ff0100;stroke-width:0.297;stroke-opacity:1"
+       id="path1281-8"
+       cx="66.974495"
+       cy="40.663086"
+       r="1.7939597" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 11.561074,87.306038 h 53.81879"
+       id="path3054" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:0.262242px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 67.771765,41.860146 c 0.1903,15.149653 0.380597,30.299043 16.726216,37.87361 16.345619,7.574566 48.844999,7.574566 81.344769,7.574566"
+       id="path3331"
+       inkscape:path-effect="#path-effect3333"
+       inkscape:original-d="m 67.771765,41.860146 c 0.190563,15.14965 0.38086,30.29904 0.570891,45.448176 32.500944,2.58e-4 65.000324,2.58e-4 97.500094,0" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text5516"
+       style="font-size:26.6667px;line-height:1.25;font-family:sans-serif;word-spacing:0px;white-space:pre;shape-inside:url(#rect5518)" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#000000;stroke-width:0.264583"
+       x="15.148993"
+       y="11.162416"
+       id="text9330"><tspan
+         sodipodi:role="line"
+         id="tspan9328"
+         style="fill:#000000;stroke-width:0.264583"
+         x="15.148993"
+         y="11.162416">$L(\theta)$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#000000;stroke-width:0.264583"
+       x="155.87517"
+       y="98.069801"
+       id="text15736"><tspan
+         sodipodi:role="line"
+         id="tspan15734"
+         style="fill:#000000;stroke-width:0.264583"
+         x="155.87517"
+         y="98.069801">$\theta$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#0000ff;stroke-width:0.264583"
+       x="45.048321"
+       y="98.069801"
+       id="text20372"><tspan
+         sodipodi:role="line"
+         id="tspan20370"
+         style="fill:#0000ff;stroke-width:0.264583"
+         x="45.048321"
+         y="98.069801">$\max_{i}X_i$</tspan></text>
+  </g>
+</svg>

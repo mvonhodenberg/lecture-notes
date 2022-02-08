@@ -449,9 +449,15 @@ Now let's try a more involved example.
 \end{example*}
 The next example will focus on an example where the mle is discontinuous, and doesn't behave as nicely.
 \begin{example*}
-     Let $X_1 , \ldots , X_n $ be iid. $U ([0, \theta])$. Recall the estimator we derived, $\hat{\theta}=\frac{n+1}{n }\max_i X_i$. The mle is \[
+     Let $X_1 , \ldots , X_n $ be iid. $U ([0, \theta])$. Recall the estimator we derived, $\hat{\theta}=\frac{n+1}{n }\max_i X_i$. The likelihood function is \[
      L (\theta)=\frac{1}{\theta^{n}} 1_{\max_i X_i \leq \theta}
-     .\] Hence the mle is $\hat{\theta}^{\operatorname{mle}}=\max_i X_{i}$. As $\hat{\theta}$ is unbiased, $\hat{\theta}^{\operatorname{mle}}$ is \textbf{not} unbiased.
+     .\]
+     \begin{figure}[H]
+          \centering
+          \incfig{70}{mle1}
+          \caption{The plot of $L (\theta)$; note the discontinuity.}
+     \end{figure}
+     Hence the mle is $\hat{\theta}^{\operatorname{mle}}=\max_i X_{i}$. As $\hat{\theta}$ is unbiased, $\hat{\theta}^{\operatorname{mle}}$ is \textbf{not} unbiased.
 \end{example*}
 \subsubsection{Properties of the mean likelihood estimator}
 \begin{enumerate}
@@ -464,4 +470,92 @@ The next example will focus on an example where the mle is discontinuous, and do
      .\] The limiting covariance matrix $\Sigma$ is a known function of $L$. In some sense it is the `best' or `smallest' variance that any estimator can achieve asymptotically. See Part II Principles of Statistics for more on this.
      \item When the mle is not available analytically in closed form, in real-world applications it is often found numerically (see Part IB Numerical Analysis).
 \end{enumerate}
+\subsection{Confidence intervals}
+The idea of confidence intervals is omnipresent; it is used in the real world to describe a measure of certainty, and you may well have used the term in conversation or seen it in media before. We will give a rigorous mathematical definition of confidence.
+\begin{definition*}[Confidence interval]
+      A $100 \cdot \gamma$\% \vocab{confidence interval} with $\gamma \in (0,1)$ and for a parameter $\theta$ is a random interval $(A (x),B (x))$ such that \[
+      \mathbb{P}(A (x) \leq \theta \leq B (x)) = \gamma \quad \text{ for all } \theta \in \Theta
+      .\] Note that we consider $\theta$ to be a fixed parameter, but the endpoints of the interval are randomly changing.
+\end{definition*}
+\begin{remark}
+     When $\theta$ is a vector, we talk about confidence sets instead of confidence intervals.
+\end{remark}
+A \textbf{frequentist interpretation} is that if we repeat the experiment many times, on average $100 \cdot \gamma \%$ of the time the interval will contain $\theta$. 
+
+A \textbf{misleading interpretation} is: ``having oberved $X=x$, there is now a probability $\gamma$ that $\theta \in [A (x),B (x)]$''. This is actually \textbf{incorrect}, and we will later see an example that shows this.
+\begin{example*}
+      Let $X_1 , \ldots, X_n \overset{\operatorname{iid}}{\sim} N (\theta,1)$. We want to find the 95\% confidence interval for $\theta$. We know $\overline{X} \sim N (\theta, \frac{1}{n})$ and $Z=\sqrt{n}(\overline{X}-\theta)\sim N (0,1)$ for all $\theta \in \mathbb{R}$. 
+
+      Let $a,b$ be numbers s.t. $\Phi (b)-\Phi (a)=0.95$. Then \[
+      \mathbb{P}(a \leq \sqrt{n}(\overline{X}-\theta)\leq b)=0.95
+      .\] Rearrange: 
+      \begin{align*}
+           \mathbb{P}(\overline{X}-\frac{b}{\sqrt{n}}\leq \theta \leq \overline{X}-\frac{a}{\sqrt{n}})=0.95
+      \end{align*}
+      Hence $(\overline{X}-\frac{b}{\sqrt{n}},\overline{X}-\frac{a}{\sqrt{n}})$ is a 95\% C.I for $\theta$. 
+      
+      Note $a,b$ are not unique. Typically we centre the interval around some estimator $\hat{\theta}$ and aim to minimise its length. In this case, we would choose $a=-b$, which would give $b=Z_{0.025}\approx 1.96$ where $Z_{\alpha}$ is equal to ${\Phi}^{-1}(1-\alpha)$. We call this the ``upper $\alpha$-point'' of the $N (0,1)$ distribution.
+
+      Therefore our final C.I is $(\overline{X}\pm \frac{1.96}{\sqrt{n}})$. A quick sanity check is to note that our interval decreases as $n$ gets larger (with more observations).
+\end{example*}
+We can generalise the method we used in this example.
+\begin{remark}
+      \underline{Recipe for finding a confidence interval}:
+      \begin{enumerate}
+           \item Find a quantity $R (X, \theta)$ whose $\mathbb{P}_{\theta}$-distribution \emph{doesn't} depend on $\theta$. This is called a \vocab{pivot}, for example in the above example our pivot was $R (X , \theta)=\sqrt{n}(\overline{X}-\theta)$.
+           \item Write down a statement \[
+           \mathbb{P} (c_1 \leq R (X,\theta) \leq c_2 )=\gamma
+           .\] Given some $\gamma$, we find $c_1 ,c_2 $ using the distribution of $R$.
+           \item Rearrange to leave $\theta$ in the middle of two inequalities.
+      \end{enumerate}
+\end{remark}
+\begin{proposition}
+      If $T$ is a monotoone increasing function and $(A (X),B (X))$ is a $100 \cdot \gamma \%$ C.I for $\theta$, then $T (A (X),T (B (X)))$ is a $100 \cdot \gamma \%$ C.I for $T (\theta)$.
+\end{proposition}
+\begin{proof}
+      Immediate from definitions. (Exercise)
+\end{proof}
+\begin{example*}
+      Let $X_1 , \ldots, X_n \overset{\operatorname{iid}}{\sim} N (0,\sigma^{2} )$. We want to find a 95\% C.I for $\sigma^2$. Let's follow our recipe:
+      \begin{enumerate}
+           \item Note that $ \frac{X_1 }{\sigma}\sim N (0,1)$. This is a pivot, but ideally we would want one that depends on all the observations. So let our pivot be \[
+               \sum_{i=1}^{n} \frac{X_{i}}{\sigma^2} \sim \chi_{n}^2
+           .\] 
+           \item Let $c_1 = {F_{\chi_{n}^2}}^{-1} (0.025) $ and $c_2 ={F_{\chi_{n}^2}}^{-1}(0.975)$.
+           \item Now rearrange to get $\sigma^{2}$ in the middle: 
+           \begin{align*}
+                \mathbb{P}( \frac{\sum_{}^{}X_i^2}{c_2 }\leq \sigma^2 \leq \frac{\sum_{}^{}X_i^2}{c_1 })=0.95
+           \end{align*}
+           Hence this is our 95\% confidence interval for $\sigma^{2}$.
+      \end{enumerate}
+\end{example*}
+\begin{example*}
+      Let $X_1 , \ldots, X_n \overset{\operatorname{iid}}{\sim} \operatorname{Ber} (p)$ with $n$ ``large''. We want to find an approximate 95\% C.I for $p$.
+     \begin{enumerate}
+          \item The mle of $p$ is $\hat{p}=\overline{X}=\frac{1}{n}\sum_{}^{}X_{i}$. By the central limit theorem, $\hat{p}$ is approx $N (p,p (1-p)/n)$. Therefore \[
+          \sqrt{n} \frac{(\hat{p}-p)}{\sqrt{p (1-p)}} \quad \text{ is approx } N (0,1)
+          .\] 
+          \item $\mathbb{P} (-Z_{0.025} \leq \sqrt{n}\frac{(\hat{p}-p)}{\sqrt{p (1-p)}} \leq Z_{0.025})\approx 0.95$.
+          \item Note that if we wanted to rearrange for $p$ here, we would have to solve a quadratic inequality. So instead of this, we'll approximate $\sqrt{p (1-p)} \approx \sqrt{\hat{p} (1-\hat{p})}$. We argue when $n$ is large \[
+               \mathbb{P} (-Z_{0.025} \leq \sqrt{n}\frac{(\hat{p}-p)}{\sqrt{\hat{p} (1-\hat{p})}} \leq Z_{0.025})\approx 0.95
+          .\] This is easier to rearrange, which gives \[
+          \mathbb{P} (\hat{p}-Z_{0.025} \sqrt{ \frac{\hat{p} (1-\hat{p})}{n}}\leq p \leq \hat{p}+Z_{0.025} \sqrt{ \frac{\hat{p} (1-\hat{p})}{n}})\approx 0.95
+          .\] So we have found an approximate 95\% confidence interval for $p$.
+     \end{enumerate}
+\end{example*}
+\begin{remark}
+      In the above example, $p (1-p)\leq \frac{1}{4}$ on $p \in (0,1)$ hence $(\hat{p} \pm \frac{Z_{0.025}}{2 \sqrt{n}})$ is a ``conservative'' 95\% C.I for $p$.
+\end{remark}
+Let's go back to the issue of how to interpret a confidence interval, and the two interpretations that were mentioned. This can be seen in the following example:
+\begin{example*}
+      Suppose $X_1 ,X_2 $ are iid. $\operatorname{Unif}(\theta-\frac{1}{2}, \theta+\frac{1}{2})$. What is a sensible 50\% confidence interval for $\theta$? Note 
+      \begin{align*}
+           \mathbb{P} (\theta \text{ between }X_1 ,X_2  )&= \mathbb{P} (\min (X_1 ,X_2 ) \leq \theta \leq \max (X_1 , X_2 ))\\
+           &=\mathbb{P} (X_1 \leq \theta \leq X_2 )+\mathbb{P} (X_2 \leq \theta \leq X_1 )\\
+           &=\frac{1}{2} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{2} =\frac{1}{2}.
+      \end{align*}
+      Hence the frequentist interpretation is \emph{exactly} correct.
+
+      But suppose $\left|X_1 -X_2 \right|>0.5$. Then we \emph{know} that $\theta$ is in $(\min (X_1 ,X_2 ) , \max (X_1 , X_2 ))$ 
+\end{example*}
 \end{document}
