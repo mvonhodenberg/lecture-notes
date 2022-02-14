@@ -1,10 +1,6 @@
-\documentclass[a4paper]{scrartcl}
+\documentclass[egregdoesnotlikesansseriftitles,a4paper]{scrartcl}
 
-\usepackage[
-    fancytheorems, 
-    fancyproofs, 
-    noindent, 
-]{adam}
+\usepackage{martin}
 \usepackage{floatrow}
 \usepackage{import}
 \usepackage{xifthen}
@@ -27,8 +23,9 @@
 
 \maketitle
 These are my notes for the IB course `Groups, Rings and Modules', which was lectured in Lent 2022 at Cambridge by Dr R.Zhou. These notes are written in \LaTeX  \ for revision purposes\footnote{These notes are posted online on \href{https://mjv43.user.srcf.net/}{my website}.}. Any suggestions or feedback is welcome.
-\tableofcontents
 
+\newpage
+\tableofcontents
 \newpage
 \section{Introduction}
 This is a second course in abstract algebra that will extend our knowledge of groups and introduce other fundamental objects.
@@ -738,6 +735,10 @@ This almost immediately shows that finite abelian groups are pretty easy to work
              f=a_0 + a_1 X+a_2 X^2+ a_n X^{n}, \quad a_{i} \in R
              .\] "$X$" is just a formal symbol (i.e our definition of a polynomial just means some finite sequence in $R$). The degree of $f$ is the largest $n \in \mathbb{N}$ s.t $a_{n} \neq 0$. We write $R[X]$ for the set of all polynomials over $R$.
 
+             \begin{remark}
+                    We say $f$ is a \vocab{monic} polynomial if $a_{n}=1_{R}$.
+             \end{remark}
+
              If $g=b_0 +b_1 X + \ldots + b_{m}X^{m}$ is another polynomial, set 
              \begin{align*}
                    f+g= \sum_{i}^{}(a_{i}+b_{i})X^{i}\\
@@ -862,7 +863,7 @@ Now we show the converse of Lemma \ref{ideallemma}.
        \end{align*}
        Thus $r_1 r_2 +I=r_1 ' + r_2 ' +I$. The remaining properties for $R/I$ follow from those properties for $R$.
 \end{proof}
-\begin{example*}[Examples of quotient rings]
+\begin{example}[Examples of quotient rings]\label{polytoC}
        \begin{enumerate}
              \item $n\mathbb{Z} \unlhd \mathbb{Z}$ is an ideal, with quotient ring $\mathbb{Z}/n\mathbb{Z}$. The cosets are $0+n\mathbb{Z}, 1+n\mathbb{Z}, \ldots, (n-1)+n\mathbb{Z}$. Addition and multiplication are carried out modulo $n$.
              \item Consider $(X) \unlhd \mathbb{C}[X]$ be the ideal of polynomials with constant term 0.
@@ -878,8 +879,240 @@ Now we show the converse of Lemma \ref{ideallemma}.
              
              Consider the bijection $\mathbb{R}[X]/(X^2+1) \overset{\phi}{\rightarrow }\mathbb{C}$ defined by $a+bX+ (X^2+1)\mapsto a+bi$. We show $\phi$ is a ring homomorphism. It preserves addition and maps $1+ (X^2+1)$ to $1$.
              \begin{align*}
-                   \phi ((a+bX)+(X^2+1))
+                   &\phi ((a+bX)+(X^2+1))\left(c+dX+\left(X^2+1\right)\right)\\
+                   &= \phi \left(\left(a+bX\right)\left(c+dX\right)\left(X^2+1\right)\right)\\
+                   &= \phi \left(ac+\left(ad+bc\right)X +bd \left(X^2+1\right)-bd+\left(X^2+1\right)\right)\\
+                   &=ac-bd + \left(ad-bc\right)i\\
+                   &= \left(a+bi\right)\left(c+di\right)\\
+                   &=\phi \left((a+bX)+(X^2+1)\right)\phi \left(c+dX+\left(X^2+1\right)\right).
              \end{align*}
+             Thus $\mathbb{R}[X]/\left(X^2+1\right)\cong \mathbb{C}$.
+       \end{enumerate}
+\end{example}
+We move on to the isomorphism theorems for rings; they are closely related to those for groups.
+\begin{theorem}[First isomorphism theorem for rings]
+       Let $\phi : R \rightarrow S$ be a ring homomorphism, then $\operatorname{Ker}\phi \unlhd R$, $\operatorname{Im}\phi  \leq S$ and there exists an isomorphism $R/\operatorname{Ker}\phi \cong \operatorname{Im}\phi $.
+\end{theorem}
+\begin{proof}
+       We know that by Lemma \ref{ideallemma} $\operatorname{Ker}\phi \unlhd R$, and $\operatorname{Im}\phi $ is a subgroup of $\left(S,+\right)$. To check that the image is closed: \[
+       \phi \left(r_1 r_2 \right)=\phi \left(r_1 \right)\phi \left(r_2 \right)\in \operatorname{Im}\phi 
+       .\] We also note that $1_{S}=\phi \left(1_{R}\right)$. Thus $\operatorname{Im}\phi $ is a subring of $S$.
+
+       Let $K=\operatorname{Ker}\phi $. Define \[
+       \Phi : R/K \rightarrow \operatorname{Im}\phi , \quad r+K \mapsto \phi \left(r\right)
+       .\] By the first isomorphism theorem for groups, this is well-defined, a bijection, and a group homomorphism under +. So it remains to prove that $\Phi $ preserves multiplication and that it maps the identity to the identity. We have $\Phi \left(1_{R}+K\right)=\phi \left(1_{R}\right)=I_{S}$, and 
+       \begin{align*}
+             \Phi \left(\left(r_1 +K\right)\left(r_2 +K\right)\right)= \Phi \left(r_1 r_2 +K\right)\\
+             =\phi \left(r_1 r_2 \right)=\phi \left(r_1\right) \phi \left(r_2 \right)\\
+             = \Phi \left(r_1 +K\right)\Phi \left(r_2 +K\right).
+       \end{align*}
+       Thus $\Phi $ is a ring isomorphism.
+\end{proof}
+\begin{theorem}[Second isomorphism theorem for rings]
+       Let $R \leq S$ and $J \unlhd S$. Then $R \cap J \unlhd R$ and $R+J \equiv \left\{r+j: \ r \in R, j \in J\right\}\leq  S$ and \[
+       R/\left(R \cap J\right)\cong \left(R+J\right)/J \leq S/J
+       .\] 
+\end{theorem}
+\begin{proof}
+       By the second isomorphism theorem for groups, $R+J$ is a subgroup of $\left(S,+\right)$ and we have $1_{S}=\underset{1_{S}}{\in R} +\underset{0}{J} \in R+J $. If $r_1 ,r_2 \in R$ and $j_1 ,j_2 \in J$: \[
+       \left(r_1 +j_1 \right)\left(r_2 +j_2 \right)=\underset{r_1 r_2 }{\in R}+ \underset{r_1 j_2 +r_2 j_1 +r_2 j_2  }{\in J}\in R+J
+       .\] Therefore $R+J \leq S $. Define \[
+       \phi : R \rightarrow S/J, \quad r \mapsto r+J
+       .\] This is the composite of inclusion $R \subseteq$, and the quotient $S \mapsto S/J$, hence $\phi $ is a ring homomorphism. We can calculate 
+       \begin{align*}
+             \operatorname{Ker}\phi =\left\{r \in R: r+J=J\right\}=R \cap J \unlhd R\\
+             \operatorname{Im}\phi =\left\{r+J: r \in J\right\} = \left(R+J\right)/J \leq  S/J.
+       \end{align*}
+       Now apply the first isomorphism theorem for rings, which concludes the proof.
+\end{proof}
+\begin{remark}
+       Let $I \unlhd R$. There exists a bijection \[
+       \left\{\text{ Ideals in } R/I\right\} \leftrightarrow \left\{\text{ Ideals of } R \text{ containing } I\right\}
+       ,\] given by \[
+       K \mapsto \left\{r \in R: r+I \in K\right\}, \quad J/I \leftarrow J
+       .\] 
+\end{remark}
+\begin{theorem}[Third isomorphism theorem for rings]
+       Let $I \unlhd R$, $J \unlhd R$ with $I \subset S$. Then $J/I \unlhd R/I$, and \[
+       \left(R/I\right)/\left(I/J\right) \cong R/J
+       .\]
+\end{theorem}
+\begin{proof}
+       Consider $\phi : R/I \rightarrow R/J$ with $r+I \mapsto r+J$. This is well-defined surjective ring homomorphism by the third isomorphism theorem for groups (Exercise). Furthermore, \[
+       \operatorname{Ker}\phi =\left\{r+I: r \in J\right\}=J/I \unlhd R/I
+       .\] Apply the first isomorphism theorem to finish the proof.
+\end{proof}
+Now we go back to Example \ref{polytoC}, and reprove the last part much faster using the isomorphism theorem.
+\begin{example*}
+       There is a surjective ring homomorphism \[
+       \phi : \mathbb{R}[X] \rightarrow \mathbb{C},\quad f \left(X\right)=\sum_{}^{}a_{n}X^{n} \mapsto f \left(i\right)=\sum_{}^{}a_{n}i^{n}
+       .\] Proposition \ref{euclidrings} implies $\operatorname{Ker}\phi =\left(X^2+1\right)$. By the first isomorphism theorem, \[
+       \mathbb{R}[X]/\left(X^2+1\right)\cong \mathbb{C}
+       .\] 
+\end{example*}
+If $R$ is a ring, there exists a unique ring homomorphism $i: \mathbb{Z} \rightarrow R$, given by 
+\begin{align*}
+      0 \mapsto 0_{R}\\
+      1 \mapsto 1_{R}\\
+      n \mapsto \underset{1_{R}+\ldots+1_{R}}{n \text{ times}} 
+\end{align*}
+Since $\operatorname{Ker}\left(i\right)\unlhd \mathbb{Z}$, have $\operatorname{Ker}\left(i\right)=n\mathbb{Z}$ for some $n \in \left\{0,1,2,\ldots \right\}$. By the first isomorphism theorem, \[
+\mathbb{Z}/n\mathbb{Z} \cong \operatorname{Im} \left(i\right) \leq R
+.\] This motivates our next definition:
+\begin{definition*}[Characteristic]
+       We call $n$ the \vocab{characteristic} of $R$. For example,
+       \begin{itemize}
+             \item $\mathbb{Z},\mathbb{Q},\mathbb{R}$ and $\mathbb{C}$ have characteristic 0. 
+             \item $\mathbb{Z}/p\mathbb{Z}, \mathbb{Z}/p\mathbb{Z}[X]$ has characteristic $p$.
+       \end{itemize}
+\end{definition*}
+\subsection{Integral domains, maximal ideals and prime ideals}
+\begin{definition*}[Integral domain/Zero-divisor]
+       An \vocab{integral domain} is a ring with $0 \neq 1$ such that for $a,b \in R$, $ab=0 \implies a=0 \text{ or } b=0$.
+
+       A \vocab{zero-divisor} in a ring $R$ is a non-zero element $a \in R$ such that $ab=0$ for some $0 \neq b \in R$. So an integral domain is a ring with no zero-divisors.
+\end{definition*}
+\begin{example*}
+       \begin{enumerate}
+             \item All fields are integral domains (if $ab=0$ with $b=0$, multiply by $b^{-1}$ to get $a=0$).
+             \item Any subring of an integral domain is an integral domain, e.g $\mathbb{Z} \leq  \mathbb{Q}$, $\mathbb{Z}[i] \leq \mathbb{C}$.
+             \item $\mathbb{Z} \times \mathbb{Z}$ is not an integral domain since $\left(1,0\right)\cdot \left(0,1\right)=\left(0,0\right)$.
        \end{enumerate}
 \end{example*}
+\begin{lemma}
+       If $R$ is an integral domain, then $R[X]$ is an integral domain.
+\end{lemma}
+\begin{proof}
+       Write
+       \begin{align*}
+            f \left(X\right)=a_{m}X^{m}+\ldots+a_1 X+ a_0, \quad a_{m}\neq 0\\
+            g \left(X\right)=b_{n}X^{m}+\ldots+b_1 X+ b_0, \quad b_{n}\neq 0.
+       \end{align*}
+       Then $f \left(X\right)g \left(X\right)=\underbrace{a_{m}b_{n}}_{\neq 0 \text{ as } R \text{ integral domain} }+\ldots $ 
+       
+       and $\operatorname{deg}\left(fg\right)=m+n=\operatorname{deg}f+ \operatorname{deg}g$ and $f \cdot g \neq 0$.
+\end{proof}
+\begin{lemma}
+       Let $R$ be an integral domain and $0 \neq f \in R[X]$. Let the set of roots of $f$ be \[
+       \mathcal{R}=\left\{a \in R: \ f (a)=0\right\}
+       .\] Then $\left|R\right|\leq \operatorname{deg}(f)$.
+\end{lemma}
+\begin{proof}
+       Uses Proposition \ref{euclidrings}; see Example Sheet 1.
+\end{proof}
+\begin{theorem}[Subgroups of a field are cyclic]
+       Let $F$ be a field. Then any finite subgroup $G \leq (F^{\times},\cdot )$ is cyclic.
+\end{theorem}
+\begin{proof}
+       $G$ is a finite abelian group. If $G$ is not cyclic, then by Theorem , there exists $H \leq G$ such that $H \cong C_{d_1 }\times C_{d_1 }      $ for some $d_1 \geq 2$. But then the polynomial \[
+       f (X)=X^{d_1 }-1 \in F[X]
+       \] has degree $d_1 $, and $\geq d_1^2$ roots which contradicts our previous lemma.
+\end{proof}
+\begin{example*}
+      This theorem tells us that the field $(\mathbb{Z}/p\mathbb{Z})^{\times}$ is cyclic. 
+\end{example*}
+\begin{proposition}
+       Any finite integral domain is a field.
+\end{proposition}
+\begin{proof}
+       Let $R$ be a finite integral domain. Let $a \in R$, $a \neq 0$.
+
+       Consider the map $\phi : R \rightarrow R$: $x \mapsto ax$.
+
+       If $\phi (x)=\phi (y)$ then $a (x-y)=0$. Since $R$ is an integral domain and $a \neq 0$, this gives $x-y=0$. So $x=y$. Thus $\phi $ is injective, and hence surjective since $R$ is finite. Therefore \[
+       \exists b \in R: a \cdot b=1 \implies a \text{ is a unit. } 
+       .\] Thus $R$ is a field.
+\end{proof}
+The next theorem tells us about the converse of this statement.
+\begin{theorem}[Field of fractions]
+       Let $R$ be an integral domain. Then there exists a field $F$ such that:
+       \begin{itemize}
+             \item[(i)] $R \leq F$.
+             \item[(ii)] Every element of $F$ can be written in the form $a \cdot b^{-1}$ where $a,b \in R$ and $b \neq 0$.
+       \end{itemize}
+       \begin{remark}
+            Condition (ii) guarantees our field is the ``smallest'' field with $R \leq F$. $F$ is called the \vocab{field of fractions} of $R$.
+       \end{remark}
+\end{theorem}
+\begin{proof}
+       Consider the set $S=\left\{(a,b)\in R: \ b \neq 0\right\}$, and the equivalence relation $\sim$ on $S$ given by \[
+       (a,b)\sim (c,d) \iff ad-bc=0
+       .\] Clearly this is reflexive and symmetric. For transitivity, if $(a,b)\sim (c,d) \sim (e,f)$, then 
+       \begin{align*}
+            (ad)f=(bc)f=b (cf)=b (de )\\
+            \implies d (af-be)=0
+       \end{align*}
+       Since $R$ is integral and $d \neq 0$, this gives $af-be =0$, i.e $(a,b)\sim (e,f)$.
+
+       Let $F=S/\sim$ be the set of equivalence classes and (somewhat suggestively) write $\frac{a}{b}$ for $[(a,b)]$. Define \[
+       \frac{a}{b}+\frac{c}{d}= \frac{ad+bc}{bd}, \quad \frac{a}{b}\cdot \frac{c}{d}=\frac{ac}{bd}
+       .\] It can easily be checked that these operations are well-defined and make $F$ into a ring with $0_{F}= \frac{0_{R}}{1_{R}}$ and $1_{F}= \frac{1_{R}}{1_{R}}$. If $\frac{a}{b}\neq 0_{F}$, then $a \neq 0_{R}$, and $\frac{a}{b}\cdot \frac{b}{a}= \frac{1_{R}}{1_{R}}=1_{F}$. So $F$ is a field. Now let's check the conditions we gave.
+       \begin{itemize}
+             \item[(i)] Identify $R$ with the subring $\left\{\frac{r}{1_{R}: r \in R}\right\} \leq F$.
+             \item[(ii)] $\frac{a}{b}=a \cdot b^{-1}$.
+       \end{itemize}
+       This concludes the proof.
+\end{proof}
+\begin{remark}
+       In this proof, we have essentially just mimicked the construction of the rationals. This leads on to our first example.
+\end{remark}
+\begin{example*}
+       \begin{enumerate}
+             \item $\mathbb{Z}$ is an integral domain with field of fractions $\mathbb{Q}$.
+             \item $\mathbb{C}[X]$ has field of fractions \[
+             \mathbb{C}(X)\equiv \text{ field of rational functions in } X
+             .\] 
+       \end{enumerate}
+\end{example*}
+Now we move on to discussing maximal and prime ideals, which we will use extensively in the next section.
+\begin{definition*}[Maximal ideal]
+       An ideal $I \unlhd R$ is \vocab{maximal} if $I \neq R$ and if $I \leq J \unlhd R$, then $J=I$ or $R$. This is the biggest \emph{proper} ideal in $R$.
+\end{definition*}
+\begin{lemma}
+       A (non-zero) ring $R$ is a field iff its only ideals are $\left\{0\right\}$ and $R$.
+\end{lemma}
+\begin{proof}
+       \underline{Forward implication:} If $I \unlhd R$ then $I$ contains a unit and hence $I=R$.
+
+      \underline{Reverse implication:} If $x \in R$, $x \neq 0$, then the ideal $(x)$ is non-zero, hence $(x)=R$. So $\exists y \in R: x \cdot y=1$. So $x$ is a unit. 
+\end{proof}
+\begin{proposition}\label{mideal1}
+       Let $I \unlhd R$ be an ideal. $I$ is maximal iff $R/I$ is a field.
+\end{proposition}
+\begin{proof}
+       $R/I$ is a field $\iff$ $I/I$ and $R/I$ are the only ideals in $R/I$ 
+       
+       $\iff$ $I$ and $R$ are the only ideals in $R$ which contain $I$
+       
+       $\iff$ $I \unlhd R$ is maximal.
+\end{proof}
+\begin{definition*}[Prime ideal]
+       An ideal $I \unlhd R$ is prime if $I \neq R$ and whenever $a,b \in R$ with $ab \in I$, we have $a \in I$ and $b \in I$.
+\end{definition*}
+\begin{example*}
+       The ideal $n\mathbb{Z} \unlhd \mathbb{Z}$ is a prime ideal iff $n=0$ or $n=p$is prime.
+
+       Checking: If $ab\in p\mathbb{Z}$, then $p|ab$, so $p|a$ or $p|b$, i.e $a \in p\mathbb{Z}$ or $b \in p\mathbb{Z}$.
+
+       Conversely, if $n=uv$ with $u,v >1$, then $uv \in n\mathbb{Z}$, but $u \notin n\mathbb{Z}$, but $u \notin n\mathbb{Z}$, $v \notin n\mathbb{Z}$.
+       \begin{remark}
+              The motivation of a prime ideal is to generalise the notion of prime numbers to arbitrary rings.
+       \end{remark}
+\end{example*}
+\begin{proposition}\label{pideal1}
+       Let $I \unlhd R$ be an ideal. Then \[
+       I \text{ is prime } \iff R/I \text{ is an integral domain.} 
+       .\] 
+\end{proposition}
+\begin{proof}
+       \begin{align*}
+            &I \text{ is prime } \\
+            \iff & \text{ Whenever } a,b \in R \text{ with } ab \in I, \text{ we have } a \in I \text{ or } b \in I. \\
+            \iff & \text{ Whenever } a+I,b+I \in R/I \text{ with } (a+I)(b+I)=0+I,\\& \text{ we have } a+I=0+I \text{ or } b+I=0+I.\\
+            \iff & R/I \text{ is an integral domain.} 
+       \end{align*}
+\end{proof}
+\begin{remark}
+       Proposition \ref{mideal1} and Proposition \ref{pideal1} show that if $I$ is a maximal ideal, it is also a prime ideal (since all fields are integral domains).
+\end{remark}
 \end{document}

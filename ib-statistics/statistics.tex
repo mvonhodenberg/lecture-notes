@@ -1,21 +1,6 @@
-\documentclass[a4paper]{scrartcl}
+\documentclass[egregdoesnotlikesansseriftitles,a4paper]{scrartcl}
 
-\usepackage[
-    fancytheorems, 
-    fancyproofs, 
-    noindent, 
-]{adam}
-\usepackage{floatrow}
-\usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-\usepackage{bm}
-
-\newcommand{\incfig}[2]{%
-    \def\svgwidth{#1mm}
-    \import{./figures/}{#2.pdf_tex}
-}
+\usepackage{martin}
 
 \title{IB Statistics}
 \author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
@@ -27,8 +12,9 @@
 \begin{document}
 
 \maketitle
+These are my notes\footnote{Notes are posted online on \href{https://mjv43.user.srcf.net/}{my website}.} for the IB course Statistics, which was lectured in Lent 2022 at Cambridge by Dr S.Bacallado.
 
-These are my notes for the IB course Statistics, which was lectured in Lent 2022 at Cambridge by Dr S.Bacallado. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
+\newpage
 \tableofcontents
 \newpage
 
@@ -155,6 +141,22 @@ Under broad conditions $M_{x}=M_{y} \iff F_{X}=F_{Y}$. (The Laplace transform is
      M_{S_{n}}(t)=\mathbb{E}(e^{t (X_1 +\ldots +X_n)})=\prod_{i=1}^n e^{tX_{i}}=e^{-n \mu (1-e^{t})}
      .\] So we conclude $S_{n} \sim \operatorname{Po}(n \mu)$.
 \end{example*}
+\begin{example*}[mgf of the gamma distribution]
+     If $X_{i} \sim \Gamma (\alpha_{i}, \lambda)$ for $i=1,\ldots ,n$ with $X_1 , \ldots X_n$ independent, then what is the distribution of $S_{n}=\sum_{i=1}^{n}X_{i}$? \[
+          M_{S_{n}}(t)=\prod_{i}M_{X_{i}}(t)=
+          \begin{cases}
+              \left(\frac{\lambda}{\lambda t}\right)^{\sum_{i}^{}\alpha_{i}} & t<\lambda\\
+              \infty & t>\lambda
+          \end{cases}
+          .\]  
+          So $S_{n}$ is $\Gamma (\sum_{i}^{}a_{i}, \lambda)$. We call the first parameter the "shape parameter", and the second one the "rate parameter". A consequence of what we have just done is that if $X \sim \Gamma (\alpha, \lambda)$, then for all $b>0$ we have $bX \sim \Gamma (\alpha, \frac{\lambda}{b})$. 
+          
+          Special cases: 
+          \begin{itemize}
+              \item $\Gamma (1, \lambda)=\operatorname{Exp}(\lambda)$ 
+              \item $\Gamma \left(\frac{k}{2},\frac{1}{2}\right)=\chi_k^2$ (the chi-squared distribution with $k$ degrees of freedom, i.e the distribution of a sum of $k$ independent squared $N (0,1)$ r.v's.)
+          \end{itemize}
+\end{example*}
 \subsubsection*{Limits of random variables}
 The weak law of large numbers states that $\forall \varepsilon >0$, as $n \rightarrow \infty$, \[
 \mathbb{P} \left(|\overline{X_n} -\mu > \epsilon|\right) \rightarrow 0
@@ -195,22 +197,6 @@ There are several notable properties of conditional random variables:
      f_{U,V}(u,v)=f_{X,Y}(x (u,v),y (u,v))|\det (J)|
      ,\] where $J=\frac{\partial (x,y)}{\partial (u,v)}$ is the Jacobian matrix we have seen before. 
 \end{itemize}
-\begin{example*}[mgf of the gamma distribution]
-     If $X_{i} \sim \Gamma (\alpha_{i}, \lambda)$ for $i=1,\ldots ,n$ with $X_1 , \ldots X_n$ independent, then what is the distribution of $S_{n}=\sum_{i=1}^{n}X_{i}$? \[
-          M_{S_{n}}(t)=\prod_{i}M_{X_{i}}(t)=
-          \begin{cases}
-              \left(\frac{\lambda}{\lambda t}\right)^{\sum_{i}^{}\alpha_{i}} & t<\lambda\\
-              \infty & t>\lambda
-          \end{cases}
-          .\]  
-          So $S_{n}$ is $\Gamma (\sum_{i}^{}a_{i}, \lambda)$. We call the first parameter the "shape parameter", and the second one the "rate parameter". A consequence of what we have just done is that if $X \sim \Gamma (\alpha, \lambda)$, then for all $b>0$ we have $bX \sim \Gamma (\alpha, \frac{\lambda}{b})$. 
-          
-          Special cases: 
-          \begin{itemize}
-              \item $\Gamma (1, \lambda)=\operatorname{Exp}(\lambda)$ 
-              \item $\Gamma \left(\frac{k}{2},\frac{1}{2}\right)=\chi_k^2$ (the chi-squared distribution with $k$ degrees of freedom, i.e the distribution of a sum of $k$ independent squared $N (0,1)$ r.v's.)
-          \end{itemize}
-\end{example*}
 \section{Estimation}
 Suppose $X_1 , \ldots X_n$ are iid observations with pdf or pdf (or pmf) $f_{X}(x| \theta)$ where $\theta$ is an unknown parameter in $\Theta$. Let $X=(X_1 , \ldots , X_{n})$. 
 \begin{definition*}[Estimator]
@@ -316,7 +302,7 @@ Unbiasedness is not necessarily desirable. Let's look at a pathological example:
 Let's look at another example.
 \begin{example*}
       Let $X_1 , \ldots ,X_n \sim U ([0, \theta])$ be iid with $\theta >0$. Then \[
-      f_{X}(x| \theta)=\prod_{i=1}^{n}\frac{1}{\theta} 1_{x_{i} \in [0, \theta]}=\prod_{i=1}^{n}\frac{1}{\theta^{n}} 1_{\min_i x_{i} \geq 0} 1_{\max_i x_{i} \leq \theta} 
+      f_{X}(x| \theta)=\prod_{i=1}^{n}\frac{1}{\theta} 1_{x_{i} \in [0, \theta]}=\frac{1}{\theta^{n}} 1_{\min_i x_{i} \geq 0} 1_{\max_i x_{i} \leq \theta} 
       .\] Define $T (x)=\max_i x_i$. Then we can write \[
       g (T (x), \theta)=\frac{1}{\theta^{n}}1_{\max_i x_{i} \leq \theta} , \quad h (x)=1_{\min_i x_{i} \geq 0}
       .\] So $T (x)$ is sufficient.
@@ -329,7 +315,7 @@ Sufficient statistics are \textbf{not} unique.
 It's not hard to find sufficient statistics, for example $T (X)=X$ is a trivial sufficient statistic (that is useless!). Instead, we want statistics which give us `maximal' compression of the data in $X$. This motivates our next definition.
 \begin{definition*}[Minimal sufficient statistic]
       $T (X)$ is \vocab{minimal sufficient} if for every other sufficient statistic $T'$, \[
-      T' (x)=T' (y) \implies x=y \quad \forall x,y \in X^{n}
+      T' (x)=T' (y) \implies T \left(x\right)=T \left(y\right) \quad \forall x,y \in X^{n}
       .\] Note that it follows from this definition that minimal sufficient statistics are unique up to bijection.
 \end{definition*}
 \begin{theorem}
@@ -368,7 +354,7 @@ In this example $\theta=\left(\mu, \sigma^{2}\right)$ has same dimension as $S(x
 We will now look at the Rao-Blackwell theorem. This theorem allows us to start from any estimator $\widetilde{\theta}$, and then by conditioning on a sufficient statistic we get a better one.
 \begin{theorem}[Rao-Blackwell theorem]
       Let $T$ be a sufficient statistic for $\theta$ and define an estimator $\widetilde{\theta}$ with $\mathbb{E}(\widetilde{\theta}^2)< \infty$ for all $\theta$. Define a new estimator \[
-      \hat{\theta}=\mathbb{E} (\widetilde{\theta} (T (x)))
+      \hat{\theta}=\mathbb{E} (\widetilde{\theta} \left|T (x)\right.)
       .\] Then for all $\theta \in \Theta$, \[
       \mathbb{E}((\hat{\theta}-\theta)^2) \leq \mathbb{E} ((\widetilde{\theta}-\theta)^2)
       .\] Furthermore, the inequality is strict unless $\widetilde{\theta}$ is a function of $T (x)$.
@@ -408,7 +394,7 @@ We will now look at a few examples to show how powerful this theorem can be.
       We previously saw that $T=\max_{i}X_i$ is sufficient. Let $\widetilde{\theta} =2 X_1 $, an unbiased estimator of $\theta$. Then 
       \begin{align*}
           \hat{\theta}&=\mathbb{E} (\widetilde{\theta} | T=t)=2 \mathbb{E} (X_1 |\max_{i}X_i=t )\\
-          &=2 \mathbb{E} (X_1 |\max_{i}X_i=t, X_1 =\max_{i}X_i) \mathbb{P}(\max_{i}X_i=X_1| \max_{i}X_i=t )+2\mathbb{E} (X_1 |\max_{i}X_i=t, X_1 \neq \max_{i}X_i) \mathbb{P}(\max_{i}X_i \neq X_1 | \max_{i}X_i=t )\\
+          &=2 \mathbb{E} (X_1 |\max_{i}X_i=t, X_1 =\max_{i}X_i) \mathbb{P}(\max_{i}X_i=X_1| \max_{i}X_i=t )\\& \quad +2\mathbb{E} (X_1 |\max_{i}X_i=t, X_1 \neq \max_{i}X_i) \mathbb{P}(\max_{i}X_i \neq X_1 | \max_{i}X_i=t )\\
           &=\frac{2t}{n}+ \frac{2 (n-1)}{n}\underbrace{\mathbb{E}(X_1 | X_1 <t, \max_{2 \leq i \leq n}X_i =t)}_{=t/2 \text{ as } X_1 | X_1 <t \sim U ([0,t])} \\
           &= \frac{n+1}{n }\max_i X_i.
       \end{align*}
@@ -459,7 +445,7 @@ The next example will focus on an example where the mle is discontinuous, and do
      \end{figure}
      Hence the mle is $\hat{\theta}^{\operatorname{mle}}=\max_i X_{i}$. As $\hat{\theta}$ is unbiased, $\hat{\theta}^{\operatorname{mle}}$ is \textbf{not} unbiased.
 \end{example*}
-\subsubsection{Properties of the mean likelihood estimator}
+\subsubsection*{Properties of the mean likelihood estimator}
 \begin{enumerate}
      \item If $T$ is sufficient for $\theta$, then the mle is a function of $T$. Recall \[
      L (\theta)=g (T, \theta)h (X)
@@ -510,7 +496,7 @@ We can generalise the method we used in this example.
       \end{enumerate}
 \end{remark}
 \begin{proposition}
-      If $T$ is a monotoone increasing function and $(A (X),B (X))$ is a $100 \cdot \gamma \%$ C.I for $\theta$, then $T (A (X),T (B (X)))$ is a $100 \cdot \gamma \%$ C.I for $T (\theta)$.
+      If $T$ is a monotone increasing function and $(A (X),B (X))$ is a $100 \cdot \gamma \%$ C.I for $\theta$, then $T (A (X),T (B (X)))$ is a $100 \cdot \gamma \%$ C.I for $T (\theta)$.
 \end{proposition}
 \begin{proof}
       Immediate from definitions. (Exercise)
@@ -558,4 +544,144 @@ Let's go back to the issue of how to interpret a confidence interval, and the tw
 
       But suppose $\left|X_1 -X_2 \right|>0.5$. Then we \emph{know} that $\theta$ is in $(\min (X_1 ,X_2 ) , \max (X_1 , X_2 ))$ 
 \end{example*}
+\subsection{Bayesian analysis}
+So far we've talked about \emph{frequentist} inference; we think of $\theta $ as being fixed. Inferential statements are interpreted in terms of repetitions of the experiment. 
+
+\emph{Bayesian} analysis is a different framework. In this view, we treat $\theta $ as a random variable taking values in $\Theta $. The \vocab{prior distribution} $\pi \left(\theta \right)$ represents the investigator's beliefs or information about $\theta $ before observing the data. Conditional on $\theta $, the data $X$ has pdf (or pmf) $f_{X}\left( \cdot |\theta \right)$. (This is why we've been writing $f_{X}$ in this way when we use the frequentest interpretation.) Having observed $X$, the information in $X$ is combined with the prior to form the \vocab{posterior distribution} $\pi \left(\theta |X\right)$, which is the conditional distribution of $\theta $ given $X$. By Bayes' Rule: \[
+\pi  \left(\theta |X\right)= \frac{\pi  \left(\theta \right)f_{X}\left(X|\theta \right)}{f_{X}\left(X\right)}
+.\] where $f_{X}\left(x\right)$ is the marginal distribution of $X$: \[
+f_{X}\left(X\right)=\begin{cases}
+     \int_{\Theta  }^{}f_{X}\left(X|\theta \right)\pi \left(\theta \right)  \ \mathrm{d}\theta   &\text{ if } \theta \text{ continuous}  ;\\
+     \sum_{\theta \in \Theta }^{}f_{X}\left(X|\theta \right)\pi  \left(\theta \right) &\text{ if } \theta \text{ discrete} .
+\end{cases}
+\] More simply, \[
+\pi  \left(\theta |X\right) \propto \pi \left(\theta \right) \cdot f_{X}\left(X|\theta \right)
+.\] Often, it is easy to recognize that the RHS is in some family of distributions up to a normalising constant.
+\begin{remark}
+     By the factorisation criterion, if $T$ is sufficient then \[
+          \pi  \left(\theta |X\right) \propto \pi \left(\theta \right) \cdot g \left(T \left(X\right),\theta \right)
+     .\] Therefore the posterior only depends on $X$ through $T \left(X\right)$, since we can absorb the $h \left(x\right)$ in the decomposition of $T$ into the constant.
+\end{remark}
+\begin{example*}
+     Suppose a patient walks into a COVID-19 testing clinic (we have no prior info about the patient). Our random variable is $\theta = 1_{\text{patient infected}}$. We know the sensitivity of the test $f_{X}\left(X=1|\theta =1\right)$ and the specificity $f_{X}\left(X=0|\theta =0\right)$. 
+     
+     How do we choose the prior? Let $\pi  \left(\theta =1\right)$ to be the proportion of people in the UK with COVID on that day. What is the probability of an infection given a positive test? \[
+     \pi \left(\theta =1 |X=1\right)= \frac{\pi  \left(\theta =1\right)f_{X}\left(X=1|\theta =1\right)}{\pi \left(\theta =1\right)f_{X}\left(X=1|\theta =1\right)+\pi \left(\theta =0\right)f_{X}\left(X=1|\theta =0\right)}
+     .\] Sometimes $\pi \left(\theta =1\right)\ll \pi \left(\theta =0\right)$ which can make $\pi \left(\theta =1| X=1\right)$ small, which can be surprising. 
+\end{example*}
+In the second example, choosing the prior will be less clear-cut.
+\begin{example*}
+      Let $\theta \in [0,1]$ be the mortality rate for a new surgery in Addenbrooke's hospital. We observe the first 10 operations and see no deaths. We model $X \sim \operatorname{Bin}\left(10,\theta \right)$.
+
+      How do we choose the prior? Suppose that in other hospitals mortality ranges between 3\% and 20\% with an average of 10\%. For example, take $\pi \left(\theta \right)\sim \beta \left(a,b\right)$. We can choose $a=3$ and $b=27$ so that $\pi \left(\theta \right)$ has mean 0.1 and $\pi \left(0.03<\theta <0.2\right) \approx 0.9$. The posterior is 
+      \begin{align*}
+          \pi \left(\theta |X\right)&\propto \pi \left(\theta \right) \cdot f_{X}\left(X=10|\theta \right)\\
+          &\propto \theta ^{a-1} \left(1-\theta \right)^{b-1} \theta ^{x}\left(1-\theta \right)^{n-x}\\
+          &\propto \theta ^{x+a-1}\left(1-\theta \right)^{b+n-x-1}\quad \text{ for } \theta \in [0,1].
+      \end{align*}
+      We recognise this as a $\beta \left(X+a, n+X-b\right)$ distribution. In our example this is $\beta \left(3,10+27\right)$. Plotting our prior and posterior, we can see that the posterior has a distribution shifted slightly to the left (since we observed no deaths in 10 trials), and that its variance is smaller (since we have already seen some trials).
+      [picture]
+      \begin{remark}
+            In this example the prior and posterior are in the same family of distributions. This is called \vocab{conjugacy}.
+      \end{remark}
+\end{example*}
+\subsubsection*{What do we do with the posterior?}
+$\pi \left(\theta |X\right)$ represents information about $\theta $ \emph{after} seeing $X$. This can be used to make decisions under uncertainty.
+\begin{enumerate}
+     \item We must pick some decision $\delta \in D$. For example, $D=\left\{\text{ ask patient to isolate (or not) } \right\}$.
+     \item Define the \vocab{loss function} $L \left(\theta ,\delta \right)$. For example, $L \left(\theta =1, \delta =1\right)$ would be the loss incurred by asking a patient to isolate if they test positive. 
+     \item Pick $\delta $ that minimises \[
+     \int_{\Theta }^{}L \left(\theta ,\delta \right) \pi \left(\theta |X\right)\ \mathrm{d}\theta 
+     .\] This is called the ``\vocab{posterior expectation of loss}''.\footnote{See Von-Neumann/Morgenstein.}
+\end{enumerate}
+\subsubsection*{Point estimation}
+An example of a decision is a ``best guess'' for $\theta $. The \vocab{Bayes estimator} minimises \[
+h \left(\delta \right)=\int_{\Theta }^{} L \left(\theta ,\delta \right) \pi \left(\theta |X\right) \ \mathrm{d}\theta  
+.\]
+\begin{example*}
+      If we choose a quadratic loss $L \left(\theta ,\delta \right)=\left(\theta -\delta \right)^{2}$. Then $h \left(\delta \right)=\int_{\Theta }^{} L \left(\theta -\delta \right)^{2} \pi \left(\theta |X\right) \ \mathrm{d}\theta  $. Differentiate: $h' \left(\delta \right)=0$ if 
+      \begin{align*}
+          \int_{\Theta }^{}\left(\theta -\delta \right)\pi \left(\theta |X\right) \ \mathrm{d}\theta =0 \\
+          \iff \delta =\int_{\Theta }^{}\theta \pi \left(\theta |X\right) \ \mathrm{d}\theta . 
+      \end{align*}
+      This is $\hat{\theta}$ under quadratic loss.
+\end{example*}
+\begin{example*}
+      If we use the absolute error loss $L \left(\theta ,\delta \right)=\left|\theta -\delta \right|$, then
+      \begin{align*}
+          h \left(\delta \right)&=\int_{\Theta }^{} \left|\theta -\delta \right| \pi \left(\theta |X\right) \ \mathrm{d}\theta\\
+          &= \int_{-\infty}^{\delta }- \left(\theta -\delta \right) \pi  \left(\theta |X\right) \ \mathrm{d}\theta + \int_{\delta }^{\infty } \left(\theta -\delta \right) \pi  \left(\theta |X\right) \ \mathrm{d}\theta.
+      \end{align*}
+      Take the derivative wrt. $\theta $ using the FTC: \[
+      h' \left(\theta \right)=\int_{-\infty}^{\delta }\pi  \left(\theta |X\right) \ \mathrm{d}\theta - \int_{\delta }^{\infty}\pi \left(\theta |X\right) \ \mathrm{d}\theta   
+      .\] So $h^\prime \left(\delta \right)=0$ iff $\delta =\hat{\theta}$ is the median of the posterior $\pi \left(\theta |X\right)$.  
+\end{example*}
+We would also want some kind of Bayesian interpretation of a confidence interval. The next definition makes this more concrete.
+\begin{definition*}[Credible interval]
+      A $100 \cdot \gamma \%$ credible interval satisfies \[
+      \pi (A (x)\leq \theta \leq B (x)|x)=\gamma 
+      .\]
+\end{definition*}
+\begin{remark}
+      Unlike confidence intervals, credible intervals \textbf{can} be interpreted conditionally; for example, ``given a specific observation $x$, we are 95\% certain that $\theta $ is in $(A,B)$''. The caveat here is that the credible interval depends on the choice of prior.
+\end{remark}
+We'll quickly look at some examples of Bayesian computations in order to get a better feel for them.
+[todo]
+\begin{remark}
+      Asymptotically, we will often see credible intervals approach confidence intervals (as in the previous example).
+\end{remark}
+[next example]
+This is where our discussion of Bayesian analysis ends - we now return to a frequentist viewpoint.
+\section{Simple hypotheses}
+\begin{definition*}[Hypothesis]
+      A \vocab{hypothesis} is an assumption about the distribution of data $X$.
+\end{definition*}
+Scientific questions are often phrased as a decision between a \vocab{null hypothesis} $H_0 $ and an \vocab{alternative hypothesis} $H_1 $. 
+\begin{example*}
+      \begin{enumerate}
+           \item $X = (X_1 ,\ldots,X_n)$ are iid. $\operatorname{Ber}(\theta )$. Suppose $H_0: \ \theta =1/2, \quad H_1 : \ \theta =3/4$.
+           \item In 1. we could also have $X_1 :\ \theta \neq 1/2$.
+           \item Let $X = (X_1 ,\ldots,X_n)$ be iid. where $X_i$ takes values in $\mathbb{N}$. Suppose \[
+           H_0 : \ X_{i} \overset{\operatorname{iid}}{\sim} \operatorname{Poi}(\lambda ) \text{ for some } \lambda >0, \quad H_1 : \ X_{i} \overset{\operatorname{iid}}{\sim} f_{1} \text{ for some other dist. } f_{1}
+           .\] This is known as a \emph{goodness-of-fit test}.
+      \end{enumerate}
+\end{example*}
+\begin{definition*}[Simple hypothesis]
+      A \vocab{simple hypothesis} is one which fully specifies the pdf (resp. pmf) of $X$. Otherwise, we say the hypothesis is \emph{composite}.
+\end{definition*}
+In the last example, the test in 1. was composite, and the test in 2. was simple.
+\begin{definition*}[Test]
+      A \vocab{test} of the null $H_0 $ is defined by a \vocab{critical region} $C \subseteq \mathcal{X}$. When $X \in C$, we \emph{reject the null}. When $X \notin C$, we \emph{fail to reject the null}.
+      \begin{remark}
+            When $X \notin C$, we simply don't find evidence to reject the null; it doesn't mean the null is false. We will see examples of this later.
+      \end{remark}
+\end{definition*}
+\begin{definition*}[Error]
+     There are two types of error:
+     \begin{itemize}
+          \item \vocab{Type I error}: rejecting $H_0 $ when $H_0 $ is true.
+          \item \vocab{Type II error}: fail to reject $H_0 $ when $H_0 $ isn't true.
+     \end{itemize}
+\end{definition*}
+Write \[
+     \alpha =\mathbb{P}_{H_{0}}(H_0 \text{ is rejected} )=\mathbb{P}_{H_{0}} (X \in C), \quad \beta  =\mathbb{P}_{H_{1}}(H_0 \text{ is not rejected} )=\mathbb{P}_{H_{1}} (X \in C)
+.\] The \vocab{size} of the test is $\alpha $, the \emph{power} is $1-\beta $. There is a tradeoff between $\alpha $ and $\beta $. What we typically do is choose an acceptable probability of type I errors (say 1\%); set $\alpha $ to that, and then pick the test which minimises $\beta $ (maximises power).
+\begin{lemma}[Neyman-Pearson lemma]
+      Let $H_0 $ and $H_1 $ be simple, with $X$ having pdf (or pmf) $f_{i}$ under $H_{i}$ for $i \in \left\{0,1\right\}$. The \vocab{likelihood ratio statistic} is \[
+      \Lambda_{x} (H_0 ,H_1 )= \frac{f_1 (x)}{f_0 (x)}
+      .\] A likelihood ratio test (LRT) rejects when $\Lambda_{x} (H_0 ,H_1 )$ is large, i.e \[
+      C= \left\{x: \Lambda_{x} (H_0 ,H_1 ) >k\right\} \text{ for some } k
+      .\] 
+\end{lemma}
+\begin{theorem}
+      Suppose that $f_0 ,f_1 $ are nonzero on some sets. Suppose there is $k >0$ such that the LRT with critical region $C= \left\{x: \Lambda_{x} (H_0 ,H_1 ) >k\right\}$ has size $\alpha $. Then out of all tests with size $\leq  \alpha $, this test has the smallest $\beta $. 
+      \begin{remark}
+            An LRT of size $\alpha $ does not always exist. (Exercise.) But in general, we can find a ``randomised'' test of size $\alpha $.
+      \end{remark}
+\end{theorem}
+\begin{proof}
+      Let $\overline{C}$ be the complement of $C$. We know that the LRT has \[
+      \alpha =\mathbb{P}_{H_0 } (X \in C) =\int_{C}^{}f_{0} (x) \ \mathrm{d} x, \quad \beta  =\mathbb{P}_{H_1 } (X \notin C) =\int_{\overline{C}}^{}f_{1} (x) \ \mathrm{d} x
+      .\] Let $C^{*}$ be some other critical region with type I/II error probabilities $\alpha ^* ,\beta ^* $. Suppose $\alpha ^* \leq \alpha , \beta  \leq \beta ^*$.
+\end{proof}
 \end{document}
