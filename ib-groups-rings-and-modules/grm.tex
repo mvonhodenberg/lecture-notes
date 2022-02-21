@@ -827,7 +827,7 @@ The point of ideals is that they should arise as the kernels of ring homomorphis
 \begin{remark}
        If $I$ contains a unit $u$, then $1_{R} \in I$ (by multiplying by $-u$). Hence $I=R$ (multiplying any element in $R$ by $1_{R}$). Thus if $I$ is a proper ideal, $1_{R}\notin I$, so $I$ is not a subring of $R$.
 \end{remark}
-\begin{lemma}
+\begin{lemma}\label{idealsinZ}
        The ideals in $\mathbb{Z}$ are $n\mathbb{Z}= \left\{kn: \ k \in \mathbb{Z}\right\}$ for $n=0,1, \ldots$.
 \end{lemma}
 \begin{proof}
@@ -949,9 +949,9 @@ Now we go back to Example \ref{polytoC}, and reprove the last part much faster u
 \end{example*}
 If $R$ is a ring, there exists a unique ring homomorphism $i: \mathbb{Z} \rightarrow R$, given by 
 \begin{align*}
-      0 \mapsto 0_{R}\\
-      1 \mapsto 1_{R}\\
-      n \mapsto \underset{1_{R}+\ldots+1_{R}}{n \text{ times}} 
+      &0 \mapsto 0_{R}\\
+      &1 \mapsto 1_{R}\\
+      &n \mapsto \underbrace{1_{R}+\ldots+1_{R}}_{n \text{ times}}.
 \end{align*}
 Since $\operatorname{Ker}\left(i\right)\unlhd \mathbb{Z}$, have $\operatorname{Ker}\left(i\right)=n\mathbb{Z}$ for some $n \in \left\{0,1,2,\ldots \right\}$. By the first isomorphism theorem, \[
 \mathbb{Z}/n\mathbb{Z} \cong \operatorname{Im} \left(i\right) \leq R
@@ -1069,9 +1069,9 @@ Now we move on to discussing maximal and prime ideals, which we will use extensi
        A (non-zero) ring $R$ is a field iff its only ideals are $\left\{0\right\}$ and $R$.
 \end{lemma}
 \begin{proof}
-       \underline{Forward implication:} If $I \unlhd R$ then $I$ contains a unit and hence $I=R$.
+      If $R$ is a field and $I \unlhd R$ is nontrivial, then $I$ contains a unit and hence $I=R$.
 
-      \underline{Reverse implication:} If $x \in R$, $x \neq 0$, then the ideal $(x)$ is non-zero, hence $(x)=R$. So $\exists y \in R: x \cdot y=1$. So $x$ is a unit. 
+      Conversely, suppose the only ideals in $R$ are $\left\{0\right\}$ and $R$. Take $x \in R$, $x \neq 0$, then the ideal $(x)$ is non-zero, hence $(x)=R$. So $\exists y \in R: x \cdot y=1$. So $x$ is a unit. 
 \end{proof}
 \begin{proposition}\label{mideal1}
        Let $I \unlhd R$ be an ideal. $I$ is maximal iff $R/I$ is a field.
@@ -1142,16 +1142,12 @@ Now we want to chase some definitions to make sure our definitions of prime elem
        Consider $(r)\unlhd R$. This is a prime ideal iff $r=0$ or $r$ is a prime element.
 \end{lemma}
 \begin{proof}
-       \underline{Forward implication:} Suppose $(r)$ is prime and $r \neq 0$. Since prime ideals are proper, $(r) \neq R$. 
-       
-       Therefore $r$ is not a unit. If $r|ab$, then $ab \in (r)$, so $a \in (r)$ or $b \in (r)$. Thus $r|a$ or $r|b$. So $r $ is prime.
+       Suppose $(r)$ is prime and $r \neq 0$. Since prime ideals are proper, $(r) \neq R$. Therefore $r$ is not a unit. If $r|ab$, then $ab \in (r)$, so $a \in (r)$ or $b \in (r)$. Thus $r|a$ or $r|b$. So $r $ is prime.
 
-       \underline{Reverse implication:} $\left\{0\right\}\unlhd R$ is a prime ideal since $R$ is an integral domain. Let $r \in R$ be a prime. $(r)\neq R$ since $r \in R^{\times }$. 
-
-       If $ab \in (r)$ then $r|ab$. 
+       Conversely, $\left\{0\right\}\unlhd R$ is a prime ideal since $R$ is an integral domain. Let $r \in R$ be a prime. $(r)\neq R$ since $r \in R^{\times }$. If $ab \in (r)$ then $r|ab$. 
        \begin{align*}
-             \implies r|a \text{ or } r|b\\
-             \implies r \in (a) \text{ or } r \in (b), \text{ i.e } r \text{ is a prime ideal. }
+             &\implies r|a \text{ or } r|b\\
+             &\implies r \in (a) \text{ or } r \in (b), \text{ i.e } r \text{ is a prime ideal. }
        \end{align*}
 \end{proof}
 \begin{lemma}
@@ -1166,7 +1162,7 @@ The converse of this lemma does not hold in general.
 \begin{example*}
        Let \[
             R=\mathbb{Z}[\sqrt{-5}]= \left\{a+b\sqrt{-5} : \ a,b \in \mathbb{Z}\right\} \leq C, \quad R \cong \mathbb{Z}[X]/(X^2+5)
-       .\] $R$is a subring of a field, so it's an integral domain. Define a function (called the \emph{norm}) \[
+       .\] $R$ is a subring of a field, so it's an integral domain. Define a function (called the \vocab{norm}) \[
        N: R \rightarrow \mathbb{Z}_{\geq 0}, \quad a+b \sqrt{-5} \mapsto a^2+5b^2
        .\] Note that $N (z_1 z_2 )=N (z_1 )N (z_2 )$. 
        \begin{claim}
@@ -1175,7 +1171,7 @@ The converse of this lemma does not hold in general.
        \begin{prooff}
              If $r \in R^{\times }$, i.e $rs =1$ for some $s \in R$, then \[
              N (r)N (s)=N (1)=1 \implies N (r)=1 \text{ WLOG} 
-             .\] But the only integer solutions to $a^2+5b^2=1$ are $(a,b)=(1,0)$ or $(-1,0)$.  
+             .\] But the only integer solutions to $a^2+5b^2=1$ are $(a,b)=(1,0)$ or $(-1,0)$.  \hfill \qed
        \end{prooff}
        \begin{claim}
              $2 \in R$ is irreducible.
@@ -1183,9 +1179,11 @@ The converse of this lemma does not hold in general.
        \begin{prooff}
              Suppose $2=rs $ where $r,s \in R $. We want to show one of these elements is a unit. Then \[
              4= N (2)=N (r)N (s)
-             .\] Since $a^2+5b^2=2$ has no integer solutions, $R$ has no elements of norm 2. Thus $N (r)=1$ and $N (s)=4$ WLOG. But if $N (r)=1$, this implies that $r$ is a unit. 
+             .\] Since $a^2+5b^2=2$ has no integer solutions, $R$ has no elements of norm 2. Thus $N (r)=1$ and $N (s)=4$ WLOG. But if $N (r)=1$, this implies that $r$ is a unit. \hfill \qed
        \end{prooff}
-       Similarly 3, 1+$\sqrt{-5} $, $1- \sqrt{-5} $ are all irreducible (as there are no elements of norm 3). Now $(1+\sqrt{-5} )(1-\sqrt{-5} )=6=2 \cdot 3$. Thus $2| (1+\sqrt{-5} )(1-\sqrt{-5} )$, but $2 \nmid 1+\sqrt{-5}$ or $1- \sqrt{-5} $ (check by taking norms). So 2 is irreducible but not prime in $R$.
+       Similarly 3, 1+$\sqrt{-5} $, $1- \sqrt{-5} $ are all irreducible (as there are no elements of norm 3). Now $(1+\sqrt{-5} )(1-\sqrt{-5} )=6=2 \cdot 3$. Thus $2| (1+\sqrt{-5} )(1-\sqrt{-5} )$, but $2 \nmid 1+\sqrt{-5}$ or $1- \sqrt{-5} $ (check by taking norms). 
+       
+       So 2 is irreducible but not prime in $R$.
 \end{example*}
 \begin{remarks}
        We now know that being irreducible does not imply being prime. Importantly, in the above example $2 \cdot 3= (1+\sqrt{-5} )(1-\sqrt{-5} )$ gives two distinct factorisations into irreducibles. Since $R^{\times}=\left\{\pm 1\right\}$, these irreducibles are not associates.
@@ -1194,7 +1192,7 @@ This example tells us if we want to have a good definition of factorisation in a
 \begin{definition*}[Principal ideal domain]
        An integral domain $R$ is a \vocab{principal ideal domain} (PID) if any ideal $I \unlhd R$ is principal. In other words, any ideal $I \unlhd R$ is generated by some element $r \in R$.
 
-       Example: $\mathbb{Z}$ is a PID by Lemma [todo].
+       For example, $\mathbb{Z}$ is a PID by Lemma \ref{idealsinZ}.
 \end{definition*}
 \begin{proposition}
        Let $R$ be a PID. Then every irreducible element of $R$ is prime.
@@ -1206,12 +1204,82 @@ This example tells us if we want to have a good definition of factorisation in a
 
        So there exists $s,t \in R$ such that $sa+tr=1$. Then $b=sab +trb$. So $r|b$ since $r|ab $. Thus $r$ is prime. 
 \end{proof}
-\begin{lemma}
-      Let $R$ be a PID, and $0 \neq r \in R$. Then $r$ irreducible $\iff$ $(r)$ is a maximal ideal. 
+\begin{lemma}\label{pidmaximal}
+      Let $R$ be a PID, and $0 \neq r \in R$. Then $r$ is irreducible iff $(r)$ is a maximal ideal. 
 \end{lemma}
 \begin{proof}
-       \underline{Forward implication:} $r \notin R^{\times}$ so $(r)\neq r$. Suppose $(r) \subset J \leq R$. Since $R$ is a PID, $J=(a)$ for some $a \in R$. Therefore $r=ab$ for some $b \in R$. Since $r$ is irreducible, either $a \in R^{\times } \implies J=R$ or $b \in R^{\times } \implies J= (r)$. Thus $(r)$ is maximal. 
+       If $r$ is irreducible, $r \notin R^{\times}$ so $(r)\neq R$. Suppose $(r) \subset J \subset  R$ where $J \unlhd R$. Since $R$ is a PID, $J=(a)$ for some $a \in R$. Therefore $r=ab$ for some $b \in R$. Since $r$ is irreducible, either $a \in R^{\times } \implies J=R$ or $b \in R^{\times } \implies J= (r)$. Thus $(r)$ is maximal. 
 
-       \underline{Reverse implication:}
+       Conversely, suppose $(r )$ is maximal. So $r \notin R^{\times }$. Suppose $r=ab $. Then $(r ) \subset (a ) \subset R$. Since $(r )$ is maximal, either $(a )=(r )$ or $R $. If $(a )=(r)$, then $a$ and $r$ are associates and so $b$ is a unit. If $(a)=R$ then $a$ is a unit. Thus $r$ is irreducible.
+       \begin{remark}
+              This proof of the converse implication actually holds for a general integral domain $R $; it doesn't assume $R$ is a PID.
+       \end{remark}
 \end{proof}
+\begin{remark}
+      Let $R$ be a PID, and take a nonzero $r \in R$. Then $(r)$ is maximal iff $r$ is irreducible, which is equivalent to $r$ being prime. This is again equivalent to $(r)$ being prime. We can use this to deduce that there exists a bijection \[
+      \left\{\text{ non-zero prime ideals } \right\}\leftrightarrow \left\{\text{ non-zero maximal ideals } \right\}
+      .\]
+\end{remark}
+This is a nice property of PIDs. We can cook up some examples of PIDs using th following definition. 
+\begin{definition*}[Euclidean domain]
+      An integral domain is a \vocab{Euclidean domain} (ED) if there is a function $\phi: R\backslash \left\{0\right\} \rightarrow \mathbb{Z}_{\geq 0}$ (a Euclidean function) such that 
+      \begin{itemize}
+            \item[(i)] If $a|b$, then $\phi (a)\leq \phi (b)$.
+            \item[(ii)] If $a,b \in R$ with $b \neq 0$, then there exist $q,r \in R$ with $a=bq+r$ and either $r=0$, or $\phi (r)<\phi (b)$.
+      \end{itemize}
+\end{definition*}
+\begin{example*}
+       $\mathbb{Z}$ is an ED with Euclidean function $\phi (n)=\left|n\right|$.
+\end{example*}
+\begin{proposition}\label{edimppid}
+       If $R$ is a Euclidean domain, then it is a principal ideal domain.
+\end{proposition}
+\begin{proof}
+      Let $R$ have Euclidean function $\phi$. Let $I \unlhd R$ be non-zero. Choose $b \in I\backslash \left\{0\right\}$ with $\phi (b)$ minimal. Then $(b)\in I$. 
+      
+      For $a \in I$, write $a=bq+r $ with $q,r \in R$ and either $r=0$ or $\phi (r)< \phi (b)$. Since $r=bq-a \in I$, cannot have $\phi (r)< \phi (b)$ as we chose $b$ to be minimal. So $r=0$, and $a=bq$. Hence $I= (b)$.
+\end{proof}
+\begin{remark}
+      We only used property (ii) of Euclidean domains in this proof. We include property (i) in the definition as it allows us to describe the units in $R$ as \[
+      R^{\times }=\left\{u \in R\backslash \left\{0\right\}: \ \phi (a)=\phi (1)\right\}
+      .\]
+\end{remark}
+\begin{example*}
+      \begin{enumerate}
+            \item Let $F$ be a field. $F[X]$ is an ED with Euclidean function $\phi (f)=\operatorname{deg} f$ for $f \in F[X]$. $\phi$ is Euclidean by Proposition \ref{euclidrings}.
+            \item $R=\mathbb{Z}[i]$ is an ED with Euclidean function \[
+            \phi (a+ib )=N (a+ib)= \left|a+ib \right|^2 =a^2+b^2
+            .\] Since $N$ is multiplicative, this tells us that property (i) is satisfied. 
+
+            For property (ii), let $z_1 , z_2 \in \mathbb{Z}[i]$ with $z_2 \neq 0$. Consider $\frac{z_1}{z_2 } \in \mathbb{C}$. This has distance less than 1 from the nearest element of $\mathbb{Z}[i]$, i.e there exists $q \in \mathbb{Z}[i]$ such that $\left|\frac{z_1}{z_2 }-q\right|<1$.
+            [todo- lattice picture] 
+            Set $r=z_1 -z_2 q \in \mathbb{Z}[i]$. Then $z_1 =qz_2 +r$ and \[
+            \phi (r)=\left|r\right|^2=\left|z_1 -z_2 q\right|^2< \underbrace{\left|z_2 \right|^2 }_{\text{by } (\dagger)} =\phi (z_2 )
+            .\]
+      \end{enumerate}
+      Thus Proposition \ref{edimppid} implies that both $\mathbb{Z}[i]$ and $F[X]$ for $F$ a field are PIDs.
+\end{example*}
+The first application we will see involves the construction of the minimal polynomial of a matrix.
+\begin{example*}
+       Let $A$ be an $n \times n$ matrix over a field $F$. Let $I=\left\{f \in F[X]: \ f (A)=0\right\}$. 
+       \begin{claim}
+             $I$ is an ideal in $F$.
+       \end{claim}
+       \begin{prooff}
+              If $f,g \in I$, then $(f-g)(A)=f (A)- g (A)=0 \implies f-g \in I$. So $(I,+)\leq (F,+)$. 
+              
+              If $f \in F[X]$ and $g \in I$, then $(f \cdot g)(A)=f (A)\cdot g (A)=0$. So $f \cdot g \in I$.\hfill \qed
+       \end{prooff}
+       So $I = (f)$ for some $f \in F[X]$ since $F[X]$ is a PID. Of course, this $f$ isn't unique. We may assume $f$ is monic by multiplying by a unit in $F$. Then for $g \in F[X]$, \[
+            g (A)=0 \iff g \in I \iff g \in (f) \iff f|g
+       .\] So $f$ is the minimal polynomial of $A$; we've derived it using rings (see IB Linear Algebra)
+\end{example*}
+The next example will be of interest to those who want to study Part II Galois Theory.
+\begin{example*}[Field of order 8]
+       Let $\mathbb{F}_2 =\mathbb{Z}/2\mathbb{Z}$. Now let $f (X)=X^3 +X+1 \in \mathbb{F}_{2}[X]$. If $f (X)=g (X)h (X)$ with $g, h \in \mathbb{F}_{2}[X]$ and $\operatorname{deg}g , \operatorname{deg}h >0$, then $\operatorname{deg}g+ \operatorname{deg}h=3$. Thus either $\operatorname{deg}g =1$ or $\operatorname{deg}h=1$, and so $f$ has a root. 
+
+       But $f (0 )\neq 0$ and $f (1)\neq 0$ in $\mathbb{F}_{2}$. Thus $f$ is irreducible. Since $\mathbb{F}_{2}$ is a PID, Lemma \ref{pidmaximal} implies $(f) \unlhd \mathbb{F}_{2}[X]$ is a maximal ideal. Hence \[
+            \mathbb{F}_{2}[X]/(f)=\left\{aX^2+bX+c: \ a,b,c \in \mathbb{F}_{2}\right\}
+       \] is a field of order 8.
+\end{example*}
 \end{document}
