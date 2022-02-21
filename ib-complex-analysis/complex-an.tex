@@ -1,33 +1,18 @@
-\documentclass[a4paper]{scrartcl}
+\documentclass[egregdoesnotlikesansseriftitles,a4paper]{scrartcl}
 
-\usepackage[
-    fancytheorems, 
-    fancyproofs, 
-    noindent, 
-]{adam}
-\usepackage{floatrow}
-\usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-\usepackage{bm}
-
-\newcommand{\incfig}[2]{%
-    \def\svgwidth{#1mm}
-    \import{./figures/}{#2.pdf_tex}
-}
+\usepackage{martin}
 
 \title{IB Complex Analysis}
 \author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
-\date{\today}
-
+\date{Last updated: \today}
 
 \allowdisplaybreaks
+
 \begin{document}
 
 \maketitle
-These are my notes for the IB course Complex Analysis, which was lectured in Lent 2022 at Cambridge by Prof. N.Wickramasekera. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
-
+These are my notes\footnote{Notes are posted online on \href{https://mjv43.user.srcf.net/}{my website}.} for the IB course Complex Analysis, which was lectured in Lent 2022 at Cambridge by Prof. N.Wickramasekera.
+\newpage
 \tableofcontents
 \newpage
 
@@ -160,7 +145,7 @@ Now we need some definitions before the next corollary.
 \end{proof}
 Now we want to look at some examples of holomorphic functions other than polynomials on $\mathbb{C}$ and rational functions on their domains. We now look at power series, which will give us a wealth of examples. 
 
-\subsection{Power series}
+\subsection{Power series}\label{powerseriessection}
 Recall the next theorem from IA Analysis:
 \begin{definition*}[Radius of convergence]
       If $(c_{n})_{n=0}^{ \infty}$ is a sequence of complex numbers, then there is a unique number $R \in [0, \infty]$ such that the power series \[
@@ -451,7 +436,7 @@ We aim to extend Riemann integration to complex functions $f: U \rightarrow \mat
           \end{cases}
      \end{equation*}
 \end{definition*}
-\begin{proposition}
+\begin{proposition}\label{basicestimate}
      For any continuous function $f: U \rightarrow \mathbb{C}$ and any curve $\gamma:[a, b] \rightarrow \mathbb{C}$, we have that
      $$
      \left|\int_{\gamma} f(z) d z\right| \leq \text { length }(\gamma) \sup _{\gamma}|f|
@@ -466,7 +451,7 @@ We aim to extend Riemann integration to complex functions $f: U \rightarrow \mat
 \end{proof}
 \subsection{Fundamental theorem of calculus}
 We can now look at the complex version of the FTC.
-\begin{theorem}[Fundamental Theorem of Calculus]
+\begin{theorem}[Fundamental Theorem of Calculus]\label{ftc}
      Suppose that $f: U \rightarrow \mathbb{C}$ is continuous, $U \subset \mathbb{C}$ open. If there is a function $F: U \rightarrow \mathbb{C}$ such that $F^{\prime}(z)=f(z)$ for all $z \in U$, then for any curve $\gamma:[a, b] \rightarrow U$,
      $$
      \int_{\gamma} f(z) d z=F(\gamma(b))-F(\gamma(a)) .
@@ -602,7 +587,7 @@ For later applications, we want to generalise this theorem to continuous functio
       \left|\int_{ \partial T}^{}f (z) \ \mathrm{d}z \right| \leq 6 \left|S\right|\left(\sup_{z \in T} \left|f (z)\right|\right) \frac{\operatorname{length} ( \partial T)}{2^{n}}
       .\] Then let $n \rightarrow \infty$ and we are done.
 \end{proof}
-\begin{corollary}(Convex Cauchy)
+\begin{corollary}(Convex Cauchy)\label{convexcauchy}
       Let $U \subset C$ be convex, or more generally, a star domain. Let $f: U \rightarrow \mathbb{C}$ be continuous and holomorphic in $U \backslash S$ where $S$ is a finite set. Then $\int_{\gamma}^{}f (z) \ \mathrm{d}z=0 $ for any closed curve $\gamma$ in $U$.
 \end{corollary}
 \begin{proof}
@@ -677,6 +662,117 @@ This finally gives us the tools to prove two very deep results: Liouville's theo
      Now if $p(z) \neq 0$ for all $z$, then $g(z)=\frac{1}{p(z)}$ is entire. By the above, $|g(z)| \leq 1$ for $|z|>R$. By continuity of $g$, we also have that $|g(z)|$ bounded from above on the compact set $\{|z| \leq R\}$. Thus $g$ is a bounded entire function, so by Liouville's theorem $g$ is constant. Since $p$ is non-constant, this is impossible. So $p$ must have a zero.
 \end{proof}
 \begin{theorem}[Local maximum modulus principle]
-      
+      If $f: D \left(a,R\right)\rightarrow \mathbb{C}$ is holoorphic and if $\left|f \left(z\right)\right|\leq \left|f \left(a\right)\right| $ for all $z \in D \left(a,R\right)$, then $f$ is constant.
 \end{theorem}
+\begin{proof}
+      By the mean value property, for any $\rho \in \left(0,R\right)$ we have that \[
+      f \left(a\right)= \int_{0}^{1} f \left(a+\rho e^{2 \pi  it }\right) \ \mathrm{d}t 
+      .\] Therefore \[
+      \left|f \left(a\right)\right|=\left|\int_{0}^{1} f \left(a+\rho e^{2 \pi  it }\right) \ \mathrm{d}t \right| \leq \sup_{t\in [0,1]}\left|f \left(a+\rho e^{2 \pi it }\right)\right|\leq \left|f \left(a\right)\right| \text{ by hypothesis }
+     .\] Thus both inequalities must be equality. Equality in the first implies that by Proposition \ref{basicestimate}, $f \left(a+\rho e^{2\pi i t}\right)=c_{\rho }$ for constant $c_{\rho }$ and all $t \in [0,1]$. But then by the first inequality $\left|c_{\rho }\right|=\left|f \left(a\right)\right|$ for each $\rho \in \left(0,R\right)$. Thus $\left|f \left(a+\rho e^{2\pi i t}\right)=c_{\rho }\right|$ is constant for all $\rho \in \left(0,R\right)$ and $t \in [0,1]$; i.e $\left|f \left(z\right)\right|$ is constant on $D \left(a,R\right)$. By the Cauchy-Riemann equations (see Example Sheet 1), it follows that $f$ is constant.
+\end{proof}
+In section \ref{powerseriessection}, we saw that we could construct power series on disks to generate a large class of holomorphic functions. The next result in the course effectively shows us the converse; that all holomorphic functions have a power series on a disk. 
+\begin{theorem}[Taylor series]
+      Let $f: D \left(a,R\right) \rightarrow \mathbb{C}$ be holomorphic. Then $f$ has a convergent power series representation on $D \left(a,R\right)$. More precisely, there is a sequence of complex numbers $c_0 , c_1 , \ldots$ such that for all $w \in D \left(a,R\right)$, \[
+      f \left(w\right)=\sum_{n=0}^{\infty}c_{n} \left(w-a\right)^{n}
+      .\] The coefficient $c_{n}$ is given by \[
+      c_{n}=\frac{1}{2\pi i}\int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{\left(z-a\right)^{n+1}} \ \mathrm{d}z 
+      ,\] for any $\rho \in \left(0,R\right)$.
+\end{theorem}
+\begin{proof}
+      Let $0<\rho <R$. Then for any $w \in D \left(a,\rho \right)$, we have by the Cauchy integral formula that 
+      \begin{align*}
+           f \left(w\right)&=\frac{1}{2\pi i} \int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{z-w} \ \mathrm{d}z = \frac{1}{2\pi i} \int_{\partial D \left(a,\rho \right)}^{} f \left(z\right)\sum_{n=0}^{\infty} \frac{\left(w-a\right)^{n}}{\left(z-a\right)^{n+1}} \ \mathrm{d}z\\
+           &= \sum_{n=0}^{\infty}\frac{1}{2\pi i} \left(w-a\right)^{n}\int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{\left(z-a\right)^{n+1}} \ \mathrm{d}z.
+      \end{align*}
+      The last equality is true by uniform convergence of the series for $z$in our disk. Write $c_{n}\left(\rho \right)=\frac{1}{2\pi i}\int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{\left(z-a\right)^{n+1}} \ \mathrm{d}z$. Then we know that $f \left(w\right)= =\sum_{n=0}^{\infty}c_{n}\left(\rho \right) \left(w-a\right)^{n}$ for all $w \in D \left(a,\rho \right)$.
+
+      So by Theorem $1.5$, the function $f$ (being given by a power series in $D(a, \rho)$ ) has derivatives of all orders in $D(a, \rho)$, and the coefficient $c_{n}(\rho)=\frac{f^{(n)}(a)}{n !} .$ In particular $c_{n}(\rho)$ is independent of $\rho$, so call it $c_{n}$.
+
+     Since $\rho \in(0, R)$ is arbitrary, we then have that $f(w)=\sum_{n=0}^{\infty} c_{n}(w-a)^{n}$ for all $\overline{w \in D(a, R)}$, where $c_{n}=\frac{f^{(n)}(a)}{n !}=\frac{1}{2 \pi i} \int_{\partial D(a, \rho)} \frac{f(z)}{(z-a)^{n+1}} d z$ for any $\rho \in(0, R)$.
+\end{proof}
+\begin{corollary}
+      If $f$ is holomorphic on an open set $U \subset \mathbb{C}$, then $f$ has derivatives of all orders in $U$ which are themselves holomorphic on $U$. 
+\end{corollary}
+\begin{proof}
+      $f$ has a power series representation near every point, so its derivatives of all orders exist everywhere. This also of course means that the derivatives of all orders are holomorphic.
+\end{proof}
+\begin{remarks}
+      \begin{enumerate}
+           \item Suppose $D(a, R) \subset U$. In the proof of Theorem $2.13$ we have established the formula
+           $$
+           f^{(n)}(a)=\frac{n !}{2 \pi i} \int_{\partial D(a, \rho)} \frac{f(z) d z}{(z-a)^{n+1}}
+           $$
+           valid for any $\rho \in(0, R)$. This is a special case of a Cauchy integral formula for derivatives (Theorem $2.16$ below).
+           \item Taking $n=1$ in the above formula and estimating, we get \[
+               \left|f^{\prime}(a)\right| \leq \frac{1}{\rho}\left(\sup _{z \in \partial D(a, \rho)}|f(z)|\right)
+           .\]  This estimate can be thought of as a "localisation of Liouville's theorem," and it directly implies Liouville's theorem: if $f$ is entire and bounded, we can choose any $a \in \mathbb{C}$, apply the estimate and let $\rho \rightarrow \infty$ to conclude that $f^{\prime}=0$ on $\mathbb{C}$ and hence $f$ is constant.
+      \end{enumerate}
+\end{remarks}
+
+A function $f$ (real or complex) is said to be \vocab{analytic} at a point $a$ if $f$ is given by a convergent power series about $a$ in some neighbourhood of $a$. We know that $f$ analytic at $a$ $\implies $ $f$ has derivatives of all orders near $a$.
+
+Corollary 2.14 says that if $f$ is a complex function, then:
+
+f is analytic at $a$ $\iff$ $f$ has complex derivatives of all orders in a
+neighborhood of $a$ $\iff$ $f$ is complex differentiable once in a
+neighborhood of $a$ (i.e. $f$ is holomorphic at $a$).
+
+For real functions, existence of derivatives of all orders does not imply analyticity.
+(e.g. $f: \mathbb{R}\rightarrow R$ defined by $f (x)=e^{-1/x^2}$ for $x \neq 0$ and $f (0)=0$; this function is differentiable to any order and has $f^{(n)}(0)=0$ for all n, so $f$ is not given by a convergent power series near 0.)
+\begin{notation}
+     From now on we use “analytic” and “holomorphic” interchangeably.
+\end{notation}
+\begin{remarks}
+      \begin{enumerate}
+          \item Let $U \subset \mathbb{C}$ be open. We now have (from Corollary 2.14) that $f=u+i v$ is holomorphic in $U \Longleftrightarrow u, v$ have continuous (first) partial derivatives in $U$ (i.e. $u, v$ are $C^{1}$ in $U$ ) and $u, v$ satisfy the Cauchy-Riemann equations.
+          \item Corollary $2.14$ provides $C^{2}$ regularity of $u$ and $v$ if $f=u+i v$ is holomorphic in $U$. So we now have fully justified that real and imaginary parts of a holomorphic function are harmonic functions.
+      \end{enumerate}
+      
+\end{remarks}
+
+Corollary $2.14$ (higher order differentiability) leads to the following very useful integral criterion for holomorphicity of a continuous function.
+
+\begin{theorem}[Morera's Theorem]\label{morera}
+     Let $U \subset \mathbb{C}$ be open. If $f: U \rightarrow \mathbb{C}$ is continuous and $\int_{\gamma} f(z) d z=0$ for every closed curve $\gamma$ in $U$, then $f$ is holomorphic in $U$.
+\end{theorem}
+\begin{proof}
+     By the FTC (Theorem \ref{ftc}), $f$ has an antiderivative $F$ on U. Such $F$ is of course holomorphic. By Corollary $2.14$ then $F$ is twice differentiable in $U$. Since $F^{\prime}=f$, this means that $f$ is holomorphic.
+\end{proof}
+\begin{corollary}
+     Let $U \subset \mathbb{C}$ be open. If $f: U \rightarrow \mathbb{C}$ is continuous and holomorphic in $U \backslash S$ where $S$ is a finite set, then $f$ is holomorphic in $U$.
+\end{corollary}
+\begin{proof}
+     For each $a \in U$ there is $r>0$ such that $D=D(a, r) \subset U$. Since $D$ is convex, we can apply Corollary \ref{convexcauchy} (convex Cauchy) to see that $\int_{\gamma} f(z) d z=0$ for any closed curve in $D$. By Morera's theorem $f$ is holomorphic in $D$.
+\end{proof}
+As a further application of Taylor series, we next show that zeros of a non-zero holomorphic function are isolated points.
+
+Suppose $f$ is a non-zero holomorphic function on a disk $D=D(a, R)$. Then by the Taylor series theorem, there are constants $c_{n}$ such that \[
+     f(z)=\sum_{n=0}^{\infty} c_{n}(z-a)^{n} \text{ for all } z \in D
+.\] 
+Since $f \not \equiv 0$ in $D$, there is $n$ such that $c_{n} \neq 0 .$ Then \[
+     f(z)=(z-a)^{m} g(z)
+,\] 
+where $g(z)=\sum_{n=m}^{\infty} c_{n}(z-a)^{n-m}$. The function $g$ is holomorphic on $D$ since it is given by a power series, and $g(a)=c_{m} \neq 0$.
+
+\begin{notation}
+     If $m \geq 1$, we say that $f$ has a \vocab{zero of order $m$} at $z=a$. From the formula $c_{n}=\frac{f^{(n)}(a)}{n !}$, it is clear that $m$ is the smallest of the positive integers $n$ such that $f^{(n)}(a) \neq 0$.
+\end{notation}
+Recall that if $S \subset \mathbb{C}$, then a point $w \in S$ is an \vocab{isolated point} of $S$ if there is $r>0$ such that $S \cap D(w, r)=\{w\}$.
+
+\textbf{Unique continuation for analytic functions:}
+Consider a holomorphic function $f: D (a,r)\rightarrow \mathbb{C}$ defined on a disk. We know that by the Taylor series theorem, $f$ is uniquely determined by its values in any arbitrarily small disk $D (a,\rho )\subset D (a,r)$ (because the Taylor series coefficient $c_{n}= \frac{f^{(n)}(a)}{n!}$ for $n \in \mathbb{N}_{0}$).
+
+This can be generalised to arbitrary domains.
+\begin{theorem}[Unique continuation for analytic functions]
+      Let $U,V$ be domains such that $U \subset V$. If $g_1 ,g_2 : V \rightarrow \mathbb{C}$ are analytic and $g_1 =g_2 $ on $U$, then $g_1 =g_2 $ on $V$.
+
+      Equivalently, if $f: U \rightarrow \mathbb{C}$ is analytic, then there is at most one analytic function $g: V \rightarrow \mathbb{C}$ such that $g=f$ on $U$.
+      \begin{notation}
+           We call $g$ the \vocab{analytic continuation of $f$ to $V$}.
+      \end{notation}
+\end{theorem}
+\begin{proof}
+      Let $g_1 ,g_2 $ be analytic with $g_1 |_{U}=g_2 |_{U}$. Then $h=g_1 -g_2 $ is analytic and $h (z)=0$ on $U$. We want to show that $h\equiv 0$ on $V$.
+\end{proof}
 \end{document}

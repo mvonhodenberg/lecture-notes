@@ -7,11 +7,6 @@
 \usepackage{pdfpages}
 \usepackage{transparent}
 
-\newcommand{\incfig}[2]{%
-    \def\svgwidth{#1mm}
-    \import{./figures/}{#2.pdf_tex}
-}
-
 \title{IB Groups, Rings and Modules}
 \author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
 \date{Last updated: \today}
@@ -36,6 +31,7 @@ The course is divided into several sections:
     \item Rings; these are sets where you can add, subtract and multiply (e.g $\mathbb{Z}$ or $\mathbb{C}[X]$). We will study rings of integers such as $\mathbb{Z}[i], \mathbb{Z}[\sqrt{2}]$. These also generalise to polynomial rings. We will also study fields, which are rings where you can divide (e.g $\mathbb{Q},\mathbb{R},\mathbb{C}$ or $\mathbb{Z}/p\mathbb{Z}$ for $p$ prime).
     \item Modules; these are an analogue of vector spaces where the scalars belong to a ring instead of a field. We will classify modules over certain "nice" rings. This allows us to prove Jordan Normal Form, and classify finite abelian groups. 
 \end{enumerate}
+\newpage
 \section{Groups}
 \subsection{Recall of IA Groups}
 This first subsection will just recap the results seen in IA Groups; it can be skipped by anyone with a sufficient knowledge of the course.
@@ -697,6 +693,7 @@ This almost immediately shows that finite abelian groups are pretty easy to work
 \begin{proof}
       If $G \cong C_{d_1 }\times C_{d_2 }\times \ldots C_{d_t}$ with $d_1 | d_2 | \ldots | d_t$, then every $g \in G$ has order dividing $d_{t}$, and $h \in C_{d_t}$ of order $d_t$, then $(1,1,\ldots ,h)\in G$ has order $d_t$. Thus $G$ has exponent $d_t$.
 \end{proof}
+\newpage
 \section{Rings}
 \subsection{Definitions and examples}
 \begin{definition*}[Ring]
@@ -1087,7 +1084,7 @@ Now we move on to discussing maximal and prime ideals, which we will use extensi
        $\iff$ $I \unlhd R$ is maximal.
 \end{proof}
 \begin{definition*}[Prime ideal]
-       An ideal $I \unlhd R$ is prime if $I \neq R$ and whenever $a,b \in R$ with $ab \in I$, we have $a \in I$ and $b \in I$.
+       An ideal $I \unlhd R$ is prime if $I \neq R$ and whenever $a,b \in R$ with $ab \in I$, we have $a \in I$ or $b \in I$.
 \end{definition*}
 \begin{example*}
        The ideal $n\mathbb{Z} \unlhd \mathbb{Z}$ is a prime ideal iff $n=0$ or $n=p$is prime.
@@ -1115,4 +1112,106 @@ Now we move on to discussing maximal and prime ideals, which we will use extensi
 \begin{remark}
        Proposition \ref{mideal1} and Proposition \ref{pideal1} show that if $I$ is a maximal ideal, it is also a prime ideal (since all fields are integral domains).
 \end{remark}
+\begin{remark}
+       If $\operatorname{char}(R)=n$, then $\mathbb{Z}/n\mathbb{Z} \leq R$. So if $R$ is an integral domain, then $\mathbb{Z}/n\mathbb{Z}$ is an integral domain. This implies that $n\mathbb{Z} \unlhd \mathbb{Z}$ is a prime ideal, so $n=0$ or $n=p$ prime.
+
+       In particular, a field has characteristic 0 (and so contains $\mathbb{Q}$) or has characteristic $p$, in which case it contains $\mathbb{Z}/p\mathbb{Z}=\mathbb{F}_{p}$.
+\end{remark}
+\subsection{Factorisation in integral domains}
+In this section we investigate the following property: we know that in $\mathbb{N}$ we can factorise any number as a product of prime factors, and we want to know to which extent this is true in integral domains.
+\begin{remark}
+       In this section we will always take $R$ to be an integral domain.
+\end{remark}
+\begin{definition*}
+       We will quickly establish some key definitions that will help us work with the objects of this chapter.
+       \begin{itemize}
+             \item[(i)] Recall that $a \in R$ is a unit if there exists $b \in R$ with $ab=1$ (equivalently $(a)=R$).
+             \item[(ii)] $a \in R$ \vocab{divides} $b \in R $ (written $a|b$) if there exists $c \in R $ such that $b=ac$ (equivalently $(b)=(a)$).
+             \item[(iii)] $a,b \in R$ are \vocab{associates} if $a=bc $ for some unit $c \in R$. 
+             \item[(iv)] $r \in R$ is \vocab{irreducible} if $r \neq 0$, $r$ is not a unit, and $r=ab \implies$ $a$ or $b$ is a unit.
+             \item[(v)] $r \in R$ is \vocab{prime} if $r \neq 0$, $r $ is not a unit and $r| ab \implies r|a $ or $r|b$.
+       \end{itemize}
+       \begin{remark}
+              These properties of an element depend on the ambient ring $R$: for example $2$ is prime and irreducible in $\mathbb{Z}$, but not in $\mathbb{Q}$. 
+
+              Another example is that $2X$ is irreducible in $\mathbb{Q}[X]$, but not in $\mathbb{Z}[X]$ (since then we can factor it as $2 \cdot X$, and 2 is a unit in $\mathbb{Z}$).
+       \end{remark}
+\end{definition*}
+Now we want to chase some definitions to make sure our definitions of prime element and prime ideal agree.
+\begin{lemma}
+       Consider $(r)\unlhd R$. This is a prime ideal iff $r=0$ or $r$ is a prime element.
+\end{lemma}
+\begin{proof}
+       \underline{Forward implication:} Suppose $(r)$ is prime and $r \neq 0$. Since prime ideals are proper, $(r) \neq R$. 
+       
+       Therefore $r$ is not a unit. If $r|ab$, then $ab \in (r)$, so $a \in (r)$ or $b \in (r)$. Thus $r|a$ or $r|b$. So $r $ is prime.
+
+       \underline{Reverse implication:} $\left\{0\right\}\unlhd R$ is a prime ideal since $R$ is an integral domain. Let $r \in R$ be a prime. $(r)\neq R$ since $r \in R^{\times }$. 
+
+       If $ab \in (r)$ then $r|ab$. 
+       \begin{align*}
+             \implies r|a \text{ or } r|b\\
+             \implies r \in (a) \text{ or } r \in (b), \text{ i.e } r \text{ is a prime ideal. }
+       \end{align*}
+\end{proof}
+\begin{lemma}
+       If $r \in R$ is prime, then it is irreducible.
+\end{lemma}
+\begin{proof}
+       Since $r$ is a prime, $r \neq 0$ and $r \notin R^{\times}$. Suppose $r=ab$. Then $r|ab$ so $r|a$ or $r|b$. WLOG assume $r|a$, so $a=rc $ for some element $c \in R$.
+
+       Then $r=ab=rbc \implies r (1-bc)=0 \implies bc=1$. This uses the fact that $R$ is an integral domain and $r \neq 0$. So $b$ is a unit.
+\end{proof}
+The converse of this lemma does not hold in general.
+\begin{example*}
+       Let \[
+            R=\mathbb{Z}[\sqrt{-5}]= \left\{a+b\sqrt{-5} : \ a,b \in \mathbb{Z}\right\} \leq C, \quad R \cong \mathbb{Z}[X]/(X^2+5)
+       .\] $R$is a subring of a field, so it's an integral domain. Define a function (called the \emph{norm}) \[
+       N: R \rightarrow \mathbb{Z}_{\geq 0}, \quad a+b \sqrt{-5} \mapsto a^2+5b^2
+       .\] Note that $N (z_1 z_2 )=N (z_1 )N (z_2 )$. 
+       \begin{claim}
+             $R^{\times }=\left\{\pm 1\right\}$.
+       \end{claim}
+       \begin{prooff}
+             If $r \in R^{\times }$, i.e $rs =1$ for some $s \in R$, then \[
+             N (r)N (s)=N (1)=1 \implies N (r)=1 \text{ WLOG} 
+             .\] But the only integer solutions to $a^2+5b^2=1$ are $(a,b)=(1,0)$ or $(-1,0)$.  
+       \end{prooff}
+       \begin{claim}
+             $2 \in R$ is irreducible.
+       \end{claim}
+       \begin{prooff}
+             Suppose $2=rs $ where $r,s \in R $. We want to show one of these elements is a unit. Then \[
+             4= N (2)=N (r)N (s)
+             .\] Since $a^2+5b^2=2$ has no integer solutions, $R$ has no elements of norm 2. Thus $N (r)=1$ and $N (s)=4$ WLOG. But if $N (r)=1$, this implies that $r$ is a unit. 
+       \end{prooff}
+       Similarly 3, 1+$\sqrt{-5} $, $1- \sqrt{-5} $ are all irreducible (as there are no elements of norm 3). Now $(1+\sqrt{-5} )(1-\sqrt{-5} )=6=2 \cdot 3$. Thus $2| (1+\sqrt{-5} )(1-\sqrt{-5} )$, but $2 \nmid 1+\sqrt{-5}$ or $1- \sqrt{-5} $ (check by taking norms). So 2 is irreducible but not prime in $R$.
+\end{example*}
+\begin{remarks}
+       We now know that being irreducible does not imply being prime. Importantly, in the above example $2 \cdot 3= (1+\sqrt{-5} )(1-\sqrt{-5} )$ gives two distinct factorisations into irreducibles. Since $R^{\times}=\left\{\pm 1\right\}$, these irreducibles are not associates.
+\end{remarks}
+This example tells us if we want to have a good definition of factorisation in a ring, we should impose some extra properties.
+\begin{definition*}[Principal ideal domain]
+       An integral domain $R$ is a \vocab{principal ideal domain} (PID) if any ideal $I \unlhd R$ is principal. In other words, any ideal $I \unlhd R$ is generated by some element $r \in R$.
+
+       Example: $\mathbb{Z}$ is a PID by Lemma [todo].
+\end{definition*}
+\begin{proposition}
+       Let $R$ be a PID. Then every irreducible element of $R$ is prime.
+\end{proposition}
+\begin{proof}
+       Let $r \in R$ be irreducible. We already know that $r \neq 0$ and $r$ is not a unit. Assume $r| ab $ and $r \nmid a$. 
+       
+       Since $R$ is a PID, $(a,r)=(d)$ for some $d \in R$. In particular, $r=cd $ for some $c \in R$. Since $r$ is irreducible, either $c$ or $d$ is a unit. If $c$ is a unit, then $(a,r)=(r)$. So $r|a$. Contradiction. If $d$ is a unit, then $(a,r)=R$.
+
+       So there exists $s,t \in R$ such that $sa+tr=1$. Then $b=sab +trb$. So $r|b$ since $r|ab $. Thus $r$ is prime. 
+\end{proof}
+\begin{lemma}
+      Let $R$ be a PID, and $0 \neq r \in R$. Then $r$ irreducible $\iff$ $(r)$ is a maximal ideal. 
+\end{lemma}
+\begin{proof}
+       \underline{Forward implication:} $r \notin R^{\times}$ so $(r)\neq r$. Suppose $(r) \subset J \leq R$. Since $R$ is a PID, $J=(a)$ for some $a \in R$. Therefore $r=ab$ for some $b \in R$. Since $r$ is irreducible, either $a \in R^{\times } \implies J=R$ or $b \in R^{\times } \implies J= (r)$. Thus $(r)$ is maximal. 
+
+       \underline{Reverse implication:}
+\end{proof}
 \end{document}

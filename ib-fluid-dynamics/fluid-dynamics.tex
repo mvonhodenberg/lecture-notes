@@ -1,41 +1,23 @@
-\documentclass[a4paper]{scrartcl}
+\documentclass[egregdoesnotlikesansseriftitles,a4paper]{scrartcl}
 
-\usepackage[
-    fancytheorems, 
-    fancyproofs, 
-    noindent, 
-]{adam}
-\usepackage{floatrow}
-\usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-\usepackage{bm}
-
-\newcommand{\incfig}[2]{%
-    \def\svgwidth{#1mm}
-    \import{./figures/}{#2.pdf_tex}
-}
-\renewcommand{\vec}[1]{\underline{#1}}
+\usepackage{martin}
 
 \title{IB Fluid Dynamics (up to lecture 2)}
 \author{Martin von Hodenberg (\texttt{mjv43@cam.ac.uk})}
-\date{\today}
+\date{Last updated: \today}
 \setcounter{section}{-1}
 
 \allowdisplaybreaks
+\renewcommand{\vec}[1]{\underline{#1}}
 
 \begin{document}
 
 \maketitle
-
-
-These are my notes for the IB course Fluid Mechanics, which was lectured in Lent 2022 at Cambridge by Prof. J.R. Lister. These notes are written in \LaTeX  \ for my own revision purposes. Any suggestions or feedback is welcome.
-
-
-
+These are my notes\footnote{Notes are posted online on \href{https://mjv43.user.srcf.net/}{my website}.} for the IB course Fluid Dynamics, which was lectured in Lent 2022 at Cambridge by Prof. J.R. Lister.
+\newpage
 \tableofcontents
 \newpage
+
 \section{Introduction}
 Fluid mechanics is a subset of a field called continuum mechanics. Flows of liquids and gases are both fluids, and continuum mechanics also includes solid mechanics such as elasticity and deformation. 
 
@@ -55,9 +37,9 @@ There are two natural perspectives on flow:
 \end{enumerate}
 \subsection{Particle paths and streamlines}
 \begin{definition*}[Streamline]
-     A \vocab{streamline} is a curve that is everywhere parallel to the flow at a given instant. The streamline through $\bm{x_0 } $ at time $t_0 $ can be found parametrically in the form \[
-     \bm{x} =\bm{x} (s; \bm{x_0 } , \bm{t_0 } )
-     .\] from solving $\frac{\mathrm{d}x}{\mathrm{d}s}=\bm{u} (\bm{x};t_0 )$ with $\bm{x} =\bm{x_0 } $ at $s=0$. The set of streamlines at a given instant shows the direction of the flow.
+     A \vocab{streamline} is a curve that is everywhere parallel to the flow at a given instant. The streamline through $\vec{x_0 } $ at time $t_0 $ can be found parametrically in the form \[
+     \vec{x} =\vec{x} (s; \vec{x_0 } , \vec{t_0 } )
+     .\] from solving $\frac{\mathrm{d}x}{\mathrm{d}s}=\vec{u} (\vec{x};t_0 )$ with $\vec{x} =\vec{x_0 } $ at $s=0$. The set of streamlines at a given instant shows the direction of the flow.
 \end{definition*}
 For example, for a flow $u= (1,t)$ we would solve \[
 \int x = x_0 +s, y=y_0 +ts \implies y=y_0 +t (x-x_0 )
@@ -178,4 +160,16 @@ Consider an arbitrary volume $V$, fixed in space, bounded by a surface $\partial
     \item[(ii)] Volume/body forces.
     \item[(iii)] Surface forces.
 \end{itemize}
+\begin{figure}[H]
+    \centering
+    \incfig{100}{fluidboundary1}
+\end{figure}
+We can see from the diagram above that the volume out over $\delta A$ in time $\delta t$ is \[
+\vec{n}\delta  A \cdot \vec{u} \delta t
+.\] The momentum out over $\delta A$ in time $\delta t$ is therefore \[
+\rho \vec{u} \left(\vec{n} \delta A \cdot \vec{u} \delta t\right)
+.\] Therefore \[
+\frac{\partial }{\partial t}\int_{V}^{}\rho \vec{u} \ \mathrm{d}V = - \int_{\partial V}^{}\rho  \vec{u} \left(\vec{u}\cdot \vec{n}\right) \ \mathrm{d}A +\int_{\partial V}^{}\left(-\rho \vec{n}\right) \ \mathrm{d}A + \int_{V}^{}\vec{F} \ \mathrm{d}V 
+.\] This is called the \emph{momentum integral equation}.
+Working in components,
 \end{document}

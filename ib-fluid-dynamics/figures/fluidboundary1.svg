@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="158.94409mm"
+   height="81.548531mm"
+   viewBox="0 0 158.94409 81.548531"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="fluidboundary1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.93859299"
+     inkscape:cx="604.09571"
+     inkscape:cy="184.85116"
+     inkscape:window-width="1682"
+     inkscape:window-height="999"
+     inkscape:window-x="552"
+     inkscape:window-y="221"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="marker15698"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path15696" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path15351" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect15190"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect99"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-29.436677,-22.774176)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 40.264429,41.859059 c 24.185498,0 48.370733,0 63.251301,10.405267 14.88057,10.405267 20.45642,31.214654 26.03231,52.024144"
+       id="path97"
+       inkscape:path-effect="#path-effect99"
+       inkscape:original-d="m 40.264429,41.859059 c 24.185498,2.65e-4 48.370733,2.65e-4 72.555701,0 5.57635,20.810485 11.15221,41.619871 16.72791,62.429411" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.264999;stroke-opacity:1"
+       id="rect1425"
+       width="13.554362"
+       height="29.89933"
+       x="110.39878"
+       y="-71.32402"
+       transform="rotate(47.420617)" />
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:0.214554;stroke-opacity:1"
+       id="path1551"
+       cx="119.45982"
+       cy="-38.711563"
+       rx="6.8615861"
+       ry="2.1861091"
+       transform="matrix(0.69314521,0.72079797,-0.69314521,0.72079797,0,0)" />
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:0.214554;stroke-opacity:1"
+       id="path1551-2"
+       cx="121.59016"
+       cy="-68.494652"
+       rx="6.8615861"
+       ry="2.1861091"
+       transform="matrix(0.69314521,0.72079797,-0.69314521,0.72079797,0,0)" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="28.902687"
+       y="38.271141"
+       id="text2903"><tspan
+         sodipodi:role="line"
+         id="tspan2901"
+         style="stroke-width:0.264583"
+         x="28.902687"
+         y="38.271141">$\partial V$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="66.177177"
+       y="73.951004"
+       id="text10065"><tspan
+         sodipodi:role="line"
+         id="tspan10063"
+         style="stroke-width:0.264583"
+         x="66.177177"
+         y="73.951004">$V$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="117.80334"
+       y="63.386578"
+       id="text14677"><tspan
+         sodipodi:role="line"
+         id="tspan14675"
+         style="stroke-width:0.264583"
+         x="117.80334"
+         y="63.386578">$\vec{u}\delta t$</tspan></text>
+    <path
+       style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15698)"
+       d="m 131.73534,38.07282 c 5.34876,-4.952559 10.76377,-9.966451 16.14564,-14.949665"
+       id="path15188"
+       inkscape:path-effect="#path-effect15190"
+       inkscape:original-d="m 131.73534,38.07282 c 5.38214,-4.916514 10.76402,-9.96618 16.14564,-14.949665" />
+    <text
+       xml:space="preserve"
+       style="font-size:7.05556px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="144.8933"
+       y="34.391018"
+       id="text17056"><tspan
+         sodipodi:role="line"
+         id="tspan17054"
+         style="fill:#0000ff;stroke-width:0.264583"
+         x="144.8933"
+         y="34.391018">$n \delta A$</tspan></text>
+  </g>
+</svg>
