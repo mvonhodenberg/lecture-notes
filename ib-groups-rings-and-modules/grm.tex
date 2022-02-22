@@ -128,35 +128,35 @@ This first subsection will just recap the results seen in IA Groups; it can be s
 \end{remark}
 
 \begin{definition*}[Isomorphism]
-      An isomorphism of groups is a group homomorphism that is also a bijection. We say $G$ and $H$ are isomorphic and write $G \cong H$ if there exists an isomorphism $\phi: G \rightarrow H$. (Note it follows from the definition that ${\phi}^{-1}$ is also a group homomorphism)
+      An \vocab{isomorphism} of groups is a group homomorphism that is also a bijection. We say $G$ and $H$ are \vocab{isomorphic} and write $G \cong H$ if there exists an isomorphism $\phi: G \rightarrow H$. (Note it follows from the definition that ${\phi}^{-1}$ is also a group homomorphism)
 \end{definition*}
 
 \begin{theorem}[First Isomorphism Theorem]
       Let $\phi: G \rightarrow H$ be a group homomorphism. Then $\operatorname{ker}\phi \unlhd G$ and \[
       G/\operatorname{ker}\phi \cong \operatorname{Im} \phi
-      .\] 
-\end{theorem}
-\begin{proof}
-      Let $K=\operatorname{ker} \phi$. We have already checked $K$ is normal. Now we define $\Phi: G/K \rightarrow \operatorname{Im} \phi$ by \[
-      gK \rightarrow \phi (g).
       .\]
-      To show $\Phi$ is well defined and injective: 
-      \begin{align*}
-           g_1 K= g_2 K &\iff {g_2 }^{-1}g_1 \in K\\
-           &\iff \phi ({g_2 }^{-1}g_1 )=e\\
-           &\iff \phi (g_1 )=\phi (g_2 ). 
-      \end{align*}
-      To show $\Phi$ is a group hom.: 
-      \begin{align*}
-           \Phi (g_1 K g_2 K)&=\Phi (g_1 g_2 K)\\
-           &=\phi (g_1 g_2 )=\phi (g_1 ) \phi (g_2 )\\
-           &=\Phi (g_1 K) \Phi (g_2 K)
-      \end{align*}
-      Showing $\Phi$ is surjective:
-
-      Let $x \in \operatorname{Im} \phi$, say $x= \phi (g)$ for some $g \in G$. Then $x=\phi (gR)$.
-\end{proof}
-\begin{example*}
+      \begin{proof}
+            Let $K=\operatorname{ker} \phi$. We have already checked $K$ is normal. Now we define $\Phi: G/K \rightarrow \operatorname{Im} \phi$ by \[
+            gK \rightarrow \phi (g)
+            .\]
+            To show $\Phi$ is well defined and injective: 
+            \begin{align*}
+                 g_1 K= g_2 K &\iff {g_2 }^{-1}g_1 \in K\\
+                 &\iff \phi ({g_2 }^{-1}g_1 )=e\\
+                 &\iff \phi (g_1 )=\phi (g_2 ). 
+            \end{align*}
+            To show $\Phi$ is a group hom.: 
+            \begin{align*}
+                 \Phi (g_1 K g_2 K)&=\Phi (g_1 g_2 K)\\
+                 &=\phi (g_1 g_2 )=\phi (g_1 ) \phi (g_2 )\\
+                 &=\Phi (g_1 K) \Phi (g_2 K)
+            \end{align*}
+            Showing $\Phi$ is surjective:
+      
+            Let $x \in \operatorname{Im} \phi$, say $x= \phi (g)$ for some $g \in G$. Then $x=\phi (gR)$.
+      \end{proof}
+\end{theorem}
+\begin{example*}[Application of First Isomorphism Theorem]
       Let $\phi: \mathbb{C} \rightarrow \mathbb{C}^x= \left\{x \in C: x \neq 0\right\}$ given by $z \mapsto e^{z}$.
 
       Since $e^{z+w}=e^{z}e^{w}$, this is a group homomorphism from $(\mathbb{C},+) \rightarrow (\mathbb{C}^{x},\times)$. We have that 
@@ -170,21 +170,19 @@ This first subsection will just recap the results seen in IA Groups; it can be s
 \begin{theorem}[Second Isomorphism Theorem]
       Let $H \leq G$, and $K \unlhd G$. Then $HK = \left\{hk: h \in H, k \in K\right\} \leq G$ and $H \cap K \unlhd H$. Moreover, \[
       HK/K \cong H/(H \cap K)
-      .\] 
+      .\]
+      \begin{proof}
+            Let $h_1 k_1 , h_2 k_2 \in HK$ (so $h_1 h_2 \in H, \ k_1 k_2 \in K$). Now \[
+            h_1 k_1 {(h_2 k_2 )}^{-1}=\underbrace{h_1 {h_2 }^{-1}}_{\in H} (\underbrace{h_2 k_1 {k_2 }^{-1} {h_2 }^{-1}}_{\in K} )\in HK 
+            .\] 
+           Thus $HK \leq G$ (by our previous remark). Let $\phi: H \rightarrow G/K$ be given by $h \rightarrow hK$. This is the composite of $H \rightarrow G$ and the quotient map $G \rightarrow G/K$; hence $\phi$ is a group homomorphism. Thus
+           \begin{align*}
+                &\operatorname{ker} \phi = \left\{h \in H: hK=K\right\}=H \cap K \unlhd H \\
+                &\operatorname{Im} \phi = \left\{hK: \ h \in H\right\}=HK/K
+           \end{align*}
+           Now by the First Isomorphism Theorem $HK/K \cong H/(H \cap K)$.
+      \end{proof}
 \end{theorem}
-\begin{proof}
-      Let $h_1 k_1 , h_2 k_2 \in HK$ (so $h_1 h_2 \in H, \ k_1 k_2 \in K$). Now \[
-      h_1 k_1 {(h_2 k_2 )}^{-1}=\underbrace{h_1 {h_2 }^{-1}}_{\in H} (\underbrace{h_2 k_1 {k_2 }^{-1} {h_2 }^{-1}}_{\in K} )\in HK 
-      .\] 
-     Thus $HK \leq G$ (by our previous remark). Let $\phi: H \rightarrow G/K$ be given by $h \rightarrow hK$. This is the composite of $H \rightarrow G$ and the quotient map $G \rightarrow G/K$; hence $\phi$ is a group homomorphism. Thus
-     \begin{align*}
-          \operatorname{ker} \phi = \left\{h \in H: hK=K\right\}=H \cap K \unlhd H \\
-          \operatorname{Im} \phi = \left\{hK: \ h \in H\right\}=HK/K
-     \end{align*}
-     Now by the First Isomorphism Theorem \[
-     HK/K \cong H/(H \cap K)
-     .\] 
-\end{proof}
 \begin{lemma}\label{1p2}
       Suppose $K \unlhd G$. There is a bijection \[
       \left\{\text{subgroups of }G/K\right\} \leftrightarrow \left\{\text{subgroups of }G \text{ containing }K\right\}
@@ -198,12 +196,12 @@ This first subsection will just recap the results seen in IA Groups; it can be s
       Let $K \leq H \leq G$ be normal subgroups of $G$. Then \[
       \frac{G/K}{H/K} \cong G/H
       .\] 
+      \begin{proof}
+            Let $\phi: G/K \rightarrow G/K$ be defined by $gK \mapsto gH$. If $g_1 K= g_2 K$, then ${g_2 }^{-1}g_1 \in K \leq H \implies  g_1 H= g_2 H$. Thus $\phi$ is well-defined.
+            
+            Thus $\phi$ is a surjective homomorphim with kernel $H/K$. Now just apply the First Isomorphism Theorem.
+      \end{proof}
 \end{theorem}
-\begin{proof}
-      Let $\phi: G/K \rightarrow G/K$ be defined by $gK \mapsto gH$. If $g_1 K= g_2 K$, then ${g_2 }^{-1}g_1 \in K \leq H \implies  g_1 H= g_2 H$. Thus $\phi$ is well-defined.
-      
-      Thus $\phi$ is a surjective homomorphim with kernel $H/K$. Now just apply the First Isomorphism Theorem.
-\end{proof}
 \subsection{Simple groups}
 If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information about $G$. However, this approach is not always available. This is the case when a group is simple. 
 \begin{definition*}[Simple group]
@@ -230,17 +228,18 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
      If $G$ is a finite group, then $G$ has a composition series \[
      e =G_{0} \unlhd G_1 \unlhd \ldots \unlhd G_{m}=G
      ,\] with each quotient $G_{i}/G_{i-1}$ simple.
-\end{lemma}
-\begin{proof}
+     \begin{proof}
       We induct on $|G|$. If $|G|=1$ it's obvious. If $|G|>1$, let $G_{m-1}$ be a normal subgroup of largest possible order that isn't $G$ itself. Lemma \ref{1p2} implies $G/G_{m-1}$ is simple. Then apply the induction hypothesis to $G_{m-1}$. 
-\end{proof}
+      \end{proof}
+\end{lemma}
 \subsection{Group actions}
 \begin{definition*}[Permutation group]
       For $X$ any set, let $\operatorname{Sym}(X)$ be the group of all bijections $X \rightarrow X$ under composition. This clearly forms a group with $e=\operatorname{Id}_X$.
 
       A group $G$ is a permutation group of degree n if $G \leq \operatorname{Sym}(X)$ with $|X|=n$. 
 \end{definition*}
-\begin{example*}[Examples of permutation group]\hfill
+\begin{example*}
+      Examples of permutation groups are:
       \begin{itemize}
            \item $S_{n}=\operatorname{Sym}(\left\{1,2,\ldots ,n\right\})$ is a permutation group of degree $n$, as is $A_{n}\leq S_{n}$.
            \item $D_{2n}=$ (symmetries of a regular $n$-gon) is a subgroup of Sym($\left\{\text{vertices of n-gon}\right\}$).
@@ -302,10 +301,10 @@ Later on a lot of the proofs will involve picking a nice group action. So let's 
  \end{itemize}
  \begin{theorem}[Cayley's theorem]
      Any finite group $G$ is isomorphic to a subgroup of the symmetric group $S_{n}$ for some $n$. (Take $n=|G|$.)
+     \begin{proof}
+      As above in (i).
+      \end{proof}
  \end{theorem}
- \begin{proof}
-       As above in (i).
- \end{proof}
  \begin{itemize}
       \item[(ii)] Let $H \leq G$; then $G$ acts on $G/H$ by left multiplication, i.e $g \ast x H= gxH$. This action is transitive (since $(x_2 {x_1 }^{-1})x_1 H=x_2 H$) with 
       \begin{align*}
@@ -313,11 +312,13 @@ Later on a lot of the proofs will involve picking a nice group action. So let's 
       \end{align*} Thus $\operatorname{ker}(\phi)=\bigcap_{x \in G}xH {x}^{-1}$. This is the largest normal subgroup of $G$ that is contained in $H$.  
  \end{itemize}
  \begin{theorem}
-       Let $G$ be a non-abelian simple group, and $H \leq G$ a subgroup of index $n>1$. Then $n \geq (5$ and $G$ is isomorphic to a subgroup of $A_{n}$.
+       Let $G$ be a non-abelian simple group, and $H \leq G$ a subgroup of index $n>1$. Then $n \geq 5$ and $G$ is isomorphic to a subgroup of $A_{n}$.
+       \begin{proof}
+            Let $G$ act on $X=G/H$ by left multiplication, and let $\phi: G \rightarrow \operatorname{Sym}(X)$ be the associated permutation representation. As $G$ is simple, $\operatorname{ker}(\phi)=e$ or $G$. If $\operatorname{ker}(\phi)=G$, then $\operatorname{Im}(\phi)=e$. This is a contradiction since $G$ acts transitively on $X$ and $|X|>1$. Thus $\operatorname{ker}(\phi)=e$ and $G \cong \operatorname{Im}(\phi) \leq S_{n}.$ 
+            
+            Since $G \leq S_{n}$ and $A_n \unlhd S_n$, the second isomorphism theorem gives $G \cap A_n \unlhd G$ and $G/(G \cap A_n) \cong GA_n/A_n \leq S_n / A_n \cong C_2 $. Since $G$ is simple, $G \cap A_n=e$ (this is impossible as $G \leq C_2 $ but $G$ isn't abelian) or $G$. Thus $G \leq A_{n} $. Finally, if $n \leq 4$, then $A_n$ has no non-abelian simple subgroups.
+        \end{proof}
  \end{theorem}
- \begin{proof}
-     Let $G$ act on $X=G/H$ by left multiplication, and let $\phi: G \rightarrow \operatorname{Sym}(X)$ be the associated permutation representation. As $G$ is simple, $\operatorname{ker}(\phi)=e$ or $G$. If $\operatorname{ker}(\phi)=G$, then $\operatorname{Im}(\phi)=e$. This is a contradiction since $G$ acts transitively on $X$ and $|X|>1$. Thus $\operatorname{ker}(\phi)=e$ and $G \cong \operatorname{Im}(\phi) \leq S_{n}.$ Since $G \leq S_{n}$ and $A_n \unlhd S_n$, the second isomorphism theorem gives $G \cap A_n \unlhd G$ and $G/(G \cap A_n) \cong GA_n/A_n \leq S_n / A_n \cong C_2 $. Since $G$ is simple, $G \cap A_n=e$ (this is impossible as $G \leq C_2 $ but $G$ isn't abelian) or $G$. Thus $G \leq A_{n} $. Finally, if $n \leq 4$, then $A_n$ has no non-abelian simple subgroups.
- \end{proof}
 \begin{itemize}
      \item[(iii)] Let $G$ act on itself by conjugation, i.e $g \ast x= gx {g}^{-1}$. We define the conjugacy class of $x \in G$ to be \[
      \operatorname{ccl}_G (x)=\operatorname{orb}_{G}(x)=\left\{gx {g}^{-1} \in G: \quad g \in G\right\}
@@ -380,12 +381,12 @@ Let $g \in A_n$. Then $C_{A_n}(g)=C_{S_n}(g) \cap A_{n}$. We effectively have tw
 \end{example*}
 \begin{proposition}
      $A_5 $ is simple.
-\end{proposition}
-\begin{proof}
+     \begin{proof}
       If $H \unlhd A_5$, then $H$ is a union of conjugacy classes. Therefore \[
       |H|=1+15a+20b+12c \quad \text{ for some } a,b \in \left\{0,1\right\} \text{ and } c \in \left\{0,1,2\right\}
       .\] Since $H |60$, this implies $H=1$ or 60, i.e $A_5 $ is simple. 
-\end{proof}
+      \end{proof}
+\end{proposition}
 Now we move on to a more general statement about $A_n$ being simple. Before we can do that, we will need some lemmas for the proof. 
 \begin{lemma}\label{an1}
       $A_n$ is generated by 3-cycles. 
@@ -407,88 +408,88 @@ Now we move on to a more general statement about $A_n$ being simple. Before we c
 \end{proof}
 \begin{theorem}
       $A_n$ is simple for all $n \geq 5$.
+      \begin{proof}
+            Let $e \neq N \unlhd A_{n}$. Suffices to show that $N$ contains a 3-cycle, since by \ref{an1} and \ref{an2} we then have $N=A_n$.
+      
+            Take $e \neq \sigma \in N$ and write $\sigma$ in its disjoint cycle decomposition. Consider the cases: 
+            \begin{enumerate}
+                 \item  $\sigma$ contains a cycle of length $r \geq 4$. WLOG $\sigma=(123 \ldots r)\tau$, where $\tau$ is some product of cycles that fixes $1,2, \ldots ,r$. 
+                 
+                 Let $\delta =(123)$. Then consider the element \[
+                 \underbrace{{\sigma}^{-1}}_{\in N} \underbrace{{\delta}^{-1} \sigma \delta}_{\in N} = (r \ldots 21)(132)(12 \ldots r)(123)=(23r) \in N
+                 .\] Note $\tau$ gets cancelled as it fixes 1 to $r$. Therefore $N$ contains a 3-cycle. 
+                 \item $\sigma$ contains two 3-cycles. WLOG $\sigma= (123)(456)\tau$. Let $b=(124).$ Then \[
+                     {\sigma}^{-1} {\delta}^{-1} \sigma \delta = (132)(465)(142)(123)(456)(124)=(12436) \in N
+                .\] Then we are back to case 1, so $N$ contains a 3-cycle.
+                \item $\sigma$ contains two 2-cycles. WLOG $\sigma=(12)(34)\tau$. Let $\delta=(123)$ and consider \[
+                     {\sigma}^{-1} {\delta}^{-1} \sigma \delta = (12)(34)(132)(12)(34)(123)=(14)(23)=\pi \in N
+                     .\] Let $\varepsilon= (235)$. Then \[
+                     {\pi}^{-1}{\varepsilon}^{-1}\pi \varepsilon =(14)(23)(253)(14)(23)(235)=(253)
+                     .\] Thus $N$ contains a 3-cycle.
+            \end{enumerate}
+            We now consider the remaining cases:
+            \begin{enumerate}
+                 \item Cycle type ($\ast$ $\ast$) $\implies \sigma \notin A_n$.
+                 \item Cycle type ($\ast$$\ast$$\ast$) $\implies \sigma$ is a 3-cycle.
+                 \item Cycle type ($\ast$$\ast$)($\ast$$\ast$$\ast$) $\implies  \sigma \notin A_n$. 
+            \end{enumerate}
+            This concludes the proof.
+      \end{proof}
 \end{theorem}
-\begin{proof}
-      Let $e \neq N \unlhd A_{n}$. Suffices to show that $N$ contains a 3-cycle, since by \ref{an1} and \ref{an2} we then have $N=A_n$.
-
-      Take $e \neq \sigma \in N$ and write $\sigma$ in its disjoint cycle decomposition. Consider the cases: 
-      \begin{enumerate}
-           \item  $\sigma$ contains a cycle of length $r \geq 4$. WLOG $\sigma=(123 \ldots r)\tau$, where $\tau$ is some product of cycles that fixes $1,2, \ldots ,r$. 
-           
-           Let $\delta =(123)$. Then consider the element \[
-           \underbrace{{\sigma}^{-1}}_{\in N} \underbrace{{\delta}^{-1} \sigma \delta}_{\in N} = (r \ldots 21)(132)(12 \ldots r)(123)=(23r) \in N
-           .\] Note $\tau$ gets cancelled as it fixes 1 to $r$. Therefore $N$ contains a 3-cycle. 
-           \item $\sigma$ contains two 3-cycles. WLOG $\sigma= (123)(456)\tau$. Let $b=(124).$ Then \[
-               {\sigma}^{-1} {\delta}^{-1} \sigma \delta = (132)(465)(142)(123)(456)(124)=(12436) \in N
-          .\] Then we are back to Case 1, so $N$ contains a 3-cycle..
-          \item $\sigma$ contains two 2-cycles. WLOG $\sigma=(12)(34)\tau$. Let $\delta=(123)$ and consider \[
-               {\sigma}^{-1} {\delta}^{-1} \sigma \delta = (12)(34)(132)(12)(34)(123)=(14)(23)=\pi \in N
-               .\] Let $\varepsilon= (235)$. Then \[
-               {\pi}^{-1}{\varepsilon}^{-1}\pi \varepsilon =(14)(23)(253)(14)(23)(235)=(253)
-               .\] Thus $N$ contains a 3-cycle.
-      \end{enumerate}
-      To conclude the proof, we consider the remaining cases:
-      \begin{enumerate}
-           \item Cycle type ($\ast$ $\ast$) $\implies \sigma \notin A_n$.
-           \item Cycle type ($\ast$$\ast$$\ast$) $\implies \sigma$ is a 3-cycle.
-           \item Cycle type ($\ast$$\ast$)($\ast$$\ast$$\ast$) $\implies  \sigma \notin A_n$. 
-      \end{enumerate}
-      This concludes the proof.
-\end{proof}
 \subsection{$p$-groups and $p$-subgroups}
 \begin{definition*}[$p$-group]
       Let $p$ be a prime. A finite group $G$ is a $p$-group if $|G|=p^{n}$, $n \geq 1$. 
 \end{definition*}
 \begin{theorem}\label{pgroup1}
       If $G$ is a $p$-group, then $Z (G) \neq 1$.
+      \begin{proof}
+            For $g \in G$, we have $|\operatorname{ccl}_{G}(g)||C_{G}(g)|=|G|=p^{n}$. So each conjugacy class must have size that is a power of $p$. Since $G$ is a dijoint union of conjugacy classes,
+            \begin{align*}
+                |G|\equiv (\text{number of conjugacy classes of size } 1)& \mod p\\
+                \implies 0 \equiv |Z (G)| & \mod p\\
+                \implies Z (G) \neq 1.
+            \end{align*}
+            We have used the fact that the conjugacy classes of size 1 are precisely the elements of $Z (G)$: \[
+            g \in Z(G) \iff {x}^{-1}gx =g \ \forall x \in G \iff \operatorname{ccl}_{G}(g)=\left\{g\right\}
+            .\] 
+      \end{proof}
 \end{theorem}
-\begin{proof}
-      For $g \in G$, we have $|\operatorname{ccl}_{G}(g)||C_{G}(g)|=|G|=p^{n}$. So each conjugacy class must have size that is a power of $p$. Since $G$ is a dijoint union of conjugacy classes,
-      \begin{align*}
-          |G|\equiv (\text{number of conjugacy classes of size } 1)& \mod p\\
-          \implies 0 \equiv |Z (G)| & \mod p\\
-          \implies Z (G) \neq 1.
-      \end{align*}
-      We have used the fact that the conjugacy classes of size 1 are precisely the elements of $Z (G)$: \[
-      g \in Z(G) \iff {x}^{-1}gx =g \ \forall x \in G \iff \operatorname{ccl}_{G}(g)=\left\{g\right\}
-      .\] 
-\end{proof}
 \begin{corollary}\label{simplepgroup}
      The only simple $p$-group is $C_p$. 
-\end{corollary}
-\begin{proof}
+     \begin{proof}
       Let $G$ be a simple $p$-group. Since $Z (G) \unlhd G$, we have $Z (G)=1$ or $G$. By \ref{pgroup1}, we must have $Z (G)=G$. Therefore $G$ is abelian. Conclude by Lemma \ref{abeliansimpleiffCp}.
-\end{proof}
+      \end{proof}
+\end{corollary}
 \begin{corollary}
      Let $G$ be a $p$-group of order $p^{n}$. Then $G$ has a subgroup of order $p^{r}$ for $0 \leq r \leq n$.
+     \begin{proof}
+            By Lemma \ref{compositionserieslemma}, $G$ has a composition series \[
+            1=G_{0} \unlhd G_1 \unlhd \ldots \unlhd G_{m-1} \unlhd G _{m}=G
+            .\] with each $G_{i}/G_{i-1}$ simple. Since $G$ is a $p$-group, all of the $G_{i}/G_{i-1}$ must be $p$-groups. Therefore have by Proposition \ref{simplepgroup} that $G_{i}/G_{p-1} \cong C_p$. 
+            
+            Thus $|G_{i}|=p^{i}$ for all $0 \leq i \leq m$ and $m=n$.
+      \end{proof}
 \end{corollary}
-\begin{proof}
-      By Lemma \ref{compositionserieslemma}, $G$ has a composition series \[
-      1=G_{0} \unlhd G_1 \unlhd \ldots \unlhd G_{m-1} \unlhd G _{m}=G
-      .\] with each $G_{i}/G_{i-1}$ simple. Since $G$ is a $p$-group, all of the $G_{i}/G_{i-1}$ must be $p$-groups. Therefore have by Proposition \ref{simplepgroup} that $G_{i}/G_{p-1} \cong C_p$. 
-      
-      Thus $|G_{i}|=p^{i}$ for all $0 \leq i \leq m$ and $m=n$.
-\end{proof}
 \begin{lemma}\label{pgroup2}
       For $G$ a group, if $G/Z (G)$ is cyclic, then $G$ is abelian (so in fact $G/Z (G)=1$).
+      \begin{proof}
+            Let $g Z (G)$ be a generator for $G/Z (G)$. Then each coset is of the form $g^{r} Z (G)$ for some $r \in \mathbb{Z}$. Thus \[
+            G= \left\{g^{r}z : \ r \in \mathbb{Z}, z \in Z (G)\right\}
+            .\] We now check that elements in this group always commute: 
+            \begin{align*}
+                g^{r_1 }z_1 g^{r_2 }z_2 &=g^{r_1 +r_2 }z_1 z_2 \quad \text{ since } z \in Z (G)\\
+                &= g^{r_1 +r_2 } z_2 z_1 \\
+                &= g^{r_2 }z_2 g^{r_1 }z_1.
+            \end{align*}
+           Therefore $G$ is abelian.
+      \end{proof}
 \end{lemma}
-\begin{proof}
-      Let $g Z (G)$ be a generator for $G/Z (G)$. Then each coset is of the form $g^{r} Z (G)$ for some $r \in \mathbb{Z}$. Thus \[
-      G= \left\{g^{r}z : \ r \in \mathbb{Z}, z \in Z (G)\right\}
-      .\] We now check that elements in this group always commute: 
-      \begin{align*}
-          g^{r_1 }z_1 g^{r_2 }z_2 &=g^{r_1 +r_2 }z_1 z_2 \quad \text{ since } z \in Z (G)\\
-          &= g^{r_1 +r_2 } z_2 z_1 \\
-          &= g^{r_2 }z_2 g^{r_1 }z_1.
-      \end{align*}
-     Therefore $G$ is abelian.
-\end{proof}
 \begin{corollary}
       If $|G|=p^{2}$ then $G$ is abelian.
+      \begin{proof}
+            We know that $|Z (G)| \in \left\{1,p,p^2\right\}$. We can't have 1 by \ref{pgroup1}. If we have $p$, then $|G/Z (G)|=p$ and therefore is cyclic. Now applying \ref{pgroup2} we have that $G$ is abelian. If we have $p^2$ then $Z (G)=G$ so $G$ is abelian. 
+      \end{proof}
 \end{corollary}
-\begin{proof}
-      We know that $|Z (G)| \in \left\{1,p,p^2\right\}$. We can't have 1 by \ref{pgroup1}. If we have $p$, then $|G/Z (G)|=p$ and therefore is cyclic. Now applying \ref{pgroup2} we have that $G$ is abelian. If we have $p^2$ then $Z (G)=G$ so $G$ is abelian. 
-\end{proof}
 \subsection{The Sylow theorems}
 \begin{theorem}[Sylow theorems]\label{sylow}
       Let $G$ be a finite group of order $p^{a}m$ where $p$ is a prime with $p \nmid m$. Then 
@@ -539,11 +540,11 @@ Now we move on to a more general statement about $A_n$ being simple. Before we c
 \end{proof}
 Now let's look at an application of these theorems.
 \begin{corollary}
-      If $n_{p}=1$, then the unique Sylow $p$-subgroup is normal. 
+      If $n_{p}=1$, then the unique Sylow $p$-subgroup is normal.
+      \begin{proof}
+            Let $g \in G$ and $P \in \operatorname{Syl}_{p}(G)$. Then $gP {g}^{-1} \in \operatorname{Syl}_{p}(G)$, and so $gP {g}^{-1}=P$. Thus $P \unlhd G$.
+      \end{proof} 
 \end{corollary}
-\begin{proof}
-      Let $g \in G$ and $P \in \operatorname{Syl}_{p}(G)$. Then $gP {g}^{-1} \in \operatorname{Syl}_{p}(G)$, and so $gP {g}^{-1}=P$. Thus $P \unlhd G$.
-\end{proof}
 This is very useful to show groups of certain orders can't be simple.
 \begin{example*}
       Let $|G|=1000=2^{3} \cdot 5^{3}$. Then $n_5 =1 \mod 5$ and $n_5 | 8$ so $n_5 =1$. Thus the unique Sylow 5-subgroup is normal and hence $G$ is not simple.
@@ -578,7 +579,7 @@ Let $Z \unlhd GL_{n}(F)$ be the normal subgroup of scalar multiples of $I$. This
           &=p^{n (n-1)/2} \prod_{i=1}^n (p^{i}-1).
      \end{align*}
      So the Sylow $p$-subgroups have size $p^{n (n-1)/2}$. Let \[
-     U=\left\{\begin{pmatrix} 1&&&\\ &1&M& \\&&&\ddots & \\ &&&1 \end{pmatrix}\right\} \leq G
+     U=\left\{\begin{pmatrix} 1&\ast&\ast&\ast\\ &1&\ast& \ast\\ &&\ddots &\ast \\ &&&1 \end{pmatrix}\right\} \leq G
      \] be the set of upper triangular matrices with 1's on the diagonal. Then $U \in \operatorname{Syl}_{p}(G)$, since it has $n (n-1)/2$ entries and each can take $p$ values.
 \end{example*}
 Just as $PGL_{2}(\mathbb{C})$ acts on $\mathbb{C} \cup \left\{ \infty\right\}$ via Möbius transformations, $PGL_{2}(\mathbb{Z}/p\mathbb{Z})$ acts on $\mathbb{Z}/p\mathbb{Z} \cup \left\{ \infty\right\}$ via \[
@@ -586,42 +587,44 @@ Just as $PGL_{2}(\mathbb{C})$ acts on $\mathbb{C} \cup \left\{ \infty\right\}$ v
 .\] Since scalar matrices act trivially, we obtain an action of $PGL_{2}(\mathbb{Z}/p\mathbb{Z})$.
 \begin{lemma}\label{permrep}
       The permutation representation $PGL_{2}(\mathbb{Z}/p\mathbb{Z}) \rightarrow S_{p+1}$ is injective (in fact an isomorphism if $p=2$ or $3$).
+      \begin{proof}
+            Suppose $\frac{az+b}{cz+d}=z$ for all $z \in \mathbb{Z}/p\mathbb{Z} \cup \left\{ \infty\right\}$. 
+            \begin{itemize}
+                 \item Setting $z=0$ gives $b=0$.
+                 \item Setting $z= \infty$ gives $c=0$.
+                 \item Setting $z=1$ gives $a=d$.
+            \end{itemize}
+            So $\begin{pmatrix} a&b\\c&d \end{pmatrix}$ is a scalar matrix, hence it is trivial in $PGL_{2}(\mathbb{Z}/p\mathbb{Z}) $.
+      \end{proof}
 \end{lemma}
-\begin{proof}
-      Suppose $\frac{az+b}{cz+d}=z$ for all $z \in \mathbb{Z}/p\mathbb{Z} \cup \left\{ \infty\right\}$. 
-      \begin{itemize}
-           \item Setting $z=0$ gives $b=0$.
-           \item Setting $z= \infty$ gives $c=0$.
-           \item Setting $z=1$ gives $a=d$.
-      \end{itemize}
-      So $\begin{pmatrix} a&b\\c&d \end{pmatrix}$ is a scalar matrix, hence it is trivial in $PGL_{2}(\mathbb{Z}/p\mathbb{Z}) $.
-\end{proof}
 \begin{lemma}
       If $p$ is an odd prime, then \[
       |PSL_{2}(\mathbb{Z}/p\mathbb{Z})|=p (p-1)(p+1)/2
       .\] 
-\end{lemma}
-\begin{proof}
-      By Example 5.1, $|GL_2 (\mathbb{Z}/p\mathbb{Z})|=p (p^2-1)(p-1)$. The homomorphism $GL_2 (\mathbb{Z}/p\mathbb{Z}) \xrightarrow{\operatorname{det}} (\mathbb{Z}/p\mathbb{Z})^{\times}$ is surjective.
+      \begin{proof}
+            By the previous example, $|GL_2 (\mathbb{Z}/p\mathbb{Z})|=p (p^2-1)(p-1)$. The homomorphism $GL_2 (\mathbb{Z}/p\mathbb{Z}) \xrightarrow{\operatorname{det}} (\mathbb{Z}/p\mathbb{Z})^{\times}$ is surjective.
+            
+            Thus $|SL_2 (\mathbb{Z}/p\mathbb{Z})|=|GL_2 (\mathbb{Z}/p\mathbb{Z})|/(p-1)=p (p-1)(p+1)$. If $\begin{pmatrix} \lambda &0 \\ \lambda&0 \end{pmatrix} \in SL_2 (\mathbb{Z}/p\mathbb{Z})$, then $\lambda^2 \equiv 1 \mod p \implies \lambda \equiv \pm 1 \mod p$ (since $p$ is prime). 
       
-      Thus $|SL_2 (\mathbb{Z}/p\mathbb{Z})|=|GL_2 (\mathbb{Z}/p\mathbb{Z})|/(p-1)=p (p-1)(p+1)$. If $\begin{pmatrix} \lambda &0 \\ \lambda&0 \end{pmatrix} \in SL_2 (\mathbb{Z}/p\mathbb{Z})$, then $\lambda^2 \equiv 1 \mod p \implies \lambda \equiv \pm 1 \mod p$ (since $p$ is prime). 
-
-      Thus $Z \cap SL_2 (\mathbb{Z}/p\mathbb{Z})=\left\{\pm I\right\}$ which are distinct since $p>2$. Therefore \[
-          |PSL_2 (\mathbb{Z}/p\mathbb{Z})|=\frac{1}{2}|SL_2 (\mathbb{Z}/p\mathbb{Z})|=p (p-1)(p+1)/2
-      .\] 
-\end{proof}
+            Thus $Z \cap SL_2 (\mathbb{Z}/p\mathbb{Z})=\left\{\pm I\right\}$ which are distinct since $p>2$. Therefore \[
+                |PSL_2 (\mathbb{Z}/p\mathbb{Z})|=\frac{1}{2}|SL_2 (\mathbb{Z}/p\mathbb{Z})|=p (p-1)(p+1)/2
+            .\] 
+      \end{proof}
+\end{lemma}
 \begin{example*}
       Let $G=PSL_2 (\mathbb{Z}/5\mathbb{Z})$. Then $|G|= \frac{4 \cdot 5 \cdot  6}{2}=60$. 
       
       Let $G$ act on $\mathbb{Z}/5\mathbb{Z} \cup \left\{ \infty\right\}$ via Mobius transformations. By Lemma \ref{permrep}, the permutation representation \[
       \phi: G \rightarrow \operatorname{Sym}(\left\{0,1,2,3,4\right\}\cup \infty) \cong S_{6} \quad  \text{ is injective.}
       .\]
-      \textbf{Claim.} $\operatorname{Im} (\phi) \leq A_6 $, i.e $\psi: G \rightarrow S_6 \xrightarrow{\operatorname{sgn}} \left\{\pm 1\right\}$ is trivial. 
-      
-      \textbf{Proof.} Let $h \in G$ have order $2^{n}m$, $m$ odd. If $\psi (h^{m})=1$, then $\psi (h)^{m}=1 \implies \psi (h)=1$. So suffices to show $\psi (g)=1$ for all $g \in G$ with order a power of 2. But we know that every such $g$ belongs to a Sylow 2-subgroup. It then suffices to show $\psi (H)=1$, for $H$ a Sylow 2-subgroup (since $\operatorname{Ker} \psi$ is normal and all Sylow 2-subgroups are conjugate). Take \[
-          H=\left\langle \begin{pmatrix} 2&0\\0&3 \end{pmatrix}(\pm I),\begin{pmatrix} 0&1\\-1&0 \end{pmatrix} (\pm I)\right\rangle
-      .\] We compute that $\phi \begin{pmatrix} 2&0\\0&3 \end{pmatrix}= (14)(23)$, since it acts as $z \mapsto -z$. Also, $\phi \begin{pmatrix} 0&1\\-1&0 \end{pmatrix}= (0 \infty)(14)$, since it acts as $z \mapsto -\frac{1}{z}$. Thus $\psi (H)=1$. This proves the claim. 
-
+      \begin{claim}
+            $\operatorname{Im} (\phi) \leq A_6 $, i.e $\psi: G \rightarrow S_6 \xrightarrow{\operatorname{sgn}} \left\{\pm 1\right\}$ is trivial. 
+      \end{claim}
+      \begin{proof}
+            Let $h \in G$ have order $2^{n}m$, $m$ odd. If $\psi (h^{m})=1$, then $\psi (h)^{m}=1 \implies \psi (h)=1$. So suffices to show $\psi (g)=1$ for all $g \in G$ with order a power of 2. But we know that every such $g$ belongs to a Sylow 2-subgroup. It then suffices to show $\psi (H)=1$, for $H$ a Sylow 2-subgroup (since $\operatorname{Ker} \psi$ is normal and all Sylow 2-subgroups are conjugate). Take \[
+                  H=\left\langle \begin{pmatrix} 2&0\\0&3 \end{pmatrix}(\pm I),\begin{pmatrix} 0&1\\-1&0 \end{pmatrix} (\pm I)\right\rangle
+              .\] We compute that $\phi \begin{pmatrix} 2&0\\0&3 \end{pmatrix}= (14)(23)$, since it acts as $z \mapsto -z$. Also, $\phi \begin{pmatrix} 0&1\\-1&0 \end{pmatrix}= (0 \infty)(14)$, since it acts as $z \mapsto -\frac{1}{z}$. Thus $\psi (H)=1$. This proves the claim. 
+      \end{proof}
       See Example Sheet 1 Q14 for a similar result: If $G \leq A_6 $ and $|
       G|=60$, then $G \cong A_5 $.
 \end{example*}
@@ -636,41 +639,39 @@ Just as $PGL_{2}(\mathbb{C})$ acts on $\mathbb{C} \cup \left\{ \infty\right\}$ v
 We now investigate finite abelian groups, which we can actually characterise very effectively.
 \begin{lemma}
       If $m,n \in \mathbb{N}$ are coprime, then $C_m \times C_n \cong C_{mn}$.
+      \begin{proof}
+            Let $g$ and $h$ be generators of $C_n$ and $C_m$. Then $(g,h)\in C_m \times C_n$ and $(g,h)^{r}=(g^{r}, h^{r})$. Hence 
+            \begin{align*}
+                 (g,h)^{r}=1 &\iff m|r \text{ and } n|r\\
+                 & \iff mn|r \quad \text{ as } m,n \text{ coprime}.
+            \end{align*}
+            Thus $(g,h)$ has order $mn =|C_m \times C_n|$. So \[
+            C_m \times C_n \cong C_{mn} \cong \langle (g,h) \rangle 
+            .\]
+      \end{proof}
 \end{lemma}
-\begin{proof}
-      Let $g$ and $h$ be generators of $C_n$ and $C_m$. Then $(g,h)\in C_m \times C_n$ and $(g,h)^{r}=(g^{r}, h^{r})$. Hence 
-      \begin{align*}
-           (g,h)^{r}=1 &\iff m|r \text{ and } n|r\\
-           & \iff mn|r \quad \text{ as } m,n \text{ coprime}.
-      \end{align*}
-      Thus $(g,h)$ has order $mn =|C_m \times C_n|$. So \[
-      C_m \times C_n \cong C_{mn} \cong \langle (g,h) \rangle 
-      .\]
-\end{proof}
 \begin{corollary}\label{finabl1}
      Let $G$ be a finite abelian group. Then \[
      G \cong C_{n_1 } \times C_{n_2 }\times \ldots \times C_{n_k}
      ,\] where $n_{i}$ are prime powers. 
+     \begin{proof}
+            If $n=p_1^{a_1 }\ldots p_r ^{a_r}$, where $p_1 ,\ldots , p_r$ are distinct primes, then we just apply our previous lemma inductively to get \[
+            C_{n}\cong C_{p_1 ^{a_1 }}\times C_{p_2 ^{a_2 }}\times \ldots \times C_{p_r ^{a_r }}
+            .\] 
+      \end{proof}
 \end{corollary}
-\begin{proof}
-      If $n=p_1^{a_1 }\ldots p_r ^{a_r}$, where $p_1 ,\ldots , p_r$ are distinct primes, then we just apply our previous lemma inductively to get \[
-      C_{n}\cong C_{p_1 ^{a_1 }}\times C_{p_2 ^{a_2 }}\times \ldots \times C_{p_r ^{a_r }}
-      .\] 
-\end{proof}
 \begin{theorem}\label{finabl2}
      Every finite abelian group $G$ is isomorphic to a product of cyclic groups.
-
-     Note such an isomorphism is not unique.
+     \begin{proof}
+            Immediate by applying Corollary \ref{finabl1}.
+      \end{proof}
+     \begin{remark}
+            Note such an isomorphism is not unique.
+     \end{remark}
 \end{theorem}
-\begin{proof}
-      Immediate by applying Corollary \ref{finabl1}.
-\end{proof}
 \begin{theorem}\label{finabl3}
       Let $G$ be a finite abelian group. Then $G \cong C_{d_1 }\times C_{d_2 }\times \ldots C_{d_t}$, for some $d_1 | d_2 | \ldots | d_t$ (they are successively divisible).
 \end{theorem}
-\begin{remark}
-      
-\end{remark}
 This almost immediately shows that finite abelian groups are pretty easy to work with. Let's use our results to compute what the abelian groups of various orders are in an example.
 \begin{example*}
       \begin{itemize}
@@ -689,10 +690,10 @@ This almost immediately shows that finite abelian groups are pretty easy to work
 \end{definition*}
 \begin{corollary}
      Every finite abelian group contains an element whose order is the exponent of the group.
+     \begin{proof}
+            If $G \cong C_{d_1 }\times C_{d_2 }\times \ldots C_{d_t}$ with $d_1 | d_2 | \ldots | d_t$, then every $g \in G$ has order dividing $d_{t}$, and $h \in C_{d_t}$ of order $d_t$, then $(1,1,\ldots ,h)\in G$ has order $d_t$. Thus $G$ has exponent $d_t$.
+      \end{proof}
 \end{corollary}
-\begin{proof}
-      If $G \cong C_{d_1 }\times C_{d_2 }\times \ldots C_{d_t}$ with $d_1 | d_2 | \ldots | d_t$, then every $g \in G$ has order dividing $d_{t}$, and $h \in C_{d_t}$ of order $d_t$, then $(1,1,\ldots ,h)\in G$ has order $d_t$. Thus $G$ has exponent $d_t$.
-\end{proof}
 \newpage
 \section{Rings}
 \subsection{Definitions and examples}
@@ -761,20 +762,20 @@ This almost immediately shows that finite abelian groups are pretty easy to work
        Let $f,g \in R[X]$. Suppose the leading coefficient of $g$ is a unit. Then there exist $q, r \in R[X]$ s.t. \[
        f (X)=q (X)g (X)+r (X) \quad \text{ where } \operatorname{deg}(r) < \operatorname{deg}(g)
        .\] 
+       \begin{proof}
+            Induction on $n=\operatorname{deg}(f)$. Write \begin{align*}
+                  f (X)= a_{n}X^{n}+a_{n-1}X^{n-1}+ \ldots +a_0 , \quad a_{n}\neq 0\\
+                  g (X)= b_{n}X^{n}+b_{n-1}X^{n-1}+ \ldots +b_0 , \quad b_{n}\neq 0
+            \end{align*}
+            If $n<m$, then let $q=0$ and $r=f$. Done. Otherwise, we have $n \geq m$ and we set \[
+            f_1 (X)= f (X)-a_{n} {b_{m}}^{-1} g (X) X ^{n-m}
+            .\] The coefficient of $X^{n}$ is $a_{n}-a_{n}{b_{m}}^{-1}b_{m}=0$. Thus  $\operatorname{deg}(f_{1})<n$. 
+            
+            By the inductive hypothesis, $\exists q_1 ,r \in R[X]$ such that $f_1 (X)=q_1 (X)g (X)+r (X)$ where $\operatorname{deg}(r) < \operatorname{deg}(g)$. Therefore \[
+            f (X)=\underbrace{q_1 (X)+a_n {b_{m}}^{-1} X ^{n-m}}_{q (X)}+r (X) 
+            .\] So we are done. 
+     \end{proof}
 \end{proposition}
-\begin{proof}
-       Induction on $n=\operatorname{deg}(f)$. Write \begin{align*}
-             f (X)= a_{n}X^{n}+a_{n-1}X^{n-1}+ \ldots +a_0 , \quad a_{n}\neq 0\\
-             g (X)= b_{n}X^{n}+b_{n-1}X^{n-1}+ \ldots +b_0 , \quad b_{n}\neq 0
-       \end{align*}
-       If $n<m$, then let $q=0$ and $r=f$. Done. Otherwise, we have $n \geq m$ and we set \[
-       f_1 (X)= f (X)-a_{n} {b_{m}}^{-1} g (X) X ^{n-m}
-       .\] The coefficient of $X^{n}$ is $a_{n}-a_{n}{b_{m}}^{-1}b_{m}=0$. Thus  $\operatorname{deg}(f_{1})<n$. 
-       
-       By the inductive hypothesis, $\exists q_1 ,r \in R[X]$ such that $f_1 (X)=q_1 (X)g (X)+r (X)$ where $\operatorname{deg}(r) < \operatorname{deg}(g)$. Therefore \[
-       f (X)=\underbrace{q_1 (X)+a_n {b_{m}}^{-1} X ^{n-m}}_{q (X)}+r (X) 
-       .\] So we are done. 
-\end{proof}
 \begin{example*}
        Let's look at further examples of rings.
        \begin{itemize}
@@ -803,10 +804,10 @@ We now define a homomorphism for rings, which similarly to the case of groups pr
 \end{definition*}
 \begin{lemma}
        A ring homomorphism $\phi: R \rightarrow S$ is injective iff $\operatorname{Ker}(\phi)=0_{R}$.
+       \begin{proof}
+            $\phi: (R,+)\rightarrow (S,+)$ is a group homomorphism.
+     \end{proof}
 \end{lemma}
-\begin{proof}
-       $\phi: (R,+)\rightarrow (S,+)$ is a group homomorphism.
-\end{proof}
 \begin{definition*}[Ideal]
        A subset $I \subset R$ is an \vocab{ideal}, written $I \unlhd R$ if 
        \begin{itemize}
@@ -818,21 +819,21 @@ We now define a homomorphism for rings, which similarly to the case of groups pr
 The point of ideals is that they should arise as the kernels of ring homomorphisms; they are analogous to normal subgroups.
 \begin{lemma}\label{ideallemma}
        If $\phi: R \rightarrow S$ is a ring homomorphism, then $\operatorname{Ker}(\phi)$ is an ideal of $R$.
+       \begin{proof}
+            $\phi: (R,+)\rightarrow (S,+)$ is a group homomorphism, so $\operatorname{Ker} \phi$ is a subgroup of $(R , +)$. If $r \in R$ and $x \in \operatorname{Ker}\phi$, then \[
+            \phi (rx)=\phi (r)\phi (x)=\phi (r) 0_{S}=0_{S} \implies rx \in \operatorname{Ker}\phi
+            .\]
+     \end{proof}
 \end{lemma}
-\begin{proof}
-       $\phi: (R,+)\rightarrow (S,+)$ is a group homomorphism, so $\operatorname{Ker} \phi$ is a subgroup of $(R , +)$. If $r \in R$ and $x \in \operatorname{Ker}\phi$, then \[
-       \phi (rx)=\phi (r)\phi (x)=\phi (r) 0_{S}=0_{S} \implies rx \in \operatorname{Ker}\phi
-       .\]
-\end{proof}
 \begin{remark}
        If $I$ contains a unit $u$, then $1_{R} \in I$ (by multiplying by $-u$). Hence $I=R$ (multiplying any element in $R$ by $1_{R}$). Thus if $I$ is a proper ideal, $1_{R}\notin I$, so $I$ is not a subring of $R$.
 \end{remark}
 \begin{lemma}\label{idealsinZ}
        The ideals in $\mathbb{Z}$ are $n\mathbb{Z}= \left\{kn: \ k \in \mathbb{Z}\right\}$ for $n=0,1, \ldots$.
+       \begin{proof}
+            Certainly $n\mathbb{Z} \unlhd \mathbb{Z}$. Let $I \unlhd \mathbb{Z}$ be a non-zero ideal and $n$ be the smallest positive integer in $I$. Then $n\mathbb{Z} \subseteq I$. If $m \in I$, then write $m=qn+r$ with $q,r \in \mathbb{Z}$ and $0 \leq r \leq n$. Then $r=m-qn \in I$. This contradicts the fact that $n$ is the smallest positive integer in $I$ unless $r=0$. But then $m\in n\mathbb{Z}$, i.e $I=n\mathbb{Z}$.
+     \end{proof}
 \end{lemma}
-\begin{proof}
-       Certainly $n\mathbb{Z} \unlhd \mathbb{Z}$. Let $I \unlhd \mathbb{Z}$ be a non-zero ideal and $n$ be the smallest positive integer in $I$. Then $n\mathbb{Z} \subseteq I$. If $m \in I$, then write $m=qn+r$ with $q,r \in \mathbb{Z}$ and $0 \leq r \leq n$. Then $r=m-qn \in I$. This contradicts the fact that $n$ is the smallest positive integer in $I$ unless $r=0$. But then $m\in n\mathbb{Z}$, i.e $I=n\mathbb{Z}$.
-\end{proof}
 \begin{definition*}[Generated ideal]
        For $a \in R$, write $(a)=\left\{ra : \ r \in R\right\}\unlhd R$. This is the \vocab{ideal generated by $a$}. More generally, if $a_1 , \ldots, a_n \in R$, we write \[
        (a_1 , \ldots, a_{n})=\left\{r_1 a_1 +r_2 a_2 +\ldots r_{n}a_{n}: \ r_{i}\in R\right\} \unlhd R
@@ -849,17 +850,17 @@ Now we show the converse of Lemma \ref{ideallemma}.
              (r_1 +I) \cdot (r_2 +I )= r_1 \cdot r_2 +I\\
        \end{align*}
        and $0_{R/I}=0_{R}+I$, $1_{R/I}=1_{R}+I$. Moreover, the map $R \rightarrow \frac{R}{I}$ with $r \mapsto r+I$ is a ring homomorphism (called the quotient map) with kernel $I$.
+       \begin{proof}
+            Already know $(R/I, +)$ is a group by our definition of the quotient group. 
+            
+            If $r_1 +I= r_1' + I$ and $r_2 +I= r_2 '+I$, this means we can write $r_1 ' =r_1 +a_1 $, $r_2 ' = r_2 +a_2 $ for some $a_1 , a_2 \in I$. Then 
+            \begin{align*}
+                  r_1 ' r_2 ' &= (r_1 +a_1 )(r_2 +a_2 )\\
+                  &=r_1 r_2 +\underbrace{r_1 a_2 +r_2 a_1 +a_1 a_2}_{\in I}. \\ 
+            \end{align*}
+            Thus $r_1 r_2 +I=r_1 ' + r_2 ' +I$. The remaining properties for $R/I$ follow from those properties for $R$.
+     \end{proof}
 \end{theorem}
-\begin{proof}
-       Already know $(R/I, +)$ is a group by our definition of the quotient group. 
-       
-       If $r_1 +I= r_1' + I$ and $r_2 +I= r_2 '+I$, this means we can write $r_1 ' =r_1 +a_1 $, $r_2 ' = r_2 +a_2 $ for some $a_1 , a_2 \in I$. Then 
-       \begin{align*}
-             r_1 ' r_2 ' &= (r_1 +a_1 )(r_2 +a_2 )\\
-             &=r_1 r_2 +\underbrace{r_1 a_2 +r_2 a_1 +a_1 a_2}_{\in I}. \\ 
-       \end{align*}
-       Thus $r_1 r_2 +I=r_1 ' + r_2 ' +I$. The remaining properties for $R/I$ follow from those properties for $R$.
-\end{proof}
 \begin{example}[Examples of quotient rings]\label{polytoC}
        \begin{enumerate}
              \item $n\mathbb{Z} \unlhd \mathbb{Z}$ is an ideal, with quotient ring $\mathbb{Z}/n\mathbb{Z}$. The cosets are $0+n\mathbb{Z}, 1+n\mathbb{Z}, \ldots, (n-1)+n\mathbb{Z}$. Addition and multiplication are carried out modulo $n$.
@@ -978,25 +979,25 @@ Since $\operatorname{Ker}\left(i\right)\unlhd \mathbb{Z}$, have $\operatorname{K
 \end{example*}
 \begin{lemma}
        If $R$ is an integral domain, then $R[X]$ is an integral domain.
+       \begin{proof}
+            Write
+            \begin{align*}
+                 f \left(X\right)=a_{m}X^{m}+\ldots+a_1 X+ a_0, \quad a_{m}\neq 0\\
+                 g \left(X\right)=b_{n}X^{m}+\ldots+b_1 X+ b_0, \quad b_{n}\neq 0.
+            \end{align*}
+            Then $f \left(X\right)g \left(X\right)=\underbrace{a_{m}b_{n}}_{\neq 0 \text{ as } R \text{ integral domain} }+\ldots $ 
+            
+            and $\operatorname{deg}\left(fg\right)=m+n=\operatorname{deg}f+ \operatorname{deg}g$ and $f \cdot g \neq 0$.
+     \end{proof}
 \end{lemma}
-\begin{proof}
-       Write
-       \begin{align*}
-            f \left(X\right)=a_{m}X^{m}+\ldots+a_1 X+ a_0, \quad a_{m}\neq 0\\
-            g \left(X\right)=b_{n}X^{m}+\ldots+b_1 X+ b_0, \quad b_{n}\neq 0.
-       \end{align*}
-       Then $f \left(X\right)g \left(X\right)=\underbrace{a_{m}b_{n}}_{\neq 0 \text{ as } R \text{ integral domain} }+\ldots $ 
-       
-       and $\operatorname{deg}\left(fg\right)=m+n=\operatorname{deg}f+ \operatorname{deg}g$ and $f \cdot g \neq 0$.
-\end{proof}
 \begin{lemma}
        Let $R$ be an integral domain and $0 \neq f \in R[X]$. Let the set of roots of $f$ be \[
        \mathcal{R}=\left\{a \in R: \ f (a)=0\right\}
        .\] Then $\left|R\right|\leq \operatorname{deg}(f)$.
+       \begin{proof}
+            Uses Proposition \ref{euclidrings}; see Example Sheet 1.
+     \end{proof}
 \end{lemma}
-\begin{proof}
-       Uses Proposition \ref{euclidrings}; see Example Sheet 1.
-\end{proof}
 \begin{theorem}[Subgroups of a field are cyclic]
        Let $F$ be a field. Then any finite subgroup $G \leq (F^{\times},\cdot )$ is cyclic.
 \end{theorem}
@@ -1067,27 +1068,27 @@ Now we move on to discussing maximal and prime ideals, which we will use extensi
 \end{definition*}
 \begin{lemma}
        A (non-zero) ring $R$ is a field iff its only ideals are $\left\{0\right\}$ and $R$.
+       \begin{proof}
+            If $R$ is a field and $I \unlhd R$ is nontrivial, then $I$ contains a unit and hence $I=R$.
+      
+            Conversely, suppose the only ideals in $R$ are $\left\{0\right\}$ and $R$. Take $x \in R$, $x \neq 0$, then the ideal $(x)$ is non-zero, hence $(x)=R$. So $\exists y \in R: x \cdot y=1$. So $x$ is a unit. 
+      \end{proof}
 \end{lemma}
-\begin{proof}
-      If $R$ is a field and $I \unlhd R$ is nontrivial, then $I$ contains a unit and hence $I=R$.
-
-      Conversely, suppose the only ideals in $R$ are $\left\{0\right\}$ and $R$. Take $x \in R$, $x \neq 0$, then the ideal $(x)$ is non-zero, hence $(x)=R$. So $\exists y \in R: x \cdot y=1$. So $x$ is a unit. 
-\end{proof}
 \begin{proposition}\label{mideal1}
        Let $I \unlhd R$ be an ideal. $I$ is maximal iff $R/I$ is a field.
+       \begin{proof}
+            $R/I$ is a field $\iff$ $I/I$ and $R/I$ are the only ideals in $R/I$ 
+            
+            $\iff$ $I$ and $R$ are the only ideals in $R$ which contain $I$
+            
+            $\iff$ $I \unlhd R$ is maximal.
+     \end{proof}
 \end{proposition}
-\begin{proof}
-       $R/I$ is a field $\iff$ $I/I$ and $R/I$ are the only ideals in $R/I$ 
-       
-       $\iff$ $I$ and $R$ are the only ideals in $R$ which contain $I$
-       
-       $\iff$ $I \unlhd R$ is maximal.
-\end{proof}
 \begin{definition*}[Prime ideal]
        An ideal $I \unlhd R$ is prime if $I \neq R$ and whenever $a,b \in R$ with $ab \in I$, we have $a \in I$ or $b \in I$.
 \end{definition*}
 \begin{example*}
-       The ideal $n\mathbb{Z} \unlhd \mathbb{Z}$ is a prime ideal iff $n=0$ or $n=p$is prime.
+       The ideal $n\mathbb{Z} \unlhd \mathbb{Z}$ is a prime ideal iff $n=0$ or $n=p$ is prime.
 
        Checking: If $ab\in p\mathbb{Z}$, then $p|ab$, so $p|a$ or $p|b$, i.e $a \in p\mathbb{Z}$ or $b \in p\mathbb{Z}$.
 
@@ -1097,18 +1098,16 @@ Now we move on to discussing maximal and prime ideals, which we will use extensi
        \end{remark}
 \end{example*}
 \begin{proposition}\label{pideal1}
-       Let $I \unlhd R$ be an ideal. Then \[
-       I \text{ is prime } \iff R/I \text{ is an integral domain.} 
-       .\] 
+       Let $I \unlhd R$ be an ideal. Then $I$ is prime iff $R/I$ is an integral domain.
+       \begin{proof}
+            $I$ is prime
+            \begin{align*}
+                 \iff & \text{ Whenever } a,b \in R \text{ with } ab \in I, \text{ we have } a \in I \text{ or } b \in I. \\
+                 \iff & \text{ Whenever } a+I,b+I \in R/I \text{ with } (a+I)(b+I)=0+I,\\& \text{ we have } a+I=0+I \text{ or } b+I=0+I.\\
+                 \iff & R/I \text{ is an integral domain.} 
+            \end{align*}
+     \end{proof}
 \end{proposition}
-\begin{proof}
-       \begin{align*}
-            &I \text{ is prime } \\
-            \iff & \text{ Whenever } a,b \in R \text{ with } ab \in I, \text{ we have } a \in I \text{ or } b \in I. \\
-            \iff & \text{ Whenever } a+I,b+I \in R/I \text{ with } (a+I)(b+I)=0+I,\\& \text{ we have } a+I=0+I \text{ or } b+I=0+I.\\
-            \iff & R/I \text{ is an integral domain.} 
-       \end{align*}
-\end{proof}
 \begin{remark}
        Proposition \ref{mideal1} and Proposition \ref{pideal1} show that if $I$ is a maximal ideal, it is also a prime ideal (since all fields are integral domains).
 \end{remark}
@@ -1140,16 +1139,16 @@ In this section we investigate the following property: we know that in $\mathbb{
 Now we want to chase some definitions to make sure our definitions of prime element and prime ideal agree.
 \begin{lemma}
        Consider $(r)\unlhd R$. This is a prime ideal iff $r=0$ or $r$ is a prime element.
+       \begin{proof}
+            Suppose $(r)$ is prime and $r \neq 0$. Since prime ideals are proper, $(r) \neq R$. Therefore $r$ is not a unit. If $r|ab$, then $ab \in (r)$, so $a \in (r)$ or $b \in (r)$. Thus $r|a$ or $r|b$. So $r $ is prime.
+     
+            Conversely, $\left\{0\right\}\unlhd R$ is a prime ideal since $R$ is an integral domain. Let $r \in R$ be a prime. $(r)\neq R$ since $r \in R^{\times }$. If $ab \in (r)$ then $r|ab$. 
+            \begin{align*}
+                  &\implies r|a \text{ or } r|b\\
+                  &\implies r \in (a) \text{ or } r \in (b), \text{ i.e } r \text{ is a prime ideal. }
+            \end{align*}
+     \end{proof}
 \end{lemma}
-\begin{proof}
-       Suppose $(r)$ is prime and $r \neq 0$. Since prime ideals are proper, $(r) \neq R$. Therefore $r$ is not a unit. If $r|ab$, then $ab \in (r)$, so $a \in (r)$ or $b \in (r)$. Thus $r|a$ or $r|b$. So $r $ is prime.
-
-       Conversely, $\left\{0\right\}\unlhd R$ is a prime ideal since $R$ is an integral domain. Let $r \in R$ be a prime. $(r)\neq R$ since $r \in R^{\times }$. If $ab \in (r)$ then $r|ab$. 
-       \begin{align*}
-             &\implies r|a \text{ or } r|b\\
-             &\implies r \in (a) \text{ or } r \in (b), \text{ i.e } r \text{ is a prime ideal. }
-       \end{align*}
-\end{proof}
 \begin{lemma}
        If $r \in R$ is prime, then it is irreducible.
 \end{lemma}
@@ -1168,19 +1167,19 @@ The converse of this lemma does not hold in general.
        \begin{claim}
              $R^{\times }=\left\{\pm 1\right\}$.
        \end{claim}
-       \begin{prooff}
+       \begin{proof}
              If $r \in R^{\times }$, i.e $rs =1$ for some $s \in R$, then \[
              N (r)N (s)=N (1)=1 \implies N (r)=1 \text{ WLOG} 
-             .\] But the only integer solutions to $a^2+5b^2=1$ are $(a,b)=(1,0)$ or $(-1,0)$.  \hfill \qed
-       \end{prooff}
+             .\] But the only integer solutions to $a^2+5b^2=1$ are $(a,b)=(1,0)$ or $(-1,0)$. 
+       \end{proof}
        \begin{claim}
              $2 \in R$ is irreducible.
        \end{claim}
-       \begin{prooff}
+       \begin{proof}
              Suppose $2=rs $ where $r,s \in R $. We want to show one of these elements is a unit. Then \[
              4= N (2)=N (r)N (s)
-             .\] Since $a^2+5b^2=2$ has no integer solutions, $R$ has no elements of norm 2. Thus $N (r)=1$ and $N (s)=4$ WLOG. But if $N (r)=1$, this implies that $r$ is a unit. \hfill \qed
-       \end{prooff}
+             .\] Since $a^2+5b^2=2$ has no integer solutions, $R$ has no elements of norm 2. Thus $N (r)=1$ and $N (s)=4$ WLOG. But if $N (r)=1$, this implies that $r$ is a unit. 
+       \end{proof}
        Similarly 3, 1+$\sqrt{-5} $, $1- \sqrt{-5} $ are all irreducible (as there are no elements of norm 3). Now $(1+\sqrt{-5} )(1-\sqrt{-5} )=6=2 \cdot 3$. Thus $2| (1+\sqrt{-5} )(1-\sqrt{-5} )$, but $2 \nmid 1+\sqrt{-5}$ or $1- \sqrt{-5} $ (check by taking norms). 
        
        So 2 is irreducible but not prime in $R$.
@@ -1227,23 +1226,23 @@ This is a nice property of PIDs. We can cook up some examples of PIDs using th f
             \item[(i)] If $a|b$, then $\phi (a)\leq \phi (b)$.
             \item[(ii)] If $a,b \in R$ with $b \neq 0$, then there exist $q,r \in R$ with $a=bq+r$ and either $r=0$, or $\phi (r)<\phi (b)$.
       \end{itemize}
+      \begin{example*}
+            $\mathbb{Z}$ is a Euclidean domain with Euclidean function $\phi (n)=\left|n\right|$.
+     \end{example*}
 \end{definition*}
-\begin{example*}
-       $\mathbb{Z}$ is an ED with Euclidean function $\phi (n)=\left|n\right|$.
-\end{example*}
 \begin{proposition}\label{edimppid}
        If $R$ is a Euclidean domain, then it is a principal ideal domain.
+       \begin{proof}
+            Let $R$ have Euclidean function $\phi$. Let $I \unlhd R$ be non-zero. Choose $b \in I\backslash \left\{0\right\}$ with $\phi (b)$ minimal. Then $(b)\in I$. 
+            
+            For $a \in I$, write $a=bq+r $ with $q,r \in R$ and either $r=0$ or $\phi (r)< \phi (b)$. Since $r=bq-a \in I$, cannot have $\phi (r)< \phi (b)$ as we chose $b$ to be minimal. So $r=0$, and $a=bq$. Hence $I= (b)$.
+      \end{proof}
+      \begin{remark}
+            We only used property (ii) of Euclidean domains in this proof. We include property (i) in the definition as it allows us to describe the units in $R$ as \[
+            R^{\times }=\left\{u \in R\backslash \left\{0\right\}: \ \phi (a)=\phi (1)\right\}
+            .\]
+      \end{remark}
 \end{proposition}
-\begin{proof}
-      Let $R$ have Euclidean function $\phi$. Let $I \unlhd R$ be non-zero. Choose $b \in I\backslash \left\{0\right\}$ with $\phi (b)$ minimal. Then $(b)\in I$. 
-      
-      For $a \in I$, write $a=bq+r $ with $q,r \in R$ and either $r=0$ or $\phi (r)< \phi (b)$. Since $r=bq-a \in I$, cannot have $\phi (r)< \phi (b)$ as we chose $b$ to be minimal. So $r=0$, and $a=bq$. Hence $I= (b)$.
-\end{proof}
-\begin{remark}
-      We only used property (ii) of Euclidean domains in this proof. We include property (i) in the definition as it allows us to describe the units in $R$ as \[
-      R^{\times }=\left\{u \in R\backslash \left\{0\right\}: \ \phi (a)=\phi (1)\right\}
-      .\]
-\end{remark}
 \begin{example*}
       \begin{enumerate}
             \item Let $F$ be a field. $F[X]$ is an ED with Euclidean function $\phi (f)=\operatorname{deg} f$ for $f \in F[X]$. $\phi$ is Euclidean by Proposition \ref{euclidrings}.
@@ -1260,7 +1259,7 @@ This is a nice property of PIDs. We can cook up some examples of PIDs using th f
                   \caption{Every point in $\mathbb{C}$ is at most $1/\sqrt{2}$ away from a lattice point.}
             \end{figure}
             Set $r=z_1 -z_2 q \in \mathbb{Z}[i]$. Then $z_1 =qz_2 +r$ and \[
-            \phi (r)=\left|r\right|^2=\left|z_1 -z_2 q\right|^2< \underbrace{\left|z_2 \right|^2 }_{\text{by } (\dagger)} =\phi (z_2 )
+            \phi (r)=\left|r\right|^2= \underbrace{\left|z_1 -z_2 q\right|^2<\left|z_2 \right|^2 }_{\text{by } (\dagger)} =\phi (z_2 )
             .\]
       \end{enumerate}
       Thus Proposition \ref{edimppid} implies that both $\mathbb{Z}[i]$ and $F[X]$ for $F$ a field are PIDs.
@@ -1271,11 +1270,11 @@ The first application we will see involves the construction of the minimal polyn
        \begin{claim}
              $I$ is an ideal in $F$.
        \end{claim}
-       \begin{prooff}
+       \begin{proof}
               If $f,g \in I$, then $(f-g)(A)=f (A)- g (A)=0 \implies f-g \in I$. So $(I,+)\leq (F,+)$. 
               
-              If $f \in F[X]$ and $g \in I$, then $(f \cdot g)(A)=f (A)\cdot g (A)=0$. So $f \cdot g \in I$.\hfill \qed
-       \end{prooff}
+              If $f \in F[X]$ and $g \in I$, then $(f \cdot g)(A)=f (A)\cdot g (A)=0$. So $f \cdot g \in I$.
+       \end{proof}
        So $I = (f)$ for some $f \in F[X]$ since $F[X]$ is a PID. Of course, this $f$ isn't unique. We may assume $f$ is monic by multiplying by a unit in $F$. Then for $g \in F[X]$, \[
             g (A)=0 \iff g \in I \iff g \in (f) \iff f|g
        .\] So $f$ is the minimal polynomial of $A$; we've derived it using rings (see IB Linear Algebra)
@@ -1319,29 +1318,29 @@ The next example will be of interest to those who want to study Part II Galois T
        \begin{remark}
               Rings satisfying this "ascending chain condition" are called \vocab{Noetherian rings}. More on this later.
        \end{remark}
+       \begin{proof}
+            Let $I=\bigcup_{i=1}^{\infty}I_{i}$. This is an ideal in $R$ (see Example Sheet 2). Since $R$ is a PID, we have that $I=(a)$ for some $a \in R$. Then $a \in \bigcup_{i=1}^{\infty}I_{i}$, so $a \in I_{N}$ for some $N$. Consequently for any $n \geq N$ we have \[
+            (a) \subseteq I_{N} \subseteq I_{n} \subseteq I= (a)
+            .\] So these inclusions are equalities and $I_{n}=I$.
+     \end{proof}
 \end{lemma}
-\begin{proof}
-       Let $I=\bigcup_{i=1}^{\infty}I_{i}$. This is an ideal in $R$ (see Example Sheet 2). Since $R$ is a PID, we have that $I=(a)$ for some $a \in R$. Then $a \in \bigcup_{i=1}^{\infty}I_{i}$, so $a \in I_{N}$ for some $N$. Consequently for any $n \geq N$ we have \[
-       (a) \subseteq I_{N} \subseteq I_{n} \subseteq I= (a)
-       .\] So these inclusions are equalities and $I_{n}=I$.
-\end{proof}
 \begin{theorem}[PIDs are UFDs]
        If $R$ is a principal ideal domain, then it is a unique factorisation domain.
+       \begin{proof}
+            Check (i) and (ii) in the definition of UFD.
+            \begin{itemize}
+                  \item[(i)] Let $ x \in R$ be a nonzero unit. We proceed by contradiction: suppose $x$ is not a product of irreducibles. Then $x $ is not irreducible, so we can write $x= x_1 y_1 $ where $x_1 ,y_1 $ are not units. Then either $x_1 $ or $y_1$ is not a product of irreducibles, say $x_1 $ WLOG. We have $(x)\subseteq (x_1 )$ and this inclusion is strict because $y_1 $ is not a unit.
+                  Now we write $x_1 =x_2 y_2 $ where $x_2 , y_2 $ are not units. Repeat this procedure to get \[
+                  (x)\subset (x_1 )\subset (x_2 ) \subset \ldots 
+                  \] with each inclusion strict. This contradicts Lemma \ref{PIDsarenoetherian}.
+                  \item[(ii)] By Proposition [todo], it suffices to show irreducibles are primes. We conclude by Proposition [todo].
+            \end{itemize}
+     \end{proof}
 \end{theorem}
-\begin{proof}
-       Check (i) and (ii) in the definition of UFD.
-       \begin{itemize}
-             \item[(i)] Let $ x \in R$ be a nonzero unit. We proceed by contradiction: suppose $x$ is not a product of irreducibles. Then $x $ is not irreducible, so we can write $x= x_1 y_1 $ where $x_1 ,y_1 $ are not units. Then either $x_1 $ or $y_1$ is not a product of irreducibles, say $x_1 $ WLOG. We have $(x)\subseteq (x_1 )$ and this inclusion is strict because $y_1 $ is not a unit.
-             Now we write $x_1 =x_2 y_2 $ where $x_2 , y_2 $ are not units. Repeat this procedure to get \[
-             (x)\subset (x_1 )\subset (x_2 ) \subset \ldots 
-             \] with each inclusion strict. This contradicts Lemma \ref{PIDsarenoetherian}.
-             \item[(ii)] By Proposition [todo], it suffices to show irreducibles are primes. We conclude by Proposition [todo].
-       \end{itemize}
-\end{proof}
 \begin{remark}
-       We now know that \[
-       \text{ ED } \implies \text{ PID } \implies \text{ UFD } \implies \text{ Integral domain} 
-       .\] 
+       We now know that for a general ring, \[
+       \text{ED} \implies \text{PID} \implies \text{UFD} \implies \text{Integral domain} 
+       .\] There are a few useful examples we can give to illustrate the differences between these categories:
 \end{remark}
 \begin{definition*}[gcd/lcm]
        Let $R$ be an integral domain.
@@ -1353,15 +1352,14 @@ The next example will be of interest to those who want to study Part II Galois T
 \end{definition*}
 \begin{proposition}
        In a UFD, both gcd's and lcm's exist.
+       \begin{proof}
+            Write $a_i = u_i \prod_{j}p_{j}^{n_{ij}}$ where $1 \leq i \leq n$, where $u_{i}$ is a unit, the $p_{j}$ are irreducible which are not associates of each other, and $n_{ij}\in Z_{\geq 0}$. 
+            \begin{claim}
+                  $d=\prod_{i}{p_{i}^{m_i}}$ where $m_i=\min_{1 \leq i \leq n} n_{ij}$ is the gcd of $a_1 , \ldots, a_n$.
+            \end{claim}
+            \begin{proof}
+                  Certainly $d| a_{i}$ for all $i$. If $d'|a_{i}$ for all $i$, then writing $d'=u $ 
+            \end{proof}
+     \end{proof}
 \end{proposition}
-\begin{proof}
-       Write $a_i = u_i \prod_{j}p_{j}^{n_{ij}}$ where $1 \leq i \leq n$, where $u_{i}$ is a unit, the $p_{j}$ are irreducible which are not associates of each other, and $n_{ij}\in Z_{\geq 0}$. 
-       \begin{claim}
-             $d=\prod_{i}^{p_{i}^{m_i}}$ where $m_i=\min_{1 \leq i \leq n} n_{ij}$ is the gcd of $a_1 , \ldots, a_n$.
-       \end{claim}
-       \begin{prooff}
-             Certainly $d| a_{i}$ for all $i$. If $d'|a_{i}$ for all $i$, then writing $d'=u $ 
-       \end{prooff}
-       
-\end{proof}
 \end{document}

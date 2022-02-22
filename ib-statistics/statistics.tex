@@ -634,7 +634,8 @@ We'll quickly look at some examples of Bayesian computations in order to get a b
 [next example]
 This is where our discussion of Bayesian analysis ends - we now return to a frequentist viewpoint.
 \newpage
-\section{Simple hypotheses}
+\section{Hypothesis testing}
+\subsection{Simple hypotheses}
 \begin{definition*}[Hypothesis]
       A \vocab{hypothesis} is an assumption about the distribution of data $X$.
 \end{definition*}
@@ -645,11 +646,11 @@ Scientific questions are often phrased as a decision between a \vocab{null hypot
            \item In 1. we could also have $X_1 :\ \theta \neq 1/2$.
            \item Let $X = (X_1 ,\ldots,X_n)$ be iid. where $X_i$ takes values in $\mathbb{N}$. Suppose \[
            H_0 : \ X_{i} \overset{\operatorname{iid}}{\sim} \operatorname{Poi}(\lambda ) \text{ for some } \lambda >0, \quad H_1 : \ X_{i} \overset{\operatorname{iid}}{\sim} f_{1} \text{ for some other dist. } f_{1}
-           .\] This is known as a \emph{goodness-of-fit test}.
+           .\] This is known as a \vocab{goodness-of-fit test}.
       \end{enumerate}
 \end{example*}
 \begin{definition*}[Simple hypothesis]
-      A \vocab{simple hypothesis} is one which fully specifies the pdf (resp. pmf) of $X$. Otherwise, we say the hypothesis is \emph{composite}.
+      A \vocab{simple hypothesis} is one which fully specifies the pdf (resp. pmf) of $X$. Otherwise, we say the hypothesis is \vocab{composite}.
 \end{definition*}
 In the last example, the test in 1. was composite, and the test in 2. was simple.
 \begin{definition*}[Test]
@@ -665,40 +666,47 @@ In the last example, the test in 1. was composite, and the test in 2. was simple
           \item \vocab{Type II error}: fail to reject $H_0 $ when $H_0 $ isn't true.
      \end{itemize}
 \end{definition*}
-Write \[
-     \alpha =\mathbb{P}_{H_{0}}(H_0 \text{ is rejected} )=\mathbb{P}_{H_{0}} (X \in C), \quad \beta  =\mathbb{P}_{H_{1}}(H_0 \text{ is not rejected} )=\mathbb{P}_{H_{1}} (X \in C)
-.\] The \vocab{size} of the test is $\alpha $, the \emph{power} is $1-\beta $. There is a tradeoff between $\alpha $ and $\beta $. What we typically do is choose an acceptable probability of type I errors (say 1\%); set $\alpha $ to that, and then pick the test which minimises $\beta $ (maximises power).
+Write
+\begin{align*}
+     &\alpha =\mathbb{P}_{H_{0}}(H_0 \text{ is rejected} )=\mathbb{P}_{H_{0}} (X \in C),\\
+     &\beta  =\mathbb{P}_{H_{1}}(H_0 \text{ is not rejected} )=\mathbb{P}_{H_{1}} (X \in C).
+\end{align*} The \vocab{size} of the test is $\alpha $, the \emph{power} is $1-\beta $. There is a tradeoff between $\alpha $ and $\beta $. What we typically do is choose an acceptable probability of type I errors (say 1\%); set $\alpha $ to that, and then pick the test which minimises $\beta $ (maximises power).
 \begin{definition*}[Likelihood ratio statistic/test]
       Let $H_0 $ and $H_1 $ be simple, with $X$ having pdf (or pmf) $f_{i}$ under $H_{i}$ for $i \in \left\{0,1\right\}$. The \vocab{likelihood ratio statistic} is \[
       \Lambda_{x} (H_0 ,H_1 )= \frac{f_1 (x)}{f_0 (x)}
-      .\] A likelihood ratio test (LRT) rejects when $\Lambda_{x} (H_0 ,H_1 )$ is large, i.e \[
+      .\] A \vocab{likelihood ratio test} (LRT) rejects when $\Lambda_{x} (H_0 ,H_1 )$ is large, i.e \[
       C= \left\{x: \Lambda_{x} (H_0 ,H_1 ) >k\right\} \text{ for some } k
       .\] 
 \end{definition*}
-\begin{theorem}[Neyman-Pearson lemma]
+\begin{lemma}[Neyman-Pearson lemma]\label{neymanpearson}
       Suppose that $f_0 ,f_1 $ are nonzero on some sets. Suppose there is $k >0$ such that the LRT with critical region $C= \left\{x: \Lambda_{x} (H_0 ,H_1 ) >k\right\}$ has size $\alpha $. Then out of all tests with size $\leq  \alpha $, this test has the smallest $\beta $. 
       \begin{remark}
             An LRT of size $\alpha $ does not always exist. (Exercise.) But in general, we can find a ``randomised'' test of size $\alpha $.
       \end{remark}
-\end{theorem}
-\begin{proof}
-      Let $\overline{C}$ be the complement of $C$. We know that the LRT has \[
-      \alpha =\mathbb{P}_{H_0 } (X \in C) =\int_{C}^{}f_{0} (x) \ \mathrm{d} x, \quad \beta  =\mathbb{P}_{H_1 } (X \notin C) =\int_{\overline{C}}^{}f_{1} (x) \ \mathrm{d} x
-      .\] Let $C^{*}$ be some other critical region with type I/II error probabilities $\alpha ^* ,\beta ^* $. Suppose $\alpha ^* \leq \alpha , \beta  \leq \beta ^*$. We want to show $\beta  \leq \beta ^*$. Note that
-      \begin{align*}
-          \beta -\beta ^* &= \int_{\overline{C}}^{}f_{i}(x) \ \mathrm{d}x - \int_{\overline{C^*}}^{}f_{i}(x) \ \mathrm{d}x \\
-          &=\int_{\overline{C}\cap C^*}^{}f_{i}(x) \ \mathrm{d}x - \int_{\overline{C^*}\cap C}^{}f_{i}(x) \ \mathrm{d}x \text{ as the integrals over } \overline{C}\cap \overline{C^*} \text{ cancel }
-      \end{align*}
-\end{proof}
+      \begin{proof}
+          Let $\overline{C}$ be the complement of $C$. We know that the LRT has \[
+          \alpha =\mathbb{P}_{H_0 } (X \in C) =\int_{C}^{}f_{0} (x) \ \mathrm{d} x, \quad \beta  =\mathbb{P}_{H_1 } (X \notin C) =\int_{\overline{C}}^{}f_{1} (x) \ \mathrm{d} x
+          .\] Let $C^{*}$ be some other critical region with type I/II error probabilities $\alpha ^* ,\beta ^* $. Suppose $\alpha ^* \leq \alpha , \beta  \leq \beta ^*$. We want to show $\beta  \leq \beta ^*$. Note that
+          \begin{align*}
+              \beta -\beta ^* &= \int_{\overline{C}}^{}f_{1}(x) \ \mathrm{d}x - \int_{\overline{C^*}}^{}f_{1}(x) \ \mathrm{d}x \\
+              &=\int_{\overline{C}\cap C^*}^{}f_{1}(x) \ \mathrm{d}x - \int_{\overline{C^*}\cap C}^{}f_{1}(x) \ \mathrm{d}x \text{ as the integrals over } \overline{C}\cap \overline{C^*} \text{ cancel }\\
+              &=\int_{\overline{C}\cap C^*}^{} \underbrace{\frac{f_{1}(x)}{f_0 (x)}}_{\leq k \text{ on } \overline{C}}  f_0 (x) \ \mathrm{d}x - \int_{\overline{C^*}\cap C}^{}\underbrace{\frac{f_{1}(x)}{f_0 (x)}}_{> k \text{ on } C} f_0 (x) \ \mathrm{d}x\\
+              &\leq k \left(\int_{\overline{C}\cap C^*}^{}f_{0}(x) \ \mathrm{d}x - \int_{\overline{C^*}\cap C}^{}f_{0}(x) \ \mathrm{d}x\right)\\
+              &\text{Now add and subtract }k \int_{C \cap C^*}^{}f_0 (x) \ \mathrm{d}x:\\
+              &=k \left(\int_{C^*}^{}f_{0}(x) \ \mathrm{d}x - \int_{C}^{}f_{0}(x) \ \mathrm{d}x\right)\\
+              &= k (\alpha^*-\alpha) \leq 0.
+          \end{align*}
+    \end{proof}
+\end{lemma}
 Let's illustrate this with an example.
 \begin{example*}
       Let $X_1 , \ldots, X_{n} \overset{\operatorname{iid}}{\sim}N (\mu ,\sigma_i ^2) $ where $\sigma_0 $ is known. We want the best size $\alpha $ test for $H_0 $: $\mu =\mu_0 $ vs $H_1 $: $\mu =\mu_1 $ for some fixed $\mu_1 > \mu_0 $. Skipping the algebra, we get \[
       \Lambda_{X}(H_0 ; H_1 )= \exp \left\{ \frac{\mu_1 -\mu_0 }{\sigma_0^2}n \overline{X} + \frac{n (\mu_0^2 -\mu_1^2 )}{2\sigma_0 ^2}\right\}
       .\] $\Lambda_{x}$ is monotone increasing in $\overline{X}$; it is also monotone increasing in $Z= \sqrt{n} (\overline{X}-\mu_0 )/\sigma_{0}$. Thus $\Lambda_{x}>k \iff z>k'$ for some $k'>0$. Hence the LRT has critical region of the form \[
       C=\left\{x: Z (x)>k'\right\}
-      .\]  To find the most powerful test, by the Neyman-Pearson lemma, we need only find $k$ such that $C$ has size $\alpha$. Under $H_0 : \ \mu=\mu_0 $, $z \sim N (0,1)$. Thus if we choose $k' =\Phi^{-1}(1-\alpha)$ we have \[
+      .\]  To find the most powerful test, by the Neyman-Pearson lemma, we need only find $k$ such that $C$ has size $\alpha$. Under $H_0 : \ \mu=\mu_0 $, $Z \sim N (0,1)$. Thus if we choose $k' =\Phi^{-1}(1-\alpha)$ we have \[
       \mathbb{P}_{H_0 }(z>k' )=\alpha
-      ,\] i.e the test $C=\left\{x: Z (x)>k'\right\}$ has size $\alpha$. This is called a \vocab{z-test}.
+      ,\] i.e the test $C=\left\{x: Z (x)>k'\right\}$ has size $\alpha$. This is called a \vocab{$z$-test}.
 \end{example*}
 \subsubsection*{The $p$-value}
 If we have a critical region $\left\{x: T (x)>k\right\}$ for some \vocab{test statistic} $T (X)$, we usually report a \vocab{$p$-value} in addition to the test's conclusion, which is defined by \[
@@ -740,6 +748,42 @@ W (\theta) \geq W^* (\theta) \text{ for all } \theta \in \Theta_{1}
       UMP tests need not exist. However, in simple models many LRTs are UMP.
 \end{remark}
 \begin{example*}
-      One-sided test for normal location
+      One-sided test for normal location: let $X_1 ,\ldots,X_n \overset{\operatorname{iid}}{\sim} N (\mu, \sigma_0^2)$ with $\sigma_0^2$ known. We define our composite hypotheses: \[
+      H_0 : \mu \leq \mu_0 , \quad H_1 : \mu >\mu_0 
+      .\] The LRT for the simple hypotheses \[
+      H_0 ^\prime : \mu=\mu_0 , H_1 ^\prime : \mu=\mu_1 >\mu_0 
+      \] is \[
+      C=\left\{x:\ z =\sqrt{n} \frac{(\overline{x}-\mu_0 )}{\sigma_0 }> \Phi^{-1}(1-\alpha)\right\}
+      .\]
+      \begin{claim}
+           This test is UMP for $H_0 $ against $H_1 $.
+      \end{claim}
+      \begin{proof}
+          Last time we found $W (\mu)=1- \Phi (z_0 + \frac{\sqrt{n} (\mu_0 -\mu)}{\sigma_0 })$. Indeed we have $\sup _{\mu \leq \mu_0 }W (\mu)=\alpha$. Now we need to check that for any test $C^*$ of size $\alpha$ with power function $W^* $, $W (\mu)\geq W^* (\mu)$ for all $\mu > \mu_0 $.
+
+          First note that the critical region $C$ depends on $\mu_0 $, not on $\mu_1 $. Take any $\mu_1 > \mu_0 $, then $C $ is the LRT for $H_0 ^\prime$ vs $H_1 ^\prime $. We can alse see $C^* $ as a test of $H_0 ^\prime  $ vs $H_1 ^\prime $. And for these simple hypotheses $C^* $ has size \[
+          W^* (\mu_0 ) \leq \sup_{\mu < \mu_0 }W^* (\mu) \leq  \alpha
+          .\] By the Neyman-Pearson Lemma (\ref{neymanpearson}), $C$ has power no smaller than $C^* $ for $H_0 ^\prime  $ vs $H_1 ^\prime $, i.e \[
+          W (\mu_1 ) \geq W^* (\mu_2 )
+          .\] Hence $C $ is a UMP.
+      \end{proof}
 \end{example*}
+\subsubsection*{Generalised likelihood ratio test}
+Let $H_0 : \ \theta \in \Theta_0 $, $H_1 : \ \theta \in \Theta_1 $ with $\Theta_0 \subseteq \Theta_1 $. We say the hypotheses are nested. The \vocab{generalised likelihood ratio test} (GRT) is \[
+\Lambda_{X}(H_0 ; H_1 )= \frac{\sup_{\theta \in \Theta_1 }f_{X}(X| \theta)}{\sup_{\theta \in \Theta_0 }f_{X}(X| \theta)}
+.\] Large values indicate a better fit under the alternative hypothesis. A GLR test rejects $H_0 $ when $\Lambda_{X}(H_0 ; H_1 )$ is large.
+\begin{example*}
+       Again take our two-sided test for normal location. Let our nested hypotheses be \[
+       H_0 :\ \mu=\mu_0 , \quad H_1 : \ \mu \in \mathbb{R}
+       .\] In this model we have \[
+            \Lambda_{X}(H_0 ; H_1 )= \frac{(2\pi \sigma_0 ^2)^{-n/2}\exp(- \frac{1}{2 \sigma_0 ^2}\sum_{i=1}^{n}(X_i-\overline{X})^2)}{(2\pi \sigma_0 ^2)^{-n/2}\exp(- \frac{1}{2 \sigma_0 ^2}\sum_{i=1}^{n}(X_i-\mu_0 )^2)}
+       .\] To make it easier, we consider \[
+       2 \log \Lambda_{x}=\frac{n}{\sigma_0 ^2}(\overline{X}-\mu_0 ^2)
+       .\] Recall that under $H_0 $, $ \frac{\sqrt{n} (\overline{X}-\mu_0 )}{\sigma_0 }\sim N (0,1)$. So $2 \log \Lambda_{x} \sim \chi^2_1$. So the critical region of GLR test is \[
+       C=\left\{x: \frac{n}{\sigma_0 ^2}(\overline{x}-\mu_0 ^2)>\underbrace{\chi_1 ^2 (\alpha)}_{\text{upper } \alpha \text{-point of } \chi^2_1 } \right\}
+       .\]
+\end{example*}
+\begin{theorem}[Wilks' theorem]
+      The \vocab{dimension} of a hypothesis $H_0 : \theta \in \Theta_0 $ is the number of "free parameters" in $\Theta_0 $.
+\end{theorem}
 \end{document}
