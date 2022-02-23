@@ -1307,12 +1307,12 @@ The next example will be of interest to those who want to study Part II Galois T
 \end{goal}
 \begin{proposition}
        Let $R$ be an integral domain satisfying (i) in the definition of UFD. Then $R$ is a UFD $\iff$ every irreducible is prime.
+       \begin{proof}
+            Suppose $R$ satisfies (i). Suppose $p \in R$ is irreducible and $p|ab$. Then $ab=pc $ for some $c \in R$. Writing $a,b,c$ as products of irreducibles, it follows from (i) that $p|a$ or $p|b$.
+     
+            Conversely, suppose $p_1 \ldots p_{m}=q_1 \ldots q_{n}$ with each $p_i$ and $q_i$ irreducible. Since $p_1 $ is prime and $p_1 | q_1 \ldots q_n$, we have $p_1 |q_i$ for some $i$. Upon reordering, may assume that $p_1 | q_1 $, i.e $q_1 =p_1 u$ for some $u \in R$. But $q_1 $ is irreducible, and $p_1 $ is irreducible, so $u$ has to be a unit. Thus $p_1 $ and $q_1 $ are associates. So we can cancel $p_1 $, which gives $p_2 \ldots p_m= (uq_2 )\ldots q_n$. We now repeat the process and the result follows by induction.
+     \end{proof}
 \end{proposition}
-\begin{proof}
-       Suppose $R$ satisfies (i). Suppose $p \in R$ is irreducible and $p|ab$. Then $ab=pc $ for some $c \in R$. Writing $a,b,c$ as products of irreducibles, it follows from (i) that $p|a$ or $p|b$.
-
-       Conversely, suppose $p_1 \ldots p_{m}=q_1 \ldots q_{n}$ with each $p_i$ and $q_i$ irreducible. Since $p_1 $ is prime and $p_1 | q_1 \ldots q_n$, we have $p_1 |q_i$ for some $i$. Upon reordering, may assume that $p_1 | q_1 $, i.e $q_1 =p_1 u$ for some $u \in R$. But $q_1 $ is irreducible, and $p_1 $ is irreducible, so $u$ has to be a unit. Thus $p_1 $ and $q_1 $ are associates. So we can cancel $p_1 $, which gives $p_2 \ldots p_m= (uq_2 )\ldots q_n$. We now repeat the process and the result follows by induction.
-\end{proof}
 \begin{lemma}\label{PIDsarenoetherian}
        Let $R$ be a PID and let $I_1 \subseteq I_2 \subseteq I_3 \subseteq \ldots$ be a nested sequence of ideals. Then there exists $N \in \mathbb{N}$ such that $I_{n}=I_{n+1}$ for all $n \geq N$.
        \begin{remark}
@@ -1358,8 +1358,94 @@ The next example will be of interest to those who want to study Part II Galois T
                   $d=\prod_{i}{p_{i}^{m_i}}$ where $m_i=\min_{1 \leq i \leq n} n_{ij}$ is the gcd of $a_1 , \ldots, a_n$.
             \end{claim}
             \begin{proof}
-                  Certainly $d| a_{i}$ for all $i$. If $d'|a_{i}$ for all $i$, then writing $d'=u $ 
+                  Certainly $d| a_{i}$ for all $i$. If $d'|a_{i}$ for all $i$, then writing $d'=u \prod_j p_{j}^{t_{j}} $, we find that $t_{j}\leq n_{ij}$ for all $i$. So $t_i \leq m_j$. Therefore $d' |d$. 
             \end{proof}
+            The argument for lcm's is similar (just replacing min by max).
      \end{proof}
 \end{proposition}
+\subsection{Factorisation in polynomial rings}
+\begin{goal}
+      Our first goal in this section is to prove the following theorem:
+\end{goal}
+\begin{theorem}\label{polyUFD}
+       If $R$ is a UFD then $R[X]$ is also a UFD.
+\end{theorem}
+In this section, $R$ is a UFD with field of fractions $F$. We have $R[X] \leq F[X]$. Moreover $F[X]$ is a ED, hence a PID and UFD. Note this isn't yet enough to show that $R[X]$ is a UFD- since it's just a subring of a UFD, which isn't necessarily a UFD. However, we will show that today.
+
+First we will prove some preliminary results.
+\begin{definition*}[Content]
+       The \vocab{content} of $f=a_n X^n +\ldots+a_1 X + a_0 \in R[X]$ is \[
+       c (f)=\operatorname{gcd} (a_0 , a_1 , \ldots, a_n)
+       .\] Note this is well-defined up to multiplication oby a unit. We say $f$ is \vocab{primitive} if $c (f)$ is a unit.
+\end{definition*}
+\begin{remark}
+      It might be easier to view $R$ as $\mathbb{Z}$if you are seeing this for the first time, in order to more intutively understand the definitions.
+\end{remark}
+\begin{lemma}
+      \begin{itemize}
+            \item[(i)] If $f,g \in R[X]$ are primitive, then $fg$ is primitive.
+            \item[(ii)] If $f,g \in R[X]$, then $c (fg)=c (f)c (g)$ (up to multiplication by a unit).
+      \end{itemize}
+      There are quite a few different proofs of this lemma, but we will give a concrete one that involves directly computing the coefficients of $fg$.
+       \begin{proof}
+              \begin{itemize}
+                    \item[(i)] Let
+                    \begin{align*}
+                        f &= a_n X^{n}+\ldots+a_1 X+a_0\\
+                        g&= b_m X^m + \ldots+ b_1 X+ b_0 
+                    \end{align*}
+                    If $fg$ is not primitive, $c (fg)$ is not a unit, so there is some prime $p$ such that $p| c (fg)$ (since it factors into irreducibles, but in a UFD irreducibles are primes). Since $f,g$ primitive, $p \nmid c (f)$ and $p \nmid c (g)$.
+
+                    Suppose $p| a_0 , p | a_1 \ldots$ but $p \nmid a_k$ (it is the smallest such $k$). Let $b_l$ be defined similarly. Then the coefficient of $X^{k+l}$ in $fg$ is \[
+                    \sum_{i+j=k+l}^{}a_{i}b_{j}=\underbrace{ \ldots+ a_{k-1}b_{l+1}}_{\text{div. by } p} +a_{k}b_{l}+\underbrace{a_{k+1}b_{l-1}+\ldots}_{\text{div. by } p} 
+                    .\] Thus $p|a_{k}b_{l} \implies p |a_{k}$ or $p| b_{l}$ since $p $ is prime. Contradiction. So $fg$ is primitive.  
+                    \item[(ii)] Write $f= c (f) \cdot f_0 $ and $g = c (g) \cdot g_0 $, where $f_0 , g_0 \in R[x]$ are primitive. Then $fg= c (f)c (g) f_0 g_0 $, where $f_0 g_0 $ is primitive by (i). Taking the content, $c (fg)=c (f )c (g)$ up to units.
+              \end{itemize}
+       \end{proof}
+\end{lemma}
+\begin{corollary}\label{cor113}
+       Let $p \in R$ be prime. Then $p $ is prime in $R[X]$.
+       \begin{proof}
+              $R[X]^{\times}=R^{\times}$ as $R$ is an integral domain, so $p$ is not a unit in $R[X]$. Let $f \in R[X]$. Then $p |f $ in $R[X]$ iff $p | c (f)$ in $R$. Thus if $p|gh $ in $R[X]$, then $p| c (gh)=c (g)c (h)$. Thus $p | c (g)$ or $p| c (h)$, so $p|g $ or $p|h$. So $p$ is prime in $R[X]$.
+       \end{proof}
+\end{corollary}
+\begin{lemma}\label{polyfactor1}
+       Let $f,g \in R[X]$ with $g$ primitive. If $g| f$ in $F[X]$, then $g|f$ in $R[X]$.
+       \begin{proof}
+              Let $f= gh$ where $h \in F[X]$. Let $a \in R, a \neq 0$ such that $ah \in R[X]$. (We are "cancelling the denominators".) Write $ah =c (ah) h_0 $ with $h_0 $ primitive. Then $af= c (ah)\underbrace{h_0 g}_{\text{primitive}} $. Taking contents, we find $a| c (ah)$. We can get rid of the $a$'s since $R$ is an integral domain, so $h | R[X]$ and $g|f$ in $R[X]$.
+       \end{proof}
+\end{lemma}
+\begin{lemma}[Gauss' Lemma]
+       Let $f \in R[X]$ be primitive. Then $f$ irreducible in $R[X]$ $\implies $ $f$ irreducible in $F[X]$.
+       \begin{proof}
+              Since $f \in R[X]$ is irreducible and primitive, we have $\operatorname{deg}(f)>0$ (else it would be a unit in $R$), and so $f$ is not a unit in $F[X]$.
+
+              Suppose that $f$ is not irreducible in $F[X]$, say $f=gh$ where $g, h \in F[X]$ with $\operatorname{deg}(g), \operatorname{deg}(h)>0$. Let $\lambda \in F^{\times }$ such that $\lambda^{-1}g \in R[X]$ is primitive. (For example, let $0 \neq b \in R$ such that $bg \in R[X]$, then $bg= c (bg)g_0 $ with $g_0 $ primitive, so $\lambda = c (bg)/b \in F^{\times}$.) Upon replacing $g$ by $\lambda^{-1}g$ and $h$ by $\lambda h$, we may assume $g \in R[X]$ is primitive. Then Lemma \ref{polyfactor1} implies $h \in R[X]$ and so $f=gh$ in $R[X]$, with $\operatorname{deg}g, \operatorname{deg}h>0$. This is a contradiction and we are done.
+       \end{proof}
+       \begin{remark}
+            We'll see that the reverse implication also holds.
+     \end{remark}
+\end{lemma}
+\begin{lemma}\label{lem115}
+       Let $g \in R[X]$ be primitive. Then $g $ prime in $F[X] \implies g$ is prime in $R[X]$.
+       \begin{proof}
+              Suppose $f_1 , f_2  \in R[X]$ and $g | f_1 f_2 $ in $R[X]$. $g$ prime in $F[X]$ implies that $g|f_1 $ or $g|f_2 $ in $F[X]$. Lemma \ref{polyfactor1} implies $g|f_1 $ or $g|f_2 $ in $R[X]$. So $g $ is prime in $R[X]$.
+       \end{proof}
+\end{lemma}
+We now have all the tools necessary to prove our theorem.
+\begin{proof}[Proof of Theorem \ref{polyUFD}]
+       Let $f \in R[X]$. Write $f= c (f) f_0 $, with $f_0 \in R[X]$ primitive. Since $R$ is a UFD, $c (f)$ is a product of irreducibles in $R$ (which are also irreducible in $R[X]$). If $f_0 $ is not irreducible, say $f_0 =gh$, then $\operatorname{deg}g, \operatorname{deg}h >0$ since $f$ is primitive, and $g,h$ are also primitive. By induction on degree, $f_0 $ is a product of irreducibles in $R[X]$. This establishes (i) in the definition of a UFD.
+
+       By Proposition [todo], it suffices to show that if $f \in R[X]$ is irreducible, then $f$ is prime. Write $f= c (f)f_0 $ as before. Since $f$ is irreducible, this means $f$ is a constant or primitive.
+       \begin{case}
+             If $f$ is constant, $f$ is irreducible in $R[X]$ (hence also in $R$). So $f$ is prime in $R$ since $R$ is a UFD. We showed in Corollary \ref{cor113} that this implies $f$ is prime in $R[X]$.
+       \end{case}
+       \begin{case}
+             If $f$ is primitive, then $f$ is irreducible in $R[X]$ and by Gauss' Lemma also in $F[X]$. Since $F[X]$ is a UFD, $f$ is prime in $F[X]$. By Lemma \ref{lem115}, $f$ is prime in $R[X]$.
+       \end{case}
+       This concludes the proof.
+\end{proof}
+\begin{remark}
+       By Lemma [todo], the last three implications are equivalences.
+\end{remark}
 \end{document}
