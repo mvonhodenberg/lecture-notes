@@ -346,7 +346,7 @@ Aside:
 \begin{proof}
       This is beyond the scope of the course.\footnotemark
 \end{proof}\footnotetext{See Rudin's \emph{Real and Complex Analysis}.}
-\section{Complex Integration: Part I}
+\section{Complex integration: Part I}
 \subsection{Definitions and basic properties}
 We aim to extend Riemann integration to complex functions $f: U \rightarrow \mathbb{C}$ along curves in $U$. First we take a look at complex functions of a real variable. 
 \begin{definition*}
@@ -598,12 +598,12 @@ Now we are ready to draw a series of very nice corollaries of "convex Cauchy". T
 \begin{notation}
      For a disk $D (a,\rho)$ we will write $\int_{ \partial D (a, \rho)}^{}f (z) \ \mathrm{d}z $ to mean $\int_{\gamma}^{}f (z) \ \mathrm{d}z $ where $\gamma$ is the curve $\gamma (t)=a+\rho e^{2\pi i t}$ (which parameterises the boundary of the disk with positive orientation, i.e so that the disk lies to the left of the directed boundary circle). 
 \end{notation}
-\begin{theorem}[Cauchy integral formula for a disk]
-      Let $D=D (a,r)$ and let $f: D \rightarrow \mathbb{C}$ be holomorphic. Then for any $\rho$ with $0 < \rho< r$ and any $w \in D (a, \rho)$ wehave that \[
+\begin{theorem}[Cauchy integral formula for a disk]\label{cif}
+      Let $D=D (a,r)$ and let $f: D \rightarrow \mathbb{C}$ be holomorphic. Then for any $\rho$ with $0 < \rho< r$ and any $w \in D (a, \rho)$ we have that \[
       f (w)=\frac{1}{2\pi i} \int_{ \partial D (a, \rho)}^{} \frac{f (z)}{z-w} \ \mathrm{d}z
       .\] In particular (taking $w=a$), \[
           f (a)=\frac{1}{2\pi i} \int_{ \partial D (a, \rho)}^{} \frac{f (z)}{z-a} \ \mathrm{d}z= \int_{0}^{1}f (a+ \rho e^{2\pi it}) \ \mathrm{d}t 
-      .\] This is called the \emph{mean value property} for holomorphic functions.
+      .\] This is called the \vocab{mean value property} for holomorphic functions.
 \end{theorem}
 For the proof we will need the following fact:
 \begin{lemma}
@@ -617,7 +617,7 @@ For the proof we will need the following fact:
       $$
 \end{lemma}
 Now let's prove the Cauchy integral formula.
-\begin{proof}
+\begin{proof}[Proof of \ref{cif}]
      Fix $w \in D (a, \rho)$ and define $h: D \rightarrow C$ by 
      \begin{equation*}
            h (z)=
@@ -678,46 +678,49 @@ In section \ref{powerseriessection}, we saw that we could construct power series
       .\] The coefficient $c_{n}$ is given by \[
       c_{n}=\frac{1}{2\pi i}\int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{\left(z-a\right)^{n+1}} \ \mathrm{d}z 
       ,\] for any $\rho \in \left(0,R\right)$.
+      \begin{proof}
+          Let $0<\rho <R$. Then for any $w \in D \left(a,\rho \right)$, we have by the Cauchy integral formula that 
+          \begin{align*}
+               f \left(w\right)&=\frac{1}{2\pi i} \int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{z-w} \ \mathrm{d}z = \frac{1}{2\pi i} \int_{\partial D \left(a,\rho \right)}^{} f \left(z\right)\sum_{n=0}^{\infty} \frac{\left(w-a\right)^{n}}{\left(z-a\right)^{n+1}} \ \mathrm{d}z\\
+               &= \sum_{n=0}^{\infty}\frac{1}{2\pi i} \left(w-a\right)^{n}\int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{\left(z-a\right)^{n+1}} \ \mathrm{d}z.
+          \end{align*}
+          The last equality is true by uniform convergence of the series for $z$in our disk. Write $c_{n}\left(\rho \right)=\frac{1}{2\pi i}\int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{\left(z-a\right)^{n+1}} \ \mathrm{d}z$. Then we know that $f \left(w\right)=\sum_{n=0}^{\infty}c_{n}\left(\rho \right) \left(w-a\right)^{n}$ for all $w \in D \left(a,\rho \right)$.
+    
+          So by Theorem $1.5$, the function $f$ (being given by a power series in $D(a, \rho)$ ) has derivatives of all orders in $D(a, \rho)$, and the coefficient $c_{n}(\rho)=\frac{f^{(n)}(a)}{n !} .$ In particular $c_{n}(\rho)$ is independent of $\rho$, so call it $c_{n}$.
+    
+         Since $\rho \in(0, R)$ is arbitrary, we then have that $f(w)=\sum_{n=0}^{\infty} c_{n}(w-a)^{n}$ for all $w \in D(a, R)$, where $c_{n}=\frac{f^{(n)}(a)}{n !}=\frac{1}{2 \pi i} \int_{\partial D(a, \rho)} \frac{f(z)}{(z-a)^{n+1}} d z$ for any $\rho \in(0, R)$.
+    \end{proof}
 \end{theorem}
-\begin{proof}
-      Let $0<\rho <R$. Then for any $w \in D \left(a,\rho \right)$, we have by the Cauchy integral formula that 
-      \begin{align*}
-           f \left(w\right)&=\frac{1}{2\pi i} \int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{z-w} \ \mathrm{d}z = \frac{1}{2\pi i} \int_{\partial D \left(a,\rho \right)}^{} f \left(z\right)\sum_{n=0}^{\infty} \frac{\left(w-a\right)^{n}}{\left(z-a\right)^{n+1}} \ \mathrm{d}z\\
-           &= \sum_{n=0}^{\infty}\frac{1}{2\pi i} \left(w-a\right)^{n}\int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{\left(z-a\right)^{n+1}} \ \mathrm{d}z.
-      \end{align*}
-      The last equality is true by uniform convergence of the series for $z$in our disk. Write $c_{n}\left(\rho \right)=\frac{1}{2\pi i}\int_{\partial D \left(a,\rho \right)}^{} \frac{f \left(z\right)}{\left(z-a\right)^{n+1}} \ \mathrm{d}z$. Then we know that $f \left(w\right)= =\sum_{n=0}^{\infty}c_{n}\left(\rho \right) \left(w-a\right)^{n}$ for all $w \in D \left(a,\rho \right)$.
-
-      So by Theorem $1.5$, the function $f$ (being given by a power series in $D(a, \rho)$ ) has derivatives of all orders in $D(a, \rho)$, and the coefficient $c_{n}(\rho)=\frac{f^{(n)}(a)}{n !} .$ In particular $c_{n}(\rho)$ is independent of $\rho$, so call it $c_{n}$.
-
-     Since $\rho \in(0, R)$ is arbitrary, we then have that $f(w)=\sum_{n=0}^{\infty} c_{n}(w-a)^{n}$ for all $\overline{w \in D(a, R)}$, where $c_{n}=\frac{f^{(n)}(a)}{n !}=\frac{1}{2 \pi i} \int_{\partial D(a, \rho)} \frac{f(z)}{(z-a)^{n+1}} d z$ for any $\rho \in(0, R)$.
-\end{proof}
-\begin{corollary}
+\begin{corollary}\label{cor214}
       If $f$ is holomorphic on an open set $U \subset \mathbb{C}$, then $f$ has derivatives of all orders in $U$ which are themselves holomorphic on $U$. 
+      \begin{proof}
+          $f$ has a power series representation near every point, so its derivatives of all orders exist everywhere. This also of course means that the derivatives of all orders are holomorphic.
+    \end{proof}
 \end{corollary}
-\begin{proof}
-      $f$ has a power series representation near every point, so its derivatives of all orders exist everywhere. This also of course means that the derivatives of all orders are holomorphic.
-\end{proof}
 \begin{remarks}
       \begin{enumerate}
            \item Suppose $D(a, R) \subset U$. In the proof of Theorem $2.13$ we have established the formula
            $$
            f^{(n)}(a)=\frac{n !}{2 \pi i} \int_{\partial D(a, \rho)} \frac{f(z) d z}{(z-a)^{n+1}}
            $$
-           valid for any $\rho \in(0, R)$. This is a special case of a Cauchy integral formula for derivatives (Theorem $2.16$ below).
+           valid for any $\rho \in(0, R)$. This is a special case of a Cauchy integral formula for derivatives.
            \item Taking $n=1$ in the above formula and estimating, we get \[
                \left|f^{\prime}(a)\right| \leq \frac{1}{\rho}\left(\sup _{z \in \partial D(a, \rho)}|f(z)|\right)
-           .\]  This estimate can be thought of as a "localisation of Liouville's theorem," and it directly implies Liouville's theorem: if $f$ is entire and bounded, we can choose any $a \in \mathbb{C}$, apply the estimate and let $\rho \rightarrow \infty$ to conclude that $f^{\prime}=0$ on $\mathbb{C}$ and hence $f$ is constant.
+           .\]  This estimate can be thought of as a ``localisation of Liouville's theorem''. and it directly implies Liouville's theorem: if $f$ is entire and bounded, we can choose any $a \in \mathbb{C}$, apply the estimate and let $\rho \rightarrow \infty$ to conclude that $f^{\prime}=0$ on $\mathbb{C}$ and hence $f$ is constant.
       \end{enumerate}
 \end{remarks}
 
 A function $f$ (real or complex) is said to be \vocab{analytic} at a point $a$ if $f$ is given by a convergent power series about $a$ in some neighbourhood of $a$. We know that $f$ analytic at $a$ $\implies $ $f$ has derivatives of all orders near $a$.
 
-Corollary 2.14 says that if $f$ is a complex function, then:
-
-f is analytic at $a$ $\iff$ $f$ has complex derivatives of all orders in a
-neighborhood of $a$ $\iff$ $f$ is complex differentiable once in a
-neighborhood of $a$ (i.e. $f$ is holomorphic at $a$).
-
+Corollary \ref{cor214} says that if $f$ is a complex function, then:
+\begin{align*}
+     & f\text{ is analytic at } a\\
+     \iff & f \text{ has complex derivatives of all orders in a
+     neighborhood of } a\\
+     \iff & f \text{ is complex differentiable once in a
+     neighborhood of } a\\
+     \iff & f \text{ is holomorphic at } a.
+\end{align*}
 For real functions, existence of derivatives of all orders does not imply analyticity.
 (e.g. $f: \mathbb{R}\rightarrow R$ defined by $f (x)=e^{-1/x^2}$ for $x \neq 0$ and $f (0)=0$; this function is differentiable to any order and has $f^{(n)}(0)=0$ for all n, so $f$ is not given by a convergent power series near 0.)
 \begin{notation}
@@ -728,23 +731,22 @@ For real functions, existence of derivatives of all orders does not imply analyt
           \item Let $U \subset \mathbb{C}$ be open. We now have (from Corollary 2.14) that $f=u+i v$ is holomorphic in $U \Longleftrightarrow u, v$ have continuous (first) partial derivatives in $U$ (i.e. $u, v$ are $C^{1}$ in $U$ ) and $u, v$ satisfy the Cauchy-Riemann equations.
           \item Corollary $2.14$ provides $C^{2}$ regularity of $u$ and $v$ if $f=u+i v$ is holomorphic in $U$. So we now have fully justified that real and imaginary parts of a holomorphic function are harmonic functions.
       \end{enumerate}
-      
 \end{remarks}
 
 Corollary $2.14$ (higher order differentiability) leads to the following very useful integral criterion for holomorphicity of a continuous function.
 
 \begin{theorem}[Morera's Theorem]\label{morera}
      Let $U \subset \mathbb{C}$ be open. If $f: U \rightarrow \mathbb{C}$ is continuous and $\int_{\gamma} f(z) d z=0$ for every closed curve $\gamma$ in $U$, then $f$ is holomorphic in $U$.
+     \begin{proof}
+          By the FTC (Theorem \ref{ftc}), $f$ has an antiderivative $F$ on U. Such $F$ is of course holomorphic. By Corollary $2.14$ then $F$ is twice differentiable in $U$. Since $F^{\prime}=f$, this means that $f$ is holomorphic.
+     \end{proof}
 \end{theorem}
-\begin{proof}
-     By the FTC (Theorem \ref{ftc}), $f$ has an antiderivative $F$ on U. Such $F$ is of course holomorphic. By Corollary $2.14$ then $F$ is twice differentiable in $U$. Since $F^{\prime}=f$, this means that $f$ is holomorphic.
-\end{proof}
 \begin{corollary}
      Let $U \subset \mathbb{C}$ be open. If $f: U \rightarrow \mathbb{C}$ is continuous and holomorphic in $U \backslash S$ where $S$ is a finite set, then $f$ is holomorphic in $U$.
+     \begin{proof}
+          For each $a \in U$ there is $r>0$ such that $D=D(a, r) \subset U$. Since $D$ is convex, we can apply Corollary \ref{convexcauchy} (convex Cauchy) to see that $\int_{\gamma} f(z) d z=0$ for any closed curve in $D$. By Morera's theorem $f$ is holomorphic in $D$.
+     \end{proof}
 \end{corollary}
-\begin{proof}
-     For each $a \in U$ there is $r>0$ such that $D=D(a, r) \subset U$. Since $D$ is convex, we can apply Corollary \ref{convexcauchy} (convex Cauchy) to see that $\int_{\gamma} f(z) d z=0$ for any closed curve in $D$. By Morera's theorem $f$ is holomorphic in $D$.
-\end{proof}
 As a further application of Taylor series, we next show that zeros of a non-zero holomorphic function are isolated points.
 
 Suppose $f$ is a non-zero holomorphic function on a disk $D=D(a, R)$. Then by the Taylor series theorem, there are constants $c_{n}$ such that \[
@@ -759,8 +761,24 @@ where $g(z)=\sum_{n=m}^{\infty} c_{n}(z-a)^{n-m}$. The function $g$ is holomorph
      If $m \geq 1$, we say that $f$ has a \vocab{zero of order $m$} at $z=a$. From the formula $c_{n}=\frac{f^{(n)}(a)}{n !}$, it is clear that $m$ is the smallest of the positive integers $n$ such that $f^{(n)}(a) \neq 0$.
 \end{notation}
 Recall that if $S \subset \mathbb{C}$, then a point $w \in S$ is an \vocab{isolated point} of $S$ if there is $r>0$ such that $S \cap D(w, r)=\{w\}$.
+\begin{theorem}[Principle of isolated zeros]
+      Let $f: D (a,R)\rightarrow \mathbb{C}$ be holomorphic and not identically 0. Then there is $r$ with $0 \leq r \leq R$ such that $f (z) \neq 0$ whenever $0 < \left|z-a\right|<R$.
+      \begin{remark}
+          If $f (a)=0$, the theorem says that there exists $r$ such that $a$ is an isolated point of the zero set in some ball $D (a,r)$. So for example there is no non-zero holomorphic function vanishing on a line segment or a half-disk.
+      \end{remark}
+      \begin{proof}
+            If $f (a)\neq 0$, then by continuity of $f$ we can find $r>0$ such that $f (z )\neq 0$ for $z \in D (a,r)$ and we are done.
 
-\textbf{Unique continuation for analytic functions:}
+            If $f (a)=0$, then by the preceding discussion there is an integer $m \geq 1$ such that $f (z)= (z-a)^{m} g (z)$ for $z \in D (a,R)$, where $g$ is holomorphic with $g (a)\neq 0$. So again we can find $r>0$ such that $g (z)\neq 0$ for $z \in D (a,r)$, and hence $f (z)\neq 0$ for $z \in D (a,r)\backslash \left\{a\right\}$. 
+      \end{proof}
+\end{theorem}
+\begin{corollary}
+      For all $z \in \mathbb{C}$, $\sin ^2 z+ \cos ^2z=1$.
+      \begin{proof}
+            Consider $g (z)=\sin ^2 z+ \cos ^2z-1 $ is holomorphic, and vanishes on the real line. So $g \equiv 0$ by the principle of isolated zeros.
+      \end{proof}
+\end{corollary}
+\subsection{Unique continuation for analytic functions}
 Consider a holomorphic function $f: D (a,r)\rightarrow \mathbb{C}$ defined on a disk. We know that by the Taylor series theorem, $f$ is uniquely determined by its values in any arbitrarily small disk $D (a,\rho )\subset D (a,r)$ (because the Taylor series coefficient $c_{n}= \frac{f^{(n)}(a)}{n!}$ for $n \in \mathbb{N}_{0}$).
 
 This can be generalised to arbitrary domains.
@@ -771,8 +789,157 @@ This can be generalised to arbitrary domains.
       \begin{notation}
            We call $g$ the \vocab{analytic continuation of $f$ to $V$}.
       \end{notation}
+      \begin{proof}
+          Let $g_1 ,g_2 $ be analytic with $g_1 |_{U}=g_2 |_{U}$. Then $h=g_1 -g_2 $ is analytic and $h (z)=0$ on $U$. We want to show that $h\equiv 0$ on $V$. Let \[
+          V_0 = \left\{z \in V: \ h \equiv 0 \text{ in some open disk } D (z,r)\text{ for some } r>0\right\}
+          ,\] and \[
+          V_1 =\left\{z \in V: h^{(n)}(z)\neq 0 \text{ for some } n \geq 0\right\}
+          .\] Let $z \in V$ and suppose $z \notin V_0 $. Then for any disk $D = D (z,r) \subseteq V$, we have that $h \not \equiv 0$ in $D$. Hence by Taylor series, $h^{(n)}(z)\neq 0 $ for some $n$, so $z \in V_1 $. Thus $V = V_0 \cup V_1 $.
+
+          We also have that $V_0 \cap V_1 = \emptyset$. Moreover, $V_0 $ is open by definition, and $V_1 $ is open by continuity of the derivatives $h^{(n)}$. Hence by connectedness of $V$, one of $V_0 $ or $V_1 $ must be empty. But $U \subseteq V_0 $, so $V_1 = \emptyset$. Hence $V=V_0 $. Therefore $h \equiv 0$ on $V$.
+    \end{proof}
+    \begin{remark}
+          The above proof only relies on analyticity of $h$, i.e the property of having a convergent Taylor series about every point. So the theorem holds for real analytic functions as well.
+    \end{remark}
 \end{theorem}
-\begin{proof}
-      Let $g_1 ,g_2 $ be analytic with $g_1 |_{U}=g_2 |_{U}$. Then $h=g_1 -g_2 $ is analytic and $h (z)=0$ on $U$. We want to show that $h\equiv 0$ on $V$.
+Given a holomorphic function $f$ on a disk, we can ask for the largest domain containing the disk to which there is an analytic continuation of $f$. In general this is a hard question, but we can illustrate it with some easy examples.
+\begin{example*}
+      Some examples:
+      \begin{itemize}
+           \item $f (z)=\sum_{n=0}^{\infty}z^{n}$. The series has radius of convergence 1, so $f$ is analytic in $D (0,1)$ and there is no larger disk such that $g$ has an analytic continuation to it (say $D (0,r)$). However, since $f (z)=\frac{1}{1-z}$ for $z \in D (0,1)$, we can take an analytic continuation to some other domain that isn't a disk; i.e $\mathbb{C}\backslash \left\{1\right\}$.
+           \item Take $f (z)=\sum_{n=1}^{\infty}(-1)^{n+1}z^n/n$. Again the ROC is 1, so $f$ is analytic on $D (0,1)$. It has the analytic continuation $\operatorname{Log}(1+z)$ to the domain \[
+               \mathbb{C}\backslash \left\{x \in \mathbb{R}: x \leq -1\right\}
+           .\] 
+      \end{itemize}
+      Analytic continuation to a larger domain need not always exist.
+      \begin{itemize}
+           \item Take $f (z)=\sum_{n=0}^{\infty}z^{n!}$. The power series has ROC 1. So $f$ is analytic in $D (0,1)$. But $f$ has no analytic continuation to \emph{any} largr domain containing $D (0,1)$ (see Example Sheet 2).
+      \end{itemize}
+      \begin{remark}
+            There is in fact a more general fact that this non-example illustrates: for any given domain $U \subset \mathbb{C}$, there is a holomorphic function $f: U \rightarrow \mathbb{C}$ which has no analytic continuation to a domain properly containing $U$ (see Example Sheet 2).
+      \end{remark}
+\end{example*}
+\begin{corollary}[Identity principle]
+      Let $f,g: U \rightarrow \mathbb{C}$ be holomorphic in a domain $U$. If the set $S=\left\{z \in U: f (z)= g (z)\right\}$ contains a non-isolated point, then $f=g$ in $U$.
+      \begin{proof}
+            Let $h=f-g$ so that $S= \left\{z \in U: h (z)=0\right\}$. Suppose $S$ has a non-isolated point $w$. If for some $r>0$ the function $h$ is not identically zero in $D (w,r)$, then by the principle of isolated zeros we can find $\varepsilon>0$ such that $f (z)\neq 0$ whenever $0< \left|z-w\right|<\varepsilon$, i.e $w$ is isolated. Contradiction. Therefore $h \equiv 0$ on $D (w,r)$ for every $D (w,r) \subseteq U$. This concludes the proof.
+      \end{proof}
+\end{corollary}
+\begin{corollary}[Global maximum principle]
+      Let $U$ be a bounded open set. Let $\overline{U}$ be the closure of $U$, and suppose that $f: \overline{U}\rightarrow \mathbb{C}$ is a continuous function such that $f$ is holomorphic in $U$. Then $\left|f\right|$ attains its maximum on $\partial U= \overline{U}\backslash U$.
+      \begin{proof}
+            $\overline{U}$ is a closed, bounded subset of $\mathbb{R}^2$, and $\left|f\right|$ is continuous on $\overline{U}$. So there is a point $w \in \overline{U}$ such that $\left|f (w)\right|=\max_{z \in \overline{U}} \left|f (z)\right|$. If $w \notin U$ then $w \in \partial U$ and we are done. So suppose that $w \in U$, and choose a disk $D = D (w,r)\subseteq U$. Since $\left|f (z)\right|\leq \left|f (w)\right|$ for all $z \in D$, it follows from the local maximum principle that $f=c$ on $D$ for some constant $c$. Hence by the identity principle applied to $c$, $f=c$ on the connected component of $U$ containing $D$ (since $U$ doesn't have to be connected). If this component is $U'$, then by continuity we have that $f=c$ on $\overline{U'}$. In particular $f (z)=w$ for every $z \in \partial U'$, so the theorem holds. 
+      \end{proof}
+\end{corollary}
+\subsection{Limits of holomorphic functions}
+Next we turn to the question of limits of sequences of holomorphic functions. We can consider limits in various topologies, but uniform limits are an important and natural first qustion to study.
+\subsubsection*{Some estimates}
+We'd like to understand differentiability of the limits, so we start by deriving a representation formula for the derivatives.
+\begin{theorem}[CIF for derivatives and Cauchy estimates]
+     Let $f: D (a,R) \rightarrow \mathbb{C}$ be holomorphic. 
+      \begin{itemize}
+           \item[(i)] For any $\rho \in (0,R)$ and any $w \in D (a,\rho)$ we have that \[
+               f^{(n)}(w)= \frac{n!}{2\pi i}\int_{\partial D (a,\rho)}^{} \frac{f (z)}{(z-w)^{n+1}}\ \mathrm{d} z
+               .\] 
+          \begin{remarks}
+               \begin{enumerate}
+                    \item If we directly apply the CIF to $f^{(n)}$, we get a formula for $f^{(n)}(w)$ in terms of an integral involving $f^{(n)}$. The significance of this theorem is that the RHS involves only $f$, and not any of its derivatives.
+                    \item We already saw a special case $w=a$ of this formula, in a remark about the proof of Taylor series.
+               \end{enumerate}
+          \end{remarks}
+           \item[(ii)] We have the \vocab{Cauchy estimates} \[
+           \sup_{z \in D (a,R/2)} \left|f^{(k)}(z)\right|\leq \frac{C}{R^{k}}\sup_{D (a,R)}\left|f (z)\right|
+           .\] Note $C=C (k)$ is a constant depending only on $k$. In fact we can take $C=k! \cdot  2^{k+1}$.
+      \end{itemize}
+\end{theorem}
+\begin{proof}[Proof of (i)]
+     Case $k=0 $ is the usual CIF. For the case $k=1$, consider $g (z)= \frac{f (z)}{z-w}$. This is holomorphic in $D (a,R)\backslash \left\{w\right\}$, with derivative \[
+     g' (z)= \frac{f' (z)}{z-w}- \frac{f (z)}{(z-w)^2}
+     .\] Since $\partial D (a,\rho)\subseteq D (a,R) \backslash \left\{w\right\}$, we know $\int_{\partial D (a,\rho)}^{}g' (z) \ \mathrm{d}z =0 $ by the FTC. So \[
+        \int_{\partial D (a,\rho)}^{} \frac{f' (z)}{z-w} \ \mathrm{d}z=\int_{\partial D (a,\rho)}^{} \frac{f (z)}{(z-w)^2} \ \mathrm{d}z
+     .\] By the usual CIF formula applied to $f'$, \[
+     f' (w)=\frac{1}{2\pi i} \int_{\partial D (a,\rho)}^{} \frac{f' (z)}{z-w} \ \mathrm{d}z 
+     .\] Combining these two gives the result for $k=1$.
+     
+     For $k \geq 2$ use induction on $k$. Fix $k \geq 2$, and suppose the formula is valid for that $k$ and all homorphic $f: D (a,R)\rightarrow \mathbb{C}$. Given any holomorphic $f$, consider $g (z)= \frac{f (z)}{(z-w)^{k+1}}$. This has derivative \[
+     g' (z)= \frac{f' (z)}{(z-w)^{k+1}}- \frac{(k+1)f (z)}{(z-w)^{k+2}} \text{ in } D (a,R)\backslash \left\{w\right\}
+     .\] Since integrating $g'$ over the boundary of $D$ gives 0, we get \[
+     \int_{\partial D (a,\rho)}^{} \frac{f' (z)}{(z-w)^{k+1}} \ \mathrm{d}z = (k+1)\int_{\partial D (a,\rho)}^{} \frac{f (z)}{(z-w)^{k+2}} \ \mathrm{d}z 
+     .\] But by the induction hypothesis with $f'$ in place of $f$, \[
+     f^{(k+1)}(w)= \frac{k! }{2\pi i} \int_{\partial D (a,\rho)}^{} \frac{f' (z)}{(z-w)^{k+1}} \ \mathrm{d}z = \frac{(k+1)! }{2\pi i}\int_{\partial D (a,\rho)}^{} \frac{f (z)}{(z-w)^{k+2}} \ \mathrm{d}z 
+     .\]
 \end{proof}
+\begin{proof}[Proof of (ii)]
+     For part (ii), we may assume that $\sup_{z \in D (a,R)} \left|f (z)\right|< \infty$ (else there is nothing to prove). Pick any $\rho \in (R/2, R)$. Then by part (i), for any $w \in D (a,R/2)$ we have that \[
+     \left|f^{(k)}(w)\right|\leq \frac{k! }{2\pi} \sup_{z \in \partial D (a,\rho)} \frac{\left|f (z)\right|}{\left|z-w\right|^{k+1}} \cdot 2\pi \rho
+     .\] Since $\left|z-w\right|\geq \rho-R/2$ for any $z \in \partial D (a,\rho)$ for any $z \in \partial D (a,\rho)$ and any $w \in D (a,R/2)$, this implies that \[
+     \sup_{w \in D (a,R/2)}\left|f^{(k)}(w)\right|\leq \frac{k! \rho }{(\rho-R/2)^{k+1}}\sup_{z \in D (a,R)}\left|f (z)\right|
+     .\] Now let $\rho \rightarrow R$.
+ \end{proof}
+\subsubsection*{Uniform limits of holomorphic functions}
+\begin{definition*}[Local uniform convergence]
+      Let $U \subseteq \mathbb{C}$ be open, and let $f_{n}: U \rightarrow \mathbb{C}$ be a sequence of functions. We say that $(f_{n})$ converges \vocab{locally uniformly} on $U$ if for each $a \in U$, there is an $r>0$ such that $(f_{n})$ converges on $D (a,r)$.
+      \begin{example*}
+            $f_{n}=z^{n}$. Then $f_{n}\rightarrow 0$ locally uniformly on $D (0,1)$, but not uniformly on $D (0,1)$. This is because $f_{n}\rightarrow 0$ uniformly on any disk $D (0,r)$ if $r<1$. But the supremum of $\left|f\right|$ on $D (0,1)$ is 1 for all $n$.
+      \end{example*}
+\end{definition*}
+\begin{proposition}
+      $(f_{n})$ converges locally uniformly on U iff $(f_{n})$ converges uniformly on each compact subset $K \subset U$.
+      \begin{proof}
+            The forward implication is a simple exercise using the definition of compactness (every open cover has a finite subcover). The reverse implication is clear since for all $a \in U$ there exists a compact disk $\overline{D (a,r)}\subset U$.
+      \end{proof}
+\end{proposition}
+\begin{theorem}[Uniform limits of holomorphic functions are holomorphic]
+      Let $U \subseteq \mathbb{C}$ be open, and $f_{n}: U \rightarrow \mathbb{C}$ be holomorphic for each $n \in \mathbb{N}$. If $(f_{n})$ converges locally uniformly on $U$ to some function $f: U \rightarrow \mathbb{C}$, then $f$ is holomorphic. Moreover, $f_{n}' \rightarrow f'$ locally uniormly on $U$. (We can apply this iterativly we get that for each $k$, $f_{n}^{(k)}\rightarrow f^{(k)}$ locally uniformly on $U$ as $n \rightarrow \infty$.)
+      \begin{remark}
+            This result fails for real analytic functions.\footnotemark
+      \end{remark} 
+      \begin{proof}
+            The first part follows from convex Cauchy and Morera's theorem. Let $a \in U$, and choose $r>0$ such that $\overline{D (a,r)} \subset U$ and $f_{n}\rightarrow f$ uniformly on $D (a,r)$. Since the $f_{n}$ are continuous, by a result from IB Analysis \& Topology we have that $f$ is continuous in $\overline{D (a,r)}$.
+
+            Let $\gamma$ be a closed curve in $D (a,r)$. Since $D (a,r)$ is convex, by convex Cauchy $\int_{\gamma}^{}f_{n}(z) \ \mathrm{d}z=0 $. Since $f_{n} \rightarrow f$ uniformly on $D (a,r)$ the limit behaves nicely in the integral: \[
+               \int_{\gamma}^{}f(z) =\lim_{n \rightarrow \infty}\int_{\gamma}^{}f_{n}(z)=0
+            .\] Since $f$ is cts. and $\gamma$ is an arbitrary closed curve, by Morera's theorem $f$ is holomorphic in $D (a,r)$. Since $a$ is arbitrary $f$ is holomorphic on $U$.
+
+            To see that $f_{n}' \rightarrow  f'$ locally uniformly on $U$, let $a \in U$ be arbitrary and choose $D (a,r)$ as above. Apply the Cauchy estimate with $k=1$, $R=r$ and with $f_{n}-f$ in place of $f$. This gives \[
+            \sup_{z \in D (a,r/2)}\left|f_{n}' (z)-f' (z)\right| \leq \frac{4}{r} \sup_{z \in D (a,r)} \left|f_{n}-f (z)\right| \rightarrow 0 \text{ as } n \rightarrow \infty
+            .\] The claim follows.
+      \end{proof}
+\end{theorem}
+\footnotetext{This is true by the \emph{Weierstrass approximation theorem}, applied to a function which is continuous and nowhere differentiable (which we have seen in IB Analysis \& Topology).}
+\subsubsection*{Aside: Links with the theory of harmonic functions}
+Some of the key results we have proved for holomorphic functions have direct analogues for (real) harmonic functions on domains not just in $\mathbb{R}^{2}$ but in $\mathbb{R}^{n}$ for any $n$. For example:
+\begin{itemize}
+     \item if $u: \mathbb{R}^{n} \rightarrow \mathbb{R}$ is a bounded harmonic function then $\bar{u}$ is constant. (Liouville's theorem).
+     \item if $u: D=D(a, r) \rightarrow \mathbb{R}$ is a $C^{2}$ harmonic function on an open ball $D(a, r)=\left\{x \in \mathbb{R}^{n}:\|x-a\|<r\right\}$ and if $u(x) \leq u(a)$ (or $u(x) \geq u(a))$ for all $x \in D$, then $u$ is constant (local maximum principle, also known as the strong maximum principle).
+     \item global maximum principle holds (also known as the weak maximum principle): a harmonic function on a bounded open set $U$ that is continuous on $\bar{U}$ attains its maximum (and its minimum) on the boundary $\partial U=\bar{U} \backslash U$.
+     \item harmonic functions are real analytic.
+     \item unique continuation principle holds (follows from analyticity exactly as in the case of holomorphic functions).
+     \item uniform limits of harmonic functions are harmonic.
+     \item derivative estimates hold: if $u: D(a, R) \subset \mathbb{R}^{n} \rightarrow \mathbb{R}$ is harmonic, then \[
+          \sup _{D(a, R / 2)}\left|D^{k} u\right| \leq C R^{-k} \sup _{D(a, R)}|u|, C=C(n, k)
+     .\] 
+\end{itemize}
+\newpage
+\section{Complex integration: Part II}
+Recall we proved that if $U$ is a star-shaped domain, then $\int_{\gamma}^{}f (z) \ \mathrm{d}z=0 $ for any holomorphic $f: U \rightarrow \mathbb{C}$ and any closed curve $\gamma$ in $U$. (``convex Cauchy'')
+
+There are domains for which the conclusion of Cauchy's theorem fails for some holomorphic functions and close curve (recall $U= \mathbb{C}\backslash \left\{0\right\}$, $f=\frac{1}{z}$).
+\begin{goal}
+     We now want to characterise the class of domains for which Cauchy's theorem holds for all holomorphic functions and all closed curves.
+\end{goal}
+One of our tools for this will be the following notion:
+\begin{definition*}[Winding number]
+      Informally, we want to define the number of times a curve ``winds around'' a point. Let $\gamma: [a,b] \rightarrow \mathbb{C}$ be a closed and piecewise $C^{1}$ curve, and let $w$ be outside the image of $\gamma$. For each $t$, there is $r(t)>0$ and $\theta (t)\in \mathbb{R}$ such that $\gamma (t)=w + r (t) e^{i \theta (t)}$. This is true because $\gamma (t) \neq w$ for all $t$. Then the function $r: [a,b ] \rightarrow \mathbb{R}$ is given by $r (t)=\left|\gamma (t)-w\right|$, so it is uniquely determined and piecewise $C^{1}$.
+
+      Define the \vocab{winding number} or the \vocab{index} of $\gamma$ about $w$ as \[
+      I (\gamma; w)= \frac{\theta (b)-\theta (a)}{2\pi}
+      .\]
+      \begin{remark}
+         $I (\gamma;w)$ is an integer since $\gamma (a)=\gamma (b)$, so $r (a)=r (b)$ and $e^{i (\theta (b)- \theta (a))}=1$ which implies $\theta (b)- \theta (a)=2 \pi n$ for some $n \in \mathbb{Z}$.   
+      \end{remark}
+      \begin{remark}
+            $I (\gamma;w)$ is well-defined: if $\theta_1 : [a,b] \rightarrow \mathbb{C}$ is also a continuous function such that $\gamma (t)=w + r (t)e^{i \theta_1 (t)}$ then $e^{i \theta (t)-\theta_1 (t)}=1$ so $ \frac{\theta_1 (t)- \theta (t)}{2\pi} \in \mathbb{Z}$. Since $\theta_1 -\theta$ is continuous, it must be constant.
+      \end{remark}
+\end{definition*}
 \end{document}
