@@ -1448,4 +1448,98 @@ We now have all the tools necessary to prove our theorem.
 \begin{remark}
        By Lemma [todo], the last three implications are equivalences.
 \end{remark}
+\begin{example*}
+       Let's give some applications of Theorem \ref{polyUFD}.
+       \begin{itemize}
+             \item $\mathbb{Z}[X]$ is a UFD.
+             \item Let $R[X_1 , \ldots , X_n]$ be the polynomial ring in $n$ variables $X_1 , \ldots, X_n$ with coefficients in $R$. We can also define it inductively by $R[X_1 , \ldots , X_n]=R[X_1 , \ldots , X_{n-1}][X_n]$. Then applying the theorem, this is a UFD.
+       \end{itemize}
+\end{example*}
+\begin{lemma}[Eisenstein's criterion]
+       Let $R$ be a UFD and $f (X)=a_n X^{n}+\ldots+a_1 X+ a_0 \in R[X]$ be primitive. Suppose there exists an irreducible element $p \in R$ (=prime) such that 
+       \begin{itemize}
+             \item[(i)] $p \nmid a_n$,
+             \item[(ii)] $p|a_i$ for all $0 \leq i \leq n-1$,
+             \item[(iii)] $p^2 \nmid a_0 $.
+       \end{itemize}
+       Thn $f$ is irreducible in $R[X]$.
+       \begin{proof}
+              Suppose $f=gh$, with $g,h \in R[X]$ not units. Since $f$ is primitive, $\operatorname{deg}(g), \operatorname{deg}(h)>0$. Let 
+              \begin{align*}
+                    g=r_k X^{k}+\ldots+r_1 X+r_0 \\
+                    h=s_l X^{l}+\ldots+s_1 X+ s_0 
+              \end{align*}
+              with $k+l=n$. Then $p \nmid a_n=r_k s_l \implies p \nmid r_k$ and $p \nmid s_l$. $p| a_0 =r_0 s_0 \implies p| r_0 $ or $p|s_0 $. Let $p|r_0 $ WLOG. 
+              
+              Then $\exists \ j \leq k$ such that $p|r_0 , \ldots , p|r_{i-1}$ but $p \nmid r_j$. Consider \[
+              \underbrace{a_j}_{\text{div. by } p \text{ by (ii)} }  = \underbrace{r_0 s_j +r_1 s_{j-1}+\ldots +r_{j-1}s_0}_{\text{ div. by } p}  +r_j s_0 
+              .\] So $p|r_js_0 $. Thus $p|s_0 $, so $p^2 |r_0 s_0 =a_0 $. Contradiction.
+       \end{proof}
+\end{lemma}
+\begin{example*}
+       \begin{itemize}
+             \item[(i)] Consider $f(X)=X^3+2X+5 \in \mathbb{Z}[X]$. If $f$ is not irreducible in $\mathbb{Z}[X]$, then \[
+             f(X)= (X+a)(X^2+bX+c) \quad \text{ for } a,b,c \in \mathbb{Z}
+             .\] Thus $ac=5$. But $\pm 1 , \pm 5$ are not roots of $f$. Contradiction. By Gauss' Lemma, $f$ is irreducible in $\mathbb{Q}[X]$. Thus $\mathbb{Q}[X]/(f)$ is a field.
+             \item[(ii)] Let $p \in \mathbb{Z}$ be prime. Apply Eisenstein's criterion to $X^{n}-p$, which satisfies all three conditions and is therefore irreducible in $\mathbb{Z}[X]$. By Gauss' Lemma, it is irreducible in $\mathbb{Q}[X]$. 
+             \item[(iii)] Let $f (X)=X^{p-1}+X^{p-2}+\ldots+X+1 \in \mathbb{Z}[X]$, where $p \in \mathbb{Z}$ is prime. Eisenstein's criterion does not apply directly to $f$. But note that $f(X)= \frac{X^{p-1}}{X-1}$, and substituting $Y=X-1$ gives \[
+             f(Y+1)= \frac{(Y+1)^{p}-1}{Y}= Y^{p-1}+ {p \choose 1}Y^{p-2}+\ldots+ {p \choose p-2}Y+ {p \choose p-1}
+             .\] Now $p| {p \choose i}$ for all $1 \leq i \leq p-1$ and $p^2 \nmid {p \choose p-1}=p$. Thus $f (Y+1)$ is irreducible in $\mathbb{Z}[Y]$, so $f (X)$ is irreducible in $\mathbb{Z}[X]$. This is because if we had $f (X)=g (X) h (X) \implies f (Y+1)=g (Y+1)h (Y+1)$.
+       \end{itemize}
+\end{example*}
+\newpage
+\subsection{Algebraic integers}
+Recall $\mathbb{Z}[i]= \left\{a+bi: \ a, b \in \mathbb{Z}\right\} \leq C$. This is the subring of Gaussian integers. We have equipped them with the norm function \[
+N: \ \mathbb{Z}[i] \rightarrow \mathbb{N}_{0}, \quad a+bi \mapsto a^2+b^2t
+.\] This satisfies $N (z_1 z_2 )=N (z_1 )N (z_2 )$, so is a Euclidean function. Thus $\mathbb{Z}[i]$ is an ED, hence a PID and UFD, and so \emph{the primes in $\mathbb{Z}[i]$ are the irreducibles in $\mathbb{Z}[i]$}. The units in $\mathbb{Z}[i]$ are $\pm 1, \pm i$ (only elements of norm 1). 
+\begin{goal}
+      We would like to know the primes/irreducibles in $\mathbb{Z}[i]$.
+\end{goal}
+\begin{example*}
+       \begin{itemize}
+             \item $2= (1+i)(1-i)$ and $5= (2+i)(2-i)$ are not primes in $\mathbb{Z}[i]$ (even though they are primes in $\mathbb{Z}$).
+             \item 3 is prime: we know $N (3)=9$. So if $3=ab$ in $\mathbb{Z}[i]$, $N (a)N (b)=9$. But $\mathbb{Z}[i]$ has no elements of norm 3. Thus either $a$ or $b$ is a unit.
+             
+             Similarly 7 is prime in $\mathbb{Z}[i]$.
+       \end{itemize}
+\end{example*}
+\begin{proposition}
+       Let $p \in \mathbb{Z}$ be a prime number. Then the following are equivalent: 
+       \begin{itemize}
+             \item[(i)] $p$ is not prime in $\mathbb{Z}[i]$
+             \item[(ii)] $p= a^2+b^2$ for some $a,b \in \mathbb{Z}$ 
+             \item[(iii)] $p=2$, or $p \equiv 1 \mod 4$.
+       \end{itemize}
+       \begin{proof}[Proof of (i)$\implies$(ii)]
+              Let $p=xy$, for $x,y \in \mathbb{Z}[i]$ not units. Then $p^2= N (p)=N (x)N (y)$. Thus $N (x)=N (y)=p$. Writing $x=a+bi$ gives $p=N (x)=a^2+b^2$.
+       \end{proof}
+       \begin{proof}[Proof of (ii)$\implies$(iii)]
+            The squares mod 4 are 0 and 1. Thus if $p=a^2+b^2$, then $p \not \equiv 3 \mod 4$.
+      \end{proof}
+      \begin{proof}[Proof of (iii)$\implies$(i)]
+            Already saw 2 is not prime in $\mathbb{Z}[i]$. By Theorem [todo], $(\mathbb{Z}/p\mathbb{Z})^{\times}$ is cyclic of order $p-1$. So if $p \equiv 1 \mod 4$, then $(\mathbb{Z}/p\mathbb{Z})$ contains an element of order 4, i.e $\exists \ x \in \mathbb{Z}$ with $x^{4} \equiv 1 \mod p$ but $x^2 \not \equiv 1 \mod p$. So $x^2 \equiv -1 \mod p$. 
+            
+            Now $p | x^2+1 = (x-i)(x+i)$ but $p \nmid x+i$ and $p \nmid x-i$, so $p$ is not prime in $\mathbb{Z}[i]$.
+     \end{proof}
+     \begin{remark}
+            In the course of this proof, we showed (iii)$\implies $(ii): the statement that given a prime number p: $p=2$, or $p \equiv 1 \mod 4$ is equivalent to $p$ being expressible as the sum of two squares. 
+
+            This is difficult to prove with elementary number theory, and shows the power of the techniques we have developed.
+     \end{remark}
+\end{proposition}
+\begin{theorem}
+       The primes in $\mathbb{Z}[i]$ (up to associates) are
+       \begin{enumerate}
+             \item $a+bi$, where $a,b \in \mathbb{Z}$ and $a^2+b^2=p$ is a prime number with $p=2$, or $p \equiv 1 \mod 4$.
+             \item Prime numbers $p \in \mathbb{Z}$ with $p \equiv 3 \mod 4$. 
+       \end{enumerate}
+       \begin{proof}
+              First we check these are primes:
+              \begin{enumerate}
+                    \item $N (a+bi)=p$. If $a+bi =uv$, then either $N (u)=1$ or $N (v)=1$. Thus $a+bi$ is irreducible and hence prime.
+                    \item Immediate by the previous proposition.
+              \end{enumerate}
+              Now let $z \in \mathbb{Z}[i]$ be a prime (irreducible). Then $\overline{z} \in \mathbb{Z}[i]$ is also irreducible and $N (z)=z \overline{z}$ is a factorisation into irreducibles.
+       \end{proof}
+\end{theorem}
 \end{document}
