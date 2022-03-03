@@ -36,26 +36,26 @@ The course is divided into several sections:
 \subsection{Recall of IA Groups}
 This first subsection will just recap the results seen in IA Groups; it can be skipped by anyone with a sufficient knowledge of the course.
 \begin{definition*}[Group]
-     A group is a pair $(G, \cdot)$ where $G$ is a set and $\cdot: G \times G \rightarrow  G$ is a binary operation satisfying:
+     A \vocab{group} is a pair $(G, \cdot)$ where $G$ is a set and $\cdot: G \times G \rightarrow  G$ is a binary operation satisfying:
      \begin{enumerate}
          \item $a \cdot (b \cdot c)=(a \cdot b)\cdot c$ (associativity)
          \item $\exists e \in G$ such that $e \cdot g= g \cdot e =g$ for all $g \in G$ (identity)
          \item $\forall g \in G$, $\exists {g}^{-1} \in G$ such that $g \cdot {g}^{-1}={g}^{-1}\cdot g=e$ (inverses)
      \end{enumerate}
+     \begin{remarks}
+      \begin{itemize}
+          \item In practice, one often needs to check closure in order to check that $\cdot $ is well-defined.
+          \item If using additive (respectively multiplicative) relations, we will often write 0 (or 1) for the identity.
+          \item We write $|G|$ for the number of elements in $G$.
+      \end{itemize}
+ \end{remarks}
 \end{definition*}
-\begin{remarks}\hfill
-     \begin{itemize}
-         \item In practice, one often needs to check closure in order to check that $\cdot $ is well-defined.
-         \item If using additive (respectively multiplicative) relations, we will often write 0 (or 1) for the identity.
-         \item We write $|G|$ for the number of elements in $G$.
-     \end{itemize}
-\end{remarks}
 \begin{definition*}[Subgroup]
-     A subset $H \subseteq G$ is a subgroup (written $H \leq G$) if $H$ is closed under $\cdot$ and $(H, \cdot)$ is a group.
+     A subset $H \subseteq G$ is a \vocab{subgroup} (written $H \leq G$) if $H$ is closed under $\cdot$ and $(H, \cdot)$ is a group.
+     \begin{remark}
+      A non-empty subset $H$ of $G$ is a subgroup if $a,b \in H \implies a \cdot {b}^{-1} \in H$ (see IA Groups for the proof). 
+ \end{remark}
 \end{definition*}
-\begin{remark}
-     A non-empty subset $H$ of $G$ is a subgroup if $a,b \in H \implies a \cdot {b}^{-1} \in H$ (see IA Groups for the proof). 
-\end{remark}
 \begin{example*}[Examples of groups]
     Groups we have already seen include:
     \begin{itemize}
@@ -68,50 +68,47 @@ This first subsection will just recap the results seen in IA Groups; it can be s
     \end{itemize}     
 \end{example*}
 \begin{definition*}[Direct product]
-     The direct product of groups $G$ and $H$ is the set $G \times H$ with operation \[
+     The \vocab{direct product} of groups $G$ and $H$ is the set $G \times H$ with operation \[
      (g_1 , h_1 ) \cdot (g_2 ,h_2 )=(g_1 g_2 , h_1 h_2 )
      .\] 
 \end{definition*}
 \begin{theorem}[Lagrange's theorem]
      Let $H \leq G$. Then the left cosets of $H$ in $G$ are the sets $gH=\left\{gh: \ h \in H\right\}$ for $g \in G$. These partition $G$, and each has the same cardinality as $H$. From this we can deduce Lagrange's theorem:
 
-     If $G$ is a finite group and $H \leq G$, then $|G|=|H| [G:H]$ where $[G:H]$ is the number of left cosets of $H$ in $G$ (the index of $H$ in $G$).
+     If $G$ is a finite group and $H \leq G$, then $|G|=|H| [G:H]$ where $[G:H]$ is the number of left cosets of $H$ in $G$ (the \vocab{index} of $H$ in $G$).
+     \begin{remark}
+            Can also carry this out with right cosets. A corollary of Lagrange's theorem is thus that the number of left cosets = number of right cosets.
+      \end{remark}
 \end{theorem}
-\begin{remark}
-     Can also carry this out with right cosets. A corollary of Lagrange's theorem is thus that the number of left cosets = number of right cosets.
-\end{remark}
 \begin{definition*}[Order of an element]
-     Let $g \in G$. If $\exists n \geq 1$ such that $g^{n}=1$, then the least such $n$ is the order of $g$ in $G$. If no such $n$ exists, $g$ has infinite order.
+     Let $g \in G$. If $\exists n \geq 1$ such that $g^{n}=1$, then the least such $n$ is the \vocab{order} of $g$ in $G$. If no such $n$ exists, $g$ has infinite order.
+     \begin{remark}
+      If $g$ has order $d$, then 
+      \begin{itemize}
+          \item $g^{n}=1 \implies d|n$. 
+          \item $\left\{1,g, \ldots , g^{d-1}\right\}\leq G$ and so if $G$ is finite, then $d | |G|$ (Lagrange).
+      \end{itemize}
+ \end{remark}
 \end{definition*}
-\begin{remark}
-     If $g$ has order $d$, then 
-     \begin{itemize}
-         \item $g^{n}=1 \implies d|n$. 
-         \item $\left\{1,g, \ldots , g^{d-1}\right\}\leq G$ and so if $G$ is finite, then $d | |G|$ (Lagrange).
-     \end{itemize}
-\end{remark}
 \begin{definition*}[Normal subgroup]
-     A subgroup $H \leq G$ is normal if ${g}^{-1}Hg=H$ for all $g \in G$. We write $H \unlhd G$.
+     A subgroup $H \leq G$ is \vocab{normal} if ${g}^{-1}Hg=H$ for all $g \in G$. We write $H \unlhd G$.
 \end{definition*}
 \begin{proposition}
-     If $H \unlhd G$ then the set $G/H$ of left cosets of $H$ in $G$ is a group (called the quotient group) with operation \[
-     g_1 H \cdot g_2 H= g_1 g_2 H
-     .\] 
+     If $H \unlhd G$ then the set $G/H$ of left cosets of $H$ in $G$ is a group (called the \vocab{quotient group}) with operation $g_1 H \cdot g_2 H= g_1 g_2 H.$
+     \begin{proof}
+      Check $\cdot $ is well-defined:
+ 
+      Suppose $g_1 H=g_1 ' H$ and $g_2 H= g_2 ' H$ for some $g_1 , g_1 ',g_2 , g_2' \in G$. Then $g_1 ' =g_1 h_1 $ and $g_2 '=g_2 h_2 $ for some $h_1 , h_2 \in H$. Therefore 
+      \begin{align*}
+          g_1 ' g_2 ' &=g_1 h_1 g_2 h_2 \\
+          &=g_1 g_2 \underbrace{({g_2 }^{-1}h_1 g_2 )}_{\in H} \underbrace{ h_2}_{\in H} 
+      \end{align*}  
+      Therefore $g_1 ' g_2 ' H=g_1 g_2 H$.
+      Associativity is inherited from $G$, the identity is $H=eH$, and the inverse of $gH$ is ${g}^{-1}H$.
+ \end{proof}
 \end{proposition}
-\begin{proof}
-     Check $\cdot $ is well-defined:
-
-     Suppose $g_1 H=g_1 ' H$ and $g_2 H= g_2 ' H$ for some $g_1 , g_1 ',g_2 , g_2' \in G$. Then $g_1 ' =g_1 h_1 $ and $g_2 '=g_2 h_2 $ for some $h_1 , h_2 \in H$. Therefore 
-     \begin{align*}
-         g_1 ' g_2 ' &=g_1 h_1 g_2 h_2 \\
-         &=g_1 g_2 \underbrace{({g_2 }^{-1}h_1 g_2 )}_{\in H} \underbrace{ h_2}_{\in H} 
-     \end{align*}  
-     Therefore $g_1 ' g_2 ' H=g_1 g_2 H$.
-     Associativity is inherited from $G$, the identity is $H=eH$, and the inverse of $gH$ is ${g}^{-1}H$.
-\end{proof}
-
 \begin{definition*}[Homomorphism]
-     If $G,H$ are groups, then a function $\phi: G \rightarrow H$ is a group homomorphism if $\phi (g_1 g_2)=\phi (g_1 g_2 )=\phi (g_1 )\phi (g_2 )$. It has kernel \[
+     If $G,H$ are groups, then a function $\phi: G \rightarrow H$ is a group \vocab{homomorphism} if $\phi (g_1 g_2)=\phi (g_1 g_2 )=\phi (g_1 )\phi (g_2 )$. It has kernel \[
      \operatorname{ker} \phi= \left\{g \in G: \ \phi (g)=e\right\} \leq G
      .\]  and image \[
      \operatorname{Im} \phi = \left\{\phi (g): \ g \in G \right\} \leq H
@@ -130,7 +127,6 @@ This first subsection will just recap the results seen in IA Groups; it can be s
 \begin{definition*}[Isomorphism]
       An \vocab{isomorphism} of groups is a group homomorphism that is also a bijection. We say $G$ and $H$ are \vocab{isomorphic} and write $G \cong H$ if there exists an isomorphism $\phi: G \rightarrow H$. (Note it follows from the definition that ${\phi}^{-1}$ is also a group homomorphism)
 \end{definition*}
-
 \begin{theorem}[First Isomorphism Theorem]
       Let $\phi: G \rightarrow H$ be a group homomorphism. Then $\operatorname{ker}\phi \unlhd G$ and \[
       G/\operatorname{ker}\phi \cong \operatorname{Im} \phi
@@ -202,6 +198,7 @@ This first subsection will just recap the results seen in IA Groups; it can be s
             Thus $\phi$ is a surjective homomorphim with kernel $H/K$. Now just apply the First Isomorphism Theorem.
       \end{proof}
 \end{theorem}
+\newpage
 \subsection{Simple groups}
 If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information about $G$. However, this approach is not always available. This is the case when a group is simple. 
 \begin{definition*}[Simple group]
@@ -232,6 +229,7 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
       We induct on $|G|$. If $|G|=1$ it's obvious. If $|G|>1$, let $G_{m-1}$ be a normal subgroup of largest possible order that isn't $G$ itself. Lemma \ref{1p2} implies $G/G_{m-1}$ is simple. Then apply the induction hypothesis to $G_{m-1}$. 
       \end{proof}
 \end{lemma}
+\newpage
 \subsection{Group actions}
 \begin{definition*}[Permutation group]
       For $X$ any set, let $\operatorname{Sym}(X)$ be the group of all bijections $X \rightarrow X$ under composition. This clearly forms a group with $e=\operatorname{Id}_X$.
@@ -254,8 +252,7 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
 \end{definition*}
 \begin{proposition}
      An action of a group $G$ on a set $X$ is equivalent to specifying a group homomorphism $\phi: G \rightarrow \operatorname{Sym}(X)$.
-\end{proposition}
-\begin{proof}
+     \begin{proof}
       For each $g \in G$, let $\phi_{g}: X \rightarrow X$ send $x \mapsto g \ast x$. 
 
       We have $\phi_{g_1 g_2 }(x)=(g_1 g_2 )\ast x=g_1 \ast (g_2 \ast x)=\phi_{g_1 }\circ \phi_{g_2 }(x)$. ($\dagger$)
@@ -269,20 +266,21 @@ If $K \unlhd G$, then studying the groups $K$ and $G/K$ gives some information a
       \end{itemize}
 \end{proof}
 \begin{definition*}
-      We say $\phi: G \rightarrow \operatorname{Sym}(X)$ is a permutation representation of $G$.
+      We say $\phi: G \rightarrow \operatorname{Sym}(X)$ is a \vocab{permutation representation} of $G$.
 \end{definition*}
+\end{proposition}
 \begin{definition*}[Orbit and stabiliser]
      Let $G$ act on a set $X$. 
      \begin{itemize}
-          \item[(i)] The orbit of $x \in X$ is $\operatorname{orb}_G (x)=\left\{g \ast x: \ g \in G\right\} \subset X$
-          \item[(ii)] The stabiliser of $x \in X$ is \[
+          \item[(i)] The \vocab{orbit} of $x \in X$ is $\operatorname{orb}_G (x)=\left\{g \ast x: \ g \in G\right\} \subset X$
+          \item[(ii)] The \vocab{stabiliser} of $x \in X$ is \[
           G_{x}=\left\{g \in G: \ g \ast x=x\right\} \leq G
           .\] 
      \end{itemize}
 \end{definition*}
 Recall the Orbit-Stabiliser Theorem from IA Groups: There is a bijection $\operatorname{orb}_G (x) \leftrightarrow $ the set of left cosets of $G_{x}$ in $G$. In particular if $G$ is finite, then \[
 |G|=|\operatorname{orb}_G (x)| |G_{x}|
-.\] 
+.\] This has lots of useful applications:
 \begin{example*}[Example of Orbit-Stabiliser]
       Let $G$ be the group of all symmetries of a cube, acting on the set of veretices $X$. We can reach any vertex from any other one, so $|\operatorname{orb}_G (x)|=8$. Some basic geometry gives $|G_{x}|=6$. Therefore $|G|=48$.
 \end{example*} 
@@ -340,6 +338,7 @@ Later on a lot of the proofs will involve picking a nice group action. So let's 
      H \unlhd G \iff N_{G}(H) =G
      .\] 
 \end{itemize}
+\newpage
 \subsection{Alternating groups}
 From IA Groups, we know that elements in $S_{n}$ are conjugate iff they have the same cycle type. For example, in $S_5$, we have the following:
 \begin{center}
@@ -436,6 +435,7 @@ Now we move on to a more general statement about $A_n$ being simple. Before we c
             This concludes the proof.
       \end{proof}
 \end{theorem}
+\newpage
 \subsection{$p$-groups and $p$-subgroups}
 \begin{definition*}[$p$-group]
       Let $p$ be a prime. A finite group $G$ is a $p$-group if $|G|=p^{n}$, $n \geq 1$. 
@@ -490,6 +490,7 @@ Now we move on to a more general statement about $A_n$ being simple. Before we c
             We know that $|Z (G)| \in \left\{1,p,p^2\right\}$. We can't have 1 by \ref{pgroup1}. If we have $p$, then $|G/Z (G)|=p$ and therefore is cyclic. Now applying \ref{pgroup2} we have that $G$ is abelian. If we have $p^2$ then $Z (G)=G$ so $G$ is abelian. 
       \end{proof}
 \end{corollary}
+\newpage
 \subsection{The Sylow theorems}
 \begin{theorem}[Sylow theorems]\label{sylow}
       Let $G$ be a finite group of order $p^{a}m$ where $p$ is a prime with $p \nmid m$. Then 
@@ -556,6 +557,7 @@ This is very useful to show groups of certain orders can't be simple.
       
       Thus $n_3 =22$ and $n_{11} =12$. Thus $G$ has $22 \cdot (3-1)=44$ elements of order 3 and $120= 12 \cdot (11-1)$ elements of order 11. But $44+120 > 132= |G|$ which is a contradiction. Hence $G$ is not simple.
 \end{example*}
+\newpage
 \subsection{Matrix groups}
 Matrix groups provide a wealth of examples of finite groups, and are crucial in the classification of finite simple groups. First we will recap a few groups we've seen before in IA Groups.
 
@@ -635,6 +637,7 @@ Just as $PGL_{2}(\mathbb{C})$ acts on $\mathbb{C} \cup \left\{ \infty\right\}$ v
            \item The smallest non-abelian simple groups are $A_5 \cong PSL_2 (\mathbb{Z}/5\mathbb{Z})$ of order 60, and $PSL_2 (\mathbb{Z}/7\mathbb{Z})$ of order 168.
       \end{itemize}
 \end{remarks}
+\newpage
 \subsection{Finite abelian groups}
 We now investigate finite abelian groups, which we can actually characterise very effectively.
 \begin{lemma}
@@ -789,6 +792,7 @@ This almost immediately shows that finite abelian groups are pretty easy to work
              .\] 
        \end{itemize}
 \end{example*}
+\newpage
 \subsection{Homomorphisms, ideals and quotients}
 We now define a homomorphism for rings, which similarly to the case of groups preserves the structure of a ring.
 \begin{definition*}[Ring homomorphism]
@@ -964,6 +968,7 @@ Since $\operatorname{Ker}\left(i\right)\unlhd \mathbb{Z}$, have $\operatorname{K
              \item $\mathbb{Z}/p\mathbb{Z}, \mathbb{Z}/p\mathbb{Z}[X]$ has characteristic $p$.
        \end{itemize}
 \end{definition*}
+\newpage
 \subsection{Integral domains, maximal ideals and prime ideals}
 \begin{definition*}[Integral domain/Zero-divisor]
        An \vocab{integral domain} is a ring with $0 \neq 1$ such that for $a,b \in R$, $ab=0 \implies a=0 \text{ or } b=0$.
@@ -1000,27 +1005,27 @@ Since $\operatorname{Ker}\left(i\right)\unlhd \mathbb{Z}$, have $\operatorname{K
 \end{lemma}
 \begin{theorem}[Subgroups of a field are cyclic]
        Let $F$ be a field. Then any finite subgroup $G \leq (F^{\times},\cdot )$ is cyclic.
+       \begin{proof}
+            $G$ is a finite abelian group. If $G$ is not cyclic, then by Theorem , there exists $H \leq G$ such that $H \cong C_{d_1 }\times C_{d_1 }      $ for some $d_1 \geq 2$. But then the polynomial \[
+            f (X)=X^{d_1 }-1 \in F[X]
+            \] has degree $d_1 $, and $\geq d_1^2$ roots which contradicts our previous lemma.
+     \end{proof}
+     \begin{example*}
+           This theorem tells us that the field $(\mathbb{Z}/p\mathbb{Z})^{\times}$ is cyclic. 
+     \end{example*}
 \end{theorem}
-\begin{proof}
-       $G$ is a finite abelian group. If $G$ is not cyclic, then by Theorem , there exists $H \leq G$ such that $H \cong C_{d_1 }\times C_{d_1 }      $ for some $d_1 \geq 2$. But then the polynomial \[
-       f (X)=X^{d_1 }-1 \in F[X]
-       \] has degree $d_1 $, and $\geq d_1^2$ roots which contradicts our previous lemma.
-\end{proof}
-\begin{example*}
-      This theorem tells us that the field $(\mathbb{Z}/p\mathbb{Z})^{\times}$ is cyclic. 
-\end{example*}
 \begin{proposition}
        Any finite integral domain is a field.
+       \begin{proof}
+            Let $R$ be a finite integral domain. Let $a \in R$, $a \neq 0$.
+     
+            Consider the map $\phi : R \rightarrow R$: $x \mapsto ax$.
+     
+            If $\phi (x)=\phi (y)$ then $a (x-y)=0$. Since $R$ is an integral domain and $a \neq 0$, this gives $x-y=0$. So $x=y$. Thus $\phi $ is injective, and hence surjective since $R$ is finite. Therefore \[
+            \exists b \in R: a \cdot b=1 \implies a \text{ is a unit. } 
+            .\] Thus $R$ is a field.
+     \end{proof}
 \end{proposition}
-\begin{proof}
-       Let $R$ be a finite integral domain. Let $a \in R$, $a \neq 0$.
-
-       Consider the map $\phi : R \rightarrow R$: $x \mapsto ax$.
-
-       If $\phi (x)=\phi (y)$ then $a (x-y)=0$. Since $R$ is an integral domain and $a \neq 0$, this gives $x-y=0$. So $x=y$. Thus $\phi $ is injective, and hence surjective since $R$ is finite. Therefore \[
-       \exists b \in R: a \cdot b=1 \implies a \text{ is a unit. } 
-       .\] Thus $R$ is a field.
-\end{proof}
 The next theorem tells us about the converse of this statement.
 \begin{theorem}[Field of fractions]
        Let $R$ be an integral domain. Then there exists a field $F$ such that:
@@ -1116,6 +1121,7 @@ Now we move on to discussing maximal and prime ideals, which we will use extensi
 
        In particular, a field has characteristic 0 (and so contains $\mathbb{Q}$) or has characteristic $p$, in which case it contains $\mathbb{Z}/p\mathbb{Z}=\mathbb{F}_{p}$.
 \end{remark}
+\newpage
 \subsection{Factorisation in integral domains}
 In this section we investigate the following property: we know that in $\mathbb{N}$ we can factorise any number as a product of prime factors, and we want to know to which extent this is true in integral domains.
 \begin{remark}
@@ -1363,6 +1369,7 @@ The next example will be of interest to those who want to study Part II Galois T
             The argument for lcm's is similar (just replacing min by max).
      \end{proof}
 \end{proposition}
+\newpage
 \subsection{Factorisation in polynomial rings}
 \begin{goal}
       Our first goal in this section is to prove the following theorem:
@@ -1527,7 +1534,7 @@ N: \ \mathbb{Z}[i] \rightarrow \mathbb{N}_{0}, \quad a+bi \mapsto a^2+b^2t
             This is difficult to prove with elementary number theory, and shows the power of the techniques we have developed.
      \end{remark}
 \end{proposition}
-\begin{theorem}
+\begin{theorem}\label{gaussianprimes}
        The primes in $\mathbb{Z}[i]$ (up to associates) are
        \begin{enumerate}
              \item $a+bi$, where $a,b \in \mathbb{Z}$ and $a^2+b^2=p$ is a prime number with $p=2$, or $p \equiv 1 \mod 4$.
@@ -1539,7 +1546,60 @@ N: \ \mathbb{Z}[i] \rightarrow \mathbb{N}_{0}, \quad a+bi \mapsto a^2+b^2t
                     \item $N (a+bi)=p$. If $a+bi =uv$, then either $N (u)=1$ or $N (v)=1$. Thus $a+bi$ is irreducible and hence prime.
                     \item Immediate by the previous proposition.
               \end{enumerate}
-              Now let $z \in \mathbb{Z}[i]$ be a prime (irreducible). Then $\overline{z} \in \mathbb{Z}[i]$ is also irreducible and $N (z)=z \overline{z}$ is a factorisation into irreducibles.
+              Now let $z \in \mathbb{Z}[i]$ be a prime (irreducible). Then $\overline{z} \in \mathbb{Z}[i]$ is also irreducible and $N (z)=z \overline{z}$ is a factorisation into irreducibles. Let $p \in \mathbb{Z}$ be a prime number divinding $N (z)$ (exists as $N (z) \neq  1$). 
+
+              If $p\equiv 3 \mod 4$, then $p$ itself is prime in $\mathbb{Z}[i]$ by the first part of the proof. So $p| N (z)=z \overline{z}$. So $p|z $ or $p|\overline{z}$. Note that if $p|\overline{z}$, then $p|z$ by taking complex conjugates. So $p|z$. Since both $p$ and $z$ are irreducible, they must be equal up to associates.
+
+              Otherwise, we get $p=2$ or $p\equiv 1 \mod 4$. If $p\equiv 1 \mod 4$ then $p-1=4k$ for some $k \in \mathbb{Z}$. As $\mathbb{F}_{p}^{\times}\cong C_{p-1} =C_{4k}$, there is a unique element of order 2. This must be $-1$. Now let $a \in \mathbb{F}_{p}^{\times}$ be an element of order 4. Then $a^2$ has order 2, so $(a^2)=(-1)$. This is the same as saying we can find an $a$ such that $p| a^2+1$. Thus $p| (a+i)(a-i)$. In the case where $p=2$, we know by checking directly that $2=(1+i)(1-i)$. In either case, we deduce that $p$ is not prime (hence irreducible), since it clearly doesn't divide $a \pm i$. So we can write $p=z_1 z_2 $ for $z_1 ,z_2 \in \mathbb{Z}[i]$ not units. Now we get \[
+              p^2=N (p)=N (z_1 )N (z_2 )
+              .\] As the $z_i$ aren't units, we know $N (z_1 )=N (z_2 )=p$. By definition, this means $p=z_1 \overline{z_1}=z_2 \overline{z_2}$. But also $p=z_1 z_2 $. So we must have $\overline{z_1}=z_2 $. Finally, we have $p=z_1 \overline{z_1}| N (z)=z \overline{z}$. All these $z, z_i$ are irreducible. So $z$ must be an associate of $z_1 $ or $\overline{z_1}$. So in particular $N (z)=p$.
        \end{proof}
+       \begin{remark}
+              If $p=a^2+b^2$ (case 1.), then $a+bi$ and $a-bi $ are not associates unless $p=2$. [$(1+i)=(1-i)i$].
+       \end{remark}
 \end{theorem}
+\begin{corollary}
+       An integer $n \geq 1$ is the sum of two squares iff every prime factor $p$ of $n$ with $p \equiv 3 \mod 4$ divides $n$ to an even power.
+       \begin{proof}
+              \begin{align*}
+                  n=a^2+b^2 & \iff n=N (x) \text{ for some } x \in \mathbb{Z}[i]\\ & \iff n \text{ is a product of norms of primes in } \mathbb{Z}[i].
+              \end{align*}
+              Theorem \ref{gaussianprimes} implies that the norms of primes in $\mathbb{Z}[i]$ are the primes $p \in \mathbb{Z}$ with $p \not \equiv 3 \mod 4$, and squares of primes $p \in \mathbb{Z}$ with $p\equiv 3 \mod 4$.
+       \end{proof}
+       \begin{example*}
+            $65= 5 \cdot 13$. We know by this corollary that it can be written as the sum of two squares. Factoring into primes into $\mathbb{Z}[i]$ gives \[
+                  5=(2+i)(2-i), \quad 13=(2+3i)(2-3i)
+            .\] This allows us to factor 65 into two complex conjugates: \[
+                  65= (2+3i)(2+i)(2-3i)(2+i)=N \left((2+3i)(2+i)\right)=N (1+8i)=1^2+8^2
+            .\] But by factoring it as $65=N \left((2+i)(2-3i)\right)=N (7-4i)=7^2+4^2$.
+      \end{example*}
+\end{corollary}
+Now we introduce a more general version of the Gaussian integers.
+\begin{definition*}[Algebraic number]
+       \begin{itemize}
+             \item[(i)] $\alpha \in \mathbb{C}$ is an \vocab{algebraic number} if there exists non-zero $f \in \mathbb{Q}[X]$ with $f (a)=0$.
+             \item[(ii)] $\alpha \in \mathbb{C}$ is an \vocab{algebraic integer} if there exists \emph{monic} non-zero $f \in \mathbb{Q}[X]$ with $f (\alpha)=0$.
+       \end{itemize}
+       \begin{notation}
+             Let $R $ be a subring of $S$, and $\alpha \in S$. We write $R[\alpha]$ for the smallest subring of $S$ containing $R$ and $\alpha$.
+
+             We can view it as the image of the homomorphism from $R[X] \rightarrow S$ with $g (X)\mapsto g (\alpha)$.
+       \end{notation}
+\end{definition*}
+\begin{definition*}[Minimal polynomial]
+       Let $\alpha$ be an algebraic number, and let $\phi: \mathbb{Q}[X] \rightarrow \mathbb{C}$ be given by $g (X) \mapsto g (\alpha)$. We know $\mathbb{Q}[X]$ is a PID, which means $\operatorname{Ker}\phi= (f)$ for some $f \in \mathbb{Q}[X]$. Then $f \neq 0$ since $\alpha$ is an algebraic number. Upon multiplying $f$ by a unit, we may assume $f$ is monic WLOG. 
+
+       Therefore $f$ is characterised by $\alpha$: we call it the \vocab{minimal polynomial} of $\alpha$.
+       \begin{remark}
+            By isomorphism theorem, \[
+            \mathbb{Q}[X]/(f) \cong \mathbb{Q}[\alpha] \leq \mathbb{C}
+            .\] Thus $\mathbb{Q}[\alpha]$ is an integral domain, which implies $f$ is irreducible in $\mathbb{Q}[X]$. So $\mathbb{Q}[\alpha]$ is a field.
+     \end{remark}
+\end{definition*}
+\begin{proposition}
+       Let $\alpha$ be an algebraic integer, and $f \in \mathbb{Q}[X]$ its minimal polynomial. Then $f \in \mathbb{Z}[X]$ and $(f)=\operatorname{Ker}(\theta) \unlhd \mathbb{Z}[X]$, where $\theta: \mathbb{Z}[X] \rightarrow \mathbb{C}$ is the map $g (X)\rightarrow g (\alpha)$. 
+       \begin{proof}
+              Let $\lambda \in \mathbb{Q}$ such that $\lambda f \in \mathbb{Z}[X]$ is primitive. Then $\lambda f (\alpha)=0$, so $\lambda f \in \operatorname{Ker}(\theta)$. Let $g \in \operatorname{Ker}(\theta)$. Then $g \in Ker (\phi)$ and hence $\lambda f |g $ in $\mathbb{Q}[X]$. Lemma [todo] tells us that $\lambda f |g $ in $\mathbb{Z}[X] $. Thus $\operatorname{Ker}(\theta)=(\lambda f)$. Now since $\alpha$ is an algebraic integer, $\exists \ g \in \operatorname{Ker}(\theta)$ which is monic. Then $\lambda f|g $ in $\mathbb{Z}[X]$, which implies $\lambda= \pm 1$.
+       \end{proof}
+\end{proposition}
 \end{document}
