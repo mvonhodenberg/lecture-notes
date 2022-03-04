@@ -1596,10 +1596,113 @@ Now we introduce a more general version of the Gaussian integers.
             .\] Thus $\mathbb{Q}[\alpha]$ is an integral domain, which implies $f$ is irreducible in $\mathbb{Q}[X]$. So $\mathbb{Q}[\alpha]$ is a field.
      \end{remark}
 \end{definition*}
-\begin{proposition}
+\begin{proposition}\label{124}
        Let $\alpha$ be an algebraic integer, and $f \in \mathbb{Q}[X]$ its minimal polynomial. Then $f \in \mathbb{Z}[X]$ and $(f)=\operatorname{Ker}(\theta) \unlhd \mathbb{Z}[X]$, where $\theta: \mathbb{Z}[X] \rightarrow \mathbb{C}$ is the map $g (X)\rightarrow g (\alpha)$. 
        \begin{proof}
-              Let $\lambda \in \mathbb{Q}$ such that $\lambda f \in \mathbb{Z}[X]$ is primitive. Then $\lambda f (\alpha)=0$, so $\lambda f \in \operatorname{Ker}(\theta)$. Let $g \in \operatorname{Ker}(\theta)$. Then $g \in Ker (\phi)$ and hence $\lambda f |g $ in $\mathbb{Q}[X]$. Lemma [todo] tells us that $\lambda f |g $ in $\mathbb{Z}[X] $. Thus $\operatorname{Ker}(\theta)=(\lambda f)$. Now since $\alpha$ is an algebraic integer, $\exists \ g \in \operatorname{Ker}(\theta)$ which is monic. Then $\lambda f|g $ in $\mathbb{Z}[X]$, which implies $\lambda= \pm 1$.
+              Let $\lambda \in \mathbb{Q}$ such that $\lambda f \in \mathbb{Z}[X]$ is primitive. Then $\lambda f (\alpha)=0$, so $\lambda f \in \operatorname{Ker}(\theta)$. Let $g \in \operatorname{Ker}(\theta)$. Then $g \in Ker (\phi)$ and hence $\lambda f |g $ in $\mathbb{Q}[X]$. Lemma [todo] tells us that $\lambda f |g $ in $\mathbb{Z}[X] $. Thus $\operatorname{Ker}(\theta)=(\lambda f)$. Now since $\alpha$ is an algebraic integer, $\exists \ g \in \operatorname{Ker}(\theta)$ which is monic. Then $\lambda f|g $ in $\mathbb{Z}[X]$, which implies $\lambda= \pm 1$. Hence $f \in \mathbb{Z}[X]$, and $(f)=\operatorname{Ker}\theta$.
        \end{proof}
 \end{proposition}
+Let $\alpha$ be an algebraic integer. Applying the isomorphism theorem to $\theta$ gives an isomorphism $\mathbb{Z}[X]/(f) \cong \mathbb{Z}[\alpha]$.
+\begin{example*}
+       $i, \sqrt{2} , \frac{-1+\sqrt{-3} }{2}, \sqrt[n]{p}$ have minimal polynomials $X^2+1, X^2-2, X^2+X+1, X^{n }-p$. So these are all algebraic integers. Thus \[
+       \mathbb{Z}[X]/(X^2+1)\cong Z[i], \quad \mathbb{Z}[X]/(X^2-2)\cong \mathbb{Z}[\sqrt{2} ],\quad  \text{ etc} 
+       .\] 
+\end{example*}
+\begin{corollary}
+       If $\alpha$ is an algebraic integer and $\alpha \in \mathbb{Q}$, then $\alpha \in \mathbb{Z}$. 
+       \begin{proof}
+              Let $0 \neq \alpha$ be an algebraic integer. Then Proposition \ref{124} implies that the minimal polynomial has coefficients in $\mathbb{Z}$. Since $\alpha \in \mathbb{Q}$, the minimal polynomial is $X-\alpha$. Thus $\alpha \in \mathbb{Z}$. 
+       \end{proof}
+\end{corollary}
+\newpage
+\subsection{Noetherian rings}
+We showed that any PID $R$ satisfies the ``ascending chain condition'' (ACC): see Proposition \ref{PIDsarenoetherian}. More generally, this gives us a characterisation of the rings that satisfy the ACC.
+\begin{lemma}
+       Let $R$ be a ring. Then $R$ satisfies the ACC iff all ideals in $R$ are finitely generated.
+       \begin{proof}
+              The reverse implication is a generalisation of our previous proof that we did for PIDs. Let $I_1 \subseteq I_2 \subseteq \ldots$ be a chain of ideals and $I = \bigcup_{n \geq 1}I_{n}$, which is again an ideal. 
+
+              By assumption $I= (a_1, \ldots, a_m)$ for some $a_1 ,\ldots,a_{m}\in R$. These elements belong to a nested union, so $\exists N \in \mathbb{N}$ such that $a_1 , \ldots, a_m \in I_{N}$. Then for $n \geq N$, \[
+              (a_1 ,\ldots, a_m )\subseteq I_{N} \subseteq I_n \subseteq I = (a_1 ,\ldots, a_n )
+              .\] So $I_{n}=I_{N}=I$.
+
+              Conversely, assume that $J \unlhd R$ is not finitely generated and $R$ satisfies the ACC. Choose $a_1 \in J$, then $J \neq (a_1 ),$ so we can choose $a_2 \in J\backslash (a_1 )$. Then $J \neq (a_1 ,a_2 )$, so choose an element $a_3 \in J \backslash (a_1 ,a_2 )$. Continuing this process, we obtain a chain of ideals \[
+              (a_1 ) \subset (a_1 ,a_2 )\subset (a_1 , a_2 ,a_3 ) \subset \ldots
+              \] where the inclusions are strict by our choice of the $a_{i}$. This contradicts the ACC.
+       \end{proof}
+\end{lemma}
+\begin{definition*}[Noetherian ring]
+       A ring satisfying the ACC is called \vocab{Noetherian}.
+\end{definition*}
+\begin{theorem}[Hilbert basis theorem]
+       If $R $ is a Noetherian ring, then $R[X]$ is also a Noetherian ring.
+       \begin{proof}
+              Assume $J \unlhd R[X]$ is not finitely generated. Choose $f_1 \in J$ of minimal degree. Then $(f_1 )\neq J$. Choose $f_2 \in J \backslash (f_1 )$ of minimal degree. Then $(f_1 ,f_2 )\neq J$ and choose $f_3 \in J \backslash (f_1 ,f_2 )$ of minimal degree. Continue this to obtain a sequence $f_1 ,f_2 ,f_3 , \ldots \in R[X]$ with $\operatorname{deg}f_{i} \leq \operatorname{deg}f_{i+1}$ (since we have picked the $f_{i}$ of minimal degree). 
+              
+              Set $a_{i}:=$ leading coefficient of $f_{i }$. We obtain a chain of ideals in $R$: \[
+              (a_1 )\subseteq (a_1 ,a_2 )\subseteq (a_1 , a_2 ,a_3 )\subseteq \ldots
+              .\] Since $R$ is Noetherian, $\exists \ m \in \mathbb{N}$ such that $a_{m+1}\in (a_1 ,\ldots, a_{m})$. Let $a_{m+1}=\sum_{i=1}^{m }\lambda_{i}a_{i}$, and set \[
+              g=\sum_{i=1}^{m}\lambda_{i}X^{\operatorname{deg}(f_{m+1}-f_{i})}f_{i}
+              .\] Then $\operatorname{deg}f_{m+1}=\operatorname{deg}g$ and they have the same leading coefficient $a_{m+1}$. Then $f_{m+1}-g \in J$ and $\operatorname{deg}(f_{m+1}-g)< \operatorname{deg}f_{m+1}$. This implies $f_{m+1}-g \in (f_1 , \ldots, f_{m})$ by minimality of our choice of $\operatorname{deg} f_{m+1}$. $\implies f_{m+1 }\in (f_1 , \ldots, f_{m})$. Contradiction. So $J $ is finitely generated and $R[X]$ is Noetherian.
+       \end{proof}
+\end{theorem}
+\begin{corollary}
+      We can use this to generate some examples of Noetherian rings:
+       \begin{enumerate}
+             \item $\mathbb{Z}[X_1 , \ldots , X_n]$ is Noetherian.
+             \item $F[X_1 , \ldots , X_n]$ is Noetherian for $F $ a field.
+       \end{enumerate}
+       \begin{proof}
+              Immediate.
+       \end{proof}
+\end{corollary}
+\begin{example*}
+      Let $R=\mathbb{C}[X_1 ,\ldots, X_n]$. Let $V \subseteq \mathbb{C}^{n}$ be a subset of the form \[
+      \left\{(a_1 ,\ldots, a_n)\in \mathbb{C}^{n}: f (a_1 ,\ldots, a_n)=0 \ \forall f \in \mathcal{F}\right\}
+      ,\] where $\mathcal{F} \subseteq R$ is a possibly infinite set of polynomials. Let \[
+            I= \left\{\sum_{i=1}^{m}\lambda_{i}f_{i}: \ m \in \mathbb{N}, \lambda_{i}\in R, f_{i}\in \mathcal{F}\right\}
+      .\] Then $I \unlhd R$. Since $R $ is Noetherian (by Hilber basis theorem), it is generated by a finite set of polynomials: \[
+      I = (g_1 ,\ldots, g_r), g_{i}\in I
+      .\] Thus $V=\left\{(a_1 ,\ldots,a_{n})\in C^{n}: \ g (a_1 , \ldots, a_n )=0 \text{ and } i=1,\ldots,r\right\}$.
+\end{example*}
+\begin{lemma}
+       Let $R$ be a Noetherian ring and $I \unlhd R$. Then $R/I$ is Noetherian.
+       \begin{proof}
+              Let $J_1' \subseteq J_2' \subseteq \ldots$ be a chain of ideals in $R/I$. By the ideal correspondence, we have $J_{i}'=J_{i}/I $ for some $J_1 \subseteq J_2 \subseteq \ldots$ a chain of ideals in $R$ (containing $I$).
+
+              Since $R$ is Noetherian, $\exists \ N \in \mathbb{N}$ such that $J_{n}=J_{n+1}$ for all $n \geq N$. This implies that $J_{n}'=J_{n+1}'$ for all $n \geq N$. Thus $R/I$ is Noetherian.
+       \end{proof}
+\end{lemma}
+\begin{example*}
+       \begin{itemize}
+             \item $\mathbb{Z}[i]=\mathbb{Z}[X]/(X^2+1)$ is Noetherian.
+             \item If $R[X]$ is Noetherian, $R \cong R[X]/(X)$ is Noetherian. This is the converse to the Hilbert basis theorem.
+       \end{itemize}
+\end{example*}
+We've basically been proving that every ring we have seen is Noetherian, so it would be nice to see some examples of rings that aren't Noetherian (to make sure everything we have been doing isn't trivial!).
+\begin{example*}[Examples of non-Noetherian rings]
+      Here are some examples.
+      \begin{enumerate}
+            \item (Polynomial ring in countably many variables). Let $R=\mathbb{Z}[X_1 , X_2 ,\ldots]=\bigcup_{n \geq 1}\mathbb{Z}[X_1 , \ldots, X_n]$. Consider the chain of ideals \[
+             (X_1 ) \subset (X_1 ,X_2 ) \subset (X_1 , X_2 ,X_3 )\subset \ldots
+             .\] This is an infinite ascending chain. So $R$ isn't Noetherian.
+            \item Let $R=\left\{f \in \mathbb{Q}[X]: \ f (0)\in \mathbb{Z}\right\}\leq \mathbb{Q}[X]$. We can consider \[
+            (X)\subset (\frac{1}{2}X) \subset (\frac{1}{4}X) \subset (\frac{1}{8}X) \subset...
+            .\] These containments are strict since $2 \in R$ is not a unit. So $R$ isn't Noetherian.
+      \end{enumerate}
+\end{example*}
+\newpage
+\section{Modules}
+\subsection{Definitions and Examples}
+We define modules in essentially the same way as vector spaces, except for the fact that the scalars form only a ring, not a field.
+\begin{definition*}[Module]
+       Let $R$ be a ring. A \vocab{module} over $R$ is a triple $(M, +, \cdot )$ consisting of a set $M$ and two operations \[
+       +: \ M \times M \rightarrow M, \quad \cdot : \ R \times M \rightarrow M
+       \] such that
+       \begin{itemize}
+             \item[(i)] $(M,+)$ is an abelian group, say with identity $0 \ (=0_{M})$.
+             \item[(ii)] The operation $\cdot $ satisfies 
+             \item[(ii)] 
+       \end{itemize}
+\end{definition*}
 \end{document}
