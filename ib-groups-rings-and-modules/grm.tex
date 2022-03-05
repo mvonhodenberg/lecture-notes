@@ -1164,7 +1164,7 @@ Now we want to chase some definitions to make sure our definitions of prime elem
        Then $r=ab=rbc \implies r (1-bc)=0 \implies bc=1$. This uses the fact that $R$ is an integral domain and $r \neq 0$. So $b$ is a unit.
 \end{proof}
 The converse of this lemma does not hold in general.
-\begin{example*}
+\begin{example}\label{Z5i not UFD}
        Let \[
             R=\mathbb{Z}[\sqrt{-5}]= \left\{a+b\sqrt{-5} : \ a,b \in \mathbb{Z}\right\} \leq C, \quad R \cong \mathbb{Z}[X]/(X^2+5)
        .\] $R$ is a subring of a field, so it's an integral domain. Define a function (called the \vocab{norm}) \[
@@ -1189,7 +1189,7 @@ The converse of this lemma does not hold in general.
        Similarly 3, 1+$\sqrt{-5} $, $1- \sqrt{-5} $ are all irreducible (as there are no elements of norm 3). Now $(1+\sqrt{-5} )(1-\sqrt{-5} )=6=2 \cdot 3$. Thus $2| (1+\sqrt{-5} )(1-\sqrt{-5} )$, but $2 \nmid 1+\sqrt{-5}$ or $1- \sqrt{-5} $ (check by taking norms). 
        
        So 2 is irreducible but not prime in $R$.
-\end{example*}
+\end{example}
 \begin{remarks}
        We now know that being irreducible does not imply being prime. Importantly, in the above example $2 \cdot 3= (1+\sqrt{-5} )(1-\sqrt{-5} )$ gives two distinct factorisations into irreducibles. Since $R^{\times}=\left\{\pm 1\right\}$, these irreducibles are not associates.
 \end{remarks}
@@ -1252,13 +1252,15 @@ This is a nice property of PIDs. We can cook up some examples of PIDs using th f
 \begin{example*}
       \begin{enumerate}
             \item Let $F$ be a field. $F[X]$ is an ED with Euclidean function $\phi (f)=\operatorname{deg} f$ for $f \in F[X]$. $\phi$ is Euclidean by Proposition \ref{euclidrings}.
-            \item $R=\mathbb{Z}[i]$ is an ED with Euclidean function 
-            \begin{equation}\tag{$\dagger$}
-                  \phi (a+ib )=N (a+ib)= \left|a+ib \right|^2 =a^2+b^2. 
-            \end{equation}
+            \item $R=\mathbb{Z}[i]$ is an ED with Euclidean function \[
+                  \phi (a+ib )=N (a+ib)= \left|a+ib \right|^2 =a^2+b^2
+            .\] 
              Since $N$ is multiplicative, this tells us that property (i) is satisfied. 
 
-            For property (ii), let $z_1 , z_2 \in \mathbb{Z}[i]$ with $z_2 \neq 0$. Consider $\frac{z_1}{z_2 } \in \mathbb{C}$. This has distance less than 1 from the nearest element of $\mathbb{Z}[i]$, i.e there exists $q \in \mathbb{Z}[i]$ such that $\left|\frac{z_1}{z_2 }-q\right|<1$.
+            For property (ii), let $z_1 , z_2 \in \mathbb{Z}[i]$ with $z_2 \neq 0$. Consider $\frac{z_1}{z_2 } \in \mathbb{C}$. This has distance less than 1 from the nearest element of $\mathbb{Z}[i]$, i.e there exists $q \in \mathbb{Z}[i]$ such that
+            \begin{equation}\tag{$\dagger$}
+                  \left|\frac{z_1}{z_2 }-q\right|<1.
+            \end{equation}
             \begin{figure}[H]
                   \centering
                   \incfig{100}{lattice}
@@ -1293,14 +1295,14 @@ The next example will be of interest to those who want to study Part II Galois T
             \mathbb{F}_{2}[X]/(f)=\left\{aX^2+bX+c: \ a,b,c \in \mathbb{F}_{2}\right\}
        \] is a field of order 8.
 \end{example*}
-\begin{example*}
+\begin{example}\label{ZX not PID}
        $\mathbb{Z}[X]$ is not a PID. Consider $I = (2,X)$. Then
        \begin{align*}
             I=&\left\{2f_1 (X)+X f_2 (X): \ f_1 ,f_2 \in \mathbb{Z}[X]\right\}\\
             &=\left\{f \in \mathbb{Z}[X]: \ f (0)\text{ is even } \right\}
        \end{align*}
        Suppose $I= (f)$ for some $f \in \mathbb{Z}[X]$. Thus $2=fg$ for some $g \in \mathbb{Z}[X]$. Thus $\operatorname{deg}f=\operatorname{deg}g =0$, and $f \in \mathbb{Z}$. So $f= \pm 1 $ or $\pm 2$. Therefore $I=\mathbb{Z}[X]$ or $I=2\mathbb{Z}$. Both these cases can't happen: if $I=\mathbb{Z}[X]$ we get a contradiction since $1 \notin I$, and in the other case we get a contradiction since $X \in I$.
-\end{example*}
+\end{example}
 \begin{definition*}[Unique factorisation domain]
        An integral domain is a \vocab{unique factorisation domain} (UFD) if 
        \begin{itemize}
@@ -1344,10 +1346,28 @@ The next example will be of interest to those who want to study Part II Galois T
      \end{proof}
 \end{theorem}
 \begin{remark}
-       We now know that for a general ring, \[
-       \text{ED} \implies \text{PID} \implies \text{UFD} \implies \text{Integral domain} 
-       .\] There are a few useful examples we can give to illustrate the differences between these categories:
+       We now know that for a general ring, the following chain of implications holds:
+       \begin{center}
+            ED$\implies $PID$\implies $UFD$\implies $Integral domain.
+       \end{center}
+       Let's give some examples of rings that fall into different categories.
+       \begin{center}
+            \begin{tabular}{c|cccc}
+                  &ED&PID&UFD&ID\\
+                  \hline
+                  $\mathbb{Z}/4\mathbb{Z}$\footnotemark[1]&$\times$&$\times$&$\times$&$\times$\\
+                  $\mathbb{Z}[\sqrt{-5}]$\footnotemark[2]&$\times$&$\times$&$\times$&$\checkmark$\\
+                  $\mathbb{Z}[X]$\footnotemark[3]&$\times$&$\times$&$\checkmark$&$\checkmark$\\
+                  $\mathbb{Z}[ \frac{1+\sqrt{-19} }{2}]$\footnotemark[4]&$\times$&$\checkmark$&$\checkmark$&$\checkmark$\\
+                  $\mathbb{Z}[ i]$\footnotemark[5]&$\checkmark$&$\checkmark$&$\checkmark$&$\checkmark$\\
+            \end{tabular}
+       \end{center} 
 \end{remark}
+\footnotetext[1]{This isn't an integral domain as $2 \cdot 2=0$, i.e 2 is a zero-divisor.}
+\footnotetext[2]{This isn't a UFD by Example \ref{Z5i not UFD}.}
+\footnotetext[3]{We showed that $\mathbb{Z}[X]$ isn't a PID in Example \ref{ZX not PID}, and we will later show that it is a PID by Theorem \ref{polyUFD}.}
+\footnotetext[4]{This result is beyond the scope of the course; see Part II Number Fields.}
+\footnotetext[5]{We know this is an ED and all the other implications follow.}
 \begin{definition*}[gcd/lcm]
        Let $R$ be an integral domain.
        \begin{enumerate}
@@ -1693,7 +1713,7 @@ We've basically been proving that every ring we have seen is Noetherian, so it w
 \end{example*}
 \newpage
 \section{Modules}
-\subsection{Definitions and Examples}
+\subsection{Definitions and examples}
 We define modules in essentially the same way as vector spaces, except for the fact that the scalars form only a ring, not a field.
 \begin{definition*}[Module]
        Let $R$ be a ring. A \vocab{module} over $R$ is a triple $(M, +, \cdot )$ consisting of a set $M$ and two operations \[

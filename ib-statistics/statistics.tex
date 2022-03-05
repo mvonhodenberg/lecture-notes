@@ -783,7 +783,38 @@ Let $H_0 : \ \theta \in \Theta_0 $, $H_1 : \ \theta \in \Theta_1 $ with $\Theta_
        C=\left\{x: \frac{n}{\sigma_0 ^2}(\overline{x}-\mu_0 ^2)>\underbrace{\chi_1 ^2 (\alpha)}_{\text{upper } \alpha \text{-point of } \chi^2_1 } \right\}
        .\]
 \end{example*}
+\begin{definition*}[Dimension of a hypothesis]
+     The \vocab{dimension} of a hypothesis $H_0 : \theta \in \Theta_0 $ is the number of "free parameters" in $\Theta_0 $.
+     \begin{example*}
+           \begin{itemize}
+                \item If $\Theta_0 =\left\{\theta \in \mathbb{R}^{k}: \ \theta_1 =\ldots=\theta_{p}=0\right\}$, then $\operatorname{dim}\Theta_0 =k-p$. 
+               \item If $A \in \mathbb{R}^{p\times k}$ has linearly independent rows, and $b \in \mathbb{R}^{p}$ where $p<k$, and $\Theta_0 =\left\{\theta \in R^{k}: \ A \theta=b\right\}$, then $\operatorname{dim}\Theta_0 =k-p$.
+               \item We could generalise this to $\Theta_0 $ being a differential manifold, which is overkill for this course, and we would need a notion of differential geometry which we have not yet encountered.
+           \end{itemize}
+     \end{example*}
+\end{definition*}
 \begin{theorem}[Wilks' theorem]
-      The \vocab{dimension} of a hypothesis $H_0 : \theta \in \Theta_0 $ is the number of "free parameters" in $\Theta_0 $.
+     Suppose $\Theta_0 \subset \Theta_1 $ and $\operatorname{dim}\Theta_1 -\operatorname{dim}\Theta_0 =p$. Then if $X=(X_1 , \ldots, X_n)$ are iid. under $f_{X}(\cdot | \theta)$ with $\theta \in \inf (\Theta_0 )$, then [under some topological conditions] the limiting distribution of $2\log \Lambda_{x}$ is $\chi_{p}^2$.
+     \begin{remark}
+           This is \emph{very} useful because it allows us to implement a generalised ratio test even if we can't find the exact distribution of $2 \log \Lambda_{x}$ (assuming that $n$ is large; any frequentist guarantee will be approximate).
+     \end{remark}
+     \begin{proof}
+           Omitted; this is proved in Part II Principles of Statistics.
+     \end{proof}
 \end{theorem}
+\begin{example*}
+      In the two-sided normal location example, $\operatorname{dim}\Theta_0 =0$ and $\operatorname{dim} \Theta_1 =1$. So Wilks' theorem tells us $2 \log \Lambda_{X}$ is exactly 1 (in this example, this happens to be exact). 
+\end{example*}
+\subsubsection*{Goodness-of-fit test}
+Let $X_1 ,\ldots,X_n$ be iid. samples taking values in $\left\{1, \ldots, k\right\}$. Let $p_{i}=\mathbb{P}(X_1 =i)$, and let $N_{i}$ be the number of samples equal to $i$. Hence $\sum_{i}^{}N_{i}=n$, and $\sum_{i}^{}p_{i}=1$. 
+
+We can view this as a model with parameters $p:= (p_1 , \ldots,p_{k})$. The parameter space has dimension $k-1$ (since we have one equality constraint). A \vocab{goodness-of-fit} (GoF) test has a null of the form \[
+H_0 : p_{i}=\widetilde{p_{i}}, \quad i=1, \ldots, k
+\] for some fixed distribution $\widetilde{p}$. The alternative puts no constraints on $p$.
+
+The model is $(N_1 , \ldots, N_k) \sim \text{Multinomial}(n; p_1 , \ldots, p_{k})$. So $L (p) \propto p_1^{N_1 } \ldots p_{k}^{N_{k}}$. Hence \[
+l (p)=\log L (p)= c+ \sum_{i}^{}N_{i} \log p_{i}
+\] for some constant $c$. The GLR $\Lambda_{x}$ has \[
+2 \log \Lambda_{x}=2 (\sup_{p \in \Theta_1 }l (p)-\underbrace{\sup_{p \in \Theta_0}l (p)}_{=l(\widetilde{p})} )
+.\]
 \end{document}
