@@ -803,7 +803,7 @@ Let $H_0 : \ \theta \in \Theta_0 $, $H_1 : \ \theta \in \Theta_1 $ with $\Theta_
      \end{proof}
 \end{theorem}
 \begin{example*}
-      In the two-sided normal location example, $\operatorname{dim}\Theta_0 =0$ and $\operatorname{dim} \Theta_1 =1$. So Wilks' theorem tells us $2 \log \Lambda_{X}$ is exactly 1 (in this example, this happens to be exact). 
+      In the two-sided normal location example, $\operatorname{dim}\Theta_0 =0$ and $\operatorname{dim} \Theta_1 =1$. So Wilks' theorem tells us $2 \log \Lambda_{X}$ is exactly $\chi_1^2$ (in this example, this happens to be exact). 
 \end{example*}
 \subsubsection*{Goodness-of-fit test}
 Let $X_1 ,\ldots,X_n$ be iid. samples taking values in $\left\{1, \ldots, k\right\}$. Let $p_{i}=\mathbb{P}(X_1 =i)$, and let $N_{i}$ be the number of samples equal to $i$. Hence $\sum_{i}^{}N_{i}=n$, and $\sum_{i}^{}p_{i}=1$. 
@@ -814,7 +814,281 @@ H_0 : p_{i}=\widetilde{p_{i}}, \quad i=1, \ldots, k
 
 The model is $(N_1 , \ldots, N_k) \sim \text{Multinomial}(n; p_1 , \ldots, p_{k})$. So $L (p) \propto p_1^{N_1 } \ldots p_{k}^{N_{k}}$. Hence \[
 l (p)=\log L (p)= c+ \sum_{i}^{}N_{i} \log p_{i}
-\] for some constant $c$. The GLR $\Lambda_{x}$ has \[
-2 \log \Lambda_{x}=2 (\sup_{p \in \Theta_1 }l (p)-\underbrace{\sup_{p \in \Theta_0}l (p)}_{=l(\widetilde{p})} )
-.\]
+\] for some constant $c$. The GLR $\Lambda_{x}$ has 
+\begin{align*}
+     2 \log \Lambda_{x}&=2 (\sup_{p \in \Theta_1 }l (p)-\sup_{p \in \Theta_0}l (p))\\
+     &= 2 (l (\hat{p}))-l (\widetilde{p})
+\end{align*}
+where $\hat{p}$ is the mle in this model. To find $\hat{p}$ we use Lagrange multipliers: \[
+\mathcal{L}(p,\lambda)= \sum_{i}^{}N_{i}\log (p_{i})-\lambda (\sum_{}^{}p_{i}-1)=\ldots \implies \hat{p_i}=N_{i}/n
+,\] i.e the fraction of samples equal to $i$. Therefore we derive the expression \[
+2 \log \Lambda_{x}= 2 \sum_{i=1}^{k}N_{i} \log \left( \frac{N_{i}}{n \widetilde{p_i}}\right)
+.\] We know $2 \log \Lambda_{x} \rightarrow \chi_{p}^2$ with $p=\operatorname{dim} \Theta_1 -\operatorname{dim} \Theta_0 = (k-1)-0=k-1$. A test of size approximately $\alpha$ (with $n$ large) rejects $H_0 $ when $2 \log \Lambda > \chi_{k-1}^2 (\alpha)$.
+
+Now rewrite the test statistic: let $o_i=N_i$ be the ``observed number of samples of type $i$''. Let $e_i= n \widetilde{p_i}$ be the ``expectation under $H_0 $ of no. of samples of type $i$''. Using this notation we can write \[
+2 \log \Lambda = 2 \sum_{i}^{}o_i \log \left( \frac{o_i}{e_i}\right)
+.\] We can approximate this in order to form another statistic
+\subsubsection*{The Pearson statistic}
+In our goodness-of-fit model as before, write $\delta_i=o_i -e_i$. Then our test becomes \[
+     2 \log \Lambda = 2 \sum_{i}^{}(e_i+\delta_i) \log \left( 1+\frac{\delta_i}{e_i}\right)
+.\] But $\delta_i/o_i$ should be small when $n$ is large (since we would expect $\delta_i$, the difference of observed and expected values, to be small). Then we Taylor expand the logarithm. Also note that $\sum_{i}^{}\delta_i=\sum_{i}^{}(o_i-e_i)=n-n=0$. Thus
+\begin{align*}
+     2 \log \Lambda &= 2 \sum_{i}^{}(e_i+\delta_i) (\frac{\delta_i}{e_i}-\frac{\delta_i^2}{2e_i^2}+O (\frac{\delta_i^3}{e_i^3}))\\
+     &\approx 2 \sum_{i}^{} (\delta_{i}+\frac{\delta_i^2}{e_i}-\frac{\delta_i^2}{2e_i})\\
+     &=\sum_{i}^{}\frac{\delta_i^2}{e_i}=\sum_{i}^{}\frac{(o_i-e_i)^2}{e_i}.
+\end{align*}
+This is known as \vocab{Pearson's $\chi^2$ statistic}.
+\begin{example*}
+      The original example of this test is Mendel's experiment on genetics. He crossed different types of peas to obtain a sample of 556 descendants. Each descendent is one of four types, depending on colour (green or yellow) and texture (smooth or wrinkled). Let these types be denoted as SG, SY, WG, WY. 
+      
+      He observed $N= (315, 108, 102, 31)$. Mendel's theory gives a null hypothesis \[
+      H_0 : p= \widetilde{p}= \left(\frac{9}{16}, \frac{3}{16}, \frac{3}{16},\frac{1}{16}\right)
+      .\] We can compute $2 \log \Lambda=0.618$, and $\sum_{i}^{}\frac{(o_i-e_i)^2}{e_i}=0.604$. These are referred to a $\chi_3^2$ distribution (since we have 3 degrees of freedom). If we want to do a 5\% significance test, we would compute $\chi_3 ^2 (0.05)=7.815$, so a test of size $5\% $ does \emph{not} reject $H_0 $. The $p$-value in this case is $\mathbb{P} (\chi_3 ^2>0.6) \approx 0.96$. This is large that it is thought Mendel might have altered his results. 
+\end{example*}
+----1 or 2 lectures TODO----
+\subsubsection*{Testing homogeneity}
+Suppose a group of 150 patients are randomly assigned to three groups of equal size in order to test a new drug. Two sets get the drug with different doses, and the third gets a placebo.
+\begin{table}[h]
+     \caption{Results of the drug trial}
+     \centering
+     \begin{tabular}{c|ccc|c}
+          Group & Improved & No difference & Worse & Total\\
+          \hline
+          Placebo &18&17&15&50\\
+          Half dose & 20&10 &20&50\\
+          Full dose& 25&13&12&50\\
+          \hline
+          &&&&150
+     \end{tabular}
+\end{table}
+
+Let's develop a probability model for this test. Let the values in the $i$th row of the table be \[
+N_{i1}, \ldots, N_{ic} \sim \operatorname{Multinomial}(n_{i+},p_{i1},\ldots, p_{ic}) \quad \text{ independently for } i=1, \ldots,r
+.\] The null hypothesis is $H_0 : \ p_{i1}=p_{2j}=\ldots=p_{rj}$ for all $j =1 , \ldots,c$. 
+
+The alternative is $H_1 : p_{i1},\ldots, p_{ic}$ is \emph{any} probability vector for each row $i=1,\ldots,r$. 
+
+\underline{Under $H_1$:} We have \[
+L (p)= \prod_{i=1}^{r} \frac{n_{i+}!}{N_{i1}! \ldots N_{ic !}}p_{i1}^{N_{i1}}\ldots p_{ic}^{N_{ic}}
+.\] Taking logarithms, we get \[
+l (p)= \text{ const. }+ \sum_{i,j}^{}N_{ij}\log (p_{ij})
+.\] To find the MLE, we use the Lagrangian method with $\sum_{j}^{}p_{ij}=1$ for each $i=1, \ldots,r$. Therefore $\hat{p_{ij}}= N_{ij}/n_{i+}$ (the mle for the probability of column $j$ in row $i$ is just the empirical proportion of observations of column $j$ in row $i$).
+
+\underline{Under $H_0$:} We have constrained the probabilities of each column to be equal across the rows, so let $p_{j}=p_{ij}$. As before, \[
+     l (p)= \text{ const. }+  \sum_{i,j}^{}N_{ij}\log (p_{j})=\text{ const. }+\sum_{j}^{}N_{+j}\log (p_{j})
+.\] Under the Lagrangian method with $\sum_{j}^{}p_{j}=1$, this gives $\hat{p_{j}}= N_{+j}/n_{++}$. Hence 
+\begin{align*}
+     2 \log \Lambda&=2 \sum_{i,j}^{}N_{ij} \log ( \frac{\hat{p_{ij}}}{\hat{p_{j}}})\\
+     &=2 \sum_{i,j}^{}N_{ij} \log ( \frac{N_{ij}n_{++}}{n_{i+}N_{+j}}).
+\end{align*}
+This is the same statistic as for the $\chi^2$ test for independence! Furthermore, if $o_{ij}=N_{ij}$ and $e_{ij}=n_{i+}\hat{p_{j}}= \frac{n_{i+}N_{+j}}{n_{++}}$ we have \[
+2 \log \Lambda = 2 \sum_{i,j}^{}\log ( \frac{o_{ij}}{e_{ij}})\approx \sum_{i,j}^{} \frac{(o_{ij}-e_{ij})^2}{e_{ij}}
+.\] By Wilks' theorem $2 \log \Lambda \sim \chi_{d}^2$ approximately, where $d=\operatorname{dim} \Theta_1 - \operatorname{dim}\Theta_0 =r (c-1)-(c-1)= (r-1)(c-1)$. So the limiting distribution of $2 \log \Lambda$ is $\chi_{(r-1)(c-1)}^2$. This is the same as the chi-squared test for independence.
+\begin{remark}
+      The conclusion is that operationally the $\chi^2$ tests for independence and homogeneity are identical.
+\end{remark}
+\begin{example*}
+      Let's go back to the case of the drug trial, with the data given in Table 1. Here $2 \log \Lambda=5.129$, and $\sum_{i,j}^{}\frac{(o_{ij}-e_{ij})^2}{e_{ij}}=5.173$. We refer these to a $\chi_4^2$ distribution, and find that $\chi_4^2 (0.05)=9.468$. Hence we do not reject $H_0 $ with size $5\%$.
+\end{example*}
+\subsubsection*{Relationship between tests and confidence intervals}
+\begin{definition*}[Acceptance region]
+      Define the \vocab{acceptance region} $A$ of a test to be the complement of the critical region.
+\end{definition*}
+Let $X \sim f_{X}(\cdot | \theta)$ for some $\theta \in \Theta$.
+\begin{theorem}
+      \begin{enumerate}
+           \item Suppose that for each $\theta_0 \in \Theta$ there is a test of size $\alpha$ with acceptance region $A (\theta_0 )$ for the null $H_0 : \ \theta =\theta_0 $. 
+           
+           Then $I (X)=\left\{\theta: X \in A (\Theta)\right\}$ is a $100 (1-\alpha)\%$ confidence set.
+           \item Suppose $I (X)$ is a $100 (1-\alpha)\%$ confidence set for $\theta$. Then $A (\theta_0 )=\left\{X: \ \theta_0 \in I (X)\right\}$ is the acceptance region of a size $\alpha$ test for $H_0 : \ \theta =\theta_0 $.
+      \end{enumerate}
+      text
+      \begin{proof}
+            Observe that for both 1. and 2., the event $\theta_0 \in I (X) \iff X \in A (\theta_0 ) \iff $ we accept $H_0 $ that $\theta=\theta_0 $ in a test with data $X$.
+      \end{proof}
+\end{theorem}
+\begin{example*}
+      Let $X_1 , \ldots, X_{n} \overset{\operatorname{iid.}}{\sim} N (\mu, \sigma_0^2)$ where $\sigma_0 ^2$ is known. We found a $100 (1-\alpha)\%$ C.I  for $\mu$ is \[
+      I (X)=\left(\overline{X} \pm \frac{Z_{\alpha/2}\sigma_0 }{\sqrt{n}}\right)
+      .\] Using part 2 of the previous theorem we can find a test for $H_0: \ \mu=\mu_0 $ of size $\alpha$. 
+      \begin{align*}
+           A (\mu_0 )= \left\{x: \ \mu_0 \in I (x)\right\}=\left\{x: \ \mu_0 \in \left(\overline{X} \pm \frac{Z_{\alpha/2}\sigma_0 }{\sqrt{n}}\right)\right\}
+      \end{align*}
+      This is equivalent to rejecting $H_0 $ when \[
+      \left|\sqrt{n} \frac{(\mu_0 -\overline{X})}{\sigma_0 }\right|> Z_{\alpha/2}
+      .\] This is called a \vocab{2-sided test for normal location}.
+\end{example*}
+\subsection{Multivariate normal distribution}
+Let $X = (X_1 , \ldots, X_n)$ be a vector of $n$ random variables. Recall that we defined \[
+     \mathbb{E}(X)= \left(\mathbb{E}(X_1 ),\ldots, \mathbb{E}(X_{n})\right)
+.\] and $\operatorname{Var}(X)$ is the matrix with \[
+     \operatorname{Var}(X)_{ij}= \mathbb{E}(X_{i}-\mathbb{E}(X_{i}))\mathbb{E}(X_{j}-\mathbb{E}(X_{j}))
+.\] Linearity of expectation: Let $A \in \mathbb{R}^{n \times n}, \ b \in \mathbb{R}^{n}$ be constant. Then \[
+\mathbb{E}(AX+b)=A \mathbb{E}(X)+b, \quad \operatorname{Var}(AX+b)=A \operatorname{Var}(X)A^{T}
+.\] 
+\begin{definition*}[Multivariate normal distribution]
+      We say that $X$ has a \vocab{multivariate normal (MVN)} distribution if for any fixed $t \in \mathbb{R}^{n}$, $t^T X \sim N (\mu, \sigma^2)$ for some $(\mu, \sigma^2)$.
+\end{definition*}
+\begin{proposition}
+      If $X$ is MVN, then $AX+b $ is MVN.
+      \begin{proof}
+            Take any $t \in \mathbb{R}^{k}$. Then \[
+            t^T (AX+b)= (A^{T}t)^{T}X+ t^T b
+            .\] The first term is normal since $X$ is MVN and the second is just a constant scalar. Therefore this is $N (\mu+t^T b ,\sigma^2)$ where $(\mu, \sigma^2)$ are the mean and variance of $(A^{T}t)^{T}X$.
+      \end{proof}
+\end{proposition}
+\begin{proposition}
+      A MVN distribution is fully specified by its mean and covariance.
+      \begin{proof}
+            Let $X_1 , X_2 $ be MVN vectors, both with mean $\mu$ and variance matrix $\Sigma$. We'll show they have the same mgf, and hence the same distribution. Take $X_1 $:
+            \begin{align*}
+                 \mathbb{E} (e^{t^TX_1 })&= M_{t^TX_1 }(1) \quad \text{ but } t^TX_1 \text{ is univariate normal so} \\
+                 &=\exp \left(1 \cdot \mathbb{E}(t^TX_1 )+\frac{1}{2}\operatorname{Var}(t^TX_1 )\cdot 1^2\right)\\
+                 &=\exp \left( t^T \mu+ \frac{1}{2}t^T \Sigma t\right).
+            \end{align*}
+            Since this only depends on $\mu$ and $\Sigma$, we would obtain the same mgf for $X_2 $.
+      \end{proof}
+\end{proposition}
+\subsubsection*{Orthogonal projections}
+\begin{definition*}
+      We say $P \in R^{n \times n}$ is an \vocab{orthogonal projection} onto $\operatorname{col}(P)$ if for all $v \in \operatorname{col}(P)$ we have $Pv =v $, and for all $w \in \operatorname{col}(P)^\perp$ we have $Pw =0$.
+\end{definition*}
+\begin{proposition}
+      $P$ is an orthogonal projection iff it satisfies 
+      \begin{itemize}
+           \item Symmetry: $P=P^T$.
+           \item Idempotency: $P^2=P$.
+      \end{itemize}
+      \begin{proof}
+            This proof has essentially been given in IB Linear Algebra but we will repeat it here.
+
+           \underline{$\impliedby:$} Take $v \in \operatorname{col}(P)$. By definition we can write $v=Pa $ for some $a \in \mathbb{R}^{n}$. Then $Pv = P^2 a= Pa =v$ by idempotency. Now take $w \in \operatorname{col}(P)^{\perp}$. By definition $P^{T}w=0$. So $Pw =P^Tw=0$ by symmetry.
+           
+           \underline{$\implies :$} We can write any $a \in \mathbb{R}^{n} $ uniquely as $a=v+w $, where $v \in \operatorname{col}(P)$ and $w \in \operatorname{col}(P)^{\perp}$. Then \[
+           P^2 a = P^2 (v+w)=Pv= P (v+w)=Pa
+           .\] This holds for all $a \in \mathbb{R}^{n} $, so $P$ is idempotent. For symmetry, take $u_1 , u_2 \in \mathbb{R}^{n} $. Note \[
+           u_1^T (P^T (I-P))u_2 =\underbrace{(P u_1 )^{T}}_{\in \operatorname{col}(P)} \underbrace{ ((I-P)u_2 )}_{\in \operatorname{col}(P)^{\perp}} =0
+           .\] Since this holds for all $u_1 ,u_2 $, we have $P^{T}(I-P)=0$, so $P^{T}=P^{T}P$. Taking the transpose gives $P=P^T$.
+      \end{proof}
+\end{proposition}
+\begin{corollary}
+      If $P$ is an orthogonal projection, so is $I-P$.
+      \begin{proof}
+            We know $P$ is symmetric and idempotent.
+            \begin{align*}
+                 (I-P)^T=I-P^T=I-P.\\
+                 (I-P)^2=I -2P +P^2=I-2P +P=I-P.
+            \end{align*}
+            So $I-P$ is symmetric and idempotent.
+      \end{proof}
+\end{corollary}
+\begin{proposition}
+      If $P$ is an orthogonal projection, then $P=UU^T$ where the columns of $U$ are an orthonormal basis for $\operatorname{col}(P)$.
+      \begin{proof}
+            Check that $UU^T$ is an orthogonal projection: it is clearly symmetric and $(UU^T)=U \underbrace{U^TU}_{=I}U^T=UU^T $, so it is also idempotent. Furthermore, by definition $\operatorname{col}(P)=\operatorname{col}(UU^T)$ 
+      \end{proof}
+\end{proposition}
+\begin{remark}
+      $\operatorname{rank}(P)=\operatorname{tr}(P) $, since \[
+          \operatorname{rank}(P)= \operatorname{tr}(U^TU) =\operatorname{tr}(UU^T) =\operatorname{tr}(P) 
+      .\] 
+\end{remark}
+\begin{theorem}
+      If $X$ is MVN, and $X \sim N (0, \sigma^2I)$ and $P$ is an orthogonal projection, then 
+      \begin{enumerate}
+           \item $PX\sim N (0, \sigma^2P)$ and $(I-P)X \sim N (0, \sigma^2 (I-P))$ and these are independent;
+           \item $ \frac{\left||PX\right||^2}{\sigma^2}\sim \chi^2_{\operatorname{rank}(P)}$.
+      \end{enumerate}
+      \begin{proof}
+            The vector $\begin{pmatrix} P\\I-P \end{pmatrix}$ is MVN as it is a linear function of $X$. Its distribution is fully specified by the mean and variance: 
+            \begin{align*}
+               \mathbb{E} \begin{pmatrix} PX\\(I-P)X \end{pmatrix}&= \begin{pmatrix} P\\I-P \end{pmatrix}\mathbb{E}(X)=0,\\
+               \operatorname{Var}\begin{pmatrix} PX\\(I-P)X \end{pmatrix}&=\begin{pmatrix} P\\(I-P) \end{pmatrix}\sigma^2 I \begin{pmatrix} P\\(I-P) \end{pmatrix}^T\\
+               &=\begin{pmatrix} P& \underbrace{P (I-P)}_{=0} \\ \underbrace{P (I-P)}_{=0}& I-P \end{pmatrix}.
+            \end{align*}
+            Let $Z \sim N (0, \sigma^2P), Z' \sim N (0, \sigma^2 (I-P))$ be independent. Then we can see that \[
+            \begin{pmatrix} Z\\Z'\end{pmatrix} \sim N \left(0, \sigma^2 \begin{pmatrix} P&0\\0&I-P \end{pmatrix}\right) 
+            .\] Hence this is equal in distribution to $\begin{pmatrix} PX\\(I-P)X \end{pmatrix}$, so $PX$ and $(I-P)X$ are independent.
+
+            For 2, note that 
+            \begin{align*}
+               \frac{\left||PX\right||^2}{\sigma^2}&=\frac{X^TP^TPX}{\sigma^2}= \frac{X^T(UU^T)^T(UU^T)X}{\sigma^2}\\
+               &=\frac{\left||U^TX\right||^2}{\sigma^2}
+            \end{align*}
+            where the columns of $U$ form an orthonormal basis. Let $r=\operatorname{rank}(P)$. Now $U^TX \sim N (0, \sigma^2 U^TU) \sim N (0, \sigma^2 I_{r})$ so $ \frac{(U^TX)_{i}}{\sigma} \sim N (0,1)$ iid. for $i= 1, \ldots, r$. We conclude that \[
+               \frac{\left||PX\right||^2}{\sigma^2}= \sum_{i=1}^{r} \left(\frac{(U^TX)_{i}}{\sigma}\right)^2 \sim \chi^2_{r}
+            .\] 
+      \end{proof}
+\end{theorem}
+This can be applied immediately in another theorem:
+\begin{theorem}
+     Let $X_1 , \ldots, X_n \sim N (\mu, \sigma^2)$ iid. for some unknown $\mu \in \mathbb{R}, \sigma^2>0$. Recall that the mles are \[
+          \hat{\mu}= \overline{X}= \frac{1}{n} \sum_{i}^{}X_{i}, \quad \hat{\sigma}^2= \frac{S_{xx}}{n}= \frac{\sum_{i}^{}(X_{i}-\overline{X})^2}{n}
+     .\] We have that 
+     \begin{enumerate}
+          \item $\overline{X} \sim N (\mu, \frac{\sigma^2}{n})$;
+          \item $ \frac{S_{xx}}{\sigma^2} \sim \chi^2_{n-1}$;
+          \item $\overline{X}, S_{xx}$ are independent.
+     \end{enumerate}
+     \begin{proof}
+           We already proved 1 previously. To show 2, define an $n \times n$ matrix $P$ with every entry being $1/n$. It's easy to check that $P$ is symmetric and idempotent, hence it is a projection matrix. Now \[
+           PX =P \begin{pmatrix} X_1 \\ \ldots \\ X_n \end{pmatrix}= \begin{pmatrix} \overline{X} \\\ldots \\\overline{X} \end{pmatrix}
+           .\] We'll write $X= \begin{pmatrix} \mu\\ \ldots\\ \mu \end{pmatrix}+\epsilon$ where $\epsilon \sim N (0, \sigma^2 I)$. Consider that 
+           \begin{itemize}
+                \item $\overline{X}$ is a function of $P \epsilon$: \[
+                \overline{X}= (PX)_{1}= (P \begin{pmatrix} \mu\\ \ldots\\ \mu \end{pmatrix}+ P \epsilon)_1
+                .\] 
+                \item $S_{xx}$ is a function of $(I-P) \epsilon$:
+                \begin{align*}
+                     S_{xx}&= \sum_{i}^{}(X_i-\overline{X})^2\\
+                     &= \left|| (I-P)X\right||^2\\
+                     &= \left|| (I-P) \epsilon\right||^2.
+                \end{align*}
+           \end{itemize}
+           Therefore $\overline{X}$ and $S_{xx}$ are independent, and noting that $I-P$ is a projection with $\operatorname{rank}(I-P)=\operatorname{tr}(I-P) = n-1$, we can apply the previous theorem to obtain $S_{xx}= \left||(I-P) \epsilon \right|| ^2 \sim \chi^2_{n-1}$.
+     \end{proof}
+\end{theorem}
+\subsection{Linear models}
+Suppose we have data $(x_1 , y_1 ), \ldots, (x_n , y_{n})$ where $y_{i}\in \mathbb{R}$ and $x_i \in \mathbb{R}^p$. It is convention to use $n$ for the number of samples and $p$ for their dimension. We call the $y_i$ the \vocab{dependent variables}, and the $x_{i1},\ldots, x_{ip}$ the \vocab{independent variables}.
+\begin{goal}
+     To predict the behaviour of the $y_{i}$ for a given $x_{i}$ using a \vocab{linear model}.
+\end{goal}
+So what is a linear model? It involves making the assumption \[
+y_i=\alpha+ \beta_1 x_{i1} +\ldots+ \beta_p x_{ip}+ \epsilon_i
+.\] Here $\alpha$ is the \emph{intercept}, the $\beta \in \mathbb{R}^{p}$ are the \emph{coefficients} and $\epsilon_{i}$ is a random variable (the \emph{noise}).
+\begin{remarks}
+      \begin{itemize}
+           \item We will eliminate the intercept by making $x_{i1 }=1$ for all $i$, so $\beta_1 $ plays the role of the intercept.
+           \item A linear model can also model nonlinear relationships: for example, $y_{i}=a+bz_{i}+cz_{i}^2+\epsilon_{i}$ can be rephrased as a linear model with $x_{i}=(1, z_{i},z_{i}^2)$.
+           \item $\beta_{j}$ can be interpreted as the effect on $y_{i}$ of increasing $x_{ij}$ by 1, while keeping every other predictor fixed. This effect cannot be interpreted causally unless this is a randomised control experiment.
+      \end{itemize}
+\end{remarks}
+We can formulate a linear model as a matrix equation: \[
+Y= \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}, \ X = \begin{pmatrix} x_{11} &\ldots& x_{1p}\\ \vdots & \ddots & \vdots\\x_{n1} &\ldots& x_{np} \end{pmatrix}, \ \beta= \begin{pmatrix} \beta_1 \\ \vdots \\ \beta_{p} \end{pmatrix}, \ \epsilon= \begin{pmatrix} \epsilon_1 \\ \vdots \\ \epsilon_n \end{pmatrix}
+.\] Then $Y=X \beta+\epsilon$.
+\subsubsection{Moment assumptions}
+\begin{enumerate}
+     \item $\mathbb{E}(\epsilon)=0$, which implies $\mathbb{E} (y_{i})=x_{i}^T \beta$.
+     \item $\operatorname{Var}\epsilon =\sigma^2 I$. This is true if and only if 
+     \begin{itemize}
+          \item $\operatorname{Var}\epsilon_{i}=\sigma^2$ (\emph{homoskedasticity})
+          \item $\operatorname{Cov}(\epsilon_{i},\epsilon_{j})=0$ for $i \neq j$.
+     \end{itemize}
+\end{enumerate}
+Initially, we won't assume anything else about the distribution of $\epsilon$. We will always assume that the design matrix $X$ has full rank $p$ (its columns are linearly independent). Since $X \in \mathbb{R}^{n \times p}$, this requires $n \geq p$. (We need at least as many samples as predictors.)
+\subsubsection{Least squares estimator}
+The \vocab{least squares estimator} $\hat{\beta}$ minimises the \emph{residual sum of squares} \[
+S (\beta)= \left|| Y-X \beta\right||^2 = \sum_{i}^{}(y_{i}-x_{i}^T \beta)^2
+.\] This is a positive definite quadratic polynomial in $\beta$, so it is minimised at the point where $\nabla S (\beta)=0$. 
+\begin{align*}
+     \implies -2 \sum_{i=1}^{n}x_{ik}(y_{i}-\sum_{j}^{}x_{ij}\hat{\beta}_{ij})=0 \ \forall k=1 , \ldots, p\\
+     \implies X^TX \hat{\beta}=X^{T}Y\\
+     \implies \hat{\beta}= (X^TX)^{-1} X^T Y.
+\end{align*}
+($X^TX$ is invertible since $X$ has full rank.) 
+\begin{remarks}
+      \begin{itemize}
+           \item $\mathbb{E}(\hat{\beta})=(X^TX )^{-1} X^T \mathbb{E}(Y)=(X^TX )^{-1} X^TX  \beta=\beta$. So $\hat{\beta}$ is unbiased.
+      \end{itemize}
+\end{remarks}
 \end{document}

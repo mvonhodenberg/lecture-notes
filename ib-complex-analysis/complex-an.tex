@@ -942,4 +942,117 @@ One of our tools for this will be the following notion:
             $I (\gamma;w)$ is well-defined: if $\theta_1 : [a,b] \rightarrow \mathbb{C}$ is also a continuous function such that $\gamma (t)=w + r (t)e^{i \theta_1 (t)}$ then $e^{i \theta (t)-\theta_1 (t)}=1$ so $ \frac{\theta_1 (t)- \theta (t)}{2\pi} \in \mathbb{Z}$. Since $\theta_1 -\theta$ is continuous, it must be constant.
       \end{remark}
 \end{definition*}
+\begin{lemma}
+      If $w \in \mathbb{C}$, $\gamma: [a,b] \rightarrow \mathbb{C} \backslash \left\{w\right\}$ is a piecewise $C^{1}$ curve, then there exists a piecewise $C^{1}$ function $\theta: [a,b] \rightarrow R
+      $ such that $\gamma (t)=w+r (t)e^{i \theta (t)}$, where $r (t)=\left|\gamma (t)-w\right|$. Moreover, if $\gamma$ is closed, then \[
+      I (\gamma ;w)= \frac{1}{2\pi i}\int_{\gamma}^{}\frac{1}{z-w} \ \mathrm{d}z 
+      .\] The following proof can be motivated by finding the function $\theta (t)$ if we do assume there exists such a $C^{1}$ curve. This is the function $h (t)$ introduced in the proof.
+      \begin{proof}
+            Let $h (t)=\int_{a}^{t} \frac{\gamma' (s)}{\gamma (s)-w} \ \mathrm{d}s $. The integrand is bounded on $[a,b]$ and is continuous except at the finite number of points where $\gamma' $ may be discontinuous. So $h: [a,b] \rightarrow \mathbb{C}$ is continuous. Moreover, $h$ is differentiable with $h' (t)= \frac{\gamma' (t)}{\gamma (t)-w}$ at each $t$ where $\gamma' $ is continuous (so for all $t \in [a,b]$ except possibly for a finite set). 
+
+            Therefore $h$ is piecewise $C^{1}$. Thus we have an ODE for $(\gamma (t)-w)$ in the form \[
+            (\gamma (t)-w)' - (\gamma (t)-w)h' (t)=0
+            .\] This says that \[
+            \frac{\mathrm{d}}{\mathrm{d}t}\left((\gamma (t)-w) e^{-h (t)}\right)= \gamma' (t)e^{-h (t)}-(\gamma (t)-w)e^{-h (t)}h' (t)=0
+            \] (except possibly for finitely many $t$).
+
+            Hence $(\gamma (t)-w) e^{-h (t)}$ is constant and equal to its value at $t=a$. So
+            \begin{align*}
+               \gamma (t)-w&= (\gamma (a)-w)e^{h (t)}\\
+               &=(\gamma (a)-w)e^{\operatorname{Re} h (t)}e^{i \operatorname{Im} h (t)}\\
+               &=\left|\gamma (a)-w\right|e^{\operatorname{Re} h (t)}e^{\alpha+i \operatorname{Im} h (t)}
+            \end{align*}
+            for a choice of $\alpha$ such that $e^{i \alpha}= \frac{\gamma (a)-w}{\left|\gamma (a)-w\right|}$. So just set $\theta (t)=\alpha+ \operatorname{Im}h (t)$.
+
+            To see the second part, note that \[
+            I (\gamma;w )= \frac{\theta (b)-\theta (a)}{2\pi}= \frac{\operatorname{Im}(h (b)-h (a))}{2\pi}= \frac{\operatorname{Im}h (b)}{2\pi}
+            .\] Since $\gamma (t)-w= (\gamma (a)-w) e^{h (t)}$ and $\gamma (b)=\gamma (a)$, we have $e^{h (b)}=1$ so $\operatorname{Re} h (b)=0$ and $\operatorname{Im} h (b)= \frac{h (b)}{i}$. Hence \[
+            I (\gamma; w)= \frac{1}{2\pi i}h (b)=\frac{1}{2 \pi i} \int_{a}^{b} \frac{\gamma' (s)}{\gamma (s)-w}\ \mathrm{d}s =\int_{\gamma}^{} \frac{1}{z-w}\ \mathrm{d}z  
+            .\] 
+      \end{proof}
+\end{lemma}
+\begin{proposition}
+      If $\gamma: [a,b] \rightarrow \mathbb{C}$ is a closed curve then the function $w \mapsto I (\gamma;w)$ is continuous on $\mathbb{C}\backslash \operatorname{Image}(\gamma)$. Hence (since $I(\gamma; w)$ is integer-valued), $I$ is locally constant.
+      \begin{proof}
+            Exercise using the definition - an alternative proof is also on Example Sheet 2.
+      \end{proof}
+\end{proposition}
+\begin{proposition}
+      \begin{itemize}
+           \item[(i)] If $\gamma: [a,b] \rightarrow D (z_0 ,R)$ is a closed curve, then $I (\gamma;w)=0$ for any $w \in \mathbb{C}\backslash D (z_0 ,R)$.
+           \item[(ii)] If $\gamma: [a,b] \rightarrow \mathbb{C}$ is a closed curve, then there is a unique unbounded connected component $\Omega$ of $\mathbb{C}\backslash \gamma ([a,b])$ and $I (\gamma; w)=0$ for all $w \in \Omega$.
+      \end{itemize}
+      sfkljdsjkdl
+      \begin{proof}
+          uihuihiu
+            \begin{itemize}
+                 \item[(i)] If $w \in \mathbb{C}\backslash D (z_0 ,R)$ then the function $z \rightarrow \frac{1}{z-w}$ is holomorphic in $D (z_0 ,R)$. So $I (\gamma; w)=\frac{1}{2 \pi i}\int_{\gamma}^{} \frac{1}{z-w}\ \mathrm{d}z =0$ by convex Cauchy.
+                 \item[(ii)] lkdjglds
+            \end{itemize}
+            jkljlkj
+      \end{proof}
+\end{proposition}
+---------------
+lec 15
+-----------
+\begin{lemma}[Jordan's lemma]
+      Let $f$ be a continuous function on the semi-circle $C_{R}^{+}=\operatorname{Im}(\gamma_{R}^{+})$ in the upper half-plane, where $R >0$ and $\gamma_{R}^{+}(t)=Re^{it}, \ 0 \leq t \leq  \pi$. Then for $\alpha >0$ we have the bound \[
+      \left|\int_{\gamma_{R}}^{} f (z)e^{i \alpha z}\ \mathrm{d}z \right| \leq \frac{\pi}{\alpha}\sup_{z \in C_{R}^{+}}\left|f (z)\right|
+      .\] This tells us that if we have a function that vanishes on a semicircle as it gets large, this integral also vanishes. Therefore Jordan's lemma is very useful for computing integrals on large semicircles.
+      \begin{proof}
+            Use the basic estimate of modulus of an integral.
+      \end{proof}
+\end{lemma}
+\begin{lemma}[Integrals on small circular arcs]
+      Let $f$ be holomorphic in $D (a,R)\backslash \left\{a\right\}$ with a simple pole at $z=a$. If $\gamma_{\varepsilon}: [\alpha,\beta] \rightarrow \mathbb{C}$ is the circular arc $\gamma_{\varepsilon}(t)=a+ \varepsilon e^{it}$, then \[
+      \lim_{\varepsilon \rightarrow 0} \int_{\gamma_{\varepsilon}}^{} f (z) \ \mathrm{d}z = (\beta- \alpha)i \operatorname{Res}_{f} (a)
+      .\] 
+      \begin{proof}
+            Write $f (z)=\frac{c}{z-a}+g (z)$ with $g$ holomorphic in the whole disk (since $f$ has a simple pole at $a$). Then $c= \operatorname{Res}_{f}(a)$. Then 
+            \begin{align*}
+                 \left|\int_{\gamma_{\varepsilon}}^{} g (z) \ \mathrm{d}z \right|=& \left|\int_{\alpha}^{\beta}g (a+ \varepsilon e^{it })\varepsilon i e^{it} \ \mathrm{d}t \right|\leq \varepsilon (\beta-\alpha)\sup_{t \in [\alpha, \beta]} \left|g (a +\varepsilon e^{it})\right|\\
+                 & \rightarrow 0 \text{ as  } \varepsilon \rightarrow 0^{+}.
+            \end{align*}
+            Also $\int_{\gamma_{\varepsilon}}^{} \frac{c}{z-a} \ \mathrm{d}z = (\beta-\alpha)ic  $ by direct calculation. The claim follows.
+      \end{proof}
+\end{lemma}
+\begin{example*}
+      Consider $I = \int_{0}^{\infty} \frac{\sin x}{x} \ \mathrm{d} x$. We can compute this by complex methods. Let $f (z)= \frac{e^{iz}}{z}$. Consider the integral of $f$ over a 'keyhole contour' (see picture).
+
+      By Jordan's lemma, $\int_{\gamma_{R}}^{}f (z) \ \mathrm{d}z \rightarrow 0  $ as $R \rightarrow \infty$.
+
+      $f$ has a simple pole at $z=0$ with $\operatorname{Res }_{f}0) =\lim_{z \rightarrow 0}z f (z)=1$. So by Lemma 4.7, $\int_{-\gamma_{\varepsilon}}^{}f (z) \ \mathrm{d}z \rightarrow  \pi i $ as $\varepsilon \rightarrow 0^{+}$. 
+      
+      Now $f$ is holomorphic in $U = \mathbb{C} \backslash \left\{0\right\}$ and the curve $\gamma$ is homologous to zero in $U$ (we can shrink it to a point anywhere but 0). Hence by Cauchy's theorem $\int_{\gamma}^{}f (z) \ \mathrm{d}z =0 $. So we can split up the integral into its parts, and after combining the two integrals on the real axis after a simple change of variables, this gives \[
+      \int_{\varepsilon}^{R} \frac{e^{it}- e^{-it}}{t} \ \mathrm{d} t + \int_{\gamma_{R}}^{}f (z) \ \mathrm{d}z + \int_{\gamma_{\varepsilon}}^{} f (z) \ \mathrm{d}z =0 
+      .\] Letting $R \rightarrow \infty$ and $\varepsilon \rightarrow 0$, this gives \[
+      I=\int_{0}^{\infty} \frac{\sin t}{t} \ \mathrm{d}t = \frac{\pi}{2} 
+      .\] 
+\end{example*}
+\begin{example*}[A proof of the Basel problem.]
+      We want to know the value of $S= \sum_{n=1}^{\infty}\frac{1}{n^2}$. For this, consider the function $f (z)= \frac{\pi \cos (\pi z)}{z^2 \sin ( \pi z) }$, which is holomorphic in $\mathbb{C}$ except for simple points at each point in $\mathbb{Z} \backslash \left\{0\right\}$, and an order 3 pole at 0. Near $n \in \mathbb{Z} \backslash \left\{0\right\}$ we have $f (z)= g (z)/ h (z)$, where $g (n) \neq 0 $ and $h $ has a simple zero at $n$, and so \[
+      \operatorname{Res}_{f}(n)= \frac{g (n)}{h' (n)}= \frac{1}{n^2}
+      .\] To compute $\operatorname{Res}_{f} (0)$, use the Laurent expansions: 
+      \begin{align*}
+           \cot (z)= (1-z^2/2 + O (z^{4})) (z- z^3/6 + O (z^{5}))^{-1}\\
+           = 1/z - z/3 + O (z^2)
+      \end{align*}
+      which gives $ \frac{\pi \cot (\pi z)}{z^2}= \frac{1}{z^{3}}- \frac{\pi^2}{3z}+ \ldots$ and so $\operatorname{Res}_{f}(0)=- \frac{p^2}{3}$. 
+
+      For $N \in \mathbb{N}$, take $\gamma_{N}$ to be the positively oriented boundary of the square defined by the lines $x= \pm (N+1/2)$ and $y= \pm i (N +1/2)$. Then by the residue theorem, 
+      \begin{equation}\tag{$\ast$}
+            \int_{\gamma_{N}}^{}f (z) \ \mathrm{d} z = 2 \pi i \left(2 \sum_{n=1}^{N}\frac{1}{n^2} - \pi^2/3\right).
+      \end{equation}
+      But since the length of the curve $\gamma_{N}$ is $4 (2N+1)$ we have 
+      \begin{align*}
+           \left|\int_{\gamma_{N}}^{}f (z) \ \mathrm{d}z \right| &\leq \sup_{\gamma_{N}} \left| \frac{\pi \cot (\pi z)}{z^2}\right|4 (2N+1)\\
+           &\leq \sup_{\gamma_{N}} \left|\pi \cot (\pi z)\right| \frac{4 (2N+1) \pi}{(N+1/2)^2}\\
+           & \frac{16}{(2N+1)}\sup_{\gamma_{N}}\left|\cot (\pi z)\right|.
+      \end{align*}
+      On $\gamma_{N}$, $\cot (\pi z)$ is bounded independently of $N$ (exercise), and hence $\int_{\gamma_{N}}^{}f (z) \ \mathrm{d}z \rightarrow 0 $ as $N \rightarrow \infty$. Letting $N \rightarrow \infty$ in $(\ast)$, we get \[
+      S= \frac{\pi^2}{6}
+      .\]
+\end{example*}
+\section{The argument principle, local degree and Rouché's theorem}
+
 \end{document}
